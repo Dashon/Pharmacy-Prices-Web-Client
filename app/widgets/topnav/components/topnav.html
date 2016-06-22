@@ -1,0 +1,41 @@
+<nav class="navbar topnav-navbar navbar-fixed-top">
+    <button id="sidebar-toggler" class="hidden-md-up" type="button" (click)="sidebarToggler()">
+        &#9776;
+    </button>
+    <a class="hidden-md-up theme-name" href="Javascript:void(0);" (click)="gotoHome()"><img class="logo" src="assets/images/doc_and_i_logo.png"></a>
+    <div class="collapse navbar-toggleable-sm">
+        <a class="navbar-brand" href="Javascript:void(0);"(click)="gotoHome()"><img class="logo" src="assets/images/doc_and_i_logo.png"></a>
+        <ul class="nav navbar-nav pull-right navbar-right">
+          <li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" tabindex="0"><img src="assets/images/svg/icon-script.svg" width="20px"> 340B</a></li>
+          <li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" ><img src="assets/images/svg/icon-map.svg" width="15px"> Map</a></li>
+          <li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" (click)="gotoSavings()"><img src="assets/images/svg/icon-savings.svg" width="20px"> Savings</a></li>
+            <li class="nav-item profile">
+                <div class="btn-group" dropdown>
+                    <a dropdownToggle="" class="dropdown-toggle" aria-haspopup="true">
+                        <img src="assets/images/flat-avatar.png" class="topnav-img" alt=""> <span class="hidden-md-down">Amy Smith</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="lang">
+                        <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoHome()">Dashboard</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoProfile()">Settings</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoLogin()">Logout</a></li>
+                      <li class="points" role="menuitem"><img src="assets/images/svg/icon-star.svg" width="10px"> 800 Points</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul class="nav navbar-nav pull-right hidden-md-up hidd">
+        <li class="nav-item profile-xs">
+            <div dropdown>
+                <a dropdownToggle>
+                    <img src="assets/images/flat-avatar.png" class="topnav-img" alt="">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="lang">
+                    <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoProfile()">Profile</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoLogin()">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>

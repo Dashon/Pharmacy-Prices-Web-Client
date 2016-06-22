@@ -1,53 +1,43 @@
-const config = {
-  baseUrl: 'http://localhost:5555/',
+exports.config = {
+    baseUrl: 'http://localhost:5555/dist/dev',
 
-  specs: [
-    './dist/dev/**/*.e2e-spec.js'
-  ],
+    specs: [
+        'dist/dev/**/*.e2e.js'
+    ],
+    exclude: [],
 
-  exclude: [],
+    framework: 'jasmine2',
 
-  // 'jasmine' by default will use the latest jasmine framework
-  framework: 'jasmine',
+    allScriptsTimeout: 110000,
 
-  // allScriptsTimeout: 110000,
+    jasmineNodeOpts: {
+        showTiming: true,
+        showColors: true,
+        isVerbose: false,
+        includeStackTrace: false,
+        defaultTimeoutInterval: 400000
+    },
+    directConnect: true,
 
-  jasmineNodeOpts: {
-    // showTiming: true,
-    showColors: true,
-    isVerbose: false,
-    includeStackTrace: false,
-    // defaultTimeoutInterval: 400000
-  },
+    capabilities: {
+        'browserName': 'chrome'
+    },
 
-  directConnect: true,
+    onPrepare: function() {
+        var SpecReporter = require('jasmine-spec-reporter');
+        // add jasmine spec reporter
+        jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
 
-  capabilities: {
-    browserName: 'chrome'
-  },
-
-  onPrepare: function() {
-    const SpecReporter = require('jasmine-spec-reporter');
-    // add jasmine spec reporter
-    jasmine.getEnv().addReporter(new SpecReporter({ displayStacktrace: true }));
-
-    browser.ignoreSynchronization = false;
-  },
+        browser.ignoreSynchronization = false;
+    },
 
 
-  /**
-   * Angular 2 configuration
-   *
-   * useAllAngular2AppRoots: tells Protractor to wait for any angular2 apps on the page instead of just the one matching
-   * `rootEl`
-   */
-  useAllAngular2AppRoots: true
+    /**
+     * Angular 2 configuration
+     *
+     * useAllAngular2AppRoots: tells Protractor to wait for any angular2 apps on the page instead of just the one matching
+     * `rootEl`
+     *
+     */
+    useAllAngular2AppRoots: true
 };
-
-if (process.env.TRAVIS) {
-  config.capabilities = {
-    browserName: 'firefox'
-  };
-}
-
-exports.config = config;
