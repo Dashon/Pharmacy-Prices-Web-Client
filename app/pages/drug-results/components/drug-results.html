@@ -5,20 +5,22 @@
     <form class="col-lg-9 drug-results-search">
       <div class="col-lg-10">
         <div class="col-lg-5 col-lg-offset-1">
-          <input [(ngModel)]="asyncSelectedCar"
-                 [autocomplete]="getAsyncData(getCurrentContext())"
-                 (autocompleteLoading)="changeAutocompleteLoading($event)"
-                 (autocompleteNoResults)="changeAutocompleteNoResults($event)"
-                 (autocompleteOnSelect)="autocompleteOnSelect($event)"
-                 [autocompleteOptionsLimit]="7"
-                 placeholder="Search Medications"
-                 class="form-control search-bar">
-
-          <div [hidden]="autocompleteLoading!==true">
-            <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+          <input [(ngModel)]="searchString"
+                 [typeahead]="getAsyncDataRef"
+                 (typeaheadLoading)="changeTypeaheadLoading($event)"
+                 (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                 (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                 [typeaheadWaitMs]="300"
+                 [typeaheadMinLength]="1"
+                 [typeaheadOptionsLimit]="7"
+                 [typeaheadOptionField]="'name'"
+                 placeholder="Seach Medications"
+                 class="form-control">
+          <div *ngIf="typeaheadLoading===true">
+            <i class="fa fa-refresh ng-hide" style=""></i>
           </div>
-          <div [hidden]="autocompleteNoResults!==true" class="" style="">
-            <i class="glyphicon glyphicon-remove"></i> Empty Query !
+          <div *ngIf="typeaheadNoResults===true" class="" style="">
+            <i class="fa fa-remove"></i> No Results Found
           </div>
         </div>
         <div class="col-lg-2">
@@ -38,7 +40,9 @@
               Select Dosage <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li role="menuitem"><a class="dropdown-item" href="#">30mg</a></li>
+              <li *ngFor="#dose of doses">
+                <a class="dropdown-item" href="#">{{dose}}</a>
+              </li>
             </ul>
           </div>
         </div>
