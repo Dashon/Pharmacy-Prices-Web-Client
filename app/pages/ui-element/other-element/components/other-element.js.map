@@ -1,1 +1,0 @@
-{"version":3,"file":"other-element.js","sourceRoot":"","sources":["other-element.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAwB,eAAe,CAAC,CAAA;AACxC,8BAAsD,6BAA6B,CAAC,CAAA;AAOpF;IAAA;IAAuB,CAAC;IANxB;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,OAAO;YACjB,WAAW,EAAE,gEAAgE;YAC7E,UAAU,EAAE,CAAC,mCAAmB,EAAE,kCAAkB,CAAC;SACxD,CAAC;;gBAAA;IAEqB,eAAC;AAAD,CAAC,AAAxB,IAAwB;AAAX,gBAAQ,WAAG,CAAA"}
