@@ -1,0 +1,43 @@
+<div class="animate">
+	<div class="card">
+		<div class="card-header card-primary card-inverse">
+			<div class="card-title">
+				Dismissable Alerts
+			</div>
+		</div>
+		<div class="card-block">
+			<alert *ngFor="let alert of alerts;let i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)">
+			  	{{ alert?.msg }}
+			</alert>
+
+			<alert dismissOnTimeout="3000">This alert will dismiss in 3s</alert>
+			<form class="form-inline">
+				<div class="form-group">
+					<input [(ngModel)]="msg" class="form-control" name="msg" placeholder="Enter Alert Message">
+				</div>
+				<button type="submit" class="btn btn-secondary" (click)="addAlert()">Add Alert</button>
+			</form>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header card-info card-inverse">
+			<div class="card-title">
+				Growl Alerts
+			</div>
+		</div>
+		<div class="card-block">
+			<p>
+				<button type="button" class="btn btn-secondary" (click)="defaultGrowl()">Show Growl</button>
+				<button type="button" class="btn btn-success" (click)="noticeGrowl()">Success Growl</button> 
+				<button type="button" class="btn btn-warning" (click)="warningGrowl()">Warning Growl</button> 
+				<button type="button" class="btn btn-danger" (click)="errorGrowl()" >Danger Growl</button> 
+			</p>
+			<form class="form-inline">
+				<div class="form-group">
+					<input [(ngModel)]="growlMessage" class="form-control" name="growlMessage" placeholder="Enter Growl Message">
+				</div>
+				<button type="submit" class="btn btn-secondary" (click)="addGrowl()">Add Growl</button>
+			</form>
+		</div>
+	</div>
+</div>

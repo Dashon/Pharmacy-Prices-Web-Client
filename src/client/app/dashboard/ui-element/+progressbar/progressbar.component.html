@@ -1,0 +1,70 @@
+<div class="animate">                
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-success card-inverse">
+                    <h3 class="card-title">Contextual Progressbars</h3>
+                </div>
+                <div class="card-block">
+                    <progress class="progress progress-primary" value="65" max="100">65%</progress>
+                    <progress class="progress progress-success" value="25" max="100">25%</progress>
+                    <progress class="progress progress-info" value="50" max="100">50%</progress>
+                    <progress class="progress progress-warning" value="75" max="100">75%</progress>
+                    <progress class="progress progress-danger" value="100" max="100">100%</progress>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-primary card-inverse">
+                    <h3 class="card-title">Striped Progresbars</h3>
+                </div>
+                <div class="card-block">
+                    <progress class="progress progress-striped" value="10" max="100">10%</progress>
+                    <progress class="progress progress-striped progress-success" value="25" max="100">25%</progress>
+                    <progress class="progress progress-striped progress-info" value="50" max="100">50%</progress>
+                    <progress class="progress progress-striped progress-warning" value="75" max="100">75%</progress>
+                    <progress class="progress progress-striped progress-danger" value="100" max="100">100%</progress> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header card-warning card-inverse">
+                    <h3 class="card-title">AngularJS Dynamic Progressbars</h3>
+                </div>
+                <div class="card-block">
+                    <h5>Dynamic <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button></h5>
+                    <progress class="progress progress-striped progress-animated" [max]="max" [value]="dynamic">
+                        <span style="color:white; white-space:nowrap;">{{dynamic}} / {{max}}</span>
+                    </progress>
+
+                    <small><em>No animation</em></small>
+                    <progress class="progress progress-success" [value]="dynamic" [max]="100"><b>{{dynamic}}%</b></progress>
+
+                    <small><em>Object (changes type based on value)</em></small>
+                    <progress class="progress progress-striped progress-animated active progress-{{ type }}" [value]="dynamic" [max]="max">
+                        {{type}} <i *ngIf="showWarning">!!! Watch out !!!</i>
+                    </progress>
+
+                    <hr />
+                    <h5>Stacked <button type="button" class="btn btn-sm btn-primary" (click)="randomStacked()">Randomize</button></h5>
+                    <div class="row col-lg-12">
+                        <!-- todo: implement as component -->
+                        <progress *ngFor="let baz of stacked"
+                        class="progress progress-{{ baz?.type }}"
+                        style="float: left;"
+                        [ngStyle]="{width: baz.value + '%'}"
+                        [value]="baz.value" [max]="baz.max">
+                        <span *ngIf="baz.value > 3">{{baz?.value}}%</span>
+                        </progress>
+                        <!-- gray background -->
+                        <progress class="progress" value="0" max="100" style="width: 100%;"></progress>
+                    </div>
+                </div>   
+            </div>     
+        </div>
+    </div>
+</div>

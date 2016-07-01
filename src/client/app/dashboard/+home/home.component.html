@@ -1,0 +1,70 @@
+<div class="animate">
+    <div class="row home-row">
+        <div class="col-lg-4 col-xl-3">
+            <div class="home-stats">
+                <stats-cmp icon="cloud-upload" value="88%" text="Server Uptime" bgclass="info" link="c3chart" progressValue="88"></stats-cmp>
+                <stats-cmp icon="heartbeat" value="94%" text="Positive feedback" bgclass="success" link="c3chart" progressValue="94" ></stats-cmp>
+                <stats-cmp icon="flag" value="12,351" text="Posts flagged" bgclass="danger" link="inbox" progressValue="72"></stats-cmp>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xl-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="chart-comment clearfix">
+                        <div class="text-primary pull-left">
+                            <b>
+                                <span class="comment-header">55%</span><br />
+                                <span class="comment-comment">Referral User&nbsp;</span>
+                            </b>
+                        </div>
+                        <div class="text-success pull-left m-l">
+                            <b>
+                                <span class="comment-header">25%</span><br />
+                                <span class="comment-comment">Returning User&nbsp;</span>
+                            </b>
+                        </div>
+                        <div class="text-warning pull-left m-l">
+                            <b>
+                                <span class="comment-header">20%</span><br />
+                                <span class="comment-comment">New User</span>
+                            </b>
+                        </div>
+                    </div>
+                    <div id="lineChart" style="height:221px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xl-3">
+            <div class="card">
+                <div class="">
+                    <div id="cbar" style="height:150px; padding-top:7px;"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-6 text-left">
+                            <div class="padder">
+                                <span class="heading">Totol View :</span><br />
+                                <big class="text-primary">22068</big>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="pie" style="height:125px; margin:-9px 0px -15px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xl-8">
+            <div class="card card-block">
+                <div id="vmap" style="width: 100%; height: 321px;"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <todo-cmp></todo-cmp>
+        </div>
+    </div>
+</div>

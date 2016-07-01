@@ -1,0 +1,30 @@
+<div class="todo-container card card-danger">
+	<div class="card-header">
+		<div class="todo-header text-xs-center">
+			<h4><i class="fa fa-tasks"></i>&nbsp;To do Tasks</h4>
+		</div>
+	</div>
+	<div class="card-block" style="padding-bottom: 0;">
+		<div class="todo-body">
+			<div class="todo-list-wrap">
+				<ul class="todo-list">
+					<li *ngFor="let name of nameList">
+						<label class="checkbox1 animated bounceInDown">
+							<input type="checkbox">
+							<span></span>
+						</label>
+						<span class="done animated bounceInRight">{{name}}</span>
+					</li>
+				</ul>
+			</div>
+			<form class="todo-from-bottom" (submit)="addName()">
+				<p class="input-group">
+		            <input [(ngModel)]="newName" name="newName" class="form-control">
+		            <span class="input-group-btn">
+		            	<button type="submit" class="btn btn-danger">Add</button>
+		            </span>
+	            </p>
+			</form>
+		</div>
+	</div>
+</div>
