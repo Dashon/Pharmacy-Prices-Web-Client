@@ -6,6 +6,7 @@ import { SignupRoutes } from './+signup/index';
 import { DrugSearchRoutes } from './+drug-search/index';
 import { DrugResultsRoutes } from './+drug-results/index';
 import { PageNotFoundRoutes } from './+404/index';
+import {Three40BRoutes} from './+340B/340b.routes';
 
 
 
@@ -15,7 +16,8 @@ const routes: RouterConfig = [
 	...SignupRoutes,
 	...DrugSearchRoutes,
 	...DrugResultsRoutes,
-	...PageNotFoundRoutes
+	...PageNotFoundRoutes,
+	...Three40BRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [

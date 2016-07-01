@@ -10,7 +10,7 @@ import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-boots
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 /**
- * This class represents the lazy loaded HomeComponent.
+ * This class represents the lazy loaded DrugResultsComponent.
  */
 @Component({
   moduleId: module.id,

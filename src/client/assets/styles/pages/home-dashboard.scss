@@ -1,0 +1,33 @@
+.dashboard-home {
+  .avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .trophy {
+    height: auto;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  #awards {
+    margin-top: 30px;
+    max-height: 400px;
+    img {
+      max-width: 100%;
+    }
+  }
+  .your-activity {
+    background-color: transparent;
+    border: none;
+    .current-activity {
+      background-color: $white;
+      border: 1px solid #e5e5e5;
+    }
+    .lifetime-activity {
+      background-color: $white;
+      border: 1px solid #e5e5e5;
+    }
+  }
+}

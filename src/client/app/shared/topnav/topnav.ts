@@ -1,7 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { CORE_DIRECTIVES } from '@angular/common';
-import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     moduleId: module.id,
@@ -12,27 +12,30 @@ import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 })
 
 export class TopNavComponent {
-	changeTheme(color: string): void {
-		var link: any = $('<link>');
-		link
-			.appendTo('head')
-			.attr({type : 'text/css', rel : 'stylesheet'})
-			.attr('href', 'themes/app-'+color+'.css');
-	}
+    constructor(private router:Router) {
+    }
 
-	rtl(): void {
-		var body: any = $('body');
-		body.toggleClass('rtl');
-	}
+    changeTheme(color:string):void {
+        var link:any = $('<link>');
+        link
+            .appendTo('head')
+            .attr({type: 'text/css', rel: 'stylesheet'})
+            .attr('href', 'themes/app-' + color + '.css');
+    }
 
-	sidebarToggler(): void  {
-		var sidebar: any = $('#sidebar');
-		var mainContainer: any = $('.main-container');
-		sidebar.toggleClass('sidebar-left-zero');
-		mainContainer.toggleClass('main-container-ml-zero');
-	}
-	
-	gotoHome(): void {
-		this._router.navigate(['Dashboard','Home']);
-	}
+    rtl():void {
+        var body:any = $('body');
+        body.toggleClass('rtl');
+    }
+
+    sidebarToggler():void {
+        var sidebar:any = $('#sidebar');
+        var mainContainer:any = $('.main-container');
+        sidebar.toggleClass('sidebar-left-zero');
+        mainContainer.toggleClass('main-container-ml-zero');
+    }
+
+    gotoHome():void {
+        this.router.navigate(['/dashboard', 'home']);
+    }
 }

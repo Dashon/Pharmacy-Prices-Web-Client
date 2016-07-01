@@ -113,7 +113,6 @@
         &.nav-text {
           border: none;
           border-left: $stroke;
-          color: $grey;
           background-color: $white;
           min-width: 100px;
           text-align: center;
@@ -129,6 +128,7 @@
             }
           }
           a {
+            color: $gray;
             &:focus, &:active, &:visited, &:hover {
               text-decoration: none;
               outline: none;

@@ -11,6 +11,7 @@ import { MailRoutes } from './mail/index';
 import { ChartRoutes } from './charts/index';
 import { ProfileRoutes } from './+profile/index';
 import { BlankPageRoutes } from './+blank-page/index';
+import {AccountSettingsRoutes} from './+account-settings/account-settings.routes';
 
 
 export const DashboardRoutes = [
@@ -29,7 +30,8 @@ export const DashboardRoutes = [
 			...MailRoutes,
 			...ChartRoutes,
 			...ProfileRoutes,
-			...BlankPageRoutes
+			...BlankPageRoutes,
+			...AccountSettingsRoutes
 	    ]
 	},
 ];
