@@ -6,6 +6,8 @@
 @import "pages/inbox";
 @import "pages/compose";
 @import "pages/profile";
+@import "pages/drug-search";
+@import "pages/drug-results";
 //Widgets
 @import "widgets/topnav";
 @import "widgets/sidebar";
@@ -17,10 +19,22 @@
 //Custom
 @import "custom/btn-outline-rounded";
 @import "custom/custom";
+
+
+.btn-default{
+  color: $white;
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+}
+
+footer{
+  position: absolute;
+  bottom:0;
+  width: 100%;
+}
 .main-container{
-	margin-left: 235px;
 	margin-top : 50px;
-	padding:10px;
+	padding:0;
 	transition: all .2s ease-in-out;
 	overflow: hidden;
 	background: #ECF0F1;
@@ -71,13 +85,13 @@
 }
 
 @keyframes sk-rotateplane {
-  0% { 
+  0% {
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
-  } 50% { 
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
     transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
-  } 100% { 
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
@@ -104,7 +118,7 @@
 .icon {
 	.icon-page {
 		.row p {
-			font-family: 'Open Sans', san-serif;		
+			font-family: 'Open Sans', san-serif;
 		}
 	}
 }

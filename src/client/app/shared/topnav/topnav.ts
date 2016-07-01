@@ -31,4 +31,8 @@ export class TopNavComponent {
 		sidebar.toggleClass('sidebar-left-zero');
 		mainContainer.toggleClass('main-container-ml-zero');
 	}
+	
+	gotoHome(): void {
+		this._router.navigate(['Dashboard','Home']);
+	}
 }

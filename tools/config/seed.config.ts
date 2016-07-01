@@ -216,7 +216,7 @@ export class SeedConfig {
    * The name of the bundle file to includes all CSS files.
    * @type {string}
    */
-  CSS_PROD_BUNDLE = 'app-midnight-blue.css';
+  CSS_PROD_BUNDLE = 'app.css';
 
   /**
    * The name of the bundle file to include all JavaScript shims.
@@ -271,7 +271,7 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.CSS_SRC}/app-midnight-blue.${ this.getInjectableStyleExtension() }`, inject: true, vendor: false },
+    { src: `${this.CSS_SRC}/app.${ this.getInjectableStyleExtension() }`, inject: true, vendor: false },
     { src: `${this.ASSETS_SRC}/extra/jqvmap/jqvmap.css`, inject: true },
     { src: `${this.ASSETS_SRC}/extra/jqvmap/jquery.vmap.js`, inject: 'libs' },
     { src: `${this.ASSETS_SRC}/extra/jqvmap/maps/jquery.vmap.world.js`, inject: 'libs' },
