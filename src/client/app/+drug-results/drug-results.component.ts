@@ -25,7 +25,6 @@ export class DrugResultsComponent {
 
     http = null;
     response = null;
-    status:{isopen:boolean} = {isopen: false};
 
     results = [];
     typeaheadLoading:boolean = false;
@@ -33,11 +32,6 @@ export class DrugResultsComponent {
     public getAsyncDataRef = this.getAsyncData.bind(this);
     public searchString:string = '';
 
-    toggleDropdown($event:MouseEvent):void {
-        $event.preventDefault();
-        $event.stopPropagation();
-        this.status.isopen = !this.status.isopen;
-    }
 
     constructor(http:Http) {
         this.http = http;

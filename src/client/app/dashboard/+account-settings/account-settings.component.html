@@ -1,9 +1,12 @@
 <div class="account-settings-page animate gradient">
-        <h2>Account Settings</h2>
-        <div class="col-sm-12 col-md-10 col-lg-6 col-md-offset-1 col-lg-offset-3 text-xs-center container">
-            <div class="row">
+    <h2 class="header">Account Settings</h2>
+    <form>
+        <div class="col-sm-12 col-md-10 col-lg-6 col-md-offset-1 col-lg-offset-3 container">
+            <div class="row text-xs-center">
                 <div class="col-sm-12">
-                    <a data-open="modal1"><img src="http://placehold.it/150x150" class="avatar-large"></a>
+                    <div class="row">
+                        <a><img src="http://placehold.it/150x150" class="avatar-large"></a>
+                    </div>
                     <!-- MODAL -->
                     <div class="reveal" id="modal1" data-reveal hidden="true">
                         <h3 id="modalTitle">Select an Avatar</h3>
@@ -16,37 +19,10 @@
                         </button>
                     </div>
                     <!-- END MODAL -->
-                    <h3>Amy Smith</h3>
-                </div>
-            </div>
-            <div class="row">
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col-lg-offset-3 col-lg-8">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="field-title">Employer</div>
-                        </div>
-                        <div class="col-sm-8 left">
-                            <div class="field">Asain Human Services</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="field-title">Team</div>
-                        </div>
-                        <div class="col-sm-8 left">
-                            <div class="field">Morning Crew</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="field-title">Team Lead</div>
-                        </div>
-                        <div class="col-sm-8 left">
-                            <div class="field">Jane Jackson</div>
-                        </div>
+                    <br>
+                    <h3 *ngIf="!editMode">SuperUser</h3>
+                    <div class="col-sm-offset-3 col-sm-6 form-group" *ngIf="editMode">
+                        <input type="text" class="form-control" id="userName" placeholder="Full Name">
                     </div>
                 </div>
             </div>
@@ -54,25 +30,66 @@
                 <hr>
             </div>
             <div class="row">
-                <div class="col-lg-offset-3 col-lg-8">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="field-title">Email</div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="field">asmith@email.com</div>
+                <div class="col-sm-offset-3 col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label text-xs-right">Employer</label>
+                        <div class="col-sm-9">
+                            <div class="field form-control">Asain Human Services</div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="field-title">Password</div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="field">********</div>
-                            <div class="field"><a href="" class="small">Update Password</a></div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label text-xs-right">Team</label>
+                        <div class="col-sm-9">
+                            <div class="field form-control">Morning Crew</div>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label text-xs-right">Team Lead</label>
+                        <div class="col-sm-9">
+                            <div class="field form-control">Jane Jackson</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-8">
+                    <div class="form-group row"  *ngIf="!editMode">
+                        <label class="col-sm-3 form-control-label text-xs-right" for="inputemail">Email</label>
+                        <div class="col-sm-9">
+                            <div class="field form-control" id="inputemail">asmith@email.com</div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-9 form-group" *ngIf="editMode">
+                        <input type="text" class="form-control" id="inputemail" placeholder="Email">
+                    </div>
+
+
+                    <div class="form-group row"  *ngIf="!editMode">
+                        <label class="col-sm-3 form-control-label text-xs-right" for="password">Password</label>
+                        <div class="col-sm-9">
+                            <div class="field form-control" id="password">********</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 form-group" *ngIf="editMode">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confrim Password">
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row pull-right" *ngIf="!editMode"><a class="small" (click)="edit()">Update Account</a></div>
+            <div class="row" *ngIf="editMode">
+                <div class=" pull-left">
+                    <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+                </div>
+                <div class=" pull-right">
+                    <button class="btn btn-primary btn-bordered" (click)="save()">Save</button>
                 </div>
             </div>
         </div>
+    </form>
 </div>

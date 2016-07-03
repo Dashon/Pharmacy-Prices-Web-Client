@@ -128,7 +128,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Ani angular2';
+  APP_TITLE = 'Doc & I';
 
   /**
    * The base folder of the applications source files.

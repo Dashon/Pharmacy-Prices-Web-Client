@@ -2,12 +2,13 @@
 
   .field-title,.field{
     text-align: left;
+    border: none;
   }
 
   .container {
     background-color: $white;
     padding: 40px;
-    margin-top: 40px;
+    margin-top: 10px;
   }
 
 }

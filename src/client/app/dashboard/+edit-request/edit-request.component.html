@@ -1,0 +1,62 @@
+<div class="edit-request-page">
+    <div class="header">
+        <h2> Pending Edit Request</h2>
+    </div>
+    <div class="card">
+        <div class="card-header card-primary card-inverse">
+            <span class="card-title">Regular Table</span>
+        </div>
+        <div class="card-block">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Surescripts ID</th>
+                    <th class="action-column"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Zip</td>
+                    <td>Phone</td>
+                    <td>Latitude</td>
+                    <td>Longitude</td>
+                    <td>Surescripts ID</td>
+                    <td class="action-column pull-right">
+                        <Button class="btn btn-primary btn-rounded"><i class="fa fa-check"></i>Approve</Button>
+                        <Button class="btn btn-danger btn-rounded"><i class="fa fa-times"></i>Deny</Button>
+                        <Button class="btn btn-primary btn-bordered" *ngIf="false"><i class="fa fa-chevron-down"></i>Show Original</Button>
+                        <Button class="btn btn-primary btn-bordered"><i class="fa fa-chevron-up"></i>Hide Original</Button>
+                    </td>
+                </tr>
+                <tr class="original-pharmacy">
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Zip</td>
+                    <td>Phone</td>
+                    <td>Latitude</td>
+                    <td>Longitude</td>
+                    <td>Surescripts ID</td>
+                    <td class="action-column pull-right"><-- Original</td>
+                </tr>
+                <tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { DrugSearchRoutes } from './+drug-search/index';
 import { DrugResultsRoutes } from './+drug-results/index';
 import { PageNotFoundRoutes } from './+404/index';
 import {Three40BRoutes} from './+340B/340b.routes';
+import {MapRoutes} from './+map/map.routes';
 
 
 
@@ -17,7 +18,8 @@ const routes: RouterConfig = [
 	...DrugSearchRoutes,
 	...DrugResultsRoutes,
 	...PageNotFoundRoutes,
-	...Three40BRoutes
+	...Three40BRoutes,
+	...MapRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [

@@ -2,39 +2,50 @@
 // Pages
 @import "pages/login";
 @import "pages/404";
-@import "pages/inbox";
-@import "pages/compose";
-@import "pages/profile";
 @import "pages/drug-search";
 @import "pages/drug-results";
 @import "pages/340b";
 @import "pages/account-settings";
 @import "pages/home-dashboard";
+@import "pages/map";
+@import "pages/manage-clinic";
+@import "pages/manage-clinic-pharmacies";
+@import "pages/manage-contracted-pharmacies";
+@import "pages/manage-pharmacies";
+@import "pages/manage-rewards";
+@import "pages/edit-request";
 //Widgets
 @import "widgets/topnav";
 @import "widgets/sidebar";
 @import "widgets/checkbox";
-@import "widgets/todo";
-@import "widgets/stats";
 @import "widgets/progressButton";
 @import "widgets/hover";
 //Custom
 @import "custom/btn-outline-rounded";
 @import "custom/custom";
 
-@mixin blue-gradient($white, $light-blue) {
-  background: $light-blue;
-  background: -webkit-gradient(linear, left top, left bottom, from($white), to($light-blue));
-  background: -moz-linear-gradient(top, $white, $light-blue);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$white}', endColorstr='#{$light-blue}');
+@mixin gradient($from-color, $to-color) {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+  background-image: -webkit-linear-gradient(top, $from-color, $to-color);
+  background-image:    -moz-linear-gradient(top, $from-color, $to-color);
+  background-image:     -ms-linear-gradient(top, $from-color, $to-color);
+  background-image:      -o-linear-gradient(top, $from-color, $to-color);
+  background-image: linear-gradient(180deg, $from-color, $to-color);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
+  background-color: mix($from-color, $to-color); /* Fallback */
+
 }
 
+html,body,.col-md-12,.row,.main-container {
+  height:100%;
+}
 body {
   font-family: $font;
   color: $grey;
   font-size: 16px;
   min-height: 700px;
   background-color: $white;
+  overflow: hidden;
 }
 
 h1, h2, h3 {
@@ -78,10 +89,15 @@ img {
   display: inline-block;
   vertical-align: middle;
 }
+.col-md-12{
+  >.row{
+    height:100%;
+  }
+}
 
 
-.gradient {
-  @include blue-gradient($white, $light-blue);
+.gradient-blue {
+  @include gradient($white, $light-blue);
 }
 
 .password-forgot {
@@ -116,11 +132,9 @@ footer {
 }
 
 .main-container {
-  margin-top: 50px;
-  padding: 0;
+  padding: 50px 0 0 0;
   transition: all .2s ease-in-out;
-  overflow: hidden;
-  background: #ECF0F1;
+  overflow: auto;
 }
 
 .rtl {
@@ -238,5 +252,25 @@ footer {
   overflow: hidden;
   img {
     height: 100%;
+  }
+}
+.header{
+  margin-top:20px;
+  margin-bottom: 20px;
+}
+
+.full-height{
+  height:100%;
+}
+
+Button{
+  .fa{
+  margin-right: 8px;
+  }
+}
+
+td,th{
+  &.action-column{
+    width: 400px;
   }
 }

@@ -1,0 +1,16 @@
+.manage-clinic-page{
+  .container {
+    background-color: $white;
+    padding: 40px;
+    margin-top: 10px;
+  }
+  .field-title,.field{
+    text-align: left;
+    border: none;
+  }
+  td,th{
+    &.action-column{
+      width: 250px;
+    }
+  }
+}
