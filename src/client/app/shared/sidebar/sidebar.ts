@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 
 @Component({
@@ -9,24 +9,9 @@ import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 	directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
 	isActive = false;
 	showMenu: string = '';
-
-	constructor(private router: Router) {}
-
-	ngOnInit() {
-		var calendar:any = $('#calendar1');
-		calendar.fullCalendar({
-			 eventClick: function(calEvent:any, jsEvent:any, view:any) {
-			    alert('Event: ' + calEvent.title);
-			    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-			    alert('View: ' + view.name);
-			}
-		});
-		var sidebar: any = $('.sidenav-outer');
-		sidebar.perfectScrollbar();
-	}
 
 	eventCalled() {
 		this.isActive = !this.isActive;

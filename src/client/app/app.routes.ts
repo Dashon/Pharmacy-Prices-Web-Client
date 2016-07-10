@@ -8,12 +8,14 @@ import { DrugResultsRoutes } from './+drug-results/index';
 import { PageNotFoundRoutes } from './+404/index';
 import {Three40BRoutes} from './+340B/340b.routes';
 import {MapRoutes} from './+map/map.routes';
+import {AdminRoutes} from './admin/admin.routes';
 
 
 
 const routes: RouterConfig = [
 	...LoginRoutes,
 	...DashboardRoutes,
+	...AdminRoutes,
 	...SignupRoutes,
 	...DrugSearchRoutes,
 	...DrugResultsRoutes,

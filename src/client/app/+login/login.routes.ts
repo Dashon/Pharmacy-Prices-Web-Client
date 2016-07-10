@@ -2,7 +2,7 @@ import { LoginComponent } from './index';
 
 export const LoginRoutes = [
 	{
-		path: '',
+		path: 'login',
 		component: LoginComponent,
 		index: true
 	},

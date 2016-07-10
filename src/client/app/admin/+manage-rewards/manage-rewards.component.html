@@ -1,0 +1,103 @@
+<div class="survey-rewards-page">
+    <div class="header">
+        <h2>Manage Rewards </h2>
+    </div>
+    <br/>
+    <div class="card">
+        <div class="card-header card-primary card-inverse">
+            <span class="card-title">All Rewards</span>
+        </div>
+        <div class="card-block clearfix">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Cost</th>
+                    <th class="action-column"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                <tr *ngFor="let reward of rewards">
+                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.name}}</td>
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
+
+                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.description}}</td>
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+
+                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.type}}</td>
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.type" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+
+
+                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.value}}</td>
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.value" type="text" class="form-control input-underline" name="value" placeholder="Value"></td>
+
+
+                    <td class="action-column pull-right">
+                        <Button *ngIf="!editRewardItem.id" class="btn btn-primary btn-rounded" (click)="editReward(reward)"><i
+                                class="fa fa-edit"></i>Edit
+                        </Button>
+
+                        <Button *ngIf="editRewardItem.id == reward.id" class="btn btn-primary btn-rounded" (click)="saveReward()"><i
+                                class="fa fa-edit"></i>Save
+                        </Button>
+                        <Button *ngIf="editRewardItem.id == reward.id" class="btn btn-primary btn-rounded" (click)="cancelEditReward(reward)"><i
+                                class="fa fa-edit"></i>Cancele
+                        </Button>
+                        <Button *ngIf="editRewardItem.id !== reward.id" class="btn btn-danger btn-rounded" (click)="deleteReward(reward.id)"><i
+                                class="fa fa-times"></i>Remove
+                        </Button>
+                    </td>
+
+                </tr>
+
+                <!--NEW reward-->
+                <tr *ngIf="editRewardItem.id === 'NEW'">
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
+
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.type" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+
+
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.value" type="text" class="form-control input-underline" name="value" placeholder="Value"></td>
+
+                    <td class="action-column pull-right">
+                    </td>
+
+                </tr>
+
+                <tr *ngIf="!rewards.length && !editRewardItem.id">No Records</tr>
+                <tr>
+                </tbody>
+            </table>
+            <div class="col-lg-offset-9 col-lg-3 ">
+                <Button *ngIf="editRewardItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                        (click)="newReward()"><i
+                        class="fa fa-edit"></i>New Reward
+                </Button>
+                <div *ngIf="editRewardItem.id === 'NEW'" class="pull-right action_buttons">
+                    <Button class="btn btn-primary btn-rounded" (click)="createReward()"><i
+                            class="fa fa-edit"></i>Save
+                    </Button>
+                    <Button Class="btn btn-primary btn-rounded" (click)="cancelEditReward()"><i
+                            class="fa fa-edit"></i>Cancel
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pull-right">
+        <Button class="btn btn-primary btn-rounded" (click)="prevPage()" *ngIf="currentPage > 1" >
+            <i class="fa fa-arrow-circle-left"></i>Prev
+        </Button>
+
+        <Button class="btn btn-primary btn-rounded" (click)="nextPage()" *ngIf="totalPages > currentPage">
+            <i class="fa  fa-arrow-circle-right"></i>Next
+        </Button>
+    </div>
+</div>

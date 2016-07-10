@@ -27,22 +27,22 @@
 @mixin gradient($from-color, $to-color) {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
   background-image: -webkit-linear-gradient(top, $from-color, $to-color);
-  background-image:    -moz-linear-gradient(top, $from-color, $to-color);
-  background-image:     -ms-linear-gradient(top, $from-color, $to-color);
-  background-image:      -o-linear-gradient(top, $from-color, $to-color);
+  background-image: -moz-linear-gradient(top, $from-color, $to-color);
+  background-image: -ms-linear-gradient(top, $from-color, $to-color);
+  background-image: -o-linear-gradient(top, $from-color, $to-color);
   background-image: linear-gradient(180deg, $from-color, $to-color);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
   background-color: mix($from-color, $to-color); /* Fallback */
 
 }
 
-html,body,.col-md-12,.row,.main-container {
-  height:100%;
+html, body, .col-md-12, .row, .main-container {
+  height: 100%;
 }
+
 body {
   font-family: $font;
   color: $grey;
-  font-size: 16px;
   min-height: 700px;
   background-color: $white;
   overflow: hidden;
@@ -89,12 +89,12 @@ img {
   display: inline-block;
   vertical-align: middle;
 }
-.col-md-12{
-  >.row{
-    height:100%;
+
+.col-md-12 {
+  > .row {
+    height: 100%;
   }
 }
-
 
 .gradient-blue {
   @include gradient($white, $light-blue);
@@ -254,23 +254,54 @@ footer {
     height: 100%;
   }
 }
-.header{
-  margin-top:20px;
+
+.header {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.full-height{
-  height:100%;
+.full-height {
+  height: 100%;
 }
 
-Button{
-  .fa{
-  margin-right: 8px;
+Button {
+  .fa {
+    margin-right: 8px;
   }
 }
 
-td,th{
-  &.action-column{
+td, th {
+  &.action-column {
     width: 400px;
   }
+}
+
+.input-underline {
+  background: $white;
+  border: none;
+  box-shadow: none;
+  border-bottom: 2px solid $gray-lighter;
+  border-radius: 0;
+}
+
+.input-underline:focus {
+  border-bottom: 2px solid $brand-primary;
+  box-shadow: none;
+}
+
+.rounded-btn {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  background: $brand-primary;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 25px;
+}
+
+.rounded-btn:hover, .rounded-btn:focus, .rounded-btn:active, .rounded-btn:visited {
+  color: rgba(255, 255, 255, 1);
+  border: 2px solid rgba(255, 255, 255, 1);
+  outline: none;
 }

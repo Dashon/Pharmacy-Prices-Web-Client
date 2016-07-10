@@ -1,7 +1,7 @@
 <div class="account-settings-page animate gradient">
     <h2 class="header">Account Settings</h2>
-    <form>
-        <div class="col-sm-12 col-md-10 col-lg-6 col-md-offset-1 col-lg-offset-3 container">
+    <form class="col-sm-12 col-md-10 col-lg-6 col-md-offset-1 col-lg-offset-3">
+        <div class="container">
             <div class="row text-xs-center">
                 <div class="col-sm-12">
                     <div class="row">
@@ -20,7 +20,7 @@
                     </div>
                     <!-- END MODAL -->
                     <br>
-                    <h3 *ngIf="!editMode">SuperUser</h3>
+                    <h3 *ngIf="!editMode">{{currentUser.name}}</h3>
                     <div class="col-sm-offset-3 col-sm-6 form-group" *ngIf="editMode">
                         <input type="text" class="form-control" id="userName" placeholder="Full Name">
                     </div>
@@ -34,7 +34,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 form-control-label text-xs-right">Employer</label>
                         <div class="col-sm-9">
-                            <div class="field form-control">Asain Human Services</div>
+                            <div class="field form-control">{{currentUser.health_care_facility.name}}</div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -56,33 +56,33 @@
             </div>
             <div class="row">
                 <div class="col-sm-offset-3 col-sm-8">
-                    <div class="form-group row"  *ngIf="!editMode">
+                    <div class="form-group row"  xngIf="!editUser.id">
                         <label class="col-sm-3 form-control-label text-xs-right" for="inputemail">Email</label>
                         <div class="col-sm-9">
-                            <div class="field form-control" id="inputemail">asmith@email.com</div>
+                            <div class="field form-control" id="inputemail">{{currentUser.email}}</div>
                         </div>
                     </div>
 
-                    <div class="col-sm-9 form-group" *ngIf="editMode">
-                        <input type="text" class="form-control" id="inputemail" placeholder="Email">
-                    </div>
+                    <!--<div class="col-sm-9 form-group" *ngIf="editUser.id">-->
+                        <!--<input type="text" class="form-control" name="email" [(ngModel)]="editUser.email" placeholder="Email">-->
+                    <!--</div>-->
 
 
-                    <div class="form-group row"  *ngIf="!editMode">
+                    <div class="form-group row"  *ngIf="!editUser.id">
                         <label class="col-sm-3 form-control-label text-xs-right" for="password">Password</label>
                         <div class="col-sm-9">
                             <div class="field form-control" id="password">********</div>
                         </div>
                     </div>
-                    <div class="col-sm-9 form-group" *ngIf="editMode">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confrim Password">
+                    <div class="col-sm-9 form-group" *ngIf="editUser.id">
+                        <input type="password" class="form-control"  name="password" [(ngModel)]="editUser.password"  placeholder="Password">
+                        <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="editUser.confirmPassword"  placeholder="Confrim Password">
                     </div>
                 </div>
             </div>
             <br/>
-            <div class="row pull-right" *ngIf="!editMode"><a class="small" (click)="edit()">Update Account</a></div>
-            <div class="row" *ngIf="editMode">
+            <div class="row pull-right" *ngIf="!editUser.id"><a class="small" (click)="edit()">Update Account</a></div>
+            <div class="row" *ngIf="editUser.id">
                 <div class=" pull-left">
                     <button class="btn btn-primary" (click)="cancel()">Cancel</button>
                 </div>

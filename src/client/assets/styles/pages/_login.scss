@@ -22,32 +22,6 @@
     line-height: 1.3333333;
     border-radius: 0;
   }
-  .input-underline {
-    background: $white;
-    border: none;
-    box-shadow: none;
-    border-bottom: 2px solid $gray-lighter;
-    border-radius: 0;
-  }
-  .input-underline:focus {
-    border-bottom: 2px solid $brand-primary;
-    box-shadow: none;
-  }
-  .rounded-btn {
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    color: rgba(255, 255, 255, 0.8);
-    background: $brand-primary;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    font-size: 18px;
-    line-height: 40px;
-    padding: 0 25px;
-  }
-  .rounded-btn:hover, .rounded-btn:focus, .rounded-btn:active, .rounded-btn:visited {
-    color: rgba(255, 255, 255, 1);
-    border: 2px solid rgba(255, 255, 255, 1);
-    outline: none;
-  }
 
   h1 {
     font-weight: 300;
