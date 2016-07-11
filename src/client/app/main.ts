@@ -23,7 +23,7 @@ bootstrap(AppComponent, [
             return new AuthHttp(new AuthConfig({
                 globalHeaders: [
                     {'Content-Type':'application/json'},
-                    {'X-Api-Key':'dd337a5f-48f4-4207-85c4-35638dfd56b5'}
+                    {'X-Api-Key':'be23e9e0-9547-436e-a3dc-655cf6039e00'}
                 ],
             }), http);
         },

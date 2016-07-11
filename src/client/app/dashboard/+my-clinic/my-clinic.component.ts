@@ -32,12 +32,9 @@ export class MyClinicComponent {
 
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getClinic();
+        this.getClinic(this.currentClinic);
+        this.getClinics();
         this.getRoles()
-    }
-
-    setCurrentClinic(clinic) {
-        this.currentClinic = clinic;
     }
 
     handleLogo(event) {
@@ -80,7 +77,7 @@ export class MyClinicComponent {
 
     saveClinic() {
         this.putClinic().subscribe(
-            clinic => this.getClinic(),
+            clinic => this.getClinic(this.editClinicItem['id']),
             error => this.errorMessage = <any>error);
         this.editClinicItem = {};
     }
@@ -89,14 +86,15 @@ export class MyClinicComponent {
         this.editClinicItem = {};
     }
 
+
     getClinics() {
         return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
-            (el)=> this.clinics = el['health_care_facilities'],
+            (el)=> this.clinics = el,
             error => this.errorMessage = <any>error);
     }
 
-    getClinic() {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + this.currentClinic['id']).subscribe(
+    getClinic(clinic) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
             clinic => this.currentClinic = JSON.parse(clinic._body),
             error => this.errorMessage = <any>error);
     }
@@ -111,13 +109,14 @@ export class MyClinicComponent {
         this.editMemberItem = (JSON.parse(JSON.stringify(user)));
 
         //set role to role.id
-        delete this.editMemberItem['role'];
-        this.editMemberItem['role_id'] = this.roles[user['role']];
+        this.editMemberItem['role'] = this.roles[user['role']];
     }
 
     saveMember() {
+        this.editMemberItem['role'] = parseInt(this.editMemberItem['role']);
+
         this.putMember().subscribe(
-            () => this.getClinic(),
+            () => this.getClinic(this.editClinicItem['id']),
             error => this.errorMessage = <any>error);
         this.editMemberItem = {};
 
@@ -126,7 +125,7 @@ export class MyClinicComponent {
 
     deleteMember(id) {
         return this.callApi('http://localhost:3000/api/v1/users/' + id + '/unassociate').subscribe(
-            ()=> this.getClinic(),
+            ()=> this.getClinic(id),
             error => this.errorMessage = <any>error);
     }
 
@@ -158,7 +157,7 @@ export class MyClinicComponent {
 
     saveLocation() {
         this.putLocation().subscribe(
-            () => this.getClinic(),
+            () => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);
         this.editLocationItem = {};
     }
@@ -170,7 +169,7 @@ export class MyClinicComponent {
 
     deleteLocation(id) {
         return this.deleteApi(this.baseUrl + 'hcf_locations/' + id).subscribe(
-            () => this.getClinic(),
+            () => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);
     }
 
@@ -184,7 +183,7 @@ export class MyClinicComponent {
 
     createLocation() {
         this.postApi(this.baseUrl + 'hcf_locations/', this.editLocationItem).subscribe(
-            () => this.getClinic(),
+            () => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);
         this.editLocationItem = {};
     }

@@ -40,7 +40,7 @@ export class LoginComponent {
 
     postApi(url, body) {
         var authHeader = new Headers();
-        authHeader.append('X-Api-Key', 'dd337a5f-48f4-4207-85c4-35638dfd56b5');
+        authHeader.append('X-Api-Key', 'be23e9e0-9547-436e-a3dc-655cf6039e00');
         authHeader.append('Content-Type', 'application/json');
 
         var options = new RequestOptions({headers: authHeader});

@@ -19,25 +19,23 @@ export class MyPharmaciesComponent {
 
     clinicPharmacies = [];
     allPharmacies = [];
-    currentClinic={id:1};
+    currentClinic = {id: 1};
     editPharmacy = {};
 
     totalPages = 0;
     currentPage = 0;
 
-    clinics = [{id:1,name: 'Asian Human Services', address: '123 Main St'}];
-    currentClinic = this.clinics[0];
+    clinics = [];
 
     typeAheadDataRef = this.getAsyncData.bind(this);
     searchString:string = '';
     typeaheadLoading:boolean = false;
     typeaheadNoResults:boolean = false;
 
-
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getClinicPharmacies(1);
-        this.getClinic();
+        this.getClinics();
+        this.getClinic(this.currentClinic);
     }
 
 
@@ -68,7 +66,7 @@ export class MyPharmaciesComponent {
     }
 
     addPharmacy(pharmacy) {
-        this.postclinicPharmacy({"health_care_facility_id": "1", "dni_pharmacy_id": pharmacy.id});
+        this.postclinicPharmacy({"health_care_facility_id": this.currentClinic['id'], "dni_pharmacy_id": pharmacy.id});
     }
 
     editClinicPharmacy(pharmacy) {
@@ -86,7 +84,7 @@ export class MyPharmaciesComponent {
     }
 
     getClinicPharmacies(page) {
-        return this.callApi(this.baseUrl + 'hcf_pharmacies?page=' + page).map(res => {
+        return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' + this.currentClinic['id'] + '&page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
             return res.json()
@@ -94,14 +92,18 @@ export class MyPharmaciesComponent {
     }
 
     getClinics() {
-        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => {
-            return res.json()
-        }).subscribe((el)=> this.clinics = el);
+        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
+            (el)=> this.clinics = el,
+            error => this.errorMessage = <any>error);
     }
 
-    getClinic() {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + this.currentClinic['id']).subscribe(
-            clinic => this.currentClinic = JSON.parse(clinic._body),
+
+    getClinic(clinic) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
+            clinic => {
+                this.currentClinic = JSON.parse(clinic._body);
+                this.getClinicPharmacies(1);
+            },
             error => this.errorMessage = <any>error);
     }
 

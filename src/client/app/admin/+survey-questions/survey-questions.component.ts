@@ -47,8 +47,8 @@ export class SurveyQuestionsComponent {
         }).subscribe((el)=> this.questions = el);
     }
 
-    saveQuestion(body) {
-        this.postApi(this.baseUrl + 'questions', body).map(res => res.json()).subscribe(()=> {
+    saveQuestion() {
+        this.putApi(this.baseUrl + 'questions'+this.editQuestionItem['id'], this.editQuestionItem).map(res => res.json()).subscribe(()=> {
             this.getQuestions(this.currentPage);
         });
         this.editQuestionItem = {};

@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let user of allUsers">
+                <tr *ngFor="let user of allUsers" (mouseenter)="user.showRow = true" (mouseleave)="user.showRow = false">
                     <td *ngIf="editUserItem.id !== user.id">{{user.email}}</td>
                     <td *ngIf="editUserItem.id === user.id"><input [(ngModel)]="editUserItem.email"
                                                                    type="text" class="form-control input-underline"
@@ -33,7 +33,7 @@
 
                     <td *ngIf="editUserItem.id !== user.id">{{user.role}}</td>
                     <td *ngIf="editUserItem.id === user.id">
-                        <select name="role" [(ngModel)]="editUserItem.role_id">
+                        <select name="role" [(ngModel)]="editUserItem.role">
                             <option value="undefined" selected>Select Role</option>
                             <option *ngFor="let role of roles | mapToArray" value={{role.val}}>
                                 {{role.key}}
@@ -52,6 +52,7 @@
                     </td>
 
                     <td class="action-column pull-right">
+                        <div [hidden]="!user.showRow && editUserItem.id !== user.id">
                         <Button *ngIf="!editUserItem.id" class="btn btn-primary btn-rounded"
                                 (click)="editUser(user)"><i
                                 class="fa fa-edit"></i>Edit
@@ -69,6 +70,7 @@
                                 (click)="deleteUser(user.id)"><i
                                 class="fa fa-times"></i>Remove
                         </Button>
+                            </div>
                     </td>
 
                 </tr>
@@ -83,7 +85,7 @@
                             [(ngModel)]="editUserItem.email" type="text" name="email"
                             class="form-control input-underline" placeholder="Email"></td>
                     <td>
-                        <select name="role" [(ngModel)]="editUserItem.role_id">
+                        <select name="role" [(ngModel)]="editUserItem.role">
                             <option value="undefined" selected>Select Role</option>
                             <option *ngFor="let role of roles | mapToArray" value={{role.val}}>
                                 {{role.key}}

@@ -17,7 +17,7 @@ export class AccountSettingsComponent {
     http = null;
     response = null;
     baseUrl = 'http://localhost:3000/api/v1/';
-    currentUser = {id:1, name:"stupid",health_care_facility:{}};
+    currentUser = {id:1};
     editUser = {};
     currentUserId = 1;
     errorMessage = null;

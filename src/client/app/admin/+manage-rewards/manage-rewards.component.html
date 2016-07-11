@@ -14,29 +14,31 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Cost</th>
+                    <th>Value</th>
                     <th class="action-column"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
 
-                <tr *ngFor="let reward of rewards">
+                <tr *ngFor="let reward of rewards" (mouseenter)="reward.showRow = true" (mouseleave)="reward.showRow = false">
                     <td *ngIf="editRewardItem.id !== reward.id">{{reward.name}}</td>
                     <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
 
                     <td *ngIf="editRewardItem.id !== reward.id">{{reward.description}}</td>
                     <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
 
-                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.type}}</td>
-                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.type" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.reward_type}}</td>
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.reward_type" type="text" class="form-control input-underline" name="rewardType" placeholder="Reward Type"></td>
 
 
-                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.value}}</td>
-                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.value" type="text" class="form-control input-underline" name="value" placeholder="Value"></td>
+                    <td *ngIf="editRewardItem.id !== reward.id">{{reward.cost}}</td>
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.cost" type="number" class="form-control input-underline" name="value" placeholder="Value"></td>
 
 
                     <td class="action-column pull-right">
+                        <div [hidden]="!reward.showRow && editRewardItem.id !== reward.id">
+
                         <Button *ngIf="!editRewardItem.id" class="btn btn-primary btn-rounded" (click)="editReward(reward)"><i
                                 class="fa fa-edit"></i>Edit
                         </Button>
@@ -50,27 +52,27 @@
                         <Button *ngIf="editRewardItem.id !== reward.id" class="btn btn-danger btn-rounded" (click)="deleteReward(reward.id)"><i
                                 class="fa fa-times"></i>Remove
                         </Button>
+                            </div>
                     </td>
 
                 </tr>
 
                 <!--NEW reward-->
                 <tr *ngIf="editRewardItem.id === 'NEW'">
-                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
+                    <td><input [(ngModel)]="editRewardItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
 
-                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+                    <td><input [(ngModel)]="editRewardItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
 
-                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.type" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+                    <td><input [(ngModel)]="editRewardItem.reward_type" type="text" class="form-control input-underline" name="rewardType" placeholder="Reward Type"></td>
 
-
-                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.value" type="text" class="form-control input-underline" name="value" placeholder="Value"></td>
+                    <td ><input [(ngModel)]="editRewardItem.cost" type="number" class="form-control input-underline" name="value" placeholder="Value"></td>
 
                     <td class="action-column pull-right">
                     </td>
 
                 </tr>
 
-                <tr *ngIf="!rewards.length && !editRewardItem.id">No Records</tr>
+                <tr *ngIf="!rewards.length && !editRewardItem.id">No Rewards</tr>
                 <tr>
                 </tbody>
             </table>

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
 import { FORM_DIRECTIVES } from '@angular/common';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Component({
     moduleId: module.id,
@@ -12,80 +12,53 @@ import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-boots
 
 })
 export class EditRequestComponent {
-    clinicPharmacies = [];
-
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
+    errorMessage = null;
+
+    editRequests = [];
+    totalPages = 0;
+    currentPage = 0;
 
 
-    constructor(http:Http) {
+    constructor(http:AuthHttp) {
         this.http = http;
+        this.getEditRequests(1);
     }
+
+
+    getEditRequests(page) {
+        this.callApi(this.baseUrl + 'pharmacy_edit_requests?page=' + page).map(res => {
+            this.totalPages = res.headers.get('Total_pages');
+            this.currentPage = res.headers.get('Current_page');
+            return res.json()
+        }).subscribe((el)=> this.editRequests = el);
+    }
+
+    approveEditRequest(id) {
+        this.callApi(this.baseUrl + 'pharmacy_edit_requests/approve/'+ id).map(res => res.json()).subscribe(()=> {
+            this.getEditRequests(this.currentPage);
+        });
+    }
+
+    denyEditRequest(id) {
+        this.callApi(this.baseUrl + 'pharmacy_edit_requests/deny/'+ id).map(res => res.json()).subscribe(()=> {
+            this.getEditRequests(this.currentPage);
+        });
+    }
+
+    prevPage() {
+        this.getEditRequests(this.currentPage - 1);
+    }
+
+    nextPage() {
+        this.getEditRequests(this.currentPage + 1);
+    }
+
+
     callApi(url) {
-        var authHeader = new Headers();
-        authHeader.append('X-Api-Key', '3e7b2e2b-e619-4b66-be83-88eaefaea5df');
-
-        var options = new RequestOptions({headers: authHeader});
-        return this.http.get(url, options);
+        this.errorMessage = '';
+        return this.http.get(url);
     }
-
-    getEditRequest(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
-
-                this.clinicPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.clinicPharmacies;
-            }).toPromise();
-    }
-    approveEditRequest(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
-
-                this.clinicPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.clinicPharmacies;
-            }).toPromise();
-    }
-
-    denyEditRequest(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
-
-                this.clinicPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.clinicPharmacies;
-            }).toPromise();
-    }
-
 }

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
 import { FORM_DIRECTIVES } from '@angular/common';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Component({
     moduleId: module.id,
@@ -12,33 +12,26 @@ import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-boots
 
 })
 export class ManagePharmaciesComponent {
-    clinicPharmacies = [];
-    contractedPharmacies = [];
-    currentClinic:{};
-
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
+    errorMessage = null;
 
+    editPharmacyItem = {};
+    pharmacies = [];
+    totalPages = 0;
+    currentPage = 0;
+
+    typeAheadDataRef = this.getAsyncData.bind(this);
+    searchString:string = '';
     typeaheadLoading:boolean = false;
     typeaheadNoResults:boolean = false;
-    public searchString:string = '';
 
 
-    constructor(http:Http) {
+    constructor(http:AuthHttp) {
         this.http = http;
+        this.getPharmacys(1);
     }
-    callApi(url) {
-        var authHeader = new Headers();
-        authHeader.append('X-Api-Key', '3e7b2e2b-e619-4b66-be83-88eaefaea5df');
-
-        var options = new RequestOptions({headers: authHeader});
-        return this.http.get(url, options);
-    }
-
-    getCurrentContext() {
-        return this;
-    }
-
 
     changeTypeaheadLoading(e:boolean) {
         this.typeaheadLoading = e;
@@ -48,107 +41,96 @@ export class ManagePharmaciesComponent {
         this.typeaheadNoResults = e;
     }
 
-    typeaheadOnSelect(e:any) {
+    getAsyncData(context:any):Function {
+        return this.searchTypeAhead(this.searchString);
+    }
+
+    searchTypeAhead(text) {
+        return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?query=' + text).map(res => res.json())
+            .map((hcf_pharmacies)=> this.pharmacies = hcf_pharmacies.map((hcf_pharmacy)=> {
+                var dni_pharmacy = hcf_pharmacy['dni_pharmacy'];
+                dni_pharmacy.hcf_pharmacy_id = hcf_pharmacy.id;
+                return dni_pharmacy;
+            })).toPromise();
+    }
+
+    checkLimit(event){
+        if( (event.keyCode == 8 || event.keyCode == 46 ) && this.searchString.length < 3){
+            this.getPharmacys(1);
+        }
+    }
+
+    createPharmacy() {
+        this.postApi(this.baseUrl + 'dni_pharmacies/', this.editPharmacyItem).subscribe(
+            () => this.getPharmacys(this.totalPages),
+            error => this.errorMessage = <any>error);
+        this.editPharmacyItem = {};
+    }
+
+    editPharmacy(pharmacy) {
+        this.editPharmacyItem = (JSON.parse(JSON.stringify(pharmacy)))
+    }
+
+    getPharmacys(page) {
+        this.callApi(this.baseUrl + 'dni_pharmacies?page=' + page).map(res => {
+            this.totalPages = res.headers.get('Total_pages');
+            this.currentPage = res.headers.get('Current_page');
+            return res.json()
+        }).subscribe((el)=> this.pharmacies = el);
+    }
+
+    savePharmacy() {
+        this.putApi(this.baseUrl + 'dni_pharmacies/'+this.editPharmacyItem['id'], this.editPharmacyItem).map(res => res.json()).subscribe(()=> {
+            this.getPharmacys(this.currentPage);
+        });
+        this.editPharmacyItem = {};
 
     }
 
-    private getRemainingPharmacies() {
-  
+    deletePharmacy(id) {
+        return this.deleteApi(this.baseUrl + 'dni_pharmacies/' + id).subscribe(()=> {
+            this.getPharmacys(this.currentPage);
+        });
     }
 
-    removePharmacy(id:number){
-
+    cancelEditPharmacy() {
+        this.editPharmacyItem = {};
     }
 
-    addPharmacy(id:number){
 
+    newPharmacy() {
+        this.editPharmacyItem = {id: 'NEW'};
     }
 
-    creatNewPharmacy(){
-
-    }
-    setCurrentClinic(clinic){
-        this.currentClinic = clinic;
+    prevPage() {
+        this.getPharmacys(this.currentPage - 1);
     }
 
-    getPharmacies(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
-
-                this.clinicPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.clinicPharmacies;
-            }).toPromise();
+    nextPage() {
+        this.getPharmacys(this.currentPage + 1);
     }
 
-    postPharmacy(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
 
-                this.contractedPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.contractedPharmacies;
-            }).toPromise();
+    callApi(url) {
+        this.errorMessage = '';
+        return this.http.get(url);
     }
 
-    putPharmacy(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
-
-                this.contractedPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.contractedPharmacies;
-            }).toPromise();
+    postApi(url, body) {
+        this.errorMessage = '';
+        var bodyJSON = JSON.stringify(body);
+        return this.http.post(url, bodyJSON);
     }
 
-    deletePharmacy(text) {
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
-            .map((el)=> {
-                var uniqueItems = {};
+    putApi(url, body) {
+        this.errorMessage = '';
+        var bodyJSON = JSON.stringify(body);
+        return this.http.put(url, bodyJSON);
+    }
 
-                this.contractedPharmacies = el.filter((data)=> {
-                    if (!uniqueItems[data.name]) {
-                        uniqueItems[data.name] = data;
-                        data.children = [];
-                        data.children.push(data);
-                        return data;
-                    } else {
-                        uniqueItems[data.name].children.push(data);
-                        return false;
-                    }
-                });
-                return this.contractedPharmacies;
-            }).toPromise();
+    deleteApi(url) {
+        this.errorMessage = '';
+        return this.http.delete(url);
     }
 
 }

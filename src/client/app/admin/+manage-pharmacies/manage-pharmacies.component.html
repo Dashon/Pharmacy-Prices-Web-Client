@@ -2,11 +2,30 @@
     <div class="header">
         <h2> Application Master Pharmacy List</h2>
     </div>
+    <div class="row">
+
+        <div class="col-lg-6 col-lg-offset-3">
+            <input [typeahead]="typeAheadDataRef"
+                   [(ngModel)]="searchString"
+                   (typeaheadLoading)="changeTypeaheadLoading($event)"
+                   (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                   (typeaheadOnSelect)="addPharmacy($event.item)"
+                   [typeaheadWaitMs]="300"
+                   [typeaheadMinLength]="3"
+                   [typeaheadOptionsLimit]="10"
+                   [typeaheadOptionField]="'name'"
+                   name="Search"
+                   (keyup)="checkLimit($event)"
+                   placeholder="Search Pharmacies"
+                   class="form-control">
+        </div>
+    </div>
+    <br/>
     <div class="card">
         <div class="card-header card-primary card-inverse">
             <span class="card-title">All Pharmacies</span>
         </div>
-        <div class="card-block">
+        <div class="card-block clearfix">
             <table class="table ">
                 <thead>
                 <tr>
@@ -18,30 +37,141 @@
                     <th>Phone</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
-                    <th>Surescripts ID</th>
                     <th class="action-column"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td>Address</td>
-                    <td>City</td>
-                    <td>State</td>
-                    <td>Zip</td>
-                    <td>Phone</td>
-                    <td>Latitude</td>
-                    <td>Longitude</td>
-                    <td>Surescripts ID</td>
-                    <td class="action-column">
-                        <Button class="btn btn-primary btn-rounded"><i class="fa fa-edit"></i>Edit</Button>
-                        <Button class="btn btn-danger btn-rounded"><i class="fa fa-save"></i>Save</Button>
-                        <Button class="btn btn-primary btn-bordered"><i class="fa fa-times-circle"></i>Cancel</Button>
+
+                <tr *ngFor="let pharmacy of pharmacies" (mouseenter)="pharmacy.showRow = true" (mouseleave)="pharmacy.showRow = false">
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.name}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.name" type="text"
+                                                                       class="form-control input-underline"
+                                                                       placeholder="Name">
+                    </td>
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.address}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.address"
+                                                                       type="text" class="form-control input-underline"
+                                                                       placeholder="Address"></td>
+
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.city}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.city" type="text"
+                                                                       class="form-control input-underline"
+                                                                       placeholder="City">
+                    </td>
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.state}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.state"
+                                                                       type="text" class="form-control input-underline"
+                                                                       placeholder="State"></td>
+
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.zip}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.zip" type="text"
+                                                                       class="form-control input-underline"
+                                                                       placeholder="Zip">
+                    </td>
+
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.phone}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.phone" type="tel"
+                                                                       class="form-control input-underline"
+                                                                       placeholder="Phone"></td>
+
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.longitude}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.longitude"
+                                                                       type="text" class="form-control input-underline"
+                                                                       placeholder="Longitude"></td>
+
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.latitude}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.latitude"
+                                                                       type="text" class="form-control input-underline"
+                                                                       placeholder="Latitude"></td>
+
+                    <td class="action-column pull-right">
+                        <div [hidden]="!pharmacy.showRow && editPharmacyItem.id !== pharmacy.id">
+
+                        <Button *ngIf="!editPharmacyItem.id" class="btn btn-primary btn-rounded"
+                                (click)="editPharmacy(pharmacy)"><i
+                                class="fa fa-edit"></i>Edit
+                        </Button>
+
+                        <Button *ngIf="editPharmacyItem.id == pharmacy.id" class="btn btn-primary btn-rounded"
+                                (click)="savePharmacy()"><i
+                                class="fa fa-edit"></i>Save
+                        </Button>
+                        <Button *ngIf="editPharmacyItem.id == pharmacy.id" class="btn btn-primary btn-rounded"
+                                (click)="cancelEditPharmacy()"><i
+                                class="fa fa-edit"></i>Cancel
+                        </Button>
+                        <Button *ngIf="editPharmacyItem.id !== pharmacy.id" class="btn btn-danger btn-rounded"
+                                (click)="deletePharmacy(pharmacy.id)"><i
+                                class="fa fa-times"></i>Remove
+                        </Button>
+                            </div>
                     </td>
 
                 </tr>
+
+                <tr *ngIf="editPharmacyItem.id =='NEW'">
+                    <td><input [(ngModel)]="editPharmacyItem.name" type="text" class="form-control input-underline"
+                               placeholder="Name">
+                    </td>
+
+                    <td><input [(ngModel)]="editPharmacyItem.address" type="text" class="form-control input-underline"
+                               placeholder="Address"></td>
+
+
+                    <td><input [(ngModel)]="editPharmacyItem.city" type="text" class="form-control input-underline"
+                               placeholder="City">
+                    </td>
+
+                    <td><input [(ngModel)]="editPharmacyItem.state" type="text" class="form-control input-underline"
+                               placeholder="State"></td>
+
+
+                    <td><input [(ngModel)]="editPharmacyItem.zip" type="text" class="form-control input-underline"
+                               placeholder="Zip">
+                    </td>
+
+
+                    <td><input [(ngModel)]="editPharmacyItem.phone" type="tel" class="form-control input-underline"
+                               placeholder="Phone"></td>
+
+
+                    <td><input [(ngModel)]="editPharmacyItem.longitude" type="text" class="form-control input-underline"
+                               placeholder="Longitude"></td>
+
+
+                    <td><input [(ngModel)]="editPharmacyItem.latitude" type="text" class="form-control input-underline"
+                               placeholder="Latitude"></td>
+
+                    <td class="action-column pull-right">
+
+                    </td>
+
+                </tr>
+                <tr *ngIf="!pharmacies.length && !editPharmacyItem.id">No Records</tr>
+
                 </tbody>
             </table>
+            <div class="col-lg-offset-9 col-lg-3 ">
+                <Button *ngIf="editPharmacyItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                        (click)="newPharmacy()"><i
+                        class="fa fa-edit"></i>New Pharmacy
+                </Button>
+                <div *ngIf="editPharmacyItem.id === 'NEW'" class="pull-right action_buttons">
+                    <Button class="btn btn-primary btn-rounded" (click)="createPharmacy()"><i
+                            class="fa fa-edit"></i>Save
+                    </Button>
+                    <Button Class="btn btn-primary btn-rounded" (click)="cancelEditPharmacy()"><i
+                            class="fa fa-edit"></i>Cancel
+                    </Button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

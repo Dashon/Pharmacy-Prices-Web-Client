@@ -57,7 +57,7 @@ export class ManageUsersComponent {
 
         //set role to role.id
         delete this.editUserItem['role'];
-        this.editUserItem['role_id'] = this.roles[user['role']];
+        this.editUserItem['role'] = this.roles[user['role']];
     }
 
     getUsers(page) {
@@ -68,8 +68,8 @@ export class ManageUsersComponent {
         }).subscribe((el)=> this.allUsers = el);
     }
 
-    saveUser(body) {
-        this.postApi(this.baseUrl + 'users', body).map(res => res.json()).subscribe(()=> {
+    saveUser() {
+        this.putApi(this.baseUrl + 'users/'+this.editUserItem['id'], this.editUserItem ).map(res => res.json()).subscribe(()=> {
             this.getUsers(this.currentPage);
         });
         this.editUserItem = {};

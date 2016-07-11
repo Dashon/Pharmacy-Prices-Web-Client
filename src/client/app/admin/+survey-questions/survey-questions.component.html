@@ -20,7 +20,7 @@
                 <tbody>
                 <tr>
 
-                <tr *ngFor="let question of questions">
+                <tr *ngFor="let question of questions" (mouseenter)="question.showRow = true" (mouseleave)="question.showRow = false">
                     <td *ngIf="editQuestionItem.id !== question.id">{{question.name}}</td>
                     <td *ngIf="editQuestionItem.id === question.id"><input [(ngModel)]="editQuestionItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
 
@@ -33,6 +33,7 @@
 
                   
                     <td class="action-column pull-right">
+                        <div [hidden]="!question.showRow && editQuestionItem.id !== question.id">
                         <Button *ngIf="!editQuestionItem.id" class="btn btn-primary btn-rounded" (click)="editQuestion(question)"><i
                                 class="fa fa-edit"></i>Edit
                         </Button>
@@ -46,6 +47,7 @@
                         <Button *ngIf="editQuestionItem.id !== question.id" class="btn btn-danger btn-rounded" (click)="deleteQuestion(question.id)"><i
                                 class="fa fa-times"></i>Remove
                         </Button>
+                            </div>
                     </td>
 
                 </tr>

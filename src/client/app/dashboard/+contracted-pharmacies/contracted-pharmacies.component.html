@@ -25,13 +25,14 @@
                     {{currentClinic.name}}<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li *ngFor="let clinic of allClinics">
-                        <a class="dropdown-item" (click)="setCurrentClinic(clinic)" >{{clinic.name}} {{clinic.address}}</a>
+                    <li *ngFor="let clinic of clinics">
+                        <a class="dropdown-item" (click)="getClinic(clinic)" >{{clinic.name}}</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+    <br/>
     <div class="card">
         <div class="card-header card-primary card-inverse">
             <span class="card-title">{{currentClinic.name}} - Contracted Pharmacies</span>
@@ -48,13 +49,12 @@
                     <th>Phone</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
-                    <th>Surescripts ID</th>
                     <th class="action-column"></th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let p of contractedPharmacies">
+                <tr *ngFor="let p of contractedPharmacies" (mouseenter)="p.showRow = true" (mouseleave)="p.showRow = false">
                     <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.name}}</td>
                     <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.name" type="text" class="form-control input-underline" placeholder="Name"></td>
 
@@ -85,6 +85,8 @@
                     <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.latitude" type="text" class="form-control input-underline" placeholder="Latitude"></td>
 
                     <td class="action-column pull-right">
+                        <div [hidden]="!p.showRow && editPharmacy.id !== p.id">
+
                         <Button *ngIf="!editPharmacy.id && false" class="btn btn-primary btn-rounded" (click)="editClinicPharmacy(p)"><i
                                 class="fa fa-edit"></i>Edit
                         </Button>
@@ -98,10 +100,11 @@
                         <Button *ngIf="editPharmacy.id !== p.id" class="btn btn-danger btn-rounded" (click)="deleteContractedPharmacy(p.id)"><i
                                 class="fa fa-times"></i>Remove
                         </Button>
+                            </div>
                     </td>
 
                 </tr>
-                <tr *ngIf="!contractedPharmacies.length && !editPharmacy.id">No Records</tr>
+                <tr *ngIf="!contractedPharmacies.length && !editPharmacy.id">No Contracted Pharmacies</tr>
                 <tr>
                 </tbody>
             </table>

@@ -19,14 +19,13 @@ export class ContractedPharmaciesComponent {
 
     clinicPharmacies = [];
     contractedPharmacies = [];
-    currentClinic ={id:1};
+    currentClinic = {id:1};
     editPharmacy = {};
 
     totalPages = 0;
     currentPage = 0;
 
-    clinics = [{name: 'Asian Human Services', address: '123 Main St'}];
-    currentClinic = this.clinics[0];
+    clinics = [];
 
     typeAheadDataRef = this.getAsyncData.bind(this);
     searchString:string = '';
@@ -36,7 +35,8 @@ export class ContractedPharmaciesComponent {
 
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getContractedPharmacies(1);
+        this.getClinics();
+        this.getClinic(this.currentClinic);
     }
 
 
@@ -61,9 +61,13 @@ export class ContractedPharmaciesComponent {
             })).toPromise();
     }
 
-
-    private getRemainingPharmacies() {
-
+    getClinic(clinic) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
+            clinic => {
+                this.currentClinic = JSON.parse(clinic._body);
+                this.getContractedPharmacies(1);
+            },
+            error => this.errorMessage = <any>error);
     }
 
     setCurrentClinic(clinic) {
@@ -71,7 +75,7 @@ export class ContractedPharmaciesComponent {
     }
 
     addPharmacy(pharmacy) {
-        this.postContractedPharmacy({"health_care_facility_id": "1", "hcf_pharmacy_id": pharmacy.hcf_pharmacy_id});
+        this.postContractedPharmacy({"health_care_facility_id": this.currentClinic['id'], "hcf_pharmacy_id": pharmacy.hcf_pharmacy_id});
     }
 
     editClinicPharmacy(pharmacy) {
@@ -87,7 +91,7 @@ export class ContractedPharmaciesComponent {
     }
 
     getContractedPharmacies(page) {
-        return this.callApi(this.baseUrl + 'contracted_pharmacies?page=' + page).map(res => {
+        return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id='+this.currentClinic['id']+'&page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
             return res.json()
@@ -95,9 +99,9 @@ export class ContractedPharmaciesComponent {
     }
 
     getClinics() {
-        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => {
-            return res.json()
-        }).subscribe((el)=> this.clinics = el['health_care_facilities']);
+        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
+            (el)=> this.clinics = el,
+            error => this.errorMessage = <any>error);
     }
 
     postContractedPharmacy(body) {
@@ -120,7 +124,6 @@ export class ContractedPharmaciesComponent {
     cancelEditClinicPharmacy() {
         this.editPharmacy = {};
     }
-
 
     prevPage() {
         this.getContractedPharmacies(this.currentPage - 1);
