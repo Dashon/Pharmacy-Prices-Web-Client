@@ -19,7 +19,7 @@ export class MyPharmaciesComponent {
 
     clinicPharmacies = [];
     allPharmacies = [];
-    currentClinic = {id: 1};
+    currentClinic = {};
     editPharmacy = {};
 
     totalPages = 0;
@@ -34,8 +34,7 @@ export class MyPharmaciesComponent {
 
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getClinics();
-        this.getClinic(this.currentClinic);
+        this.getClinic(localStorage.getItem('hcf_id'));
     }
 
 
@@ -70,7 +69,7 @@ export class MyPharmaciesComponent {
     }
 
     editClinicPharmacy(pharmacy) {
-        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy)))
+        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy))) //copy
 
     }
 
@@ -91,15 +90,8 @@ export class MyPharmaciesComponent {
         }).subscribe((el)=> this.clinicPharmacies = el);
     }
 
-    getClinics() {
-        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
-            (el)=> this.clinics = el,
-            error => this.errorMessage = <any>error);
-    }
-
-
-    getClinic(clinic) {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
+    getClinic(id) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
                 this.getClinicPharmacies(1);

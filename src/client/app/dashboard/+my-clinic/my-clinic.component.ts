@@ -32,7 +32,7 @@ export class MyClinicComponent {
 
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getClinic(this.currentClinic);
+        this.getClinic(this.currentClinic['id']);
         this.getClinics();
         this.getRoles()
     }
@@ -93,8 +93,8 @@ export class MyClinicComponent {
             error => this.errorMessage = <any>error);
     }
 
-    getClinic(clinic) {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
+    getClinic(id) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => this.currentClinic = JSON.parse(clinic._body),
             error => this.errorMessage = <any>error);
     }
@@ -157,7 +157,7 @@ export class MyClinicComponent {
 
     saveLocation() {
         this.putLocation().subscribe(
-            () => this.getClinic(this.currentClinic['id']),
+            () => this.getClinic(),
             error => this.errorMessage = <any>error);
         this.editLocationItem = {};
     }

@@ -1,6 +1,35 @@
 .map-page {
   .pharmacy-list {
     background-color: $white;
+ul{
+  padding: 0;
+  height: 45px;
+  div {
+    height: 45px;
+  }
+}
+    .short-code{
+      width:80px;
+      float: left;
+      margin-right: 5px;
+      h3 {
+        line-height: 45px;
+      }
+    }
+    .pharmacy-details {
+      float: left;
+    }
+    .pharmacy-benefits{
+      width:100px;
+      float: right;
+      padding-right: 10px;
+      img{
+        height: 30px;
+        margin-left: 10px;
+        margin-top: 7.5px;
+        float: right;
+      }
+    }
   }
   .map-container {
     background-color: $white;

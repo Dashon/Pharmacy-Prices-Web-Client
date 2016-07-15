@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Http, Headers, RequestOptions} from '@angular/http';
-
-
 /**
  * This class represents the lazy loaded LoginComponent.
  */
@@ -27,7 +25,12 @@ export class LoginComponent {
 
         this.postApi(this.baseUrl + 'auth_user/',{"email":"i@dashon.co", "password":"docandi5"}).subscribe(
             response => {
+                var user = response.json().user;
                 localStorage.setItem('id_token', response.json().auth_token);
+                localStorage.setItem('user_id', user.id);
+                localStorage.setItem('name', user.name);
+                localStorage.setItem('hcf_id', user.hcf_id);
+
                 console.log(response.json().auth_token);
             },
             error => {
@@ -40,7 +43,7 @@ export class LoginComponent {
 
     postApi(url, body) {
         var authHeader = new Headers();
-        authHeader.append('X-Api-Key', 'be23e9e0-9547-436e-a3dc-655cf6039e00');
+        authHeader.append('X-Api-Key', 'cbc6983d-7f39-4a89-9d23-c3b883f8263a');
         authHeader.append('Content-Type', 'application/json');
 
         var options = new RequestOptions({headers: authHeader});
