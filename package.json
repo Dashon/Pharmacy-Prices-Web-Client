@@ -1,9 +1,9 @@
 {
-  "name": "Ani-Angular2",
+  "name": "DocAndI",
   "version": "0.0.0",
-  "description": "Angular 2 apps",
+  "description": "Doc And I",
   "repository": {
-    "url": "https://strapui.com"
+    "url": "docandi.com"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color",
@@ -112,17 +112,19 @@
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
     "walk": "2.3.9",
-    "yargs": "4.2.0"
+    "yargs": "4.2.0",
+    "angular2-jwt": "0.1.16"
   },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/forms": "0.2.0",
-    "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "@angular/router": "3.0.0-beta.2",
+    "@angular/common": "2.0.0-rc.2",
+    "@angular/compiler": "2.0.0-rc.2",
+    "@angular/core": "2.0.0-rc.2",
+    "@angular/forms": "0.1.0",
+    "@angular/http": "2.0.0-rc.2",
+    "@angular/platform-browser": "2.0.0-rc.2",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.2",
+    "@angular/router": "3.0.0-alpha.8",
+    "angular2-google-maps": "0.12.0",
     "c3": "0.4.11",
     "chart.js": "1.0.2",
     "ckeditor": "4.5.9",
