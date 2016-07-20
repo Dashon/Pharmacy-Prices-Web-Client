@@ -2,6 +2,18 @@
 root = true
 
 [*]
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+=======
+>>>>>>> Dev
 charset = utf-8
 indent_style = space
 indent_size = 2
@@ -11,4 +23,8 @@ trim_trailing_whitespace = true
 
 [*.md]
 max_line_length = 0
+<<<<<<< HEAD
+=======
+>>>>>>> chore: initial commit from angular-cli
+>>>>>>> Dev
 trim_trailing_whitespace = false

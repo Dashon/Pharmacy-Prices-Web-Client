@@ -1,0 +1,165 @@
+<div class="row dashboard-home gradient">
+    <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+      <section class="header">
+        <h2>Welcome {{currentUser.name}}</h2>
+      </section>
+        <div class="card-deck-wrapper">
+            <div class="card-deck" id="row1">
+
+                <div class="card text-sm-center team-activity">
+                    <div class="card-block">
+                        <h3 class="card-title">Monthly Team Activity</h3>
+                        <div>### Points</div>
+                        <div class="success progress" role="progressbar" tabindex="0" aria-valuenow="65"
+                             aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+                            <div class="progress-meter" style="width: 65%"></div>
+                        </div>
+                        <div>Goal ###</div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img src="http://placehold.it/150x150" class="trophy">
+                            </div>
+                            <div class="col-sm-12">
+                                <h4>June Trophy</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card text-sm-center your-activity">
+                    <div class="row current-activity">
+                            <div class="card-block">
+
+                                <a data-open="exampleModal1"><img src="http://placehold.it/150x150"
+                                                                  class="avatar-large"></a>
+                                <!-- MODAL -->
+                                <div class="reveal" id="exampleModal1" hidden="true" data-reveal>
+                                    <h3 id="modalTitle">Select an Avatar</h3>
+                                    <img src="http://placehold.it/150x150" class="avatar-large selected">
+                                    <img src="http://placehold.it/150x150" class="avatar-large">
+                                    <img src="http://placehold.it/150x150" class="avatar-large">
+                                    <img src="http://placehold.it/150x150" class="avatar-large">
+                                    <button class="x" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- END MODAL -->
+                                <h3>Your Activity</h3>
+                                <div>### Points</div>
+                            </div>
+                    </div>
+                    <br/>
+                    <div class="row lifetime-activity">
+                        <div class="card-block">
+
+                        <h3>Lifetime Activity</h3>
+                                <div>### Points</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card leaderboard">
+                    <div class="card-block">
+                        <div class="row award">
+                            <div class="col-sm-12 col-md-5">
+                                <img src="http://placehold.it/150x150" class="trophy">
+                            </div>
+                            <div class="col-sm-12 col-md-7 left">
+                                <h4>Awarded to the individual with the most points</h4>
+                            </div>
+                        </div>
+                        <div class="row rank">
+                            <div class="col-sm-3">
+                                <img src="http://placehold.it/150x150" class="avatar">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="name">Name</div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="position">#1</div>
+                            </div>
+                        </div>
+                        <div class="row rank">
+                            <div class="col-sm-3">
+                                <img src="http://placehold.it/150x150" class="avatar">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="name">Name</div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="position">#2</div>
+                            </div>
+                        </div>
+                        <div class="row rank">
+                            <div class="col-sm-3">
+                                <img src="http://placehold.it/150x150" class="avatar">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="name">Name</div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="position">#3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+            <div class="card text-sm-center">
+                <div class="card-block">
+                    <h3 class="card-title">Awards</h3>
+                    <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <img src="http://placehold.it/350x350">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <a data-open="tropyModal"><img src="http://placehold.it/150x150" class="trophy">
+                            <p>2 Trophies</p></a>
+                    </div>
+                    <!-- TROPHY MODAL -->
+                    <div class="reveal" hidden="true" id="tropyModal" data-reveal>
+                        <h3 id="modalTitle">Your Trophies</h3>
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <button class="x" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- END MODAL -->
+                    <div class="col-sm-6 col-md-3">
+                        <a data-open="avatarModal"><img src="http://placehold.it/150x150" class="trophy">
+                            <p>4 Avatars</p></a>
+                    </div>
+                    <!-- AVATAR MODAL -->
+                    <div class="reveal" hidden="true" id="avatarModal" data-reveal>
+                        <h3 id="modalTitle">Your Avatars</h3>
+                        <img src="http://placehold.it/150x150" class="avatar-large selected">
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <button class="x" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- END MODAL -->
+                    <div class="col-sm-6 col-md-3 ">
+                        <a data-open="badgesModal"><img src="http://placehold.it/150x150" class="trophy">
+                            <p>2 Badges</p></a>
+                    </div>
+                    <!-- BADGES MODAL -->
+                    <div class="reveal" id="badgesModal" hidden="true" data-reveal>
+                        <h3 id="modalTitle">Your Badges</h3>
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <img src="http://placehold.it/150x150" class="avatar-large">
+                        <button class="x" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- END MODAL -->
+                </div>
+                </div>
+            </div>
+    </div>
+</div>

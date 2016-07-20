@@ -1,0 +1,62 @@
+.drug-search {
+
+  .search-ctn {
+    position: relative;
+    background-color: white;
+    border: solid 1px black;
+    margin-top: 50px;
+    padding: 30px 30px 0px 30px;
+
+    .fa-search {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 15px;
+      color: #555;
+    }
+    .search-box{
+      border-radius: 0;
+      padding: .3125rem 0 .3125rem 2rem;
+      margin-right: 20px;
+    }
+    .row-space {
+      margin-bottom: 15px;
+    }
+    .ninety-day-supply {
+      margin-top: 8px;
+    }
+    .red-arrow{
+      position: absolute;
+      left: -70px;
+    }
+  }
+  .search-bar:before {
+    content: "\e600";
+  }
+}
+
+.dosage-box {
+  color: #aaa;
+  width: 49px;
+  height: 50px;
+  text-align: center;
+  float: left;
+  background-color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  margin-left: 1px;
+  margin-top: 1px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &.empty{
+    background-color: lightgrey;
+    color: #aaa;
+  }
+  &::after{
+    margin-top: -3px;
+    font-size: 12px;
+    display: block;
+    content: "MG" !important;
+  }
+}

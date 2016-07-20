@@ -1,0 +1,235 @@
+<div class="three40-b-page">
+    <section class="header">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
+                <div class="row">
+                    <div class="col-xs-1 subnav-text">
+                        <a [routerLink]="['/map']"><img src="assets/images/svg/icon-sub-map.svg" width="60px"></a>
+                    </div>
+                    <div class="col-xs-1 subnav-text">
+                        <a [routerLink]="['/drug-search']"><img src="assets/images/svg/icon-sub-savings.svg"
+                                                                width="60px"></a>
+                    </div>
+                    <div class="col-xs-8 subnav-text">
+                        <h2><img src="assets/images/svg/icon-script.svg" width="30px"> 340B</h2>
+                    </div>
+                    <div class="col-xs-2 subnav-text refresh">
+                        <a (click)="newSurvey()"><img src="assets/images/svg/icon-refresh.svg" width="30px"> <span
+                                class="hide-for-small-only">New</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="script">
+        <div class="row" id="question1">
+            <div class="col-xs-12  col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3 container">
+                <div class="row text-xs-center">
+                    <div id="tabs-start" *ngIf="['start','answer-yes','answer-no'].indexOf(currentTab) > -1 ">
+                        <p class="question">Is the patient using a contracted pharmacy?</p>
+                        <section class="menu-tabs">
+                            <form role="form">
+                                <ul class="menu" data-tabs id="question-tabs">
+                                    <li class="tabs-title is-active" style="display:none;">
+                                        <a href="#start" aria-selected="true">start</a>
+                                    </li>
+                                    <a class="btn btn-secondary btn-rounded"
+                                       [ngClass]="{'active':(currentTab == 'answer-yes')}"
+                                       (click)="answerQuestion(1, 'answer-yes')">Yes</a>
+                                    <a class="btn btn-secondary btn-rounded"
+                                       [ngClass]="{'active':(currentTab == 'answer-no')}"
+                                       (click)="answerQuestion(1, 'answer-no')">No</a>
+                                </ul>
+                            </form>
+
+                        </section>
+                    </div>
+                    <div class="question-tabs">
+                        <div *ngIf="currentTab == 'start'" class="tabs-panel" id="start">
+                            <div class="row ">
+                                <section>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-xs-centered block pharmacy-list border">
+                                            <ul>
+                                                <li *ngFor="let p of allPharmacies"><strong class="short-code">{{p.dni_pharmacy.short_code}}</strong>
+                                                    {{p.dni_pharmacy.name}} - {{p.dni_pharmacy.address}}
+                                                    {{p.dni_pharmacy.city}},{{p.dni_pharmacy.state}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div *ngIf="currentTab == 'answer-yes'" class="tabs-panel">
+                            <br>
+                            <div class="row">
+                                <section>
+                                    <div class="row text-xs-center">
+                                        <select>
+                                            <option>Select A Pharmacy</option>
+                                            <option value="p.id" *ngFor="let p of contractedPharmacies">
+                                                ({{p.dni_pharmacy.short_code}}) {{p.dni_pharmacy.name}} -
+                                                {{p.dni_pharmacy.address}}
+                                                {{p.dni_pharmacy.city}},{{p.dni_pharmacy.state}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="row text-xs-center">
+                                        <input id="thanked" type="checkbox"><label for="thanked">I have thanked patient
+                                        and informed them of the 340B benefits</label>
+                                    </div>
+                                    <div class="row text-xs-center">
+                                        <ul class="benefit">
+                                            <li class="intro">Asian Human Services has partnered with local pharmacies
+                                                through a federal program. This program is designed to:
+                                            </li>
+                                            <li>help patients save money on medications</li>
+                                            <li>support Asian Human Services with savings</li>
+                                        </ul>
+                                    </div>
+                                    <div class="row text-xs-center">
+                                        <a (click)="submitSurvey()"
+                                           class="button btn btn-primary btn-rounded">Submit</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div *ngIf="currentTab == 'answer-no'" class="tabs-panel">
+                            <div> Give the patient the 340B brochure and discuss benifits</div>
+                            <br>
+                            <div class="row">
+                                <section>
+
+                                    <div class="row text-xs-center">
+                                        <input id="340b-benefits" type="checkbox"><label for="340b-benefits">I have
+                                        informed patient of the 340B benefits</label>
+                                    </div>
+
+                                    <div class="row text-xs-center">
+                                        <ul class="benefit" style="margin-top:0;">
+                                            <li class="intro">Asian Human Services has partnered with local pharmacies
+                                                through a federal program. This program is designed to:
+                                            </li>
+                                            <li>help patients save money on medications</li>
+                                            <li>support Asian Human Services with savings</li>
+                                        </ul>
+                                    </div>
+                                    <div class="row text-xs-center">
+                                        <input id="pharmacy-info" type="checkbox"><label for="pharmacy-info">I have
+                                        informed patient of the <a href="" target="_blank">participating pharmacy
+                                            locations</a> and corresponding benefits of pharmacies</label>
+                                    </div>
+                                    <div class="row text-xs-center">
+                                        <a (click)="currentTab = 'ask-change'"
+                                           class="button btn btn-primary btn-rounded">Next</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div *ngIf="['ask-change','yes-change','no-change'].indexOf(currentTab) > -1 ">
+                            <p class="question">Did the patient agree to change?</p>
+                            <section class="menu-tabs">
+                                <form role="form">
+                                    <ul class="menu" data-tabs>
+                                        <li class="tabs-title is-active" style="display:none;">
+                                            <a href="#start" aria-selected="true">start</a>
+                                        </li>
+                                        <a class="btn btn-secondary btn-rounded"
+                                           [ngClass]="{'active':(currentTab == 'yes-change')}"
+                                           (click)="answerQuestion(3, 'yes-change')">Yes</a>
+                                        <a class="btn btn-secondary btn-rounded"
+                                           [ngClass]="{'active':(currentTab == 'no-change')}"
+                                           (click)="answerQuestion(3, 'no-change')">No</a>
+                                    </ul>
+                                </form>
+
+                            </section>
+                        </div>
+
+                        <div *ngIf="currentTab == 'yes-change'" class="tabs-panel">
+                            <br>
+                            <div class="row">
+                                <section>
+
+                                    <select>
+                                        <option>Select A Pharmacy</option>
+                                        <option value="p.id" *ngFor="let p of contractedPharmacies">
+                                            ({{p.dni_pharmacy.short_code}}) {{p.dni_pharmacy.name}} -
+                                            {{p.dni_pharmacy.address}} {{p.dni_pharmacy.city}},{{p.dni_pharmacy.state}}
+                                        </option>
+                                    </select>
+                                    <a [routerLink]="['/map']" class="button btn btn-danger btn-rounded see-map">See
+                                        Map</a>
+
+                                    <div class="row">
+                                        <input id="updated-Pharmacy" type="checkbox"><label for="340b-benefits">I
+                                        updated the preferred pharmacy in the system and alerted doctor</label>
+                                    </div>
+                                    <div class="row">
+                                        <input name="handout-given" ng-model="d" type="checkbox"><label for="pharmacy-info">I gave the
+                                        patient 340b handout</label>
+                                    </div>
+                                    <div class="row">
+                                        <input id="freedom-choice" type="checkbox"><label for="pharmacy-info"> I told
+                                        the patient about freedom of choice</label>
+                                    </div>
+
+                                    <div class="row text-xs-center">
+                                        <a (click)="newSurvey()" class="button btn btn-primary btn-rounded">Submit</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div *ngIf="currentTab == 'no-change'" class="tabs-panel">
+                            <div class="row">
+                                <section>
+                                    <select>
+                                        <option>Select A Reason</option>
+                                        <option value="reason.id" *ngFor="let reason of reasons">{{reason.name}}
+                                        </option>
+                                    </select>
+                                    <br/>
+                                    <div class="row text-xs-center">
+                                        <a (click)="submitSurvey()"
+                                           class="button btn btn-primary btn-rounded">Submit</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div *ngIf="currentTab == 'submitted'" class="tabs-panel">
+                            <br>
+                            <div class="row">
+                                <section>
+                                    <div class="row text-xs-center">
+                                        <h3><span class="fa fa-check"></span>Submitted!</h3>
+                                    </div>
+
+                                    <a class="button btn btn-warning btn-rounded see-map">Email</a>
+                                    <a class="button btn btn-warning btn-rounded see-map">Text</a>
+
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12  col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <ul class="status">
+                    <li [ngClass]="{'done': ( ['start','answer-yes', 'answer-no', 'ask-change','yes-change','no-change','submitted'].indexOf(currentTab) > -1 )}"></li>
+                    <li [ngClass]="{'done': ( ['answer-yes', 'answer-no','ask-change','yes-change','no-change','submitted'].indexOf(currentTab) > -1 )}"
+                        (click)="currentTab='start'"></li>
+                    <li [ngClass]="{'done': ( ['ask-change','yes-change','no-change','submitted'].indexOf(currentTab) > -1 )}"
+                        (click)="currentTab='ask-change'"></li>
+                    <li [ngClass]="{'done': ( ['submitted'].indexOf(currentTab) > -1 )}"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

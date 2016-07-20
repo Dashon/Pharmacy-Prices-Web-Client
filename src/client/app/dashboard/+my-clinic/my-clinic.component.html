@@ -1,0 +1,312 @@
+<div class="my-clinic-page animate">
+    <h2 class="header">{{currentClinic.name}}</h2>
+    <div class="pull-right m-r-2">
+        <div class="btn-group" dropdown>
+            <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                {{currentClinic.name}}<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li *ngFor="let clinic of clinics">
+                    <a class="dropdown-item" (click)="getClinic(clinic.id)" >{{clinic.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form class="col-lg-12 col-xl-10 col-xl-offset-1 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-xs-center">
+                    <div class="row logo-row">
+                        <a *ngIf="!editClinicItem.id"><img src="{{currentClinic.image_url}}" class="logo"></a>
+                        <div *ngIf="editClinicItem.id">
+                            <div class="col-lg-9">
+                                <img src="{{editClinicItem.image_url}}" class="logo">
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card-header card-primary card-inverse">
+                                    <span class="card-title">Change Logo</span>
+                                </div>
+                                <div class="card-block">
+                                    <input type="file" name="logo" accept="image/*" (change)="handleLogo($event)">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h3 *ngIf="!editClinicItem.id">{{currentClinic.name}}</h3>
+
+                    <div class="col-sm-offset-3 col-sm-6 form-group" *ngIf="editClinicItem.id">
+                        <input type="text" class="form-control" name="clinicName" [(ngModel)]="editClinicItem.name"
+                               placeholder="Full Name">
+                    </div>
+                    <div class="row">
+                        <div class="row pull-right" *ngIf="!editClinicItem.id">
+                            <a class="small" (click)="editClinic(currentClinic)">Edit Name & Logo</a>
+                        </div>
+
+                        <div class="row" *ngIf="editClinicItem.id">
+                            <button class="pull-left btn btn-primary" (click)="cancelEditClinic()">Cancel</button>
+                            <button class="pull-left btn btn-primary btn-bordered" (click)="saveClinic()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header card-primary card-inverse">
+                        <span class="card-title">Locations</span>
+                    </div>
+                    <div class="card-block">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip</th>
+                                <th>Phone</th>
+                                <th class="action-column"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let location of currentClinic.hcf_locations"
+                                (mouseenter)="location.showRow = true" (mouseleave)="location.showRow = false">
+                                <td *ngIf="editLocationItem.id !== location.id">{{location.name}}</td>
+                                <td *ngIf="editLocationItem.id === location.id"><input
+                                        [(ngModel)]="editLocationItem.name" type="text" name="name"
+                                        class="form-control input-underline" placeholder="Name"></td>
+
+                                <td *ngIf="editLocationItem.id !== location.id">{{location.address}}</td>
+                                <td *ngIf="editLocationItem.id === location.id"><input
+                                        [(ngModel)]="editLocationItem.address" type="text" name="address"
+                                        class="form-control input-underline" placeholder="Address"></td>
+
+
+                                <td *ngIf="editLocationItem.id !== location.id">{{location.city}}</td>
+                                <td *ngIf="editLocationItem.id === location.id"><input
+                                        [(ngModel)]="editLocationItem.city" type="text" name="city"
+                                        class="form-control input-underline" placeholder="City"></td>
+
+                                <td *ngIf="editLocationItem.id !== location.id">{{location.state}}</td>
+                                <td *ngIf="editLocationItem.id === location.id"><input
+                                        [(ngModel)]="editLocationItem.state" type="text" name="state"
+                                        class="form-control input-underline" placeholder="State"></td>
+
+
+                                <td *ngIf="editLocationItem.id !== location.id">{{location.zip}}</td>
+                                <td *ngIf="editLocationItem.id === location.id"><input
+                                        [(ngModel)]="editLocationItem.zip" type="text" name="zip"
+                                        class="form-control input-underline" placeholder="Zip"></td>
+
+
+                                <td *ngIf="editLocationItem.id !== location.id">{{location.phone}}</td>
+                                <td *ngIf="editLocationItem.id === location.id"><input
+                                        [(ngModel)]="editLocationItem.phone" type="tel" name="phone"
+                                        class="form-control input-underline" placeholder="Phone"></td>
+
+
+                                <td class="action-column">
+                                    <div [hidden]="!location.showRow && editLocationItem.id !== location.id">
+                                        <div class="pull-right action_buttons">
+                                            <Button *ngIf="editLocationItem.id !== location.id"
+                                                    class="btn btn-danger btn-rounded pull-right"
+                                                    (click)="deleteLocation(location.id)"><i
+                                                    class="fa fa-times"></i>Remove
+                                            </Button>
+                                        </div>
+
+                                        <div class="pull-right action_buttons">
+                                            <Button class="btn btn-primary btn-rounded" (click)="editLocation(location)"
+                                                    *ngIf="!editLocationItem.id">
+                                                <i class="fa fa-edit"></i>Edit
+                                            </Button>
+                                            <Button *ngIf="editLocationItem.id == location.id"
+                                                    class="btn btn-primary btn-rounded" (click)="saveLocation()"><i
+                                                    class="fa fa-edit"></i>Save
+                                            </Button>
+                                            <Button *ngIf="editLocationItem.id == location.id"
+                                                    class="btn btn-primary btn-rounded" (click)="cancelEditLocation()">
+                                                <i
+                                                        class="fa fa-edit"></i>Cancel
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                            <!--NEW-->
+                            <tr *ngIf="editLocationItem.id === 'NEW'">
+                                <td><input
+                                        [(ngModel)]="editLocationItem.name" type="text" name="name"
+                                        class="form-control input-underline" placeholder="Name"></td>
+
+                                <td><input
+                                        [(ngModel)]="editLocationItem.address" type="text" name="address"
+                                        class="form-control input-underline" placeholder="Address"></td>
+
+
+                                <td><input
+                                        [(ngModel)]="editLocationItem.city" type="text" name="city"
+                                        class="form-control input-underline" placeholder="City"></td>
+
+                                <td><input
+                                        [(ngModel)]="editLocationItem.state" type="text" name="state"
+                                        class="form-control input-underline" placeholder="State"></td>
+
+
+                                <td><input
+                                        [(ngModel)]="editLocationItem.zip" type="text" name="zip"
+                                        class="form-control input-underline" placeholder="Zip"></td>
+
+
+                                <td><input
+                                        [(ngModel)]="editLocationItem.phone" type="tel" name="phone"
+                                        class="form-control input-underline" placeholder="Phone"></td>
+
+
+                                <td class="action-column">
+
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="!currentClinic.hcf_locations && !editLocationItem.id">No Locations</tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-lg-offset-9 col-lg-3">
+                            <Button *ngIf="editLocationItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                                    (click)="newLocation()"><i
+                                    class="fa fa-edit"></i>Add Location
+                            </Button>
+                            <div *ngIf="editLocationItem.id === 'NEW'" class="pull-right action_buttons">
+                                <Button class="btn btn-primary btn-rounded" (click)="createLocation()"><i
+                                        class="fa fa-edit"></i>Save
+                                </Button>
+                                <Button Class="btn btn-primary btn-rounded" (click)="cancelEditLocation()"><i
+                                        class="fa fa-edit"></i>Cancel
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header card-primary card-inverse">
+                        <span class="card-title">Members</span>
+                    </div>
+                    <div class="card-block">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th class="action-column"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let member of currentClinic.users"
+                                (mouseenter)="member.showRow = true" (mouseleave)="member.showRow = false">
+                                <td>{{member.name}}</td>
+                                <td>{{member.email}}</td>
+                                <td *ngIf="editMemberItem.id !== member.id">{{member.role}}</td>
+                                <td *ngIf="editMemberItem.id === member.id">
+                                    <select name="role" [(ngModel)]="editMemberItem.role">
+                                        <option *ngFor="let role of roles | mapToArray"
+                                                selected="editMemberItem.role === role.id" value={{role.val}}>
+                                            {{role.key}}
+                                        </option>
+                                    </select>
+                                </td>
+
+                                <td class="action-column pull-right">
+                                    <div [hidden]="!member.showRow && editMemberItem.id !== member.id">
+
+                                        <div class="pull-right action_buttons">
+                                            <Button *ngIf="editMemberItem.id !== member.id"
+                                                    class="btn btn-danger btn-rounded"
+                                                    (click)="deleteMember(member.id)"><i
+                                                    class="fa fa-times"></i>Remove
+                                            </Button>
+                                        </div>
+                                        <div class="pull-right action_buttons">
+                                            <Button class="btn btn-primary btn-rounded" (click)="editMember(member)"
+                                                    *ngIf="!editMemberItem.id">
+                                                <i class="fa fa-edit"></i>Edit
+                                            </Button>
+                                            <Button *ngIf="editMemberItem.id == member.id"
+                                                    class="btn btn-primary btn-rounded"
+                                                    (click)="saveMember()"><i
+                                                    class="fa fa-edit"></i>Save
+                                            </Button>
+                                            <Button *ngIf="editMemberItem.id == member.id"
+                                                    class="btn btn-primary btn-rounded"
+                                                    (click)="cancelEditMember()"><i
+                                                    class="fa fa-edit"></i>Cancel
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                            <!--NEW MEMBER-->
+                            <tr *ngIf="editMemberItem.id === 'NEW'">
+                                <td><input
+                                        [(ngModel)]="editMemberItem.name" type="text" name="name"
+                                        class="form-control input-underline" placeholder="Full Name"></td>
+                                <td><input
+                                        [(ngModel)]="editMemberItem.email" type="text" name="email"
+                                        class="form-control input-underline" placeholder="Email"></td>
+                                <td>
+                                    <select name="role" [(ngModel)]="editMemberItem.role">
+                                        <option value="undefined" selected>Select Role</option>
+                                        <option *ngFor="let role of roles | mapToArray" value={{role.val}}>
+                                            {{role.key}}
+                                        </option>
+                                    </select>
+                                </td>
+
+                                <td class="action-column pull-right">
+
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="!currentClinic.users && !editMemberItem.id">No Members</tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-lg-offset-9 col-lg-3">
+                            <Button *ngIf="editMemberItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                                    (click)="newMember()"><i
+                                    class="fa fa-edit"></i>Invite Member
+                            </Button>
+                            <div *ngIf="editMemberItem.id === 'NEW'" class="pull-right action_buttons">
+                                <Button class="btn btn-primary btn-rounded" (click)="inviteMember()"><i
+                                        class="fa fa-edit"></i>Save
+                                </Button>
+                                <Button Class="btn btn-primary btn-rounded" (click)="cancelEditMember()"><i
+                                        class="fa fa-edit"></i>Cancel
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

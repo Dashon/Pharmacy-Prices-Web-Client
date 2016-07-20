@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
+=======
+  "rulesDirectory": ["node_modules/codelyzer"],
+>>>>>>> Dev
   "rules": {
     "class-name": true,
     "curly": false,
     "eofline": true,
+<<<<<<< HEAD
     "indent": "spaces",
+=======
+    "indent": ["spaces"],
+>>>>>>> Dev
     "max-line-length": [true, 140],
     "member-ordering": [true,
       "public-before-private",
@@ -16,7 +24,10 @@
     "no-duplicate-variable": true,
     "no-empty": true,
     "no-eval": true,
+<<<<<<< HEAD
     "no-trailing-comma": true,
+=======
+>>>>>>> Dev
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-unused-variable": true,
@@ -30,7 +41,27 @@
     ],
     "quotemark": [true, "single"],
     "semicolon": true,
+<<<<<<< HEAD
     "triple-equals": true,
     "variable-name": false
+=======
+    "trailing-comma": true,
+    "triple-equals": true,
+    "variable-name": false,
+
+    "directive-selector-name": [true, "camelCase"],
+    "component-selector-name": [true, "kebab-case"],
+    "directive-selector-type": [true, "attribute"],
+    "component-selector-type": [true, "element"],
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": true,
+    "directive-class-suffix": true
+>>>>>>> Dev
   }
 }

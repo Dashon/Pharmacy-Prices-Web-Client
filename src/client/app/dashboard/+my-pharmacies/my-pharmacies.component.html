@@ -1,0 +1,122 @@
+<div class="manage-clinic-pharmacies-page animate">
+    <div class="header">
+        <h2>My Master Pharmacy List</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-6 col-lg-offset-3">
+            <input [typeahead]="typeAheadDataRef"
+                   [(ngModel)]="searchString"
+                   (typeaheadLoading)="changeTypeaheadLoading($event)"
+                   (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                   (typeaheadOnSelect)="addPharmacy($event.item)"
+                   [typeaheadWaitMs]="300"
+                   [typeaheadMinLength]="3"
+                   [typeaheadOptionsLimit]="10"
+                   [typeaheadOptionField]="'name'"
+                   name="Search"
+                   autocomplete="off"
+                   placeholder="Search Pharmacies"
+                   class="form-control">
+        </div>
+
+        <div class="col-lg-3">
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                    {{currentClinic.name}}<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li *ngFor="let clinic of clinics">
+                        <a class="dropdown-item" (click)="getClinic(clinic.id)">{{clinic.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="card">
+        <div class="card-header card-primary card-inverse">
+            <span class="card-title">{{currentClinic.name}} - Master Pharmacy List</span>
+        </div>
+        <div class="card-block">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th class="action-column"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let p of clinicPharmacies" (mouseenter)="p.showRow = true" (mouseleave)="p.showRow = false">
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.name}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.name" type="text" class="form-control input-underline" placeholder="Name"></td>
+
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.address}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.address" type="text" class="form-control input-underline" placeholder="Address"></td>
+
+
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.city}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.city" type="text" class="form-control input-underline" placeholder="City"></td>
+
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.state}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.state" type="text" class="form-control input-underline" placeholder="State"></td>
+
+
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.zip}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.zip" type="text" class="form-control input-underline" placeholder="Zip"></td>
+
+
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.phone}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.phone" type="tel" class="form-control input-underline" placeholder="Phone"></td>
+
+
+                    <td *ngIf="editPharmacy.id !== p.id">{{p.dni_pharmacy.longitude}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.longitude" type="text" class="form-control input-underline" placeholder="Longitude"></td>
+
+
+                    <td *ngIf="!p.editMode">{{p.dni_pharmacy.latitude}}</td>
+                    <td *ngIf="editPharmacy.id === p.id"><input [(ngModel)]="editPharmacy.dni_pharmacy.latitude" type="text" class="form-control input-underline" placeholder="Latitude"></td>
+
+                    <td class="action-column pull-right">
+                        <div [hidden]="!p.showRow && editPharmacy.id !== p.id">
+
+                        <Button *ngIf="!editPharmacy.id" class="btn btn-primary btn-rounded" (click)="editClinicPharmacy(p)"><i
+                                class="fa fa-edit"></i>Edit
+                        </Button>
+
+                        <Button *ngIf="editPharmacy.id == p.id" class="btn btn-primary btn-rounded" (click)="saveClinicPharmacy()"><i
+                                class="fa fa-edit"></i>Save
+                        </Button>
+                        <Button *ngIf="editPharmacy.id == p.id" class="btn btn-primary btn-rounded" (click)="cancelEditClinicPharmacy(p)"><i
+                                class="fa fa-edit"></i>Cancel
+                        </Button>
+                        <Button *ngIf="editPharmacy.id !== p.id" class="btn btn-danger btn-rounded" (click)="deleteClinicPharmacy(p.id)"><i
+                                class="fa fa-times"></i>Remove
+                        </Button>
+                            </div>
+                    </td>
+
+                </tr>
+                <tr *ngIf="!clinicPharmacies.length && !editPharmacy.id">No Pharmacies</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row pull-right">
+        <Button class="btn btn-primary btn-rounded" (click)="prevPage()" *ngIf="currentPage > 1" >
+            <i class="fa fa-arrow-circle-left"></i>Prev
+        </Button>
+
+        <Button class="btn btn-primary btn-rounded" (click)="nextPage()" *ngIf="totalPages > currentPage">
+            <i class="fa  fa-arrow-circle-right"></i>Next
+        </Button>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {readFileSync} from 'fs';
 import {argv} from 'yargs';
 import {normalize, join} from 'path';
@@ -158,3 +159,9 @@ function getEnvironment() {
     return ENVIRONMENTS.DEVELOPMENT;
   }
 }
+=======
+import { ProjectConfig } from './config/project.config';
+
+const config: ProjectConfig = new ProjectConfig();
+export = config;
+>>>>>>> Dev

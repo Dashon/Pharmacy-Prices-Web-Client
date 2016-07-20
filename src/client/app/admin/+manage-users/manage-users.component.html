@@ -1,0 +1,128 @@
+<div class="manage-users-page animate">
+    <div class="header">
+        <h2>Manage Users</h2>
+    </div>
+
+    <div class="card">
+        <div class="card-header card-primary card-inverse">
+            <span class="card-title">All Users</span>
+        </div>
+        <div class="card-block clearfix">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Clinic</th>
+                    <th class="action-column"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let user of allUsers" (mouseenter)="user.showRow = true" (mouseleave)="user.showRow = false">
+                    <td *ngIf="editUserItem.id !== user.id">{{user.email}}</td>
+                    <td *ngIf="editUserItem.id === user.id"><input [(ngModel)]="editUserItem.email"
+                                                                   type="text" class="form-control input-underline"
+                                                                   placeholder="Email"></td>
+
+                    <td *ngIf="editUserItem.id !== user.id">{{user.name}}</td>
+                    <td *ngIf="editUserItem.id === user.id"><input [(ngModel)]="editUserItem.name"
+                                                                   type="text" class="form-control input-underline"
+                                                                   placeholder="Name"></td>
+
+                    <td *ngIf="editUserItem.id !== user.id">{{user.role}}</td>
+                    <td *ngIf="editUserItem.id === user.id">
+                        <select name="role" [(ngModel)]="editUserItem.role">
+                            <option value="undefined" selected>Select Role</option>
+                            <option *ngFor="let role of roles | mapToArray" value={{role.val}}>
+                                {{role.key}}
+                            </option>
+                        </select>
+                    </td>
+
+                    <td *ngIf="editUserItem.id !== user.id">{{user.health_care_facility.name}}</td>
+                    <td *ngIf="editUserItem.id === user.id">
+                        <select name="health_care_facility_id" [(ngModel)]="editUserItem.health_care_facility_id">
+                            <option value="undefined" selected>Select Clinic</option>
+                            <option *ngFor="let hcf of healthCareFacilities" value={{hcf.id}}>
+                                {{hcf.name}}
+                            </option>
+                        </select>
+                    </td>
+
+                    <td class="action-column pull-right">
+                        <div [hidden]="!user.showRow && editUserItem.id !== user.id">
+                        <Button *ngIf="!editUserItem.id" class="btn btn-primary btn-rounded"
+                                (click)="editUser(user)"><i
+                                class="fa fa-edit"></i>Edit
+                        </Button>
+
+                        <Button *ngIf="editUserItem.id == user.id" class="btn btn-primary btn-rounded"
+                                (click)="saveUser()"><i
+                                class="fa fa-edit"></i>Save
+                        </Button>
+                        <Button *ngIf="editUserItem.id == user.id" class="btn btn-primary btn-rounded"
+                                (click)="cancelEditUser()"><i
+                                class="fa fa-edit"></i>Cancel
+                        </Button>
+                        <Button *ngIf="editUserItem.id !== user.id" class="btn btn-danger btn-rounded"
+                                (click)="deleteUser(user.id)"><i
+                                class="fa fa-times"></i>Remove
+                        </Button>
+                            </div>
+                    </td>
+
+                </tr>
+
+
+                <!--NEW MEMBER-->
+                <tr *ngIf="editUserItem.id === 'NEW'">
+                    <td><input
+                            [(ngModel)]="editUserItem.name" type="text" name="name"
+                            class="form-control input-underline" placeholder="Full Name"></td>
+                    <td><input
+                            [(ngModel)]="editUserItem.email" type="text" name="email"
+                            class="form-control input-underline" placeholder="Email"></td>
+                    <td>
+                        <select name="role" [(ngModel)]="editUserItem.role">
+                            <option value="undefined" selected>Select Role</option>
+                            <option *ngFor="let role of roles | mapToArray" value={{role.val}}>
+                                {{role.key}}
+                            </option>
+                        </select>
+                    </td>
+                    <td *ngIf="editUserItem.id === editUserItem.id">
+                        <select name="role" [(ngModel)]="editUserItem.health_care_facility_id">
+                            <option value="undefined" selected>Select Clinic</option>
+                            <option *ngFor="let hcf of healthCareFacilities" value={{hcf.id}}>
+                                {{hcf.name}}
+                            </option>
+                        </select>
+                    </td>
+
+                    <td class="action-column pull-right">
+                    </td>
+
+                </tr>
+                <tr *ngIf="!allUsers.length && editUserItem.id">No Records</tr>
+                <tr>
+                </tbody>
+            </table>
+            <div class="col-lg-offset-9 col-lg-3">
+                <Button *ngIf="editUserItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                        (click)="newUser()"><i
+                        class="fa fa-edit"></i>Invite User
+                </Button>
+                <div *ngIf="editUserItem.id === 'NEW'" class="pull-right action_buttons">
+                    <Button class="btn btn-primary btn-rounded" (click)="inviteUser()"><i
+                            class="fa fa-edit"></i>Save
+                    </Button>
+                    <Button Class="btn btn-primary btn-rounded" (click)="cancelEditUser()"><i
+                            class="fa fa-edit"></i>Cancel
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

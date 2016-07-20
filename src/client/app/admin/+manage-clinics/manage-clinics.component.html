@@ -1,0 +1,94 @@
+<div class="manage-clinics-page animate">
+    <div class="header">
+        <h2>Manage Clinics</h2>
+    </div>
+    <br/>
+    <div class="card">
+        <div class="card-header card-primary card-inverse">
+            <span class="card-title">All Clinics</span>
+        </div>
+        <div class="card-block clearfix">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="action-column"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                <tr *ngFor="let clinic of clinics" (mouseenter)="clinic.showRow = true" (mouseleave)="clinic.showRow = false">
+                    <td *ngIf="editClinicItem.id !== clinic.id">{{clinic.name}}</td>
+                    <td *ngIf="editClinicItem.id === clinic.id"><input [(ngModel)]="editClinicItem.name"
+                                                                           type="text"
+                                                                           class="form-control input-underline"
+                                                                           name="name" placeholder="Name"></td>
+                    
+
+                    <td class="action-column pull-right">
+                        <div [hidden]="!clinic.showRow && editClinicItem.id !== clinic.id">
+                        <Button *ngIf="!editClinicItem.id" class="btn btn-primary btn-rounded"
+                                (click)="editClinic(clinic)"><i
+                                class="fa fa-edit"></i>Edit
+                        </Button>
+
+                        <Button *ngIf="editClinicItem.id == clinic.id" class="btn btn-primary btn-rounded"
+                                (click)="saveClinic()"><i
+                                class="fa fa-edit"></i>Save
+                        </Button>
+                        <Button *ngIf="editClinicItem.id == clinic.id" class="btn btn-primary btn-rounded"
+                                (click)="cancelEditClinic(clinic)"><i
+                                class="fa fa-edit"></i>Cancel
+                        </Button>
+                        <Button *ngIf="editClinicItem.id !== clinic.id" class="btn btn-danger btn-rounded"
+                                (click)="deleteClinic(clinic.id)"><i
+                                class="fa fa-times"></i>Remove
+                        </Button>
+                            </div>
+                    </td>
+
+                </tr>
+
+                <!--NEW QUESTION-->
+                <tr *ngIf="editClinicItem.id === 'NEW'">
+
+                    <td><input [(ngModel)]="editClinicItem.name" type="text" class="form-control input-underline"
+                               name="name" placeholder="Name"></td>
+
+                    <td class="action-column pull-right">
+                    </td>
+
+                </tr>
+
+                <tr *ngIf="!clinics.length && !editClinicItem.id">No Records</tr>
+                <tr>
+                </tbody>
+            </table>
+            <div class="col-lg-offset-9 col-lg-3 ">
+                <Button *ngIf="editClinicItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                        (click)="newClinic()"><i
+                        class="fa fa-edit"></i>New Clinic
+                </Button>
+                <div *ngIf="editClinicItem.id === 'NEW'" class="pull-right action_buttons">
+                    <Button class="btn btn-primary btn-rounded" (click)="createClinic()"><i
+                            class="fa fa-edit"></i>Save
+                    </Button>
+                    <Button Class="btn btn-primary btn-rounded" (click)="cancelEditClinic()"><i
+                            class="fa fa-edit"></i>Cancel
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pull-right">
+        <Button class="btn btn-primary btn-rounded" (click)="prevPage()" *ngIf="currentPage > 1">
+            <i class="fa fa-arrow-circle-left"></i>Prev
+        </Button>
+
+        <Button class="btn btn-primary btn-rounded" (click)="nextPage()" *ngIf="totalPages > currentPage">
+            <i class="fa  fa-arrow-circle-right"></i>Next
+        </Button>
+    </div>
+</div>

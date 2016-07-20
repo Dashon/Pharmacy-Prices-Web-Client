@@ -1,0 +1,307 @@
+@import "../bootstrap/bootstrap";
+// Pages
+@import "pages/login";
+@import "pages/404";
+@import "pages/drug-search";
+@import "pages/drug-results";
+@import "pages/340b";
+@import "pages/account-settings";
+@import "pages/home-dashboard";
+@import "pages/map";
+@import "pages/manage-clinic";
+@import "pages/manage-clinic-pharmacies";
+@import "pages/manage-contracted-pharmacies";
+@import "pages/manage-pharmacies";
+@import "pages/manage-rewards";
+@import "pages/edit-request";
+//Widgets
+@import "widgets/topnav";
+@import "widgets/sidebar";
+@import "widgets/checkbox";
+@import "widgets/progressButton";
+@import "widgets/hover";
+//Custom
+@import "custom/btn-outline-rounded";
+@import "custom/custom";
+
+@mixin gradient($from-color, $to-color) {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+  background-image: -webkit-linear-gradient(top, $from-color, $to-color);
+  background-image: -moz-linear-gradient(top, $from-color, $to-color);
+  background-image: -ms-linear-gradient(top, $from-color, $to-color);
+  background-image: -o-linear-gradient(top, $from-color, $to-color);
+  background-image: linear-gradient(180deg, $from-color, $to-color);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
+  background-color: mix($from-color, $to-color); /* Fallback */
+
+}
+
+html, body, .col-md-12, .row, .main-container {
+  height: 100%;
+}
+
+body {
+  font-family: $font;
+  color: $grey;
+  min-height: 700px;
+  background-color: $white;
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: $dark-grey;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+a {
+  font-size: 1em;
+  color: $blue;
+  &:hover {
+    text-decoration: underline;
+  }
+  &.small {
+    font-size: .8em;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.col-md-12 {
+  > .row {
+    height: 100%;
+  }
+}
+
+.gradient-blue {
+  @include gradient($white, $light-blue);
+}
+
+.password-forgot {
+  font-size: .8em;
+  margin-bottom: 15px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.button {
+  width: 100%;
+  font-weight: 600;
+  &.primary {
+    background-color: $green;
+    &:hover {
+      background-color: darken($green, 3%);
+      text-decoration: none;
+    }
+  }
+}
+
+.btn-default {
+  color: $white;
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.main-container {
+  padding: 50px 0 0 0;
+  transition: all .2s ease-in-out;
+  overflow: auto;
+}
+
+.rtl {
+  * {
+    direction: rtl;
+  }
+  .main-container {
+    margin-left: 0;
+    margin-right: 235px;
+  }
+  #sidebar div.side-widgets {
+    margin-left: 0;
+  }
+  .topnav-navbar {
+    .navbar-brand {
+      position: absolute;
+      right: -1rem;
+      padding-right: 65px;
+    }
+    .navbar-right {
+      margin-right: 196px;
+    }
+    .collapse {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  background-color: $brand-primary;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+.animate {
+  -webkit-animation: cssAnimation 0.456s 1 ease;
+  -moz-animation: cssAnimation 0.456s 1 ease;
+  -o-animation: cssAnimation 0.456s 1 ease;
+}
+
+@-webkit-keyframes cssAnimation {
+  from {
+    -webkit-transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+  }
+  to {
+    -webkit-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+  }
+}
+
+@-moz-keyframes cssAnimation {
+  from {
+    -moz-transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+  }
+  to {
+    -moz-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+  }
+}
+
+@-o-keyframes cssAnimation {
+  from {
+    -o-transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+  }
+  to {
+    -o-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+  }
+}
+
+.icon {
+  .icon-page {
+    .row p {
+      font-family: 'Open Sans', san-serif;
+    }
+  }
+}
+
+.avatar-large {
+  height: auto;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  img {
+    height: 100%;
+  }
+}
+
+.header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.full-height {
+  height: 100%;
+}
+
+Button {
+  .fa {
+    margin-right: 8px;
+  }
+}
+
+td, th {
+  &.action-column {
+    width: 400px;
+  }
+}
+
+.input-underline {
+  background: $white;
+  border: none;
+  box-shadow: none;
+  border-bottom: 2px solid $gray-lighter;
+  border-radius: 0;
+}
+
+.input-underline:focus {
+  border-bottom: 2px solid $brand-primary;
+  box-shadow: none;
+}
+
+.rounded-btn {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  background: $brand-primary;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 25px;
+}
+
+.rounded-btn:hover, .rounded-btn:focus, .rounded-btn:active, .rounded-btn:visited {
+  color: rgba(255, 255, 255, 1);
+  border: 2px solid rgba(255, 255, 255, 1);
+  outline: none;
+}

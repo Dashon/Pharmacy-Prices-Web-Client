@@ -1,0 +1,86 @@
+.drug-results {
+  min-height: 200px;
+  .rx-card{
+    width: 300px;
+  }
+  .results, .alternatives {
+    .card {
+      height: 150px;
+      padding: 0;
+      a .icon {
+        position: absolute;
+      }
+      .no-discount {
+        margin-top: 40px;
+      }
+
+      .drug-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        //line-height: 21px;
+        max-height: 48px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+      }
+    }
+  }
+  .page-column {
+    min-height: 700px;
+  }
+  .prescription-total {
+    margin: 0 auto;
+
+    .icon {
+      width: 40px;
+    }
+    .badge {
+      position: absolute;
+      bottom: 0;
+      margin-left: -10px;
+    }
+    .title {
+      margin-left: 10px;
+      font-size: 1.5em;
+    }
+  }
+
+  .cart {
+    .card-block{
+      padding-bottom: 100px;
+    }
+    .savings-card {
+      height: 50px;
+    }
+  }
+
+  .search-history {
+    a {
+      text-decoration: underline;
+    }
+    .drug-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  .drug-results-search {
+    .ninety-day-supply {
+      margin-top: 4px;
+    }
+  }
+
+  .modal{
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+  }
+
+  typeahead-container{
+    .dropdown-menu{
+      width: 100%;
+    }
+  }
+
+}

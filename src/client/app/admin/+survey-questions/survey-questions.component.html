@@ -1,0 +1,100 @@
+<div class="survey-questions-page animate">
+    <div class="header">
+        <h2>Survey Questions </h2>
+    </div>
+    <br/>
+    <div class="card">
+        <div class="card-header card-primary card-inverse">
+            <span class="card-title">All Questions</span>
+        </div>
+        <div class="card-block clearfix">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Value</th>
+                    <th class="action-column"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                <tr *ngFor="let question of questions" (mouseenter)="question.showRow = true" (mouseleave)="question.showRow = false">
+                    <td *ngIf="editQuestionItem.id !== question.id">{{question.name}}</td>
+                    <td *ngIf="editQuestionItem.id === question.id"><input [(ngModel)]="editQuestionItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
+
+                    <td *ngIf="editQuestionItem.id !== question.id">{{question.description}}</td>
+                    <td *ngIf="editQuestionItem.id === question.id"><input [(ngModel)]="editQuestionItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+
+
+                    <td *ngIf="editQuestionItem.id !== question.id">{{question.value}}</td>
+                    <td *ngIf="editQuestionItem.id === question.id"><input [(ngModel)]="editQuestionItem.value" type="text" class="form-control input-underline" name="value" placeholder="Value"></td>
+
+                  
+                    <td class="action-column pull-right">
+                        <div [hidden]="!question.showRow && editQuestionItem.id !== question.id">
+                        <Button *ngIf="!editQuestionItem.id" class="btn btn-primary btn-rounded" (click)="editQuestion(question)"><i
+                                class="fa fa-edit"></i>Edit
+                        </Button>
+
+                        <Button *ngIf="editQuestionItem.id == question.id" class="btn btn-primary btn-rounded" (click)="saveQuestion()"><i
+                                class="fa fa-edit"></i>Save
+                        </Button>
+                        <Button *ngIf="editQuestionItem.id == question.id" class="btn btn-primary btn-rounded" (click)="cancelEditQuestion(question)"><i
+                                class="fa fa-edit"></i>Cancel
+                        </Button>
+                        <Button *ngIf="editQuestionItem.id !== question.id" class="btn btn-danger btn-rounded" (click)="deleteQuestion(question.id)"><i
+                                class="fa fa-times"></i>Remove
+                        </Button>
+                            </div>
+                    </td>
+
+                </tr>
+
+                <!--NEW QUESTION-->
+                <tr *ngIf="editQuestionItem.id === 'NEW'">
+
+                    <td><input [(ngModel)]="editQuestionItem.name" type="text" class="form-control input-underline" name="name" placeholder="Name"></td>
+
+                    <td><input [(ngModel)]="editQuestionItem.description" type="text" class="form-control input-underline" name="description" placeholder="Description"></td>
+
+
+                    <td><input [(ngModel)]="editQuestionItem.value" type="text" class="form-control input-underline" name="value" placeholder="Value"></td>
+
+                    <td class="action-column pull-right">
+                    </td>
+
+                </tr>
+
+                <tr *ngIf="!questions.length && !editQuestionItem.id">No Records</tr>
+                <tr>
+                </tbody>
+            </table>
+            <div class="col-lg-offset-9 col-lg-3 ">
+                <Button *ngIf="editQuestionItem.id !== 'NEW'" class="btn btn-primary btn-rounded btn-block "
+                        (click)="newQuestion()"><i
+                        class="fa fa-edit"></i>New Question
+                </Button>
+                <div *ngIf="editQuestionItem.id === 'NEW'" class="pull-right action_buttons">
+                    <Button class="btn btn-primary btn-rounded" (click)="createQuestion()"><i
+                            class="fa fa-edit"></i>Save
+                    </Button>
+                    <Button Class="btn btn-primary btn-rounded" (click)="cancelEditQuestion()"><i
+                            class="fa fa-edit"></i>Cancel
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pull-right">
+        <Button class="btn btn-primary btn-rounded" (click)="prevPage()" *ngIf="currentPage > 1" >
+            <i class="fa fa-arrow-circle-left"></i>Prev
+        </Button>
+
+        <Button class="btn btn-primary btn-rounded" (click)="nextPage()" *ngIf="totalPages > currentPage">
+            <i class="fa  fa-arrow-circle-right"></i>Next
+        </Button>
+    </div>
+</div>

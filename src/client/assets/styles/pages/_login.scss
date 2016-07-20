@@ -1,0 +1,50 @@
+.login-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  text-align: center;
+  padding: 3em;
+  .container {
+    background-color: $white;
+    padding: 40px;
+    margin-top: 40px;
+  }
+  a {
+    cursor: pointer;
+  }
+  .input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px !important;
+    line-height: 1.3333333;
+    border-radius: 0;
+  }
+
+  h1 {
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+    small {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .form-group {
+    padding: 8px 0;
+    margin: 10px 0;
+
+  }
+  .form-content {
+    padding: 0;
+  }
+  .password-forgot {
+    font-size: .8em;
+    margin-bottom: 15px;
+    text-align: right;
+    font-weight: 600;
+  }
+}
