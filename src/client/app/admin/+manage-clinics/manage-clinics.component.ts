@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Component({
     moduleId: module.id,
@@ -48,7 +48,6 @@ export class ManageClinicsComponent {
     }
 
     saveClinic() {
-            delete this.editClinicItem['image_url'];
         this.putApi(this.baseUrl + 'health_care_facilities/' + this.editClinicItem['id'], this.editClinicItem).map(res => res.json()).subscribe(()=> {
             this.getClinics(this.currentPage);
         });

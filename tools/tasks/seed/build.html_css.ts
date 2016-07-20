@@ -16,6 +16,7 @@ import {
   ENABLE_SCSS,
   ENV,
   TMP_DIR,
+  ASSETS_SRC
 } from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
@@ -73,7 +74,7 @@ function processComponentScss() {
 * Process all theme color scss files
 */
 function processThemeScss() {
-  return gulp.src(join(CSS_SRC, '**', '*.scss'))
+  return gulp.src(join(ASSETS_SRC+'/theme/', '**', '*.scss'))
     .pipe(plugins.sass({includePaths: ['./node_modules/']}).on('error', plugins.sass.logError))
     .pipe(gulp.dest(APP_DEST+'/themes/'));
 }

@@ -3,8 +3,6 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
-
 
 @Component({
     moduleId: module.id,
@@ -16,7 +14,7 @@ import {AuthHttp} from "../../config/http";
 export class HelpComponent {
     http = null;
 
-    constructor(http:AuthHttp) {
+    constructor(http:Http) {
         this.http = http;
     }
 

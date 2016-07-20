@@ -2,11 +2,8 @@
 // Generated on Wed Jul 15 2015 09:44:02 GMT+0200 (Romance Daylight Time)
 'use strict';
 
-<<<<<<< HEAD
-=======
 var argv = require('yargs').argv;
 
->>>>>>> Dev
 module.exports = function(config) {
   config.set({
 
@@ -21,29 +18,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-<<<<<<< HEAD
-      'node_modules/zone.js/dist/zone-microtask.js',
-      'node_modules/zone.js/dist/long-stack-trace-zone.js',
-      'node_modules/zone.js/dist/jasmine-patch.js',
-      'node_modules/es6-module-loader/dist/es6-module-loader.js',
-      'node_modules/traceur/bin/traceur-runtime.js', // Required by PhantomJS2, otherwise it shouts ReferenceError: Can't find variable: require
-      'node_modules/traceur/bin/traceur.js',
-      'node_modules/systemjs/dist/system.src.js',
-      'node_modules/reflect-metadata/Reflect.js',
-
-      { pattern: 'node_modules/angular2/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
-      { pattern: 'test/**/*.js', included: false, watched: true },
-      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
-
-      'test-main.js'
-    ],
-
-
-    // list of files to exclude
-    exclude: [
-      'node_modules/angular2/**/*spec.js'
-=======
       // Polyfills.
       'node_modules/core-js/client/shim.min.js',
 
@@ -84,22 +58,12 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       'node_modules/**/*spec.js'
->>>>>>> Dev
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-<<<<<<< HEAD
-    },
-
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha'],
-=======
       'dist/**/!(*spec).js': ['coverage']
     },
 
@@ -107,7 +71,6 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['mocha', 'coverage'],
->>>>>>> Dev
 
 
     // web server port
@@ -130,11 +93,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-<<<<<<< HEAD
-      'PhantomJS2',
-=======
       'PhantomJS',
->>>>>>> Dev
       'Chrome'
     ],
 
@@ -146,12 +105,6 @@ module.exports = function(config) {
       }
     },
 
-<<<<<<< HEAD
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
-=======
     coverageReporter: {
       dir: 'coverage/',
       reporters: [
@@ -169,7 +122,6 @@ module.exports = function(config) {
     client: {
       files: argv.files
     }
->>>>>>> Dev
   });
 
   if (process.env.APPVEYOR) {
@@ -182,8 +134,4 @@ module.exports = function(config) {
     config.browsers = ['Chrome_travis_ci'];
     config.singleRun = true;
   }
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> Dev

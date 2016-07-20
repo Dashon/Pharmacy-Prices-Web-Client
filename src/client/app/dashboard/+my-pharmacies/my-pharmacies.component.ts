@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from "angular2-jwt";
 
 @Component({
     moduleId: module.id,
@@ -19,7 +19,7 @@ export class MyPharmaciesComponent {
 
     clinicPharmacies = [];
     allPharmacies = [];
-    currentClinic = {};
+    currentClinic = {id: 1};
     editPharmacy = {};
 
     totalPages = 0;
@@ -35,7 +35,7 @@ export class MyPharmaciesComponent {
     constructor(http:AuthHttp) {
         this.http = http;
         this.getClinics();
-        this.getClinic(localStorage.getItem('hcf_id'));
+        this.getClinic(this.currentClinic);
     }
 
 
@@ -56,11 +56,6 @@ export class MyPharmaciesComponent {
             .map((el)=> this.allPharmacies = el).toPromise();
     }
 
-    getClinics() {
-        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
-            (el)=> this.clinics = el,
-            error => this.errorMessage = <any>error);
-    }
 
     private getRemainingPharmacies() {
 
@@ -75,7 +70,7 @@ export class MyPharmaciesComponent {
     }
 
     editClinicPharmacy(pharmacy) {
-        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy))) //copy
+        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy)))
 
     }
 
@@ -96,8 +91,15 @@ export class MyPharmaciesComponent {
         }).subscribe((el)=> this.clinicPharmacies = el);
     }
 
-    getClinic(id) {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
+    getClinics() {
+        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
+            (el)=> this.clinics = el,
+            error => this.errorMessage = <any>error);
+    }
+
+
+    getClinic(clinic) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
                 this.getClinicPharmacies(1);

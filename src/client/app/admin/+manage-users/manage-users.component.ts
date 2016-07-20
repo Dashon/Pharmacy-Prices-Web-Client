@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {FORM_DIRECTIVES} from '@angular/common';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import { FORM_DIRECTIVES } from '@angular/common';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {AuthHttp} from "angular2-jwt/angular2-jwt";
 import {MapToArray} from "../../shared/pipes/MapToArray";
-import {AuthHttp} from "../../config/http";
 
 @Component({
     moduleId: module.id,
     selector: 'manage-users-cmp',
     templateUrl: './manage-users.component.html',
     pipes: [MapToArray],
-    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES]
+    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES,FORM_DIRECTIVES]
 
 })
 export class ManageUsersComponent {
@@ -45,7 +45,6 @@ export class ManageUsersComponent {
             res => this.roles = JSON.parse(res._body),
             error => this.errorMessage = <any>error);
     }
-
     createUser() {
         this.postApi(this.baseUrl + 'users/', this.editUserItem).subscribe(
             () => this.getUsers(this.totalPages),
@@ -70,7 +69,7 @@ export class ManageUsersComponent {
     }
 
     saveUser() {
-        this.putApi(this.baseUrl + 'users/' + this.editUserItem['id'], this.editUserItem).map(res => res.json()).subscribe(()=> {
+        this.putApi(this.baseUrl + 'users/'+this.editUserItem['id'], this.editUserItem ).map(res => res.json()).subscribe(()=> {
             this.getUsers(this.currentPage);
         });
         this.editUserItem = {};

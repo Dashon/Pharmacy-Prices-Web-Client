@@ -1,17 +1,10 @@
 {
-<<<<<<< HEAD
-=======
   "rulesDirectory": ["node_modules/codelyzer"],
->>>>>>> Dev
   "rules": {
     "class-name": true,
     "curly": false,
     "eofline": true,
-<<<<<<< HEAD
-    "indent": "spaces",
-=======
     "indent": ["spaces"],
->>>>>>> Dev
     "max-line-length": [true, 140],
     "member-ordering": [true,
       "public-before-private",
@@ -24,10 +17,6 @@
     "no-duplicate-variable": true,
     "no-empty": true,
     "no-eval": true,
-<<<<<<< HEAD
-    "no-trailing-comma": true,
-=======
->>>>>>> Dev
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-unused-variable": true,
@@ -41,10 +30,6 @@
     ],
     "quotemark": [true, "single"],
     "semicolon": true,
-<<<<<<< HEAD
-    "triple-equals": true,
-    "variable-name": false
-=======
     "trailing-comma": true,
     "triple-equals": true,
     "variable-name": false,
@@ -62,6 +47,5 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true
->>>>>>> Dev
   }
 }

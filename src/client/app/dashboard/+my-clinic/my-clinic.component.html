@@ -1,4 +1,4 @@
-<div class="my-clinic-page animate">
+<div class="my-clinic-page animate gradient">
     <h2 class="header">{{currentClinic.name}}</h2>
     <div class="pull-right m-r-2">
         <div class="btn-group" dropdown>
@@ -7,7 +7,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li *ngFor="let clinic of clinics">
-                    <a class="dropdown-item" (click)="getClinic(clinic.id)" >{{clinic.name}}</a>
+                    <a class="dropdown-item" (click)="getClinic(clinic)" >{{clinic.name}}</a>
                 </li>
             </ul>
         </div>

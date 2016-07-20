@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
-
+import {AuthHttp} from "angular2-jwt";
 
 @Component({
     moduleId: module.id,
@@ -18,23 +17,24 @@ export class AccountSettingsComponent {
     http = null;
     response = null;
     baseUrl = 'http://localhost:3000/api/v1/';
-    currentUser = {};
+    currentUser = {id:1};
     editUser = {};
+    currentUserId = 1;
     errorMessage = null;
 
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getAccountInfo(localStorage.getItem('user_id'));
+        this.getAccountInfo()
     }
 
 
-    getAccountInfo(id) {
-        return this.callApi(this.baseUrl + 'users/' + id).subscribe(
+    getAccountInfo() {
+        return this.callApi(this.baseUrl + 'users/' + this.currentUser['id']).subscribe(
             user => this.currentUser = JSON.parse(user._body),
             error => this.errorMessage = <any>error);
     }
     putAccountInfo() {
-        return this.putApi(this.baseUrl + 'users/' + this.currentUser['id'], {user: this.editUser}).subscribe(
+        return this.putApi(this.baseUrl + 'users/' + this.currentUserId, {user: this.editUser}).subscribe(
             user => this.currentUser = user,
             error => this.errorMessage = <any>error);
     }
