@@ -1,9 +1,9 @@
 {
-  "name": "Ani-Angular2",
+  "name": "AndI",
   "version": "0.0.0",
-  "description": "Angular 2 apps",
+  "description": "Doc And I",
   "repository": {
-    "url": "https://strapui.com"
+    "url": "docandi.com"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color",

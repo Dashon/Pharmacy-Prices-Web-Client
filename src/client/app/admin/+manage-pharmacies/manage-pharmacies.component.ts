@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/common';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "angular2-jwt/angular2-jwt";
+import {AuthHttp} from "../../config/http";
 
 @Component({
     moduleId: module.id,
@@ -47,11 +47,14 @@ export class ManagePharmaciesComponent {
 
     searchTypeAhead(text) {
         return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?query=' + text).map(res => res.json())
-            .map((hcf_pharmacies)=> this.pharmacies = hcf_pharmacies.map((hcf_pharmacy)=> {
+            .map((hcf_pharmacies)=> {
+                this.pharmacies = hcf_pharmacies.map((hcf_pharmacy)=> {
                 var dni_pharmacy = hcf_pharmacy['dni_pharmacy'];
                 dni_pharmacy.hcf_pharmacy_id = hcf_pharmacy.id;
                 return dni_pharmacy;
-            })).toPromise();
+            });
+            return "";
+            }).toPromise();
     }
 
     checkLimit(event){

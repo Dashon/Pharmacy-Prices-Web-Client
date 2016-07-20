@@ -1,7 +1,12 @@
-.three40-b-page{
+.three40-b-page {
   .menu-tabs {
-    .btn{
-      width:190px;
+    .btn {
+      width: 190px;
+
+      &.active {
+        background-color: $brand-primary;
+        color: $white !important;
+      }
     }
   }
   .container {
@@ -10,29 +15,29 @@
     margin-top: 10px;
   }
 
-  .pharmacy-list{
-    ul{
+  .pharmacy-list {
+    ul {
       list-style-type: none;
       text-align: left;
     }
-    li{
+    li {
       line-height: 1.6;
-      &.title{
+      &.title {
         font-weight: 600;
       }
-      &.address{
+      &.address {
         font-size: .9em;
       }
     }
   }
 
-  p{
-    &.question{
-      color:$dark-grey;
+  p {
+    &.question {
+      color: $dark-grey;
     }
   }
 
-  ul.benefit{
+  ul.benefit {
     margin-left: 72px;
     text-align: left;
     padding-bottom: 20px;
@@ -40,17 +45,25 @@
     font-size: 14px;
     line-height: 1.5;
     margin-top: 10px;
-    li{
-      &.intro{
-        list-style-type: none; margin-left: -20px;
+    list-style-type: circle;
+    li {
+      &.intro {
+        list-style-type: none;
+        margin-left: -20px;
       }
     }
   }
+  .see-map {
+    width: 100px;
+    margin: 10px;
+  }
+  .short-code {
+    font-size: large;
+    margin-right: 5px;
+  }
 
-
-
-  ul.status{
-    margin-top:20px;
+  ul.status {
+    margin-top: 20px;
     li {
       width: 1em;
       height: 1em;
@@ -62,8 +75,8 @@
       display: inline-block;
       color: white;
       position: relative;
-      border:2px solid $grey;
-      &:before{
+      border: 2px solid $grey;
+      &:before {
         content: '';
         position: absolute;
         top: .2em;
@@ -80,9 +93,9 @@
     }
 
     .done {
-      background:$grey;
-      &:before{
-        background:$grey;
+      background: $grey;
+      &:before {
+        background: $grey;
       }
     }
 

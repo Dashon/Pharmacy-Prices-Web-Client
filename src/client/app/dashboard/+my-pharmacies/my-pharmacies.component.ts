@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "angular2-jwt";
+import {AuthHttp} from "../../config/http";
 
 @Component({
     moduleId: module.id,
@@ -34,6 +34,7 @@ export class MyPharmaciesComponent {
 
     constructor(http:AuthHttp) {
         this.http = http;
+        this.getClinics();
         this.getClinic(localStorage.getItem('hcf_id'));
     }
 
@@ -55,6 +56,11 @@ export class MyPharmaciesComponent {
             .map((el)=> this.allPharmacies = el).toPromise();
     }
 
+    getClinics() {
+        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
+            (el)=> this.clinics = el,
+            error => this.errorMessage = <any>error);
+    }
 
     private getRemainingPharmacies() {
 

@@ -4,11 +4,12 @@
 
 import { Component } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/common';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TAB_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 // import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
-import {AuthHttp} from "angular2-jwt/angular2-jwt";
+import {AuthHttp} from "../config/http";
+
 /**
  * This class represents the lazy loaded Three40BComponent.
  */
@@ -24,9 +25,10 @@ export class Three40BComponent {
   http = null;
   response = null;
   errorMessage = null;
-
+  currentTab = "start"
   currentSurvey = {};
   allPharmacies = [];
+  contractedPharmacies=[];
   currentClinic = {id: 1};
   editPharmacy = {};
 
@@ -43,9 +45,8 @@ export class Three40BComponent {
   constructor(http:AuthHttp) {
     this.http = http;
     this.newSurvey();
-    this.getClinicPharmacies(1);
+    this.getClinic(localStorage.getItem('hcf_id'));
   }
-
 
   changeTypeaheadLoading(e:boolean) {
     this.typeaheadLoading = e;
@@ -64,7 +65,29 @@ export class Three40BComponent {
         .map((el)=> this.allPharmacies = el).toPromise();
   }
 
+  getClinic(id) {
+    return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
+        clinic => {
+          this.currentClinic = JSON.parse(clinic._body);
+          this.getClinicPharmacies(1);
+          this.getContractedPharmacies(1);
+        },
+        error => this.errorMessage = <any>error);
+  }
 
+  goToMap(){
+
+  }
+  goToSavings(){
+
+  }
+  getContractedPharmacies(page) {
+    return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id='+this.currentClinic['id']+'&page=' + page).map(res => {
+      this.totalPages = res.headers.get('Total_pages');
+      this.currentPage = res.headers.get('Current_page');
+      return res.json()
+    }).subscribe((el)=> this.contractedPharmacies = el);
+  }
 
   getClinicPharmacies(page) {
     return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' + this.currentClinic['id'] + '&limit=' + 100).map(res => {
@@ -75,10 +98,16 @@ export class Three40BComponent {
   }
 
 
-  answerQuestion(body) {
-    return this.postApi(this.baseUrl + 'hcf_pharmacies', body).map(res => res.json()).subscribe(()=> {
+  answerQuestion(question, answer) {
+    if (question == 1){
+    }
+    if(question == 3){
+    }
+    this.currentTab = answer;
 
-    });
+    // return this.postApi(this.baseUrl + 'hcf_pharmacies', body).map(res => res.json()).subscribe(()=> {
+    //
+    // });
   }
 
   postEditRequest(body) {
@@ -87,10 +116,12 @@ export class Three40BComponent {
 
   newSurvey() {
     this.currentSurvey = {};
+    this.currentTab = 'start';
   }
 
   submitSurvey(body) {
-    return this.postApi(this.baseUrl + 'pharmacy_edit_requests', body);
+    this.currentTab = 'submitted';
+    // return this.postApi(this.baseUrl + 'pharmacy_edit_requests', body);
   }
 
 
