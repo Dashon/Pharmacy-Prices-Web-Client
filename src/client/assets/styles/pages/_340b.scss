@@ -1,5 +1,103 @@
-.menu-tabs {
-  .btn{
-    width:190px;
+.three40-b-page {
+  .menu-tabs {
+    .btn {
+      width: 190px;
+
+      &.active {
+        background-color: $brand-primary;
+        color: $white !important;
+      }
+    }
+  }
+  .container {
+    background-color: $white;
+    padding: 40px;
+    margin-top: 10px;
+  }
+
+  .pharmacy-list {
+    ul {
+      list-style-type: none;
+      text-align: left;
+    }
+    li {
+      line-height: 1.6;
+      &.title {
+        font-weight: 600;
+      }
+      &.address {
+        font-size: .9em;
+      }
+    }
+  }
+
+  p {
+    &.question {
+      color: $dark-grey;
+    }
+  }
+
+  ul.benefit {
+    margin-left: 72px;
+    text-align: left;
+    padding-bottom: 20px;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 10px;
+    list-style-type: circle;
+    li {
+      &.intro {
+        list-style-type: none;
+        margin-left: -20px;
+      }
+    }
+  }
+  .see-map {
+    width: 100px;
+    margin: 10px;
+  }
+  .short-code {
+    font-size: large;
+    margin-right: 5px;
+  }
+
+  ul.status {
+    margin-top: 20px;
+    li {
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      line-height: 1em;
+      border-radius: .5em;
+      background: $white;
+      margin: 0 .5em;
+      display: inline-block;
+      color: white;
+      position: relative;
+      border: 2px solid $grey;
+      &:before {
+        content: '';
+        position: absolute;
+        top: .2em;
+        left: -2em;
+        width: 2em;
+        height: .2em;
+        background: $grey;
+        z-index: -1;
+      }
+    }
+
+    li:first-child::before {
+      display: none;
+    }
+
+    .done {
+      background: $grey;
+      &:before {
+        background: $grey;
+      }
+    }
+
   }
 }
