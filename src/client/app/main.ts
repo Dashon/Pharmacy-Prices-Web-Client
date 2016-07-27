@@ -5,7 +5,7 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS,Http} from '@angular/http';
 import {AuthGuard, AdminGaurd} from "./shared/services/auth.gaurd";
 import {AuthHttp, AUTH_PROVIDER} from './config/http';
-import {APP_ROUTER_PROVIDERS} from './app.routes.ts';
+import {APP_ROUTER_PROVIDERS} from './app.routes';
 import {Router} from '@angular/router';
 
 import {AppComponent} from './app.component';
