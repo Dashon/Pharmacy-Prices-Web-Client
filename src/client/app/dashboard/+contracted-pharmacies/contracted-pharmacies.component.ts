@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "angular2-jwt";
+import {AuthHttp} from "../../config/http";
+
 
 @Component({
     moduleId: module.id,
@@ -19,7 +20,7 @@ export class ContractedPharmaciesComponent {
 
     clinicPharmacies = [];
     contractedPharmacies = [];
-    currentClinic = {id:1};
+    currentClinic = {};
     editPharmacy = {};
 
     totalPages = 0;
@@ -36,7 +37,7 @@ export class ContractedPharmaciesComponent {
     constructor(http:AuthHttp) {
         this.http = http;
         this.getClinics();
-        this.getClinic(this.currentClinic);
+        this.getClinic(localStorage.getItem('hcf_id'));
     }
 
 
@@ -61,8 +62,8 @@ export class ContractedPharmaciesComponent {
             })).toPromise();
     }
 
-    getClinic(clinic) {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
+    getClinic(id) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
                 this.getContractedPharmacies(1);

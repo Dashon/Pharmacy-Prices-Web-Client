@@ -1,4 +1,4 @@
-<div class="manage-clinic-pharmacies-page">
+<div class="manage-clinic-pharmacies-page animate">
     <div class="header">
         <h2>My Master Pharmacy List</h2>
     </div>
@@ -15,6 +15,7 @@
                    [typeaheadOptionsLimit]="10"
                    [typeaheadOptionField]="'name'"
                    name="Search"
+                   autocomplete="off"
                    placeholder="Search Pharmacies"
                    class="form-control">
         </div>
@@ -26,7 +27,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li *ngFor="let clinic of clinics">
-                        <a class="dropdown-item" (click)="getClinic(clinic)">{{clinic.name}}</a>
+                        <a class="dropdown-item" (click)="getClinic(clinic.id)">{{clinic.name}}</a>
                     </li>
                 </ul>
             </div>

@@ -1,40 +1,111 @@
 <div class="map-page col-md-12">
-<div class="row">
-    <div class="col-lg-3 pharmacy-list full-height">
+    <div class="row">
+        <div class="col-lg-3 full-height pharmacy-list">
+            <div>
+                <div class="btn-group" dropdown>
+                    <button type="button" class="btn btn-block btn-secondary dropdown-toggle" dropdownToggle>
+                        {{currentClinic.name}}<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li *ngFor="let clinic of clinics">
+                            <a class="dropdown-item" (click)="getClinic(clinic.id)">{{clinic.name}}</a>
+                        </li>
+                    </ul>
+                </div>
 
+                <div class="btn-group" dropdown>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                        {{currentLocation.address}}<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li *ngFor="let location of currentClinic.hcf_locations">
+                            <a class="dropdown-item" (click)="setLocation(location)">{{location.address}}</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="list-of-pharmacies">
+                <input [typeahead]="typeAheadDataRef"
+                       [(ngModel)]="searchString"
+                       (typeaheadLoading)="changeTypeaheadLoading($event)"
+                       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                       (typeaheadOnSelect)="addPharmacy($event.item)"
+                       [typeaheadWaitMs]="300"
+                       [typeaheadMinLength]="3"
+                       [typeaheadOptionsLimit]="10"
+                       [typeaheadOptionField]="'name'"
+                       (keyup)="checkLimit($event)"
+                       name="Search"
+                       autocomplete="off"
+                       placeholder="Search Pharmacies"
+                       class="form-control">
+                <ul>
+                    <li *ngFor="let pharmacy of contractedPharmacies">
+                        <div (click)="zoomToPharmacy(pharmacy)">
+                            <div class="short-code center-block"><h3>{{pharmacy.short_code}}</h3></div>
+                            <div class="pharmacy-details">{{pharmacy.name}} <br/>
+                                {{pharmacy.address}}
+                            </div>
+                            <div class="pharmacy-benefits">
+                                <img *ngFor="let benefit of pharmacy.benefits" src="{{benefit.image_url}}"
+                                     alt="{{benefit.name}}">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-9 full-height map-container">
+            <sebm-google-map
+                    [latitude]="latitude"
+                    [longitude]="longitude"
+                    [zoom]="zoom"
+                    (triggerResize)="mapClicked()"
+                    (centerChange)="updateCurrentGeo($event)"
+                    [usePanning]="true"
+                    [disableDefaultUI]="false"
+                    [zoomControl]="true"
+                    (mapClick)="mapClicked($event)">
+
+                <sebm-google-map-marker
+                        *ngFor="let m of contractedPharmacies; let i = index"
+                        (markerClick)="clickedMarker(m.name, i)"
+                        [latitude]="m.latitude"
+                        [longitude]="m.longitude"
+                        [label]=""
+                        [iconUrl]="m.icon_url"
+                        [markerDraggable]="m.draggable"
+                        (dragEnd)="markerDragEnd(m, $event)">
+
+                    <sebm-google-map-info-window class="clearfix">
+                        <strong>{{m.name}}</strong>
+                        <div>{{m.address}}</div>
+                        <div>{{m.city}},{{m.state}} {{m.zip}}</div>
+                        <a *ngIf="!m.draggable" class="btn btn-block btn-primary btn-rounded pull-left"
+                           [routerLink]="['/340b',{page: 'answer-no'}]">Select</a>
+                        <a *ngIf="!m.draggable" class="btn btn-rounded btn-secondary pull-right"
+                                (click)="m.draggable = true">Edit
+                        </a>
+                        <a *ngIf="m.draggable" class="btn btn-rounded btn-danger pull-left"
+                                (click)="updateCords(m)">Save
+                        </a>
+                        <a *ngIf="m.draggable" class="btn btn-rounded btn-secondary pull-right"
+                                (click)="m.draggable = false">Cancel
+                        </a>
+
+                    </sebm-google-map-info-window>
+
+                </sebm-google-map-marker>
+
+                <!--<sebm-google-map-circle [latitude]="lat + 0.3" [longitude]="lng"-->
+                <!--[radius]="5000"-->
+                <!--[fillColor]="'red'"-->
+                <!--[circleDraggable]="true"-->
+                <!--[editable]="true">-->
+                <!--</sebm-google-map-circle>-->
+
+            </sebm-google-map>
+        </div>
     </div>
-    <div class="col-lg-9 full-height map-container">
-        <sebm-google-map
-                [latitude]="lat"
-                [longitude]="lng"
-                [zoom]="zoom"
-                [disableDefaultUI]="false"
-                [zoomControl]="false"
-                (mapClick)="mapClicked($event)">
-
-            <sebm-google-map-marker
-                    *ngFor="let m of markers; let i = index"
-                    (markerClick)="clickedMarker(m.label, i)"
-                    [latitude]="m.lat"
-                    [longitude]="m.lng"
-                    [label]="m.label"
-                    [markerDraggable]="m.draggable"
-                    (dragEnd)="markerDragEnd(m, $event)">
-
-                <sebm-google-map-info-window>
-                    <strong>InfoWindow content</strong>
-                </sebm-google-map-info-window>
-
-            </sebm-google-map-marker>
-
-            <!--<sebm-google-map-circle [latitude]="lat + 0.3" [longitude]="lng"-->
-                                    <!--[radius]="5000"-->
-                                    <!--[fillColor]="'red'"-->
-                                    <!--[circleDraggable]="true"-->
-                                    <!--[editable]="true">-->
-            <!--</sebm-google-map-circle>-->
-
-        </sebm-google-map>
-    </div>
-</div>
 </div>

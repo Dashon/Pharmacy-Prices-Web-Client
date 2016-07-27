@@ -8,6 +8,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {Http, Headers, RequestOptions} from '@angular/http';
+
 import 'rxjs/Rx';
 /**
  * This class represents the lazy loaded DrugResultsComponent.
@@ -65,7 +66,7 @@ export class DrugResultsComponent {
 
     callApi(url) {
         var authHeader = new Headers();
-        authHeader.append('X-Api-Key', '3e7b2e2b-e619-4b66-be83-88eaefaea5df');
+        authHeader.append('X-Api-Key', '1246d1e0-805a-4f5d-bb7f-6b36b7743fdb');
 
         var options = new RequestOptions({headers: authHeader});
         return this.http.get(url, options);

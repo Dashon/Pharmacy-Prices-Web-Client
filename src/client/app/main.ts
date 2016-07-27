@@ -1,13 +1,16 @@
-import {APP_BASE_HREF} from '@angular/common';
+import {APP_BASE_HREF,} from '@angular/common';
 import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
-import {enableProdMode,provide} from '@angular/core';
+import {enableProdMode,provide,} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS,Http} from '@angular/http';
-import {AUTH_PROVIDERS,AuthHttp, AuthConfig} from 'angular2-jwt';
-
+import {AuthGuard, AdminGaurd} from "./shared/services/auth.gaurd";
+import {AuthHttp, AUTH_PROVIDER} from './config/http';
 import {APP_ROUTER_PROVIDERS} from './app.routes';
+import {Router} from '@angular/router';
+
 import {AppComponent} from './app.component';
 import {GOOGLE_MAPS_PROVIDERS, provideLazyMapsAPILoaderConfig} from 'angular2-google-maps/core/index';
+import {AuthConfig} from "angular2-jwt/angular2-jwt";
 if ('<%= ENV %>' === 'prod') {
     enableProdMode();
 }
@@ -18,20 +21,34 @@ if ('<%= ENV %>' === 'prod') {
  */
 bootstrap(AppComponent, [
     HTTP_PROVIDERS,
+    APP_ROUTER_PROVIDERS,
+    AuthGuard,
+    AdminGaurd,
+    provide(AuthConfig, {
+        useFactory: () => {
+            return new AuthConfig({
+                noJwtError: true,
+                globalHeaders: [
+                    {'Content-Type':'application/json'},
+                    {'X-Api-Key':'1246d1e0-805a-4f5d-bb7f-6b36b7743fdb'}
+                ]
+            });
+        }
+    }),
     provide(AuthHttp, {
-        useFactory: (http) => {
+        useFactory: (http, router) => {
             return new AuthHttp(new AuthConfig({
                 globalHeaders: [
                     {'Content-Type':'application/json'},
-                    {'X-Api-Key':'be23e9e0-9547-436e-a3dc-655cf6039e00'}
+                    {'X-Api-Key':'1246d1e0-805a-4f5d-bb7f-6b36b7743fdb'}
                 ],
-            }), http);
+            }), http, router);
         },
-        deps: [Http]
+        deps: [Http, Router]
     }),
+    AuthHttp,
     disableDeprecatedForms(),
     provideForms(),
-    APP_ROUTER_PROVIDERS,
     GOOGLE_MAPS_PROVIDERS,
     provideLazyMapsAPILoaderConfig({
         apiKey: 'AIzaSyAtBZU8c18SA2J8LeaqkO-N3ox-mVE8Iis'

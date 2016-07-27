@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from 'angular2-jwt';
+import {AuthHttp} from "../../config/http";
 import {MapToArray} from "../../shared/pipes/MapToArray";
 @Component({
     moduleId: module.id,
@@ -20,7 +20,7 @@ export class MyClinicComponent {
     clinicPharmacies = [];
     clinics = [];
 
-    currentClinic = {id: 1};
+    currentClinic = {};
     editClinicItem = {};
     editLocationItem = {};
     editMemberItem = {image_url: '33'};
@@ -32,8 +32,8 @@ export class MyClinicComponent {
 
     constructor(http:AuthHttp) {
         this.http = http;
-        this.getClinic(this.currentClinic);
         this.getClinics();
+        this.getClinic(localStorage.getItem('hcf_id'));
         this.getRoles()
     }
 
@@ -76,8 +76,11 @@ export class MyClinicComponent {
     }
 
     saveClinic() {
+        if (this.editClinicItem['image_url'] === this.currentClinic['image_url']) {
+            delete this.editClinicItem['image_url'];
+        }
         this.putClinic().subscribe(
-            clinic => this.getClinic(this.editClinicItem['id']),
+            clinic => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);
         this.editClinicItem = {};
     }
@@ -93,8 +96,8 @@ export class MyClinicComponent {
             error => this.errorMessage = <any>error);
     }
 
-    getClinic(clinic) {
-        return this.callApi(this.baseUrl + 'health_care_facilities/' + clinic['id']).subscribe(
+    getClinic(id) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => this.currentClinic = JSON.parse(clinic._body),
             error => this.errorMessage = <any>error);
     }
@@ -113,10 +116,11 @@ export class MyClinicComponent {
     }
 
     saveMember() {
+
         this.editMemberItem['role'] = parseInt(this.editMemberItem['role']);
 
         this.putMember().subscribe(
-            () => this.getClinic(this.editClinicItem['id']),
+            () => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);
         this.editMemberItem = {};
 
@@ -156,6 +160,7 @@ export class MyClinicComponent {
     }
 
     saveLocation() {
+        delete this.editLocationItem['image_url'];
         this.putLocation().subscribe(
             () => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);

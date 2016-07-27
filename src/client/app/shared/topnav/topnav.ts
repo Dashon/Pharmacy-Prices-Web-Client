@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {CORE_DIRECTIVES} from '@angular/common';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from 'angular2-jwt';
+import {AuthHttp} from "../../config/http";
 
 @Component({
     moduleId: module.id,
@@ -16,6 +16,8 @@ export class TopNavComponent {
     baseUrl = 'http://localhost:3000/';
     errorMessage = null;
     http = null;
+    userName = localStorage.getItem('name');
+
 
     constructor(http:AuthHttp, private router:Router) {
         this.http = http;
@@ -41,10 +43,24 @@ export class TopNavComponent {
         mainContainer.toggleClass('main-container-ml-zero');
     }
 
-
+    isAdmin() {
+        return localStorage.getItem('role') == 'doc_and_i_admin';
+    }
+    isLoggedIn() {
+        return localStorage.getItem('user_id') != null;
+    }
     logout() {
         return this.deleteApi(this.baseUrl + 'users/sign_out').subscribe(
-            () => this.router.navigate(['/', 'login']),
+            () => {
+                localStorage.removeItem('id_token');
+                localStorage.removeItem('hcf_id');
+                localStorage.removeItem('name');
+                localStorage.removeItem('role');
+                localStorage.removeItem('user_id');
+
+                this.router.navigate(['/', 'login']);
+
+            },
             error => this.errorMessage = <any>error);
     }
 

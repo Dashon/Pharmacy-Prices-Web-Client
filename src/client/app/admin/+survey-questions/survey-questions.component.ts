@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "angular2-jwt/angular2-jwt";
+import {AuthHttp} from "../../config/http";
 
 @Component({
     moduleId: module.id,

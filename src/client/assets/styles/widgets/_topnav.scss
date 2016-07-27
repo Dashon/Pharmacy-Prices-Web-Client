@@ -33,6 +33,15 @@
     height:49px;
     line-height: 20px;
   }
+
+   .add-points {
+     background-repeat: no-repeat;
+     background-position: bottom left;
+     background-image: url("data:image/gif;base64,R0lGODlhKAAoAIABAMXllAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFFAABACwAAAAAKAAoAAACOYyPqcvtD6OctNqLs968+w+G4kiW5omm6sq2LgADaCyfdEnnNajfYR8TAWG4oM1o8rmWzKbzCaUUAAAh+QQFFAABACwJABEACgAKAAACEoyBYBup3NJytNqLX0Rw6ykZBQAh+QQJFAABACwRAAcADQAZAAACIYyBYMup3BIMrj5q5clo8Q45k6eN4oim6sq27gvH8kyvBQAh+QQJFAABACwAAAAAKAAoAAACQIyPqcvtD6OctNqLs94ceMBBHxg6Y7mMKokG69m6rxfLc33AeP7tiO4LCocilpBGRA6VxKbzCY1Kp9Sq9YrNYgsAIfkECRQAAQAsAAAAACgAKAAAAjyMj6nL7Q+jnLTai7PeHHjAQR8YOmO5jCqJBuvZuq8Xy3N9wHj+7YjuCwqHxKLxiEwql8ym8wmNSqfUWgEAIfkEBRQAAQAsAAAAACgAKAAAAieMj6nL7Q+jnLTai7PevPsPhuJIluaJpurKtu4Lx/JM1/aN5/rOIwUAOw==");
+     .topnav-img{
+       margin-left:15px;
+   }
+  }
   .collapse {
     .navbar-nav {
       .nav-item {
@@ -122,11 +131,11 @@
           margin: 0;
           text-transform: uppercase;
           font-weight: 600;
-          &:hover {
+          &:hover{
             background: $brand-primary;
             a {
               color: #FFF;
-            }
+           }
           }
           a {
             color: $gray;
@@ -134,6 +143,9 @@
               text-decoration: none;
               outline: none;
             }
+          }
+          img{
+            margin-right: 5px;
           }
         }
         .dropdown {

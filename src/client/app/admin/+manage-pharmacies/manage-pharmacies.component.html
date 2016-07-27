@@ -1,4 +1,4 @@
-<div class="manage-pharmacies-page">
+<div class="manage-pharmacies-page animate">
     <div class="header">
         <h2> Application Master Pharmacy List</h2>
     </div>
@@ -15,6 +15,7 @@
                    [typeaheadOptionsLimit]="10"
                    [typeaheadOptionField]="'name'"
                    name="Search"
+                   autocomplete="off"
                    (keyup)="checkLimit($event)"
                    placeholder="Search Pharmacies"
                    class="form-control">
@@ -44,7 +45,7 @@
 
                 <tr *ngFor="let pharmacy of pharmacies" (mouseenter)="pharmacy.showRow = true" (mouseleave)="pharmacy.showRow = false">
                     <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.name}}</td>
-                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.name" type="text"
+                    <td *ngIf="editPharmacyItem.id === pharmacy.i                   d"><input [(ngModel)]="editPharmacyItem.name" type="text"
                                                                        class="form-control input-underline"
                                                                        placeholder="Name">
                     </td>
