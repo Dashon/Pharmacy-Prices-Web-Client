@@ -6,9 +6,9 @@ import { SignupRoutes } from './+signup/index';
 import { DrugSearchRoutes } from './+drug-search/index';
 import { DrugResultsRoutes } from './+drug-results/index';
 import { PageNotFoundRoutes } from './+404/index';
-import {Three40BRoutes} from './+340B/340b.routes';
-import {MapRoutes} from './+map/map.routes';
-import {AdminRoutes} from './admin/admin.routes';
+import {Three40BRoutes} from './+340B/340b.routes.ts';
+import {MapRoutes} from './+map/map.routes.ts';
+import {AdminRoutes} from './admin/admin.routes.ts';
 
 
 
