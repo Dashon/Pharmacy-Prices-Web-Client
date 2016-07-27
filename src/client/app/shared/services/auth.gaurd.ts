@@ -6,7 +6,6 @@ import {AuthHttp} from "../../config/http";
 @Injectable()
 export class AuthGuard implements CanActivate {
     constructor(private router: Router) {}
-    constructor(private router: Router) {}
 
     canActivate() {
 
@@ -23,7 +22,7 @@ export class AuthGuard implements CanActivate {
 
 @Injectable()
 export class AdminGaurd implements CanActivate {
-    private isAdmin:Boolean = false;
+    private isAdmin:boolean = false;
 
     constructor(private router: Router, private http:AuthHttp) {
         var role = localStorage.getItem('role');
@@ -36,10 +35,12 @@ export class AdminGaurd implements CanActivate {
 
         this.http.get(baseUrl + 'users/1/isAdmin').subscribe((res) => {
             var role = res.json();
-            this.isAdmin = role['isAdmin'];
+            this.isAdmin = role['isAdmin'] === "true";
             if(!this.isAdmin) {
                 this.router.navigate(['/dashboard', '/home']);
+                return false;
             }
+            return true;
         });
 
         if (tokenNotExpired()) {
