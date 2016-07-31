@@ -30,7 +30,7 @@ bootstrap(AppComponent, [
                 noJwtError: true,
                 globalHeaders: [
                     {'Content-Type':'application/json'},
-                    {'X-Api-Key':'1246d1e0-805a-4f5d-bb7f-6b36b7743fdb'}
+                    {'X-Api-Key':'f78efab5-b478-430e-a94d-4ecf052c6425'}
                 ]
             });
         }
@@ -40,7 +40,7 @@ bootstrap(AppComponent, [
             return new AuthHttp(new AuthConfig({
                 globalHeaders: [
                     {'Content-Type':'application/json'},
-                    {'X-Api-Key':'1246d1e0-805a-4f5d-bb7f-6b36b7743fdb'}
+                    {'X-Api-Key':'f78efab5-b478-430e-a94d-4ecf052c6425'}
                 ],
             }), http, router);
         },

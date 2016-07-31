@@ -12,7 +12,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
     directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
-    baseUrl = 'http://localhost:3000/api/v1/';
+    baseUrl = 'http://api.docandi.com/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
@@ -45,7 +45,7 @@ export class LoginComponent {
 
     postApi(url, body) {
         var authHeader = new Headers();
-        authHeader.append('X-Api-Key', '1246d1e0-805a-4f5d-bb7f-6b36b7743fdb');
+        authHeader.append('X-Api-Key', 'f78efab5-b478-430e-a94d-4ecf052c6425');
         authHeader.append('Content-Type', 'application/json');
 
         var options = new RequestOptions({headers: authHeader});

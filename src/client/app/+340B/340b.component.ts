@@ -21,7 +21,7 @@ import {AuthHttp} from "../config/http";
 })
 export class Three40BComponent {
 
-  baseUrl = 'http://localhost:3000/api/v1/';
+  baseUrl = 'http://api.docandi.com/api/v1/';
   http = null;
   response = null;
   errorMessage = null;
