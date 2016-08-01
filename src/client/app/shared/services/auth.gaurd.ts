@@ -27,15 +27,15 @@ export class AdminGaurd implements CanActivate {
     constructor(private router: Router, private http:AuthHttp) {
         var role = localStorage.getItem('role');
 
-        this.isAdmin = (role =='doc_and_i_admin');
+        this.isAdmin = (role ==' doc_and_i_admin');
     }
 
     canActivate() {
-        var baseUrl = 'http://api.docandi.com/api/v1/';
+        var baseUrl = 'http://localhost:3000/api/v1/';
 
         this.http.get(baseUrl + 'users/1/isAdmin').subscribe((res) => {
             var role = res.json();
-            this.isAdmin = role['isAdmin'] === "true";
+            this.isAdmin = role['isAdmin'] === true;
             if(!this.isAdmin) {
                 this.router.navigate(['/dashboard', '/home']);
                 return false;

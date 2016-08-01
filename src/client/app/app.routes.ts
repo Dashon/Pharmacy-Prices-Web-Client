@@ -9,6 +9,7 @@ import { PageNotFoundRoutes } from './+404/index';
 import {Three40BRoutes} from './+340B/340b.routes';
 import {MapRoutes} from './+map/map.routes';
 import {AdminRoutes} from './admin/admin.routes';
+import {HomeRoutes} from "./+home/home.routes";
 
 
 
@@ -21,7 +22,8 @@ const routes: RouterConfig = [
 	...DrugResultsRoutes,
 	...PageNotFoundRoutes,
 	...Three40BRoutes,
-	...MapRoutes
+	...MapRoutes,
+	...HomeRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [

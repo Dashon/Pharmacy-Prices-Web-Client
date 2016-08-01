@@ -12,7 +12,7 @@ import {MapToArray} from "../../shared/pipes/MapToArray";
     directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class MyClinicComponent {
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
@@ -128,7 +128,7 @@ export class MyClinicComponent {
 
 
     deleteMember(id) {
-        return this.callApi('http://api.docandi.com/api/v1/users/' + id + '/unassociate').subscribe(
+        return this.callApi('http://localhost:3000/api/v1/users/' + id + '/unassociate').subscribe(
             ()=> this.getClinic(id),
             error => this.errorMessage = <any>error);
     }

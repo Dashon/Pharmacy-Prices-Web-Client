@@ -13,7 +13,7 @@ import {AuthHttp} from "../../config/http";
 
 })
 export class EditRequestComponent {
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
     errorMessage = null;

@@ -12,7 +12,7 @@ import {AuthHttp} from "../../config/http";
 
 })
 export class SurveyQuestionsComponent {
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
@@ -48,7 +48,7 @@ export class SurveyQuestionsComponent {
     }
 
     saveQuestion() {
-        this.putApi(this.baseUrl + 'questions'+this.editQuestionItem['id'], this.editQuestionItem).map(res => res.json()).subscribe(()=> {
+        this.putApi(this.baseUrl + 'questions/'+this.editQuestionItem['id'], this.editQuestionItem).map(res => res.json()).subscribe(()=> {
             this.getQuestions(this.currentPage);
         });
         this.editQuestionItem = {};

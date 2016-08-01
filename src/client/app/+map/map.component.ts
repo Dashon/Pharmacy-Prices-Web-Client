@@ -49,7 +49,7 @@ export class MapComponent {
         console.log('dragEnd', m, $event);
     }
 
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
     errorMessage = null;

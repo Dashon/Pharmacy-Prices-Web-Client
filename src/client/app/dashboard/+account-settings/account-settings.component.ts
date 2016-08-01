@@ -17,7 +17,7 @@ export class AccountSettingsComponent {
     clinicPharmacies = [];
     http = null;
     response = null;
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     currentUser = {};
     editUser = {};
     errorMessage = null;

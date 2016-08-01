@@ -13,7 +13,7 @@ import {AuthHttp} from "../../config/http";
 })
 
 export class TopNavComponent {
-    baseUrl = 'http://api.docandi.com/';
+    baseUrl = 'http://localhost:3000/';
     errorMessage = null;
     http = null;
     userName = localStorage.getItem('name');

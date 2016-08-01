@@ -1,26 +1,28 @@
 <div class="row dashboard-home gradient">
     <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-      <section class="header">
-        <h2>Welcome {{currentUser.name}}</h2>
-      </section>
+        <section class="header">
+            <h2>Welcome {{currentUser.name}}</h2>
+        </section>
         <div class="card-deck-wrapper">
             <div class="card-deck" id="row1">
 
                 <div class="card text-sm-center team-activity">
                     <div class="card-block">
                         <h3 class="card-title">Monthly Team Activity</h3>
-                        <div>### Points</div>
+                        <div>{{currentUser.team_month_points}} Points</div>
                         <div class="success progress" role="progressbar" tabindex="0" aria-valuenow="65"
                              aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
                             <div class="progress-meter" style="width: 65%"></div>
                         </div>
-                        <div>Goal ###</div>
+                        <div *ngIf="currentUser.health_care_facility">Goal
+                            {{currentUser.health_care_facility.team_goal}}
+                        </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <img src="http://placehold.it/150x150" class="trophy">
                             </div>
                             <div class="col-sm-12">
-                                <h4>June Trophy</h4>
+                                <h4>{{currentMonth}} Trophy</h4>
                             </div>
                         </div>
                     </div>
@@ -28,32 +30,42 @@
 
                 <div class="card text-sm-center your-activity">
                     <div class="row current-activity">
-                            <div class="card-block">
+                        <div class="card-block"  *ngIf="currentUser.avatars">
 
-                                <a data-open="exampleModal1"><img src="http://placehold.it/150x150"
-                                                                  class="avatar-large"></a>
-                                <!-- MODAL -->
-                                <div class="reveal" id="exampleModal1" hidden="true" data-reveal>
-                                    <h3 id="modalTitle">Select an Avatar</h3>
-                                    <img src="http://placehold.it/150x150" class="avatar-large selected">
-                                    <img src="http://placehold.it/150x150" class="avatar-large">
-                                    <img src="http://placehold.it/150x150" class="avatar-large">
-                                    <img src="http://placehold.it/150x150" class="avatar-large">
-                                    <button class="x" data-close aria-label="Close modal" type="button">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                            <a (click)="selectAvatarModal.show()"><img src="http://placehold.it/150x150"
+                                                              class="avatar-large"></a>
+                            <!-- MODAL -->
+                            <div bsModal #selectAvatarModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                                 aria-labelledby="avatarModal" aria-hidden="true">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" aria-label="Close"
+                                                    (click)="selectAvatarModal.hide()">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">Select an Avatar</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{avatar.image_url}}" class="avatar-large"
+                                                 *ngFor="let avatar of currentUser.avatars">
+                                            <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- END MODAL -->
-                                <h3>Your Activity</h3>
-                                <div>### Points</div>
                             </div>
+                            <!-- END MODAL -->
+                            <br>
+                            <h3>Your Activity</h3>
+                            <div>{{currentUser.month_points}} Points</div>
+                        </div>
                     </div>
                     <br/>
                     <div class="row lifetime-activity">
                         <div class="card-block">
 
-                        <h3>Lifetime Activity</h3>
-                                <div>### Points</div>
+                            <h3>Lifetime Activity</h3>
+                            <div>{{currentUser.total_points}} Points</div>
                         </div>
                     </div>
                 </div>
@@ -68,37 +80,18 @@
                                 <h4>Awarded to the individual with the most points</h4>
                             </div>
                         </div>
-                        <div class="row rank">
-                            <div class="col-sm-3">
-                                <img src="http://placehold.it/150x150" class="avatar">
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="name">Name</div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="position">#1</div>
-                            </div>
-                        </div>
-                        <div class="row rank">
-                            <div class="col-sm-3">
-                                <img src="http://placehold.it/150x150" class="avatar">
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="name">Name</div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="position">#2</div>
-                            </div>
-                        </div>
-                        <div class="row rank">
-                            <div class="col-sm-3">
-                                <img src="http://placehold.it/150x150" class="avatar">
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="name">Name</div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="position">#3</div>
+                        <div *ngIf="currentUser.health_care_facility">
+                            <div class="row rank"
+                                 *ngFor="let user of currentUser.health_care_facility.top_users; let i = index">
+                                <div class="col-sm-3">
+                                    <img src="{{user.avatar}}" class="avatar">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="name">{{user.name}}</div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="name">#{{i+1}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -107,59 +100,91 @@
         </div>
         <br/>
 
-            <div class="card text-sm-center">
-                <div class="card-block">
-                    <h3 class="card-title">Awards</h3>
-                    <div class="row">
-                    <div class="col-sm-6 col-md-3">
-                        <img src="http://placehold.it/350x350">
-                    </div>
-                    <div class="col-sm-6 col-md-3">
+        <div class="card text-sm-center">
+            <div class="card-block">
+                <h3 class="card-title">Awards</h3>
+                <br>
+                <div class="row" *ngIf="currentUser.rewards">
+                    <div class="col-sm-12 col-md-4" (click)="trophyModal.show()">
                         <a data-open="tropyModal"><img src="http://placehold.it/150x150" class="trophy">
-                            <p>2 Trophies</p></a>
+                            <p>{{currentUser.trophies.length}} Trophies</p></a>
                     </div>
                     <!-- TROPHY MODAL -->
-                    <div class="reveal" hidden="true" id="tropyModal" data-reveal>
-                        <h3 id="modalTitle">Your Trophies</h3>
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <button class="x" data-close aria-label="Close modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div bsModal #trophyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                         aria-labelledby="tropyModal" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" aria-label="Close" (click)="trophyModal.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Your Trophies</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{trophy.image_url}}" class="avatar-large"
+                                         *ngFor="let trophy of currentUser.trophies">
+                                    <h3 *ngIf="!currentUser.trophies.length">No Trophies</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- END MODAL -->
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-sm-12 col-md-4" (click)="avatarModal.show()">
                         <a data-open="avatarModal"><img src="http://placehold.it/150x150" class="trophy">
-                            <p>4 Avatars</p></a>
+                            <p>{{currentUser.avatars.length}} Avatars</p></a>
                     </div>
                     <!-- AVATAR MODAL -->
-                    <div class="reveal" hidden="true" id="avatarModal" data-reveal>
-                        <h3 id="modalTitle">Your Avatars</h3>
-                        <img src="http://placehold.it/150x150" class="avatar-large selected">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <button class="x" data-close aria-label="Close modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div bsModal #avatarModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                         aria-labelledby="avatarModal" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" aria-label="Close" (click)="avatarModal.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Your Avatars</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{avatar.image_url}}" class="avatar-large"
+                                         *ngFor="let avatar of currentUser.avatars">
+                                    <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <!-- END MODAL -->
-                    <div class="col-sm-6 col-md-3 ">
+                    <div class="col-sm-12 col-md-4" (click)="badgeModal.show()">
+
                         <a data-open="badgesModal"><img src="http://placehold.it/150x150" class="trophy">
-                            <p>2 Badges</p></a>
+                            <p>{{currentUser.badges.length}} Badges</p></a>
                     </div>
                     <!-- BADGES MODAL -->
-                    <div class="reveal" id="badgesModal" hidden="true" data-reveal>
-                        <h3 id="modalTitle">Your Badges</h3>
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <button class="x" data-close aria-label="Close modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+
+                    <div bsModal #badgeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                         aria-labelledby="badgeModal" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" aria-label="Close" (click)="badgeModal.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Your Badges</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{badge.image_url}}" class="avatar-large"
+                                         *ngFor="let badge of currentUser.badges">
+
+                                    <h3 *ngIf="!currentUser.badges.length">No Badges</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <!-- END MODAL -->
                 </div>
-                </div>
             </div>
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewContainerRef } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { TopNavComponent, SidebarComponent } from './shared/index';
 
@@ -13,4 +13,11 @@ import { TopNavComponent, SidebarComponent } from './shared/index';
  	directives: [ROUTER_DIRECTIVES, TopNavComponent, SidebarComponent]
  })
 
-export class AppComponent {}
+export class AppComponent {
+	viewContainerRef;
+	public constructor(viewContainerRef:ViewContainerRef) {
+		// You need this small hack in order to catch application root view container ref
+		this.viewContainerRef = viewContainerRef;
+	}
+
+}
