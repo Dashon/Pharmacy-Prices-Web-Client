@@ -64,6 +64,23 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Playgrounds/Test/Test/Test.xcdatamodeld/Test.xcdatamodel/contents" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DocandI/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/../DocandI/app/controllers/application_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DocandI/config/application.rb" afterPath="$PROJECT_DIR$/../DocandI/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js" afterPath="$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/dev/app/+login/login.component.js" afterPath="$PROJECT_DIR$/dist/dev/app/+login/login.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/dev/app/config/http.js" afterPath="$PROJECT_DIR$/dist/dev/app/config/http.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/dev/app/main.js" afterPath="$PROJECT_DIR$/dist/dev/app/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/prod/js/app.js" afterPath="$PROJECT_DIR$/dist/prod/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/+drug-results/drug-results.component.js" afterPath="$PROJECT_DIR$/dist/tmp/app/+drug-results/drug-results.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/+drug-results/drug-results.component.ts" afterPath="$PROJECT_DIR$/dist/tmp/app/+drug-results/drug-results.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/+login/login.component.js" afterPath="$PROJECT_DIR$/dist/tmp/app/+login/login.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/+login/login.component.ts" afterPath="$PROJECT_DIR$/dist/tmp/app/+login/login.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/config/http.js" afterPath="$PROJECT_DIR$/dist/tmp/app/config/http.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/config/http.ts" afterPath="$PROJECT_DIR$/dist/tmp/app/config/http.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/main.js" afterPath="$PROJECT_DIR$/dist/tmp/app/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tmp/app/main.ts" afterPath="$PROJECT_DIR$/dist/tmp/app/main.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/+drug-results/drug-results.component.ts" afterPath="$PROJECT_DIR$/src/client/app/+drug-results/drug-results.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/+login/login.component.ts" afterPath="$PROJECT_DIR$/src/client/app/+login/login.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/config/http.ts" afterPath="$PROJECT_DIR$/src/client/app/config/http.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/main.ts" afterPath="$PROJECT_DIR$/src/client/app/main.ts" />
     </list>
     <ignored path="doc_and_i_web_client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="drug-results.component.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="drug-results.component.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state relative-caret-position="651">
+              <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -136,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="340b.component.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="340b.component.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/dev/app/+340B/340b.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+            <state relative-caret-position="474">
+              <caret line="159" column="33" selection-start-line="159" selection-start-column="33" selection-end-line="159" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -261,8 +278,8 @@
         <option value="$PROJECT_DIR$/src/client/assets/styles/pages/_340b.scss" />
         <option value="$PROJECT_DIR$/src/client/app/+340B/340b.component.html" />
         <option value="$PROJECT_DIR$/src/client/app/+340B/340b.component.ts" />
-        <option value="$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js" />
         <option value="$PROJECT_DIR$/dist/dev/app/+340B/340b.component.js" />
+        <option value="$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js" />
       </list>
     </option>
   </component>
@@ -409,84 +426,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="widgets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -950,12 +889,12 @@
       <workItem from="1468999437786" duration="9000" />
       <workItem from="1469007532801" duration="5598000" />
       <workItem from="1469644852964" duration="3503000" />
-      <workItem from="1469980475518" duration="28910000" />
+      <workItem from="1469980475518" duration="29753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="338926000" />
+    <option name="totallyTimeSpent" value="339769000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1718" height="1440" extended-state="0" />
@@ -1410,22 +1349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-pharmacies/my-pharmacies.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1438,8 +1361,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/dev/app/+340B/340b.component.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        <state relative-caret-position="474">
+          <caret line="159" column="33" selection-start-line="159" selection-start-column="33" selection-end-line="159" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/dev/app/+drug-results/drug-results.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
           <folding />
         </state>
       </provider>
