@@ -51,6 +51,19 @@
                     </ul>
                 </div>
             </li>
+
+            <li class="nav-item profile" *ngIf="!isLoggedIn()">
+                <div class="btn-group" dropdown>
+                    <a dropdownToggle="" class="dropdown-toggle" aria-haspopup="true" href="javascript:void(0)" (click)="goToLogin()">
+                        <span>Login</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="lang">
+
+                    </ul>
+                </div>
+            </li>
+
+
         </ul>
     </div>
     <ul class="nav navbar-nav pull-right hidden-md-up hidd">
@@ -62,7 +75,7 @@
                 <ul class="dropdown-menu" aria-labelledby="lang">
                     <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoProfile()">Profile</a></li>
                     <li class="divider dropdown-divider"></li>
-                    <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoLogin()">Logout</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="goToLogin()">Logout</a></li>
                 </ul>
             </div>
         </li>

@@ -49,6 +49,9 @@ export class TopNavComponent {
     isLoggedIn() {
         return localStorage.getItem('user_id') != null;
     }
+    goToLogin(){
+        this.router.navigate(['/', 'login']);
+    }
     logout() {
         return this.deleteApi(this.baseUrl + 'users/sign_out').subscribe(
             () => {
