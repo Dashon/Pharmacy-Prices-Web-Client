@@ -66,7 +66,7 @@ export class DrugResultsComponent {
 
     callApi(url) {
         var authHeader = new Headers();
-        authHeader.append('X-Api-Key', 'f78efab5-b478-430e-a94d-4ecf052c6425');
+        authHeader.append('X-Api-Key', 'b42a9782-f0b6-49d6-9a84-22777b450816');
 
         var options = new RequestOptions({headers: authHeader});
         return this.http.get(url, options);

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
   userName = localStorage.getItem('name');
   currentUser = {};
-  baseUrl = 'http://localhost:3000/api/v1/';
+  baseUrl = 'http://api.docandi.com/api/v1/';
   errorMessage = null;
   currentMonth = "--";
 
