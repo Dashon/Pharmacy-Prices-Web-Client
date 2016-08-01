@@ -1,13 +1,14 @@
 .three40-b-page {
   .menu-tabs {
     .btn {
-      width: 190px;
-
       &.active {
         background-color: $brand-primary;
         color: $white !important;
       }
     }
+  }
+  .yes-no-btn{
+    margin-bottom: 15px;
   }
   .container {
     background-color: $white;
@@ -38,7 +39,6 @@
   }
 
   ul.benefit {
-    margin-left: 72px;
     text-align: left;
     padding-bottom: 20px;
     font-style: italic;
@@ -53,10 +53,7 @@
       }
     }
   }
-  .see-map {
-    width: 100px;
-    margin: 10px;
-  }
+
   .short-code {
     font-size: large;
     margin-right: 5px;
@@ -100,6 +97,13 @@
     }
 
   }
+  .select-Pharmacy{
+    line-height: 50px;
+    select{
+      width: 100%;
+    }
+  }
+
 }
 .closeMapBtn{
   position: absolute;

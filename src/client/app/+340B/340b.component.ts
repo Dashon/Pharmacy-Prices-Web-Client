@@ -58,7 +58,7 @@ export class Three40BComponent {
     questions = {
         q1: null,
         //yes
-        q2: null,
+        q2: 0,
         q3: null,
         //no
         q4: null,
@@ -66,12 +66,12 @@ export class Three40BComponent {
         //agree?
         q6: null,
         //yes
-        q7: null,
+        q7: 0,
         q8: null,
         q9: null,
         q10: null,
         //no
-        q11: null
+        q11: 0
     };
 
 
@@ -282,7 +282,7 @@ export class Three40BComponent {
         this.questions = {
             q1: null,
             //yes
-            q2: null,
+            q2: 0,
             q3: null,
             //no
             q4: null,
@@ -290,12 +290,12 @@ export class Three40BComponent {
             //agree?
             q6: null,
             //yes
-            q7: null,
+            q7: 0,
             q8: null,
             q9: null,
             q10: null,
             //no
-            q11: null
+            q11: 0
         }
     }
 
