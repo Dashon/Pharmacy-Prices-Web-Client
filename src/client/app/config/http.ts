@@ -28,7 +28,9 @@ export const AUTH_PROVIDER: any = [
             return new AuthHttp(new AuthConfig({
                 globalHeaders: [
                     {'Content-Type':'application/json'},
-                    {'X-Api-Key':'fa99a18f-c594-4618-8fcd-d00147e12687'}
+                    {'Content-Type':'application/json'},
+
+                    {'X-Api-Key':'324212a0-db7b-468e-aaeb-e4b6502e829e'}
                 ],
             }), http, router);
         },

@@ -13,7 +13,7 @@ import {AuthHttp} from "../../config/http";
 })
 
 export class TopNavComponent {
-    baseUrl = 'http://api.docandi.com/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com';
     errorMessage = null;
     http = null;
     userName = localStorage.getItem('name');

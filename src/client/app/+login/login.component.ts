@@ -12,7 +12,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
     directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
@@ -45,7 +45,7 @@ export class LoginComponent {
 
     postApi(url, body) {
         var authHeader = new Headers();
-        authHeader.append('X-Api-Key', 'fa99a18f-c594-4618-8fcd-d00147e12687');
+        authHeader.append('X-Api-Key', '324212a0-db7b-468e-aaeb-e4b6502e829e');
         authHeader.append('Content-Type', 'application/json');
 
         var options = new RequestOptions({headers: authHeader});

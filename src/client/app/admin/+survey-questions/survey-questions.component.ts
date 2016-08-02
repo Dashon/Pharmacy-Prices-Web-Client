@@ -12,7 +12,7 @@ import {AuthHttp} from "../../config/http";
 
 })
 export class SurveyQuestionsComponent {
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
     response = null;
     errorMessage = null;

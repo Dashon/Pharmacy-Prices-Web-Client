@@ -5,18 +5,27 @@
             <div class="row text-xs-center">
                 <div class="col-sm-12">
                     <div class="row">
-                        <a><img src="http://placehold.it/150x150" class="avatar-large"></a>
+                        <a (click)="selectAvatarModal.show()"><img src="{{currentUser.image_url}}" class="avatar-large"></a>
                     </div>
                     <!-- MODAL -->
-                    <div class="reveal" id="modal1" data-reveal hidden="true">
-                        <h3 id="modalTitle">Select an Avatar</h3>
-                        <img src="http://placehold.it/150x150" class="avatar-large selected">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <img src="http://placehold.it/150x150" class="avatar-large">
-                        <button class="x" data-close aria-label="Close modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div bsModal #selectAvatarModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                         aria-labelledby="avatarModal" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" aria-label="Close"
+                                            (click)="selectAvatarModal.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Select an Avatar</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{avatar.image_url}}" class="avatar-large"
+                                         *ngFor="let avatar of currentUser.avatars" (click)="chooseAvatar(avatar.image_url)">
+                                    <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- END MODAL -->
                     <br>

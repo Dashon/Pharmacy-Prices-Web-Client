@@ -17,7 +17,7 @@ export class AccountSettingsComponent {
     clinicPharmacies = [];
     http = null;
     response = null;
-    baseUrl = 'http://api.docandi.com/api/v1/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     currentUser = {};
     editUser = {};
     errorMessage = null;
@@ -42,6 +42,13 @@ export class AccountSettingsComponent {
 
     changePasswordAccountInfo() {
         return this.putApi(this.baseUrl +'/password/', this.editUser);
+    }
+
+    chooseAvatar(imgURL) {
+        this.currentUser['image_url'] = imgURL;
+        return this.putApi(this.baseUrl +'/password/', this.currentUser).subscribe(
+            user => this.currentUser = user.json(),
+            error => this.errorMessage = <any>error);
     }
 
     edit() {

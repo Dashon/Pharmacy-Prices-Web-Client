@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
   userName = localStorage.getItem('name');
   currentUser = {};
-  baseUrl = 'http://api.docandi.com/api/v1/';
+  baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
   errorMessage = null;
   currentMonth = "--";
 
@@ -35,6 +35,21 @@ export class HomeComponent implements OnInit {
         user => this.currentUser = user.json(),
         error => this.errorMessage = <any>error);
   }
+
+
+  chooseAvatar(imgURL) {
+    this.currentUser['image_url'] = imgURL;
+    return this.putApi(this.baseUrl +'/password/', this.currentUser).subscribe(
+        user => this.currentUser = user.json(),
+        error => this.errorMessage = <any>error);
+  }
+
+  putApi(url, body) {
+    this.errorMessage = '';
+    var bodyJSON = JSON.stringify(body);
+    return this.http.put(url, bodyJSON);
+  }
+
 
   callApi(url) {
     this.errorMessage = '';
