@@ -41,7 +41,7 @@
                         </select>
                     </td>
 
-                    <td *ngIf="editUserItem.id !== user.id">{{user.health_care_facility.name}}</td>
+                    <td *ngIf="editUserItem.id !== user.id"><span *ngIf="user.health_care_facility">{{user.health_care_facility.name}}</span></td>
                     <td *ngIf="editUserItem.id === user.id">
                         <select name="health_care_facility_id" [(ngModel)]="editUserItem.health_care_facility_id">
                             <option value="undefined" selected>Select Clinic</option>
@@ -79,11 +79,11 @@
                 <!--NEW MEMBER-->
                 <tr *ngIf="editUserItem.id === 'NEW'">
                     <td><input
-                            [(ngModel)]="editUserItem.name" type="text" name="name"
-                            class="form-control input-underline" placeholder="Full Name"></td>
-                    <td><input
                             [(ngModel)]="editUserItem.email" type="text" name="email"
                             class="form-control input-underline" placeholder="Email"></td>
+                    <td><input
+                            [(ngModel)]="editUserItem.name" type="text" name="name"
+                            class="form-control input-underline" placeholder="Full Name"></td>
                     <td>
                         <select name="role" [(ngModel)]="editUserItem.role">
                             <option value="undefined" selected>Select Role</option>

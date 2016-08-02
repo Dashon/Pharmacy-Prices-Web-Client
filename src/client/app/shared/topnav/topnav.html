@@ -6,10 +6,10 @@
     <div class="collapse navbar-toggleable-sm">
         <a class="navbar-brand" href="Javascript:void(0);"(click)="gotoHome()"><img class="logo" src="assets/images/doc_and_i_logo.png"></a>
         <ul class="nav navbar-nav pull-right navbar-right">
-          <li class="nav-item nav-text" role="menuitem" *ngIf="isLoggedIn()"><a href="javascript:void(0)" [routerLink]="['/','/340b']" tabindex="0"><img src="assets/images/svg/icon-script.svg" width="20px">340B</a></li>
+          <li class="nav-item nav-text" role="menuitem" *ngIf="isAssociated()"><a href="javascript:void(0)" [routerLink]="['/','/340b']" tabindex="0"><img src="assets/images/svg/icon-script.svg" width="20px">340B</a></li>
           <!--<li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" [routerLink]="['/','/map']" ><img src="assets/images/svg/icon-map.svg" width="15px"> Map</a></li>-->
           <!--<li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" [routerLink]="['/','/drug-search']"><img src="assets/images/svg/icon-savings.svg" width="20px"> Savings</a></li>-->
-            <li class="nav-item profile" *ngIf="isLoggedIn()">
+            <li class="nav-item profile" *ngIf="isAssociated()">
                 <div class="btn-group nav-text" dropdown>
                     <a dropdownToggle="" class="dropdown-toggle" aria-haspopup="true">
                          <span>My Clinic</span>
@@ -72,11 +72,11 @@
                 <a dropdownToggle>
                     <img src="assets/images/flat-avatar.png" class="topnav-img" alt="">
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="lang">
-                    <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoProfile()">Profile</a></li>
-                    <li class="divider dropdown-divider"></li>
-                    <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="goToLogin()">Logout</a></li>
-                </ul>
+                <!--<ul class="dropdown-menu" aria-labelledby="lang">-->
+                    <!--<li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="gotoProfile()">Profile</a></li>-->
+                    <!--<li class="divider dropdown-divider"></li>-->
+                    <!--<li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="goToLogin()">Logout</a></li>-->
+                <!--</ul>-->
             </div>
         </li>
     </ul>

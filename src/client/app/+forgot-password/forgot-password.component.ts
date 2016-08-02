@@ -7,39 +7,29 @@ import {Http, Headers, RequestOptions} from '@angular/http';
  */
 @Component({
     moduleId: module.id,
-    selector: 'login-cmp',
-    templateUrl: 'login.component.html',
+    selector: 'forgot-password-cmp',
+    templateUrl: 'forgot-password.component.html',
     directives: [ROUTER_DIRECTIVES]
 })
-export class LoginComponent {
+export class ForgotPasswordComponent {
     baseUrl = 'http://api.docandi.com/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
     userName="";
-    password="";
 
     constructor(http:Http, private router:Router) {
         this.http = http;
     }
 
 
-    login() {
-        this.postApi(this.baseUrl + 'auth_user/',{"email":this.userName, "password":this.password}).subscribe(
+    forgotPassword() {
+        this.postApi(this.baseUrl + 'forgot_password/',{"email":this.userName}).subscribe(
             response => {
-                var user = response.json().user;
-                localStorage.setItem('id_token', response.json().auth_token);
-                localStorage.setItem('user_id', user.id);
-                localStorage.setItem('name', user.name);
-                localStorage.setItem('hcf_id', user.hcf_id);
-                localStorage.setItem('role', user.role);
-
-                this.router.navigate(['/dashboard', '/home']);
-
+                this.router.navigate(['/', '/login']);
             },
             error => {
                 this.errorMessage = error;
-                this.errorMessage = "Bad Login"
             });
     }
 

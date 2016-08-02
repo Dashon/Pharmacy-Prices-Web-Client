@@ -77,10 +77,29 @@ export class ManageUsersComponent {
 
     }
 
+    inviteUser(){
+       if(this.editUserItem['role']){
+           this.editUserItem['role'] = parseInt(this.editUserItem['role']);
+       }
+
+        this.postApi(this.baseUrl + 'invite_user', this.editUserItem).subscribe(
+            () => {
+                this.getUsers(this.totalPages);
+                this.editUserItem = {};
+            },
+            error => this.errorMessage = <any>error);
+    }
+
+    // deleteUser(id) {
+    //     return this.deleteApi(this.baseUrl + 'users/' + id).subscribe(()=> {
+    //         this.getUsers(this.currentPage);
+    //     });
+    // }
+
     deleteUser(id) {
-        return this.deleteApi(this.baseUrl + 'users/' + id).subscribe(()=> {
-            this.getUsers(this.currentPage);
-        });
+        return this.callApi('http://api.docandi.com/api/v1/users/' + id + '/unassociate').subscribe(
+            ()=> this.getUsers(this.currentPage),
+            error => this.errorMessage = <any>error);
     }
 
     cancelEditUser() {

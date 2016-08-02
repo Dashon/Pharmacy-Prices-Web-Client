@@ -4,6 +4,7 @@
 			<h2>Healthcare Portal</h2>
 			<p>For participating healthcare professionals</p>
 			<br>
+			<p class="bg-danger">{{errorMessage}}</p>
 			<form role="form">
 				<div class="form-content col-lg-10 col-lg-offset-1">
 					<div class="form-group">
@@ -13,7 +14,7 @@
 					<div class="form-group">
 						<input type="password" class="form-control input-underline input-lg" id="password"  name="password" [(ngModel)]="password"  placeholder="Password">
 					</div>
-                    <div class="password-forgot"><a href="#" >Forgot Password?</a></div>
+                    <div class="password-forgot"><a [routerLink]="['/forgot-password']" >Forgot Password?</a></div>
                 </div>
 				<a class="btn rounded-btn" (click)="login()"> Log in </a>
 				&nbsp;

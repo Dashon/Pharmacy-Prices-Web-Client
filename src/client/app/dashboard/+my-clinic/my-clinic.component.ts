@@ -141,8 +141,17 @@ export class MyClinicComponent {
         this.editMemberItem = {id: 'NEW'};
     }
 
-    inviteMember() {
+    inviteMember(){
+        if(this.editMemberItem['role']){
+            this.editMemberItem['role'] = parseInt(this.editMemberItem['role']);
+        }
 
+        this.postApi(this.baseUrl + 'invite_user', this.editMemberItem).subscribe(
+            () => {
+                this.getClinic(localStorage.getItem('hcf_id'));
+                this.editMemberItem = {};
+            },
+            error => this.errorMessage = <any>error);
     }
 
     setRole(role) {

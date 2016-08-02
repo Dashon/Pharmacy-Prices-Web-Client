@@ -49,6 +49,10 @@ export class TopNavComponent {
     isLoggedIn() {
         return localStorage.getItem('user_id') != null;
     }
+
+    isAssociated() {
+        return this.isLoggedIn() && localStorage.getItem('hcf_id') != 'null';
+    }
     goToLogin(){
         this.router.navigate(['/', 'login']);
     }
