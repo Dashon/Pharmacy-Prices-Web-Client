@@ -29,6 +29,40 @@ export class ManageRewardsComponent {
         this.getRewards(1);
     }
 
+    handleLogo(event) {
+        var files = event.srcElement.files
+
+        if (files) {
+            var file = files[0];
+            var imageType = /^image\//;
+            if (!imageType.test(file.type)) {
+                return;
+            }
+
+            var nBytes = file.size;
+            var filesizeText = nBytes + " bytes";
+            // optional code for multiples approximation
+            for (var aMultiples = ["KB", "MB", "GB", "TB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+                filesizeText = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+            }
+
+            if (nBytes > 2000000) {
+                this.errorMessage = "Max File Size 2 MB. Current size: " + filesizeText
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = (function (scope) {
+                return function (e) {
+                    scope['image_url'] = e.target.result;
+                };
+            })(this.editRewardItem);
+
+            reader.readAsDataURL(file);
+        }
+
+    }
+
     createReward() {
         this.postApi(this.baseUrl + 'rewards/', this.editRewardItem).subscribe(
             () => this.getRewards(this.totalPages),

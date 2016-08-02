@@ -13,7 +13,7 @@
                    [typeaheadWaitMs]="300"
                    [typeaheadMinLength]="3"
                    [typeaheadOptionsLimit]="10"
-                   [typeaheadOptionField]="'name'"
+                   [typeaheadOptionField]="'display_name'"
                    name="Search"
                    autocomplete="off"
                    placeholder="Search Pharmacies"
@@ -23,7 +23,7 @@
         <div class="col-lg-3">
             <div class="btn-group" dropdown>
                 <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
-                    {{currentClinic.name}}<span class="caret"></span>
+                    {{currentClinic.name}} {{currentClinic.full_street_address}}<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li *ngFor="let clinic of clinics">
