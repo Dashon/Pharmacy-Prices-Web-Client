@@ -109,8 +109,8 @@
       <file leaf-file-name="my-clinic.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="129" column="2" selection-start-line="129" selection-start-column="2" selection-end-line="133" selection-end-column="5" />
+            <state relative-caret-position="600">
+              <caret line="166" column="5" selection-start-line="166" selection-start-column="5" selection-end-line="166" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -119,22 +119,9 @@
       <file leaf-file-name="topnav.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/shared/topnav/topnav.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+            <state relative-caret-position="432">
+              <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="47" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage-clinics.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-clinics/manage-clinics.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-                <marker date="1470144473000" expanded="true" signature="535:3008" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -142,8 +129,8 @@
       <file leaf-file-name="topnav.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/shared/topnav/topnav.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+            <state relative-caret-position="180">
+              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="58" />
               <folding>
                 <element signature="n#li#1;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
                 <element signature="n#li#2;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
@@ -156,8 +143,8 @@
       <file leaf-file-name="manage-clinics.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-clinics/manage-clinics.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+            <state relative-caret-position="120">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -185,11 +172,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/+login/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="103" selection-start-line="16" selection-start-column="103" selection-end-line="16" selection-end-column="103" />
+            <state relative-caret-position="255">
+              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-clinic.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -213,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dist/dev/css/bootstrap-datetimepicker.css" />
         <option value="$PROJECT_DIR$/dist/dev/css/app.css" />
         <option value="$PROJECT_DIR$/src/client/assets/styles/widgets/_topnav.scss" />
         <option value="$PROJECT_DIR$/src/client/app/dashboard/+account-settings/account-settings.component.ts" />
@@ -257,13 +253,14 @@
         <option value="$PROJECT_DIR$/src/client/app/+forgot-password/forgot-password.component.html" />
         <option value="$PROJECT_DIR$/src/client/app/+forgot-password/forgot-password.component.ts" />
         <option value="$PROJECT_DIR$/src/client/app/admin/+manage-clinics/manage-clinics.component.ts" />
-        <option value="$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.ts" />
         <option value="$PROJECT_DIR$/src/client/app/admin/+manage-users/manage-users.component.html" />
         <option value="$PROJECT_DIR$/src/client/app/admin/+manage-users/manage-users.component.ts" />
         <option value="$PROJECT_DIR$/src/client/app/shared/topnav/topnav.html" />
         <option value="$PROJECT_DIR$/src/client/app/shared/topnav/topnav.ts" />
         <option value="$PROJECT_DIR$/src/client/app/+login/login.component.ts" />
         <option value="$PROJECT_DIR$/src/client/app/+login/login.component.html" />
+        <option value="$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.ts" />
+        <option value="$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.html" />
       </list>
     </option>
   </component>
@@ -1179,12 +1176,12 @@
       <workItem from="1468999437786" duration="9000" />
       <workItem from="1469007532801" duration="5598000" />
       <workItem from="1469644852964" duration="3503000" />
-      <workItem from="1469980475518" duration="41127000" />
+      <workItem from="1469980475518" duration="41635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351143000" />
+    <option name="totallyTimeSpent" value="351651000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1718" height="1440" extended-state="0" />
@@ -1493,14 +1490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="33" column="30" selection-start-line="20" selection-start-column="23" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-rewards/manage-rewards.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
@@ -1598,7 +1587,7 @@
         <state relative-caret-position="495">
           <caret line="33" column="5" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1608,17 +1597,9 @@
         <state relative-caret-position="462">
           <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
             <marker date="1470144473000" expanded="true" signature="535:3008" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-clinics/manage-clinics.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1626,14 +1607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-users/manage-users.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-522">
-          <caret line="37" column="95" selection-start-line="37" selection-start-column="95" selection-end-line="37" selection-end-column="95" />
           <folding />
         </state>
       </provider>
@@ -1648,30 +1621,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/shared/topnav/topnav.html">
+    <entry file="file://$PROJECT_DIR$/src/client/app/+login/login.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="n#li#1;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
-            <element signature="n#li#2;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
-            <element signature="n#li#3;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="129" column="2" selection-start-line="129" selection-start-column="2" selection-end-line="133" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/shared/topnav/topnav.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        <state relative-caret-position="432">
+          <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="47" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1686,10 +1647,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/+login/login.component.html">
+    <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-users/manage-users.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="103" selection-start-line="16" selection-start-column="103" selection-end-line="16" selection-end-column="103" />
+        <state relative-caret-position="-522">
+          <caret line="37" column="95" selection-start-line="37" selection-start-column="95" selection-end-line="37" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="166" column="5" selection-start-line="166" selection-start-column="5" selection-end-line="166" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/shared/topnav/topnav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="58" />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
+            <element signature="n#li#2;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
+            <element signature="n#li#3;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-clinics/manage-clinics.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
           <folding />
         </state>
       </provider>

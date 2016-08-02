@@ -1,6 +1,6 @@
 <div class="my-clinic-page animate">
     <h2 class="header">{{currentClinic.name}}</h2>
-    <div class="pull-right m-r-2">
+    <div class="pull-right m-r-2" *ngIf="isAdmin()">
         <div class="btn-group" dropdown>
             <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
                 {{currentClinic.name}}<span class="caret"></span>

@@ -162,7 +162,9 @@ export class MyClinicComponent {
     putMember() {
         return this.putApi(this.baseUrl + 'users/' + this.editMemberItem['id'], this.editMemberItem);
     }
-
+    isAdmin() {
+        return localStorage.getItem('role') == 'doc_and_i_admin';
+    }
 
     editLocation(location) {
         this.editLocationItem = (JSON.parse(JSON.stringify(location)));
