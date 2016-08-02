@@ -48,7 +48,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-xs-centered block pharmacy-list border">
                                         <ul>
-                                            <li *ngFor="let p of allPharmacies"><strong class="short-code">{{p.dni_pharmacy.short_code}}</strong>
+                                            <li *ngFor="let p of allPharmacies">
                                                 {{p.dni_pharmacy.display_name}}
                                             </li>
                                         </ul>
@@ -63,7 +63,7 @@
                                     <select [(ngModel)]="questions.q2" class="col-sm-12">
                                         <option value="0">Select A Pharmacy</option>
                                         <option value="{{p.id}}" *ngFor="let p of contractedPharmacies">
-                                            ({{p.dni_pharmacy.short_code}}) {{p.dni_pharmacy.display_name}}
+                                            {{p.dni_pharmacy.display_name}}
                                         </option>
                                     </select>
                                 </div>
@@ -112,7 +112,7 @@
                                 <div class="row">
                                     <input id="pharmacy-info" type="checkbox" [(ngModel)]="questions.q5"><label
                                         for="pharmacy-info">I have
-                                    informed patient of the <a href="" target="_blank">participating pharmacy
+                                    informed patient of the <a (click)="showMap = true">participating pharmacy
                                         locations</a> and corresponding benefits of pharmacies</label>
                                 </div>
                                 <div class="row text-xs-center">
@@ -145,7 +145,7 @@
                                         <select [(ngModel)]="questions.q7">
                                             <option value="0">Select A Pharmacy</option>
                                             <option value="{{p.id}}" *ngFor="let p of contractedPharmacies">
-                                                ({{p.dni_pharmacy.short_code}}) {{p.dni_pharmacy.display_name}}
+                                               {{p.dni_pharmacy.display_name}}
                                             </option>
                                         </select>
                                     </div>
@@ -156,17 +156,17 @@
                                 </div>
                                 <div class="row">
                                     <input id="updated-Pharmacy" type="checkbox" [(ngModel)]="questions.q8"><label
-                                        for="340b-benefits">I
+                                        for="updated-Pharmacy">I
                                     updated the preferred pharmacy in the system and alerted doctor</label>
                                 </div>
                                 <div class="row">
-                                    <input name="handout-given" ng-model="d" type="checkbox"
-                                           [(ngModel)]="questions.q9"><label for="pharmacy-info">I gave the
+                                    <input id="handout-given" name="handout-given" type="checkbox"
+                                           [(ngModel)]="questions.q9"><label for="handout-given">I gave the
                                     patient 340b handout</label>
                                 </div>
                                 <div class="row">
                                     <input id="freedom-choice" type="checkbox" [(ngModel)]="questions.q10"><label
-                                        for="pharmacy-info"> I told
+                                        for="freedom-choice"> I told
                                     the patient about freedom of choice</label>
                                 </div>
                                 <br>
@@ -245,16 +245,6 @@
         <button (click)="showMap = false" class="closeMapBtn"> Close Map</button>
         <div class="col-lg-3 full-height pharmacy-list">
             <div>
-                <div class="btn-group" dropdown>
-                    <button type="button" class="btn btn-block btn-secondary dropdown-toggle" dropdownToggle>
-                        {{currentClinic.name}}<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li *ngFor="let clinic of clinics">
-                            <a class="dropdown-item" (click)="getClinic(clinic.id)">{{clinic.name}}</a>
-                        </li>
-                    </ul>
-                </div>
 
                 <div class="btn-group" dropdown>
                     <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
@@ -286,7 +276,6 @@
                 <ul>
                     <li *ngFor="let pharmacy of contractedPharmacies">
                         <div (click)="zoomToPharmacy(pharmacy.dni_pharmacy)">
-                            <div class="short-code center-block"><h3>{{pharmacy.dni_pharmacy.short_code}}</h3></div>
                             <div class="pharmacy-details">{{pharmacy.dni_pharmacy.name}} <br/>
                                 {{pharmacy.dni_pharmacy.address}}
                             </div>
