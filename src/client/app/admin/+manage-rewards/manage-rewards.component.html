@@ -37,7 +37,8 @@
                     <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.cost" type="number" class="form-control input-underline" name="value" placeholder="Value"></td>
 
                     <td *ngIf="editRewardItem.id !== reward.id"><img src="{{reward.image_url}}" class="reward_image"/> </td>
-                    <td *ngIf="editRewardItem.id === reward.id"><input type="file" name="logo" accept="image/*" (change)="handleLogo($event)"></td>
+                    <!--<td *ngIf="editRewardItem.id === reward.id"><input type="file" name="logo" accept="image/*" (change)="handleLogo($event)"></td>-->
+                    <td *ngIf="editRewardItem.id === reward.id"><input [(ngModel)]="editRewardItem.image_url" type="text" class="form-control input-underline" name="imageURL" placeholder="Image_Url"></td>
 
                     <td class="action-column pull-right">
                         <div [hidden]="!reward.showRow && editRewardItem.id !== reward.id">
@@ -69,7 +70,9 @@
                     <td><input [(ngModel)]="editRewardItem.reward_type" type="text" class="form-control input-underline" name="rewardType" placeholder="Reward Type"></td>
 
                     <td ><input [(ngModel)]="editRewardItem.cost" type="number" class="form-control input-underline" name="value" placeholder="Value"></td>
-                    <td> <input type="file" name="logo" accept="image/*" (change)="handleLogo($event)"> </td>
+                    <!--<td> <input type="file" name="logo" accept="image/*" (change)="handleLogo($event)"> </td>-->
+                    <td><input [(ngModel)]="editRewardItem.image_url" type="text" class="form-control input-underline" name="imageURL" placeholder="Image_Url"></td>
+
                     <td class="action-column pull-right">
                     </td>
 

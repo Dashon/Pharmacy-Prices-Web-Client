@@ -54,7 +54,7 @@ export class ContractedPharmaciesComponent {
     }
 
     searchTypeAhead(text) {
-        return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?query=' + text).map(res => res.json())
+        return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?health_care_facility_id='+this.currentClinic['id']+'&query=' + text).map(res => res.json())
             .map((hcf_pharmacies)=> this.clinicPharmacies = hcf_pharmacies.map((hcf_pharmacy)=> {
                var dni_pharmacy = hcf_pharmacy['dni_pharmacy'];
                 dni_pharmacy.hcf_pharmacy_id = hcf_pharmacy.id;

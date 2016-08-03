@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
-import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import { DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ModalDirective, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 import {AuthHttp} from "../../config/http";
 
 
@@ -9,9 +9,8 @@ import {AuthHttp} from "../../config/http";
     moduleId: module.id,
     selector: 'account-settings-cmp',
     templateUrl: 'account-settings.component.html',
-
-    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES]
-
+    viewProviders:[BS_VIEW_PROVIDERS],
+    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES,ModalDirective]
 })
 export class AccountSettingsComponent {
     clinicPharmacies = [];

@@ -40,7 +40,7 @@ export class DrugResultsComponent {
 
     getDrugs(text) {
         this.formChildren = [];
-        return this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
+        return this.callApi('https://doc-and-i-api.herokuapp.com/api/v1/drugs?name_prefix=' + text).map(res => res.json())
             .map((el)=> {
                 var uniqueItems = {};
                 this.formChildren = [];
@@ -61,7 +61,7 @@ export class DrugResultsComponent {
     }
 
     getUsers() {
-        this.callApi('http://doc-and-i-api.herokuapp.com/api/v1/pharmacies?distance_from_zip=60640');
+        this.callApi('https://doc-and-i-api.herokuapp.com/api/v1/pharmacies?distance_from_zip=60640');
     }
 
     callApi(url) {

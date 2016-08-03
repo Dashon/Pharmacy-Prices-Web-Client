@@ -46,11 +46,18 @@ export class ManagePharmaciesComponent {
     }
 
     searchTypeAhead(text) {
-        return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?query=' + text).map(res => res.json())
-            .map((hcf_pharmacies)=> {
-                this.pharmacies = hcf_pharmacies.map((hcf_pharmacy)=> {
-                var dni_pharmacy = hcf_pharmacy['dni_pharmacy'];
-                dni_pharmacy.hcf_pharmacy_id = hcf_pharmacy.id;
+        return this.callApi(this.baseUrl + 'dni_pharmacies/prefix?query=' + text).map(res => res.json())
+            .map((dni_pharmacies)=> {
+                this.pharmacies = dni_pharmacies.map((dni_pharmacy)=> {
+                    for (var i = 0; i < dni_pharmacy.benefits.length; i++) {
+                       var benefit = dni_pharmacy['benefits'][i];
+                        if (benefit['name'] == "24 Hour"){
+                            dni_pharmacy["t4Hr"] = true;
+                        }
+                        if (benefit['name'] == "Drive-Thru"){
+                            dni_pharmacy["dthru"] = true;
+                        }
+                    }
                 return dni_pharmacy;
             });
             return "";
@@ -79,7 +86,18 @@ export class ManagePharmaciesComponent {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
             return res.json()
-        }).subscribe((el)=> this.pharmacies = el);
+        }).map(res => res.map((dni_pharmacy)=>{
+            for (var i = 0; i < dni_pharmacy.benefits.length; i++) {
+                var benefit = dni_pharmacy['benefits'][i];
+                if (benefit['name'] == "24 Hour"){
+                    dni_pharmacy["t4Hr"] = true;
+                }
+                if (benefit['name'] == "Drive-Thru"){
+                    dni_pharmacy["dthru"] = true;
+                }
+            }
+            return dni_pharmacy;
+        })).subscribe((el)=> this.pharmacies = el);
     }
 
     savePharmacy() {

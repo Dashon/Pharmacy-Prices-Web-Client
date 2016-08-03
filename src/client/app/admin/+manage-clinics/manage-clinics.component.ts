@@ -56,10 +56,9 @@ export class ManageClinicsComponent {
 
     }
 
-    inviteUser(){
-        this.postApi(this.baseUrl + 'invite_user', this.editUserItem).subscribe(
-            () => this.getUsers(this.totalPages),
-            error => this.errorMessage = <any>error);
+
+    seedClinic(id){
+        this.callApi(this.baseUrl + 'health_care_facilities/'+id+'/seed_clinic').subscribe((el)=> this.clinics = el);
     }
 
     deleteClinic(id) {

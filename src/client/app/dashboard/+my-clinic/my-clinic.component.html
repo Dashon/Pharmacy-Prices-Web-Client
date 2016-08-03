@@ -27,8 +27,9 @@
                                     <span class="card-title">Change Logo</span>
                                 </div>
                                 <div class="card-block">
-                                    <input type="file" name="logo" accept="image/*" (change)="handleLogo($event)">
-
+                                    <!--<input type="file" name="logo" accept="image/*" (change)="handleLogo($event)">-->
+                                    <input type="text" class="form-control" name="imageUrl" [(ngModel)]="editClinicItem.image_url"
+                                           placeholder="Image Url"/>
                                 </div>
                             </div>
                         </div>

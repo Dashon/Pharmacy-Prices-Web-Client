@@ -34,10 +34,11 @@
                     <th>Address</th>
                     <th>City</th>
                     <th>State</th>
-                    <th>Zip</th>
+                    <!--<th>Zip</th>-->
                     <th>Phone</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
+                    <th>Benefits</th>
                     <th class="action-column"></th>
                 </tr>
                 </thead>
@@ -68,11 +69,11 @@
                                                                        placeholder="State"></td>
 
 
-                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.zip}}</td>
-                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.zip" type="text"
-                                                                       class="form-control input-underline"
-                                                                       placeholder="Zip">
-                    </td>
+                    <!--<td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.zip}}</td>-->
+                    <!--<td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.zip" type="text"-->
+                                                                       <!--class="form-control input-underline"-->
+                                                                       <!--placeholder="Zip">-->
+                    <!--</td>-->
 
 
                     <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.phone}}</td>
@@ -91,6 +92,13 @@
                     <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.latitude"
                                                                        type="text" class="form-control input-underline"
                                                                        placeholder="Latitude"></td>
+
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id"><img *ngFor="let benefit of pharmacy.benefits"
+                                                                         src="{{benefit.image_url}}"
+                                                                         alt="{{benefit.name}}"></td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input id="24hr-benefits" type="checkbox" [(ngModel)]="editPharmacyItem['t4Hr']"><label
+                            for="24hr-benefits">24Hrs</label><br> <input id="drive-thru-benefits" type="checkbox" [(ngModel)]="editPharmacyItem['dthru']"><label
+                            for="drive-thru-benefits">Drive-Thru</label></td>
 
                     <td class="action-column pull-right">
                         <div [hidden]="!pharmacy.showRow && editPharmacyItem.id !== pharmacy.id">
@@ -134,9 +142,9 @@
                                placeholder="State"></td>
 
 
-                    <td><input [(ngModel)]="editPharmacyItem.zip" type="text" class="form-control input-underline"
-                               placeholder="Zip">
-                    </td>
+                    <!--<td><input [(ngModel)]="editPharmacyItem.zip" type="text" class="form-control input-underline"-->
+                               <!--placeholder="Zip">-->
+                    <!--</td>-->
 
 
                     <td><input [(ngModel)]="editPharmacyItem.phone" type="tel" class="form-control input-underline"

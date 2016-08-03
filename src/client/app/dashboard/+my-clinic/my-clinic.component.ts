@@ -4,6 +4,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {AuthHttp} from "../../config/http";
 import {MapToArray} from "../../shared/pipes/MapToArray";
+
 @Component({
     moduleId: module.id,
     selector: 'my-clinic-cmp',
@@ -91,7 +92,7 @@ export class MyClinicComponent {
 
 
     getClinics() {
-        return this.callApi(this.baseUrl + 'health_care_facilities?limit=100').map(res => res.json()).subscribe(
+        return this.callApi(this.baseUrl + 'health_care_facilities').map(res => res.json()).subscribe(
             (el)=> this.clinics = el,
             error => this.errorMessage = <any>error);
     }

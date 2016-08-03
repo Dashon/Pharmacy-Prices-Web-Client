@@ -19,7 +19,7 @@ import {GOOGLE_MAPS_PROVIDERS} from "angular2-google-maps/core/index";
     moduleId: module.id,
     selector: 'three40b-cmp',
     templateUrl: '340b.component.html',
-    directives: [DROPDOWN_DIRECTIVES,GOOGLE_MAPS_DIRECTIVES, TYPEAHEAD_DIRECTIVES, TAB_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES],
+    directives: [DROPDOWN_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, TYPEAHEAD_DIRECTIVES, TAB_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES],
     providers: [GOOGLE_MAPS_PROVIDERS],
     styles: [`
     .sebm-google-map-container {
@@ -71,9 +71,9 @@ export class Three40BComponent {
         q9: null,
         q10: null,
         //no
-        q11: 0
+        q11: 0,
+        text_consent:false
     };
-
 
 
     // google maps zoom level
@@ -116,9 +116,12 @@ export class Three40BComponent {
         this.newSurvey();
         this.getClinic(localStorage.getItem('hcf_id'));
     }
+
     searchTypeAhead(text) {
-        return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?query=' + text).map(res => res.json())
-            .map((el) => {this.contractedPharmacies = el}
+        return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?health_care_facility_id='+this.currentClinic['id']+'&query=' + text).map(res => res.json())
+            .map((el) => {
+                    this.contractedPharmacies = el
+                }
             ).toPromise();
     }
 
@@ -128,7 +131,7 @@ export class Three40BComponent {
         }
     }
 
-    chooseFromMap(contractedPharmacy){
+    chooseFromMap(contractedPharmacy) {
         if (contractedPharmacy) {
             this.questions.q7 = contractedPharmacy.id
         }
@@ -180,7 +183,7 @@ export class Three40BComponent {
         }).map((y) => {
             y.map(x => {
                 x['draggable'] = false;
-                    x['icon_url'] = '../assets/images/doc_and_i_icon_sm.png';
+                x['icon_url'] = '../assets/images/doc_and_i_icon_sm.png';
 
                 return x;
             });
@@ -221,10 +224,6 @@ export class Three40BComponent {
     }
 
     submitSurvey() {
-        if (this.questions.q2) {
-            this.selectedPharmacy = this.contractedPharmacies.filter(x=>x.id == this.questions.q2)[0]
-        }
-
         if (this.questions.q7) {
             this.selectedPharmacy = this.contractedPharmacies.filter(x=>x.id == this.questions.q7)[0]
         }
@@ -241,14 +240,17 @@ export class Three40BComponent {
         var newSurvey = {answers: answers};
         return this.postApi(this.baseUrl + 'surveys', newSurvey).subscribe(()=> {
             this.currentTab = 'submitted';
-            this.resetQuestions();
 
             $('.profile-box').addClass('add-points');
 
             setTimeout(() => {
                 $('.profile-box').removeClass('add-points');
+                if (!this.questions.q7 && this.currentTab == 'submitted') {
+                    this.newSurvey();
+                }
+            }, 3000);
 
-            }, 5000);
+
         });
     }
 
@@ -259,8 +261,10 @@ export class Three40BComponent {
                 this.contactInfo = null;
                 this.messageSent = true;
                 setTimeout(() => {
-                    this.newSurvey();
-                }, 2000);
+                    if (this.currentTab == 'submitted') {
+                        this.newSurvey();
+                    }
+                }, 3000);
             });
         }
     }
@@ -272,8 +276,10 @@ export class Three40BComponent {
                 this.contactInfo = null;
                 this.messageSent = true;
                 setTimeout(() => {
-                    this.newSurvey();
-                }, 2000);
+                    if (this.currentTab == 'submitted') {
+                        this.newSurvey();
+                    }
+                }, 3000);
             });
         }
     }
@@ -295,7 +301,8 @@ export class Three40BComponent {
             q9: null,
             q10: null,
             //no
-            q11: 0
+            q11: 0,
+            text_consent:false
         }
     }
 

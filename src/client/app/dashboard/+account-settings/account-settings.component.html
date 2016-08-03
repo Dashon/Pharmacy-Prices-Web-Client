@@ -4,9 +4,8 @@
         <div class="container">
             <div class="row text-xs-center">
                 <div class="col-sm-12">
-                    <div class="row">
+                    <div class="row" *ngIf="currentUser.avatars">
                         <a (click)="selectAvatarModal.show()"><img src="{{currentUser.image_url}}" class="avatar-large"></a>
-                    </div>
                     <!-- MODAL -->
                     <div bsModal #selectAvatarModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
                          aria-labelledby="avatarModal" aria-hidden="true">
@@ -28,6 +27,8 @@
                         </div>
                     </div>
                     <!-- END MODAL -->
+                    </div>
+
                     <br>
                     <h3 *ngIf="!editMode">{{currentUser.name}}</h3>
                     <div class="col-sm-offset-3 col-sm-6 form-group" *ngIf="editMode">

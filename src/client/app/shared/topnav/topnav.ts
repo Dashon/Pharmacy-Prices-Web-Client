@@ -13,16 +13,23 @@ import {AuthHttp} from "../../config/http";
 })
 
 export class TopNavComponent {
-    baseUrl = 'https://doc-and-i-api.herokuapp.com';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     errorMessage = null;
     http = null;
     userName = localStorage.getItem('name');
+    currentUser = {};
 
 
     constructor(http:AuthHttp, private router:Router) {
         this.http = http;
+        this.getAccountInfo(localStorage.getItem('user_id'));
     }
 
+    getAccountInfo(id) {
+        return this.callApi(this.baseUrl + 'users/' + id).subscribe(
+            user => this.currentUser = JSON.parse(user._body),
+            error => this.errorMessage = <any>error);
+    }
     changeTheme(color:string):void {
         var link:any = $('<link>');
         link
@@ -57,7 +64,7 @@ export class TopNavComponent {
         this.router.navigate(['/', 'login']);
     }
     logout() {
-        return this.deleteApi(this.baseUrl + 'users/sign_out').subscribe(
+        return this.deleteApi(this.baseUrl + 'sign_out').subscribe(
             () => {
                 localStorage.removeItem('id_token');
                 localStorage.removeItem('hcf_id');
@@ -74,5 +81,9 @@ export class TopNavComponent {
     deleteApi(url) {
         this.errorMessage = '';
         return this.http.delete(url);
+    }
+    callApi(url) {
+        this.errorMessage = '';
+        return this.http.get(url);
     }
 }

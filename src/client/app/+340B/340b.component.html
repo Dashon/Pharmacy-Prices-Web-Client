@@ -209,12 +209,17 @@
                                         <input class="col-sm-12" type="text" placeholder="Enter Email/Phone"
                                                [(ngModel)]="contactInfo">
                                     </div>
+                                    <div class="row">
+
+                                        <input id="text-consent" type="checkbox" [(ngModel)]="questions.text_consent"><label
+                                            for="text-consent">Patient has verbally consented to sharing phone number and receiving text message(s) from Doc & I with pharmacy name and location information.</label>
+                                    </div>
                                     <div class="row text-xs-center">
 
-                                        <a class="btn btn-warning btn-rounded col-sm-6"
-                                           (click)="sendEmail()">Email</a>
-                                        <a class="btn btn-warning btn-rounded col-sm-6"
-                                           (click)="sendText()">Text</a>
+                                        <!--<a class="btn btn-warning btn-rounded col-sm-6"-->
+                                           <!--(click)="sendEmail()">Email</a>-->
+                                        <button [disabled]="!questions.text_consent" class="btn btn-warning btn-rounded col-sm-12"
+                                           (click)="sendText()">Send Text</button>
                                     </div>
                                     <div class="row text-xs-center" *ngIf="messageSent">
                                         <h3><span class="fa fa-check"></span>Message Sent!</h3>
