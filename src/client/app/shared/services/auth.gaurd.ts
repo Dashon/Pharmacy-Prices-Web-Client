@@ -31,7 +31,7 @@ export class AdminGaurd implements CanActivate {
     }
 
     canActivate() {
-        var baseUrl = 'http://localhost:3000/api/v1/';
+        var baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
 
         this.http.get(baseUrl + 'users/1/isAdmin').subscribe((res) => {
             var role = res.json();

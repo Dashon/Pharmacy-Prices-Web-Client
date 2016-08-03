@@ -16,7 +16,7 @@ export class AccountSettingsComponent {
     clinicPharmacies = [];
     http = null;
     response = null;
-    baseUrl = 'http://localhost:3000/api/v1/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     currentUser = {};
     editUser = {};
     errorMessage = null;

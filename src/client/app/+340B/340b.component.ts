@@ -30,7 +30,7 @@ import {GOOGLE_MAPS_PROVIDERS} from "angular2-google-maps/core/index";
 })
 export class Three40BComponent {
 
-    baseUrl = 'http://localhost:3000/api/v1/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
     response = null;
     errorMessage = null;

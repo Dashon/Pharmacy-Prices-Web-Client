@@ -12,7 +12,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
     directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
-    baseUrl = 'http://localhost:3000/api/v1/';
+    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
