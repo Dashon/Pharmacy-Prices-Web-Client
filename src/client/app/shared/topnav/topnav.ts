@@ -13,7 +13,7 @@ import {AuthHttp} from "../../config/http";
 })
 
 export class TopNavComponent {
-    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     errorMessage = null;
     http = null;
     userName = localStorage.getItem('name');

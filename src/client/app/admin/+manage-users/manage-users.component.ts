@@ -14,7 +14,7 @@ import {AuthHttp} from "../../config/http";
 
 })
 export class ManageUsersComponent {
-    baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
+    baseUrl = 'http://localhost:3000/api/v1/';
     http = null;
     response = null;
     errorMessage = null;
@@ -97,7 +97,7 @@ export class ManageUsersComponent {
     // }
 
     deleteUser(id) {
-        return this.callApi('https://doc-and-i-api.herokuapp.com/api/v1/users/' + id + '/unassociate').subscribe(
+        return this.callApi('http://localhost:3000/api/v1/users/' + id + '/unassociate').subscribe(
             ()=> this.getUsers(this.currentPage),
             error => this.errorMessage = <any>error);
     }
