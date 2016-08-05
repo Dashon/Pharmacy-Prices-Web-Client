@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 
 @Component({
@@ -54,9 +54,10 @@ export class ContractedPharmaciesComponent {
     }
 
     searchTypeAhead(text) {
-        return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?health_care_facility_id='+this.currentClinic['id']+'&query=' + text).map(res => res.json())
+        return this.callApi(this.baseUrl + 'hcf_pharmacies/prefix?health_care_facility_id=' +
+                            this.currentClinic['id'] + '&query=' + text).map(res => res.json())
             .map((hcf_pharmacies)=> this.clinicPharmacies = hcf_pharmacies.map((hcf_pharmacy)=> {
-               var dni_pharmacy = hcf_pharmacy['dni_pharmacy'];
+                var dni_pharmacy = hcf_pharmacy['dni_pharmacy'];
                 dni_pharmacy.hcf_pharmacy_id = hcf_pharmacy.id;
                 return dni_pharmacy;
             })).toPromise();
@@ -76,11 +77,14 @@ export class ContractedPharmaciesComponent {
     }
 
     addPharmacy(pharmacy) {
-        this.postContractedPharmacy({"health_care_facility_id": this.currentClinic['id'], "hcf_pharmacy_id": pharmacy.hcf_pharmacy_id});
+        this.postContractedPharmacy({
+            'health_care_facility_id': this.currentClinic['id'],
+            'hcf_pharmacy_id': pharmacy.hcf_pharmacy_id
+        });
     }
 
     editClinicPharmacy(pharmacy) {
-        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy)))
+        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy)));
 
     }
 
@@ -92,10 +96,11 @@ export class ContractedPharmaciesComponent {
     }
 
     getContractedPharmacies(page) {
-        return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id='+this.currentClinic['id']+'&page=' + page).map(res => {
+        return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id=' +
+                            this.currentClinic['id'] + '&page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.contractedPharmacies = el);
     }
 
@@ -116,6 +121,7 @@ export class ContractedPharmaciesComponent {
             this.getContractedPharmacies(this.currentPage);
         });
     }
+
     deleteContractedPharmacy(id) {
         return this.deleteApi(this.baseUrl + 'contracted_pharmacies/' + id).subscribe(()=> {
             this.getContractedPharmacies(this.currentPage);

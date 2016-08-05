@@ -1,6 +1,6 @@
 <div class="map-page col-md-12">
     <div class="row">
-        <div class="col-lg-3 full-height pharmacy-list">
+        <div class="col-sm-5 col-lg-3 col-xs-11 full-height pharmacy-list">
             <div>
                 <div class="btn-group" dropdown>
                     <button type="button" class="btn btn-block btn-secondary dropdown-toggle" dropdownToggle>
@@ -56,17 +56,15 @@
                 </ul>
             </div>
         </div>
-        <div class="col-lg-9 full-height map-container">
+        <div class="col-sm-7 col-lg-9 col-xs-11 full-height map-container">
             <sebm-google-map
                     [latitude]="latitude"
                     [longitude]="longitude"
                     [zoom]="zoom"
-                    (triggerResize)="mapClicked()"
                     (centerChange)="updateCurrentGeo($event)"
                     [usePanning]="true"
                     [disableDefaultUI]="false"
-                    [zoomControl]="true"
-                    (mapClick)="mapClicked($event)">
+                    [zoomControl]="true">
 
                 <sebm-google-map-marker
                         *ngFor="let m of contractedPharmacies; let i = index"

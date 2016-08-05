@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
-import {MapToArray} from "../../shared/pipes/MapToArray";
+import {AuthHttp} from '../../config/http';
+import {MapToArray} from '../../shared/pipes/MapToArray';
 
 @Component({
     moduleId: module.id,
@@ -35,11 +35,11 @@ export class MyClinicComponent {
         this.http = http;
         this.getClinics();
         this.getClinic(localStorage.getItem('hcf_id'));
-        this.getRoles()
+        this.getRoles();
     }
 
     handleLogo(event) {
-        var files = event.srcElement.files
+        var files = event.srcElement.files;
 
         if (files) {
             var file = files[0];
@@ -49,14 +49,15 @@ export class MyClinicComponent {
             }
 
             var nBytes = file.size;
-            var filesizeText = nBytes + " bytes";
+            var filesizeText = nBytes + ' bytes';
             // optional code for multiples approximation
-            for (var aMultiples = ["KB", "MB", "GB", "TB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
-                filesizeText = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+            for (var aMultiples = ['KB', 'MB', 'GB', 'TB'], nMultiple = 0,
+                     nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+                filesizeText = nApprox.toFixed(3) + ' ' + aMultiples[nMultiple] + ' (' + nBytes + ' bytes)';
             }
 
             if (nBytes > 2000000) {
-                this.errorMessage = "Max File Size 2 MB. Current size: " + filesizeText
+                this.errorMessage = 'Max File Size 2 MB. Current size: ' + filesizeText;
                 return;
             }
 
@@ -66,7 +67,7 @@ export class MyClinicComponent {
                     scope['image_url'] = e.target.result;
                 };
             })(this.editClinicItem);
-            
+
             reader.readAsDataURL(file);
         }
 
@@ -142,8 +143,8 @@ export class MyClinicComponent {
         this.editMemberItem = {id: 'NEW'};
     }
 
-    inviteMember(){
-        if(this.editMemberItem['role']){
+    inviteMember() {
+        if (this.editMemberItem['role']) {
             this.editMemberItem['role'] = parseInt(this.editMemberItem['role']);
         }
 
@@ -156,13 +157,14 @@ export class MyClinicComponent {
     }
 
     setRole(role) {
-        this.editMemberItem['role'] = role.key
+        this.editMemberItem['role'] = role.key;
     }
 
 
     putMember() {
         return this.putApi(this.baseUrl + 'users/' + this.editMemberItem['id'], this.editMemberItem);
     }
+
     isAdmin() {
         return localStorage.getItem('role') == 'doc_and_i_admin';
     }

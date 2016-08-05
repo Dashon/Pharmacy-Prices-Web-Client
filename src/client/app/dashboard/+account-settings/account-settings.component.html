@@ -19,8 +19,8 @@
                                     <h4 class="modal-title">Select an Avatar</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{avatar.image_url}}" class="avatar-large"
-                                         *ngFor="let avatar of currentUser.avatars" (click)="chooseAvatar(avatar.image_url)">
+                                    <img src="{{avatar.reward.image_url}}" class="avatar-large"
+                                         *ngFor="let avatar of currentUser.avatars" (click)="chooseAvatar(avatar.reward.image_url)">
                                     <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
                                 </div>
                             </div>

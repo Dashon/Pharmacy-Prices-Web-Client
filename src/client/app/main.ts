@@ -3,14 +3,14 @@ import {disableDeprecatedForms, provideForms} from '@angular/forms/index';
 import {enableProdMode,provide,} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS,Http} from '@angular/http';
-import {AuthGuard, AdminGaurd} from "./shared/services/auth.gaurd";
-import {AuthHttp, AUTH_PROVIDER} from './config/http';
+import {AuthGuard, AdminGaurd} from './shared/services/auth.gaurd';
+import {AuthHttp} from './config/http';
 import {APP_ROUTER_PROVIDERS} from './app.routes';
 import {Router} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {GOOGLE_MAPS_PROVIDERS, provideLazyMapsAPILoaderConfig} from 'angular2-google-maps/core/index';
-import {AuthConfig} from "angular2-jwt/angular2-jwt";
+import {AuthConfig} from 'angular2-jwt/angular2-jwt';
 if ('<%= ENV %>' === 'prod') {
     enableProdMode();
 }

@@ -16,8 +16,8 @@ export class LoginComponent {
     http = null;
     response = null;
     errorMessage = null;
-    userName="";
-    password="";
+    userName='';
+    password='';
 
     constructor(http:Http, private router:Router) {
         this.http = http;
@@ -25,7 +25,7 @@ export class LoginComponent {
 
 
     login() {
-        this.postApi(this.baseUrl + 'auth_user/',{"email":this.userName, "password":this.password}).subscribe(
+        this.postApi(this.baseUrl + 'auth_user/',{'email':this.userName, 'password':this.password}).subscribe(
             response => {
                 var user = response.json().user;
                 localStorage.setItem('id_token', response.json().auth_token);
@@ -39,7 +39,7 @@ export class LoginComponent {
             },
             error => {
                 this.errorMessage = error;
-                this.errorMessage = "Bad Login"
+                this.errorMessage = 'Bad Login';
             });
     }
 

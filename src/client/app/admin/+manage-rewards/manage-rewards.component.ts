@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 @Component({
     moduleId: module.id,
@@ -30,7 +30,7 @@ export class ManageRewardsComponent {
     }
 
     handleLogo(event) {
-        var files = event.srcElement.files
+        var files = event.srcElement.files;
 
         if (files) {
             var file = files[0];
@@ -40,14 +40,15 @@ export class ManageRewardsComponent {
             }
 
             var nBytes = file.size;
-            var filesizeText = nBytes + " bytes";
+            var filesizeText = nBytes + ' bytes';
             // optional code for multiples approximation
-            for (var aMultiples = ["KB", "MB", "GB", "TB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
-                filesizeText = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+            for (var aMultiples = ['KB', 'MB', 'GB', 'TB'], nMultiple = 0,
+                     nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+                filesizeText = nApprox.toFixed(3) + ' ' + aMultiples[nMultiple] + ' (' + nBytes + ' bytes)';
             }
 
             if (nBytes > 2000000) {
-                this.errorMessage = "Max File Size 2 MB. Current size: " + filesizeText
+                this.errorMessage = 'Max File Size 2 MB. Current size: ' + filesizeText;
                 return;
             }
 
@@ -71,14 +72,14 @@ export class ManageRewardsComponent {
     }
 
     editReward(reward) {
-        this.editRewardItem = (JSON.parse(JSON.stringify(reward)))
+        this.editRewardItem = (JSON.parse(JSON.stringify(reward)));
     }
 
     getRewards(page) {
         this.callApi(this.baseUrl + 'rewards?page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.rewards = el);
     }
 

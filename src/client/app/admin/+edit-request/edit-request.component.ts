@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/common';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 
 @Component({
@@ -33,7 +33,7 @@ export class EditRequestComponent {
         this.callApi(this.baseUrl + 'pharmacy_edit_requests?page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.editRequests = el);
     }
 

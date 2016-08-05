@@ -8,9 +8,9 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TAB_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 // import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
-import {AuthHttp} from "../config/http";
-import {GOOGLE_MAPS_DIRECTIVES} from "angular2-google-maps/core/directives-const";
-import {GOOGLE_MAPS_PROVIDERS} from "angular2-google-maps/core/index";
+import {AuthHttp} from '../config/http';
+import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core/directives-const';
+import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core/index';
 
 /**
  * This class represents the lazy loaded Three40BComponent.
@@ -34,7 +34,7 @@ export class Three40BComponent {
     http = null;
     response = null;
     errorMessage = null;
-    currentTab = "start"
+    currentTab = 'start';
     currentSurvey = {};
     allPharmacies = [];
     contractedPharmacies = [];
@@ -85,6 +85,21 @@ export class Three40BComponent {
     latitude:number = 41.8781;
     newCords = {};
     showMap = false;
+    currentUser = {};
+
+    constructor(http:AuthHttp) {
+        this.http = http;
+        if (localStorage.getItem('user_id') && localStorage.getItem('user_id') != 'null') {
+            this.getAccountInfo(localStorage.getItem('user_id'));
+        }
+    }
+
+    getAccountInfo(id) {
+        return this.callApi(this.baseUrl + 'users/' + id).subscribe(
+            user => this.currentUser = JSON.parse(user._body),
+            error => this.errorMessage = <any>error);
+    }
+
 
     setLocation(location) {
         this.currentLocation = location;
@@ -95,9 +110,6 @@ export class Three40BComponent {
 
     clickedMarker(label:string, index:number) {
         console.log(`clicked the marker: ${label || index}`);
-    }
-
-    mapClicked(event) {
     }
 
     updateCurrentGeo(event) {
@@ -118,22 +130,22 @@ export class Three40BComponent {
     }
 
     searchTypeAhead(text) {
-        return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?health_care_facility_id='+this.currentClinic['id']+'&query=' + text).map(res => res.json())
-            .map((el) => {
+        return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?health_care_facility_id='+
+                            this.currentClinic['id']+'&query=' + text).map(res => res.json())
+            .map((el) =>
                     this.contractedPharmacies = el
-                }
             ).toPromise();
     }
 
     checkLimit(event) {
-        if ((event.keyCode == 8 || event.keyCode == 46 ) && this.searchString.length < 3) {
+        if ((event.keyCode === 8 || event.keyCode === 46 ) && this.searchString.length < 3) {
             this.getContractedPharmacies(1);
         }
     }
 
     chooseFromMap(contractedPharmacy) {
         if (contractedPharmacy) {
-            this.questions.q7 = contractedPharmacy.id
+            this.questions.q7 = contractedPharmacy.id;
         }
         this.showMap = false;
     }
@@ -151,35 +163,23 @@ export class Three40BComponent {
         return this.searchTypeAhead(this.searchString);
     }
 
-    // searchTypeAhead(text) {
-    //     return this.callApi(this.baseUrl + 'dni_pharmacies/prefix?query=' + text).map(res => res.json())
-    //         .map((el)=> this.allPharmacies = el).toPromise();
-    // }
-
     getClinic(id) {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
                 this.getClinicPharmacies(1);
-                this.setLocation(this.currentClinic['hcf_locations'][0])
+                this.setLocation(this.currentClinic['hcf_locations'][0]);
                 this.getContractedPharmacies(1);
             },
             error => this.errorMessage = <any>error);
     }
 
-    goToMap() {
-
-    }
-
-    goToSavings() {
-
-    }
-
     getContractedPharmacies(page) {
-        return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id=' + this.currentClinic['id'] + '&page=' + page).map(res => {
+        return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id=' +
+                            this.currentClinic['id'] + '&page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).map((y) => {
             y.map(x => {
                 x['draggable'] = false;
@@ -193,20 +193,21 @@ export class Three40BComponent {
     }
 
     getClinicPharmacies(page) {
-        return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' + this.currentClinic['id'] + '&limit=' + 100).map(res => {
+        return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' +
+                            this.currentClinic['id'] + '&limit=' + 100).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.allPharmacies = el);
     }
 
 
     answerQuestion(question, answer) {
         if (question == 1) {
-            this.questions.q1 = answer
+            this.questions.q1 = answer;
         }
         if (question == 6) {
-            this.questions.q6 = answer
+            this.questions.q6 = answer;
         }
         this.currentTab = answer;
     }
@@ -225,7 +226,7 @@ export class Three40BComponent {
 
     submitSurvey() {
         if (this.questions.q7) {
-            this.selectedPharmacy = this.contractedPharmacies.filter(x=>x.id == this.questions.q7)[0]
+            this.selectedPharmacy = this.contractedPharmacies.filter(x=>x.id == this.questions.q7)[0];
         }
 
 
@@ -249,8 +250,7 @@ export class Three40BComponent {
                     this.newSurvey();
                 }
             }, 3000);
-
-
+            this.getAccountInfo(this.currentUser['id']);
         });
     }
 
@@ -303,7 +303,7 @@ export class Three40BComponent {
             //no
             q11: 0,
             text_consent:false
-        }
+        };
     }
 
 

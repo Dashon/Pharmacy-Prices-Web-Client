@@ -1,14 +1,11 @@
 import {Component} from '@angular/core';
 import {
-    MapsAPILoader,
-    NoOpMapsAPILoader,
     MouseEvent,
     GOOGLE_MAPS_DIRECTIVES,
     GOOGLE_MAPS_PROVIDERS,
-    GoogleMapsAPIWrapper, MarkerManager
 } from 'angular2-google-maps/core/index';
-import {AuthHttp} from "../config/http";
-import {TYPEAHEAD_DIRECTIVES, DROPDOWN_DIRECTIVES} from "ng2-bootstrap/ng2-bootstrap";
+import {AuthHttp} from '../config/http';
+import {TYPEAHEAD_DIRECTIVES, DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
@@ -33,21 +30,6 @@ export class MapComponent {
     // initial center position for the map
     latitude:number = 41.8781;
     longitude:number = -87.6298;
-
-    clickedMarker(label:string, index:number) {
-        console.log(`clicked the marker: ${label || index}`);
-    }
-
-    updateCurrentGeo(event) {
-        this.latitude = event.lat;
-        this.longitude = event.lng;
-    }
-
-
-    markerDragEnd(m:Marker, $event:MouseEvent) {
-        this.newCords = $event.coords;
-        console.log('dragEnd', m, $event);
-    }
 
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
@@ -77,6 +59,21 @@ export class MapComponent {
         this.getClinic(localStorage.getItem('hcf_id'));
     }
 
+    clickedMarker(label:string, index:number) {
+        console.log(`clicked the marker: ${label || index}`);
+    }
+
+    updateCurrentGeo(event) {
+        this.latitude = event.lat;
+        this.longitude = event.lng;
+    }
+
+
+    markerDragEnd(m:Marker, $event:MouseEvent) {
+        this.newCords = $event.coords;
+        console.log('dragEnd', m, $event);
+    }
+
     setLocation(location) {
         this.currentLocation = location;
 
@@ -104,7 +101,7 @@ export class MapComponent {
                     dni_pharmacy.hcf_pharmacy_id = hcf_pharmacy.id;
                     return dni_pharmacy;
                 });
-                return "";
+                return '';
             }).toPromise();
     }
 
@@ -118,7 +115,7 @@ export class MapComponent {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
-                this.setLocation(this.currentClinic['hcf_locations'][0])
+                this.setLocation(this.currentClinic['hcf_locations'][0]);
                 this.getPharmacies(1);
             },
             error => this.errorMessage = <any>error);
@@ -126,10 +123,6 @@ export class MapComponent {
 
     setCurrentClinic(clinic) {
         this.currentClinic = clinic;
-    }
-
-
-    mapClicked(event) {
     }
 
     zoomToPharmacy(pharmacy) {
@@ -151,7 +144,7 @@ export class MapComponent {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + this.currentClinic['id'] + '/map?page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).map((y) => {
             y.map(x => {
                 x['draggable'] = false;

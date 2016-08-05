@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {MapToArray} from "../../shared/pipes/MapToArray";
-import {AuthHttp} from "../../config/http";
+import {MapToArray} from '../../shared/pipes/MapToArray';
+import {AuthHttp} from '../../config/http';
 
 @Component({
     moduleId: module.id,
@@ -54,7 +54,7 @@ export class ManageUsersComponent {
     }
 
     editUser(user) {
-        this.editUserItem = (JSON.parse(JSON.stringify(user)))
+        this.editUserItem = (JSON.parse(JSON.stringify(user)));
 
         //set role to role.id
         delete this.editUserItem['role'];
@@ -65,7 +65,7 @@ export class ManageUsersComponent {
         this.callApi(this.baseUrl + 'users?page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.allUsers = el);
     }
 
@@ -77,10 +77,10 @@ export class ManageUsersComponent {
 
     }
 
-    inviteUser(){
-       if(this.editUserItem['role']){
-           this.editUserItem['role'] = parseInt(this.editUserItem['role']);
-       }
+    inviteUser() {
+        if (this.editUserItem['role']) {
+            this.editUserItem['role'] = parseInt(this.editUserItem['role']);
+        }
 
         this.postApi(this.baseUrl + 'invite_user', this.editUserItem).subscribe(
             () => {

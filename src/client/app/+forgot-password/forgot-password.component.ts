@@ -16,7 +16,7 @@ export class ForgotPasswordComponent {
     http = null;
     response = null;
     errorMessage = null;
-    userName="";
+    userName='';
 
     constructor(http:Http, private router:Router) {
         this.http = http;
@@ -24,7 +24,7 @@ export class ForgotPasswordComponent {
 
 
     forgotPassword() {
-        this.postApi(this.baseUrl + 'forgot_password/',{"email":this.userName}).subscribe(
+        this.postApi(this.baseUrl + 'forgot_password/',{'email':this.userName}).subscribe(
             response => {
                 this.router.navigate(['/', '/login']);
             },

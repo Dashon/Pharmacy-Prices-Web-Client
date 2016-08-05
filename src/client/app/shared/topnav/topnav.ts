@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {CORE_DIRECTIVES} from '@angular/common';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 @Component({
     moduleId: module.id,
@@ -22,7 +22,10 @@ export class TopNavComponent {
 
     constructor(http:AuthHttp, private router:Router) {
         this.http = http;
-        this.getAccountInfo(localStorage.getItem('user_id'));
+        if (localStorage.getItem('user_id') && localStorage.getItem('user_id') != 'null') {
+            this.getAccountInfo(localStorage.getItem('user_id'));
+        }
+
     }
 
     getAccountInfo(id) {
@@ -30,6 +33,7 @@ export class TopNavComponent {
             user => this.currentUser = JSON.parse(user._body),
             error => this.errorMessage = <any>error);
     }
+
     changeTheme(color:string):void {
         var link:any = $('<link>');
         link
@@ -53,6 +57,7 @@ export class TopNavComponent {
     isAdmin() {
         return localStorage.getItem('role') == 'doc_and_i_admin';
     }
+
     isLoggedIn() {
         return localStorage.getItem('user_id') != null;
     }
@@ -60,9 +65,15 @@ export class TopNavComponent {
     isAssociated() {
         return this.isLoggedIn() && localStorage.getItem('hcf_id') != 'null';
     }
-    goToLogin(){
+
+    goToLogin() {
         this.router.navigate(['/', 'login']);
     }
+
+    goToHome() {
+        this.router.navigate(['/', '']);
+    }
+
     logout() {
         return this.deleteApi(this.baseUrl + 'sign_out').subscribe(
             () => {
@@ -82,6 +93,7 @@ export class TopNavComponent {
         this.errorMessage = '';
         return this.http.delete(url);
     }
+
     callApi(url) {
         this.errorMessage = '';
         return this.http.get(url);

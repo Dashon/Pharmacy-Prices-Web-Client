@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 @Component({
     moduleId: module.id,
@@ -62,25 +62,20 @@ export class MyPharmaciesComponent {
             error => this.errorMessage = <any>error);
     }
 
-    private getRemainingPharmacies() {
-
-    }
-
     setCurrentClinic(clinic) {
         this.currentClinic = clinic;
     }
 
     addPharmacy(pharmacy) {
-        this.postclinicPharmacy({"health_care_facility_id": this.currentClinic['id'], "dni_pharmacy_id": pharmacy.id});
+        this.postclinicPharmacy({'health_care_facility_id': this.currentClinic['id'], 'dni_pharmacy_id': pharmacy.id});
     }
 
     editClinicPharmacy(pharmacy) {
-        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy))) //copy
-
+        this.editPharmacy = (JSON.parse(JSON.stringify(pharmacy)));
     }
 
     saveClinicPharmacy() {
-        var editRequest = this.editPharmacy['dni_pharmacy']
+        var editRequest = this.editPharmacy['dni_pharmacy'];
         editRequest['dni_pharmacy_id'] = editRequest['id'];
         return this.postEditRequest(editRequest).subscribe(
             () => this.editPharmacy = {},
@@ -89,10 +84,11 @@ export class MyPharmaciesComponent {
     }
 
     getClinicPharmacies(page) {
-        return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' + this.currentClinic['id'] + '&page=' + page).map(res => {
+        return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' +
+                            this.currentClinic['id'] + '&page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.clinicPharmacies = el);
     }
 

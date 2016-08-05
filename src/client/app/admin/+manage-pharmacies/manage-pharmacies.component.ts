@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
-import { FORM_DIRECTIVES } from '@angular/common';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {FORM_DIRECTIVES} from '@angular/common';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 @Component({
     moduleId: module.id,
     selector: 'manage-pharmacies-cmp',
     templateUrl: './manage-pharmacies.component.html',
-    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES,FORM_DIRECTIVES]
+    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES]
 
 })
 export class ManagePharmaciesComponent {
@@ -50,22 +50,22 @@ export class ManagePharmaciesComponent {
             .map((dni_pharmacies)=> {
                 this.pharmacies = dni_pharmacies.map((dni_pharmacy)=> {
                     for (var i = 0; i < dni_pharmacy.benefits.length; i++) {
-                       var benefit = dni_pharmacy['benefits'][i];
-                        if (benefit['name'] == "24 Hour"){
-                            dni_pharmacy["t4Hr"] = true;
+                        var benefit = dni_pharmacy['benefits'][i];
+                        if (benefit['name'] == '24 Hour') {
+                            dni_pharmacy['t4Hr'] = true;
                         }
-                        if (benefit['name'] == "Drive-Thru"){
-                            dni_pharmacy["dthru"] = true;
+                        if (benefit['name'] == 'Drive-Thru') {
+                            dni_pharmacy['dthru'] = true;
                         }
                     }
-                return dni_pharmacy;
-            });
-            return "";
+                    return dni_pharmacy;
+                });
+                return '';
             }).toPromise();
     }
 
-    checkLimit(event){
-        if( (event.keyCode == 8 || event.keyCode == 46 ) && this.searchString.length < 3){
+    checkLimit(event) {
+        if ((event.keyCode == 8 || event.keyCode == 46 ) && this.searchString.length < 3) {
             this.getPharmacys(1);
         }
     }
@@ -78,22 +78,22 @@ export class ManagePharmaciesComponent {
     }
 
     editPharmacy(pharmacy) {
-        this.editPharmacyItem = (JSON.parse(JSON.stringify(pharmacy)))
+        this.editPharmacyItem = (JSON.parse(JSON.stringify(pharmacy)));
     }
 
     getPharmacys(page) {
         this.callApi(this.baseUrl + 'dni_pharmacies?page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
-        }).map(res => res.map((dni_pharmacy)=>{
+            return res.json();
+        }).map(res => res.map((dni_pharmacy)=> {
             for (var i = 0; i < dni_pharmacy.benefits.length; i++) {
                 var benefit = dni_pharmacy['benefits'][i];
-                if (benefit['name'] == "24 Hour"){
-                    dni_pharmacy["t4Hr"] = true;
+                if (benefit['name'] == '24 Hour') {
+                    dni_pharmacy['t4Hr'] = true;
                 }
-                if (benefit['name'] == "Drive-Thru"){
-                    dni_pharmacy["dthru"] = true;
+                if (benefit['name'] == 'Drive-Thru') {
+                    dni_pharmacy['dthru'] = true;
                 }
             }
             return dni_pharmacy;
@@ -101,7 +101,8 @@ export class ManagePharmaciesComponent {
     }
 
     savePharmacy() {
-        this.putApi(this.baseUrl + 'dni_pharmacies/'+this.editPharmacyItem['id'], this.editPharmacyItem).map(res => res.json()).subscribe(()=> {
+        this.putApi(this.baseUrl + 'dni_pharmacies/' + this.editPharmacyItem['id'],
+            this.editPharmacyItem).map(res => res.json()).subscribe(()=> {
             this.getPharmacys(this.currentPage);
         });
         this.editPharmacyItem = {};

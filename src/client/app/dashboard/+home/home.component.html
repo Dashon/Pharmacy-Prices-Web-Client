@@ -6,7 +6,7 @@
         <div class="card-deck-wrapper">
             <div class="card-deck" id="row1">
 
-                <div class="card text-sm-center team-activity">
+                <div class="card text-xs-center team-activity">
                     <div class="card-block" *ngIf="currentUser.health_care_facility">
                         <h3 class="card-title">Monthly Team Activity</h3>
                         <div>{{currentUser.team_month_points}} Points</div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div class="card text-sm-center your-activity">
+                <div class="card text-xs-center your-activity">
                     <div class="row current-activity">
                         <div class="card-block"  *ngIf="currentUser.avatars">
 
@@ -71,7 +71,7 @@
                     </div>
                 </div>
 
-                <div class="card leaderboard">
+                <div class="card  text-xs-center leaderboard">
                     <div class="card-block" *ngIf="currentUser.health_care_facility">
                         <div class="row award">
                             <div class="col-sm-12 col-md-5">
@@ -82,16 +82,16 @@
                                 <h4>Awarded to the individual with the most points</h4>
                             </div>
                         </div>
-                        <div >
+                        <div class="text-xs-left">
                             <div class="row rank"
                                  *ngFor="let user of currentUser.health_care_facility.top_users; let i = index">
-                                <div class="col-sm-3">
+                                <div class="col-xs-3">
                                     <img src="{{user.avatar}}" class="avatar">
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-xs-6">
                                     <div class="name">{{user.name}}</div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-xs-3">
                                     <div class="name">#{{i+1}}</div>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
         </div>
         <br/>
 
-        <div class="card text-sm-center">
+        <div class="card text-xs-center">
             <div class="card-block">
                 <h3 class="card-title">Awards</h3>
                 <br>

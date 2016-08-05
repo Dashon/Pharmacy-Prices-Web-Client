@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -50,6 +50,4 @@ export class AdminGaurd implements CanActivate {
         this.router.navigate(['/login']);
         return false;
     }
-
-
 }

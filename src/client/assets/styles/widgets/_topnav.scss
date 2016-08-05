@@ -201,6 +201,19 @@
         outline: none;
       }
     }
+    .profile {
+      margin-right: 10px;
+      a {
+        padding: 10px;
+        color: $brand-primary;
+        display: block;
+        cursor: pointer;
+        img {
+          width: 30px;
+          margin-right: 5px;
+        }
+      }
+    }
   }
   .hidd {
     .dropdown {

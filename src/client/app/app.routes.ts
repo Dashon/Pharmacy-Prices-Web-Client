@@ -9,8 +9,8 @@ import { PageNotFoundRoutes } from './+404/index';
 import {Three40BRoutes} from './+340B/340b.routes';
 import {MapRoutes} from './+map/map.routes';
 import {AdminRoutes} from './admin/admin.routes';
-import {HomeRoutes} from "./+home/home.routes";
-import {ForgotPasswordRoutes} from "./+forgot-password/forgot-password.routes";
+import {HomeRoutes} from './+home/home.routes';
+import {ForgotPasswordRoutes} from './+forgot-password/forgot-password.routes';
 
 
 

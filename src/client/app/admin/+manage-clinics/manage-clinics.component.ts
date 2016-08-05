@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {AuthHttp} from "../../config/http";
+import {AuthHttp} from '../../config/http';
 
 @Component({
     moduleId: module.id,
@@ -36,20 +36,21 @@ export class ManageClinicsComponent {
     }
 
     editClinic(clinic) {
-        this.editClinicItem = (JSON.parse(JSON.stringify(clinic)))
+        this.editClinicItem = (JSON.parse(JSON.stringify(clinic)));
     }
 
     getClinics(page) {
         this.callApi(this.baseUrl + 'health_care_facilities?page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
-            return res.json()
+            return res.json();
         }).subscribe((el)=> this.clinics = el);
     }
 
     saveClinic() {
-            delete this.editClinicItem['image_url'];
-        this.putApi(this.baseUrl + 'health_care_facilities/' + this.editClinicItem['id'], this.editClinicItem).map(res => res.json()).subscribe(()=> {
+        delete this.editClinicItem['image_url'];
+        this.putApi(this.baseUrl + 'health_care_facilities/' + this.editClinicItem['id'],
+                    this.editClinicItem).map(res => res.json()).subscribe(()=> {
             this.getClinics(this.currentPage);
         });
         this.editClinicItem = {};
@@ -57,8 +58,8 @@ export class ManageClinicsComponent {
     }
 
 
-    seedClinic(id){
-        this.callApi(this.baseUrl + 'health_care_facilities/'+id+'/seed_clinic').subscribe((el)=> this.clinics = el);
+    seedClinic(id) {
+        this.callApi(this.baseUrl + 'health_care_facilities/' + id + '/seed_clinic').subscribe((el)=> this.clinics = el);
     }
 
     deleteClinic(id) {

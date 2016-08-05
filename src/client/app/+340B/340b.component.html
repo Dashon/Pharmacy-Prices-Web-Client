@@ -3,14 +3,10 @@
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
                 <div class="row">
-                    <div class="col-xs-1 subnav-text">
+                    <div class="col-xs-2 subnav-text">
                         <a (click)="showMap = true"><img src="assets/images/svg/icon-sub-map.svg" width="60px"></a>
                     </div>
-                    <div class="col-xs-1 subnav-text">
-                        <a [hidden]="true" [routerLink]="['/drug-search']"><img
-                                src="assets/images/svg/icon-sub-savings.svg"
-                                width="60px"></a>
-                    </div>
+
                     <div class="col-xs-8 subnav-text">
                         <h2><img src="assets/images/svg/icon-script.svg" width="30px"> 340B</h2>
                     </div>
@@ -248,7 +244,7 @@
 <div class="map-page col-md-12" *ngIf="showMap">
     <div class="row">
         <button (click)="showMap = false" class="closeMapBtn"> Close Map</button>
-        <div class="col-lg-3 full-height pharmacy-list">
+        <div class="col-sm-5 col-lg-3 col-xs-11 full-height pharmacy-list">
             <div>
 
                 <div class="btn-group" dropdown>
@@ -294,17 +290,32 @@
                 </ul>
             </div>
         </div>
-        <div class="col-lg-9 full-height map-container">
+        <div class="col-sm-7 col-lg-9 col-xs-11 full-height map-container">
             <sebm-google-map
                     [latitude]="latitude"
                     [longitude]="longitude"
                     [zoom]="zoom"
-                    (triggerResize)="mapClicked()"
                     (centerChange)="updateCurrentGeo($event)"
                     [usePanning]="true"
                     [disableDefaultUI]="false"
-                    [zoomControl]="true"
-                    (mapClick)="mapClicked($event)">
+                    [zoomControl]="true">
+
+
+                <sebm-google-map-marker
+                        [latitude]="currentLocation.latitude"
+                        [longitude]="currentLocation.longitude"
+                        [label]=""
+                        [iconUrl]="'../assets/images/hospital_location.png'"
+                        [markerDraggable]="false">
+
+                    <sebm-google-map-info-window class="clearfix">
+                        <strong>{{currentLocation.name}}</strong>
+                        <div>{{currentLocation.address}}</div>
+                        <div>{{currentLocation.city}},{{currentLocation.state}} {currentLocation.zip}}</div>
+                        <a class="btn btn-block btn-primary btn-rounded pull-left"
+                           (click)="chooseFromMap(m)">Select</a>
+                    </sebm-google-map-info-window>
+                </sebm-google-map-marker>
 
                 <sebm-google-map-marker
                         *ngFor="let m of contractedPharmacies; let i = index"
@@ -313,8 +324,9 @@
                         [longitude]="m.dni_pharmacy.longitude"
                         [label]=""
                         [iconUrl]="'../assets/images/doc_and_i_icon_sm.png'"
-                        [markerDraggable]="m.draggable"
-                        (dragEnd)="markerDragEnd(m, $event)">
+                        [markerDraggable]="false">
+
+
 
                     <sebm-google-map-info-window class="clearfix">
                         <strong>{{m.dni_pharmacy.name}}</strong>
