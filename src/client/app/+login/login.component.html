@@ -5,7 +5,7 @@
 			<p>For participating healthcare professionals</p>
 			<br>
 			<p class="bg-danger">{{errorMessage}}</p>
-			<form role="form">
+			<form role="form" (keyup.enter)="login()">
 				<div class="form-content col-lg-10 col-lg-offset-1">
 					<div class="form-group">
 						<input type="email" class="form-control input-underline input-lg" id="username" name="username" [(ngModel)]="userName" placeholder="Email">
@@ -16,7 +16,7 @@
 					</div>
                     <div class="password-forgot"><a [routerLink]="['/forgot-password']" >Forgot Password?</a></div>
                 </div>
-				<a class="btn rounded-btn" (click)="login()"> Log in </a>
+				<a type="submit" class="btn rounded-btn" (click)="login()"> Log in </a>
 				&nbsp;
 				<a type="submit" class="btn rounded-btn" [routerLink]="['/signup']" [hidden]="true">Register</a>
 			</form>

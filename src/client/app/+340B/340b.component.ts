@@ -92,6 +92,10 @@ export class Three40BComponent {
         if (localStorage.getItem('user_id') && localStorage.getItem('user_id') != 'null') {
             this.getAccountInfo(localStorage.getItem('user_id'));
         }
+
+        this.http = http;
+        this.newSurvey();
+        this.getClinic(localStorage.getItem('hcf_id'));
     }
 
     getAccountInfo(id) {
@@ -123,11 +127,6 @@ export class Three40BComponent {
         this.longitude = pharmacy.longitude;
     }
 
-    constructor(http:AuthHttp) {
-        this.http = http;
-        this.newSurvey();
-        this.getClinic(localStorage.getItem('hcf_id'));
-    }
 
     searchTypeAhead(text) {
         return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?health_care_facility_id='+
