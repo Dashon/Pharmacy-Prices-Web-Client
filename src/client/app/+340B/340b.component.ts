@@ -221,6 +221,7 @@ export class Three40BComponent {
         this.currentTab = 'start';
         this.messageSent = false;
         this.selectedPharmacy = null;
+       this.setLocation(this.currentLocation);
     }
 
     submitSurvey() {

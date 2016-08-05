@@ -167,8 +167,8 @@
                                 </div>
                                 <br>
                                 <div class="row text-xs-center">
-                                    <a (click)="submitSurvey()"
-                                       class="button btn btn-primary btn-rounded" [disabled]="questions.q10">Submit</a>
+                                    <button (click)="submitSurvey()"
+                                       class="button btn btn-primary btn-rounded" [disabled]="!questions.q10">Submit</button>
                                 </div>
                             </section>
 
@@ -201,8 +201,9 @@
                                             {{selectedPharmacy.dni_pharmacy.zip}}
                                         </p>
                                     </div>
+                                    <form (keyup.enter)="login()">
                                     <div class="row text-xs-center contact-info">
-                                        <input class="col-sm-12" type="text" placeholder="Enter Email/Phone"
+                                        <input class="col-sm-12" type="text" placeholder="Enter Cell Number"
                                                [(ngModel)]="contactInfo">
                                     </div>
                                     <div class="row">
@@ -214,9 +215,10 @@
 
                                         <!--<a class="btn btn-warning btn-rounded col-sm-6"-->
                                            <!--(click)="sendEmail()">Email</a>-->
-                                        <button [disabled]="!questions.text_consent" class="btn btn-warning btn-rounded col-sm-12"
+                                        <button type="submit" [disabled]="!questions.text_consent" class="btn btn-warning btn-rounded col-sm-12"
                                            (click)="sendText()">Send Text</button>
                                     </div>
+                                    </form>
                                     <div class="row text-xs-center" *ngIf="messageSent">
                                         <h3><span class="fa fa-check"></span>Message Sent!</h3>
                                     </div>
@@ -248,7 +250,7 @@
             <div>
 
                 <div class="btn-group" dropdown>
-                    <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" (click)="setLocation(currentLocation)" dropdownToggle>
                         {{currentLocation.address}}<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
@@ -294,7 +296,7 @@
             <sebm-google-map
                     [latitude]="latitude"
                     [longitude]="longitude"
-                    [zoom]="zoom"
+                    [(zoom)]="zoom"
                     (centerChange)="updateCurrentGeo($event)"
                     [usePanning]="true"
                     [disableDefaultUI]="false"
