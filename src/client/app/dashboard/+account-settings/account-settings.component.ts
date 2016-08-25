@@ -27,9 +27,18 @@ export class AccountSettingsComponent {
     }
 
 
+    ngOnInit() {
+        if (localStorage.getItem('currentUser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
+    }
+
     getAccountInfo(id) {
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
-            user => this.currentUser = JSON.parse(user._body),
+            user => {
+                this.currentUser = JSON.parse(user._body);
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            },
             error => this.errorMessage = <any>error);
     }
     putAccountInfo() {

@@ -40,6 +40,15 @@ export class ContractedPharmaciesComponent {
         this.getClinic(localStorage.getItem('hcf_id'));
     }
 
+    ngOnInit() {
+        if (localStorage.getItem('currentClinic')) {
+            this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
+        }
+
+        if (localStorage.getItem('contractedPharmacies')) {
+            this.contractedPharmacies = JSON.parse(localStorage.getItem('contractedPharmacies'));
+        }
+    }
 
     changeTypeaheadLoading(e:boolean) {
         this.typeaheadLoading = e;
@@ -68,6 +77,8 @@ export class ContractedPharmaciesComponent {
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
                 this.getContractedPharmacies(1);
+                localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
+
             },
             error => this.errorMessage = <any>error);
     }
@@ -101,7 +112,10 @@ export class ContractedPharmaciesComponent {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
             return res.json();
-        }).subscribe((el)=> this.contractedPharmacies = el);
+        }).subscribe((el)=> {
+            this.contractedPharmacies = el;
+            localStorage.setItem('contractedPharmacies', JSON.stringify(this.contractedPharmacies));
+        });
     }
 
     getClinics() {

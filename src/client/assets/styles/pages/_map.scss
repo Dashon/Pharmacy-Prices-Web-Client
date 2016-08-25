@@ -9,6 +9,10 @@
           height: 45px;
         }
       }
+      li:hover{
+        background-color: #8aa4be;
+        color: $white;
+      }
     }
     .short-code {
       width: 80px;

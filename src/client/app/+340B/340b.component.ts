@@ -4,13 +4,14 @@
 
 import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import {Router, ActivatedRoute, ROUTER_DIRECTIVES} from '@angular/router';
 import {DROPDOWN_DIRECTIVES, TAB_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 // import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 import {AuthHttp} from '../config/http';
 import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core/directives-const';
 import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core/index';
+import {OrderBy} from "../shared/pipes/orderBy";
 
 /**
  * This class represents the lazy loaded Three40BComponent.
@@ -21,6 +22,7 @@ import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core/index';
     templateUrl: '340b.component.html',
     directives: [DROPDOWN_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, TYPEAHEAD_DIRECTIVES, TAB_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES],
     providers: [GOOGLE_MAPS_PROVIDERS],
+    pipes: [OrderBy],
     styles: [`
     .sebm-google-map-container {
        height: 100%;
@@ -40,7 +42,12 @@ export class Three40BComponent {
     contractedPharmacies = [];
     currentClinic = {id: 1};
     editPharmacy = {};
-
+    surveySending = false;
+    reasons = [
+        {id: 1, name: "Pharmacies are too far away"},
+        {id: 2, name: "I am happy with my current pharmacy"},
+        {id: -1, name: "Other"}
+    ];
     totalPages = 0;
     currentPage = 0;
 
@@ -72,7 +79,8 @@ export class Three40BComponent {
         q10: null,
         //no
         q11: 0,
-        text_consent:false
+        reason: null,
+        text_consent: false
     };
 
 
@@ -86,8 +94,10 @@ export class Three40BComponent {
     newCords = {};
     showMap = false;
     currentUser = {};
+    sub = null;
 
-    constructor(http:AuthHttp) {
+    constructor(http:AuthHttp, private route:ActivatedRoute,
+                private router:Router) {
         this.http = http;
         if (localStorage.getItem('user_id') && localStorage.getItem('user_id') != 'null') {
             this.getAccountInfo(localStorage.getItem('user_id'));
@@ -96,6 +106,26 @@ export class Three40BComponent {
         this.http = http;
         this.newSurvey();
         this.getClinic(localStorage.getItem('hcf_id'));
+    }
+
+    ngOnInit() {
+        if (localStorage.getItem('contractedPharmacies')) {
+            this.contractedPharmacies = JSON.parse(localStorage.getItem('contractedPharmacies'));
+        }
+        if (localStorage.getItem('currentClinic')) {
+            this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
+        }
+        if (localStorage.getItem('allPharmacies')) {
+            this.allPharmacies = JSON.parse(localStorage.getItem('allPharmacies'));
+        }
+
+
+        this.sub = this.route.params.subscribe(params => {
+            if (params['closeMap'] === 'true') {
+                this.closeMap();
+                this.router.navigate(['/', '340b']);
+            }
+        });
     }
 
     getAccountInfo(id) {
@@ -122,17 +152,18 @@ export class Three40BComponent {
     }
 
     zoomToPharmacy(pharmacy) {
-        this.zoom = 22;
+
+        // this.zoom = 22;
         this.latitude = pharmacy.latitude;
         this.longitude = pharmacy.longitude;
     }
 
 
     searchTypeAhead(text) {
-        return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?health_care_facility_id='+
-                            this.currentClinic['id']+'&query=' + text).map(res => res.json())
+        return this.callApi(this.baseUrl + 'contracted_pharmacies/prefix?health_care_facility_id=' +
+            this.currentClinic['id'] + '&query=' + text).map(res => res.json())
             .map((el) =>
-                    this.contractedPharmacies = el
+                this.contractedPharmacies = el
             ).toPromise();
     }
 
@@ -146,7 +177,7 @@ export class Three40BComponent {
         if (contractedPharmacy) {
             this.questions.q7 = contractedPharmacy.id;
         }
-        this.showMap = false;
+        this.closeMap();
     }
 
 
@@ -169,13 +200,14 @@ export class Three40BComponent {
                 this.getClinicPharmacies(1);
                 this.setLocation(this.currentClinic['hcf_locations'][0]);
                 this.getContractedPharmacies(1);
+                localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
             },
             error => this.errorMessage = <any>error);
     }
 
     getContractedPharmacies(page) {
         return this.callApi(this.baseUrl + 'contracted_pharmacies/list?health_care_facility_id=' +
-                            this.currentClinic['id'] + '&page=' + page).map(res => {
+            this.currentClinic['id'] + '&page=' + page).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
             return res.json();
@@ -183,21 +215,34 @@ export class Three40BComponent {
             y.map(x => {
                 x['draggable'] = false;
                 x['icon_url'] = '../assets/images/doc_and_i_icon_sm.png';
-
                 return x;
             });
-
             return y;
-        }).subscribe((el)=> this.contractedPharmacies = el);
+        }).map((y) => {
+            y.map(x => {
+                 x['dni_pharmacy']['benefits'] = x['dni_pharmacy']['benefits'].map(b => {
+                    var benefit = b['benefit'];
+                    return benefit;
+                });
+                return x;
+            });
+            return y;
+        }).subscribe((el)=> {
+            this.contractedPharmacies = el;
+            localStorage.setItem('contractedPharmacies', JSON.stringify(this.contractedPharmacies));
+        });
     }
 
     getClinicPharmacies(page) {
         return this.callApi(this.baseUrl + 'hcf_pharmacies/list?health_care_facility_id=' +
-                            this.currentClinic['id'] + '&limit=' + 100).map(res => {
+            this.currentClinic['id'] + '&limit=' + 100).map(res => {
             this.totalPages = res.headers.get('Total_pages');
             this.currentPage = res.headers.get('Current_page');
             return res.json();
-        }).subscribe((el)=> this.allPharmacies = el);
+        }).subscribe((el)=> {
+            this.allPharmacies = el;
+            localStorage.setItem('allPharmacies', JSON.stringify(this.allPharmacies));
+        });
     }
 
 
@@ -221,14 +266,20 @@ export class Three40BComponent {
         this.currentTab = 'start';
         this.messageSent = false;
         this.selectedPharmacy = null;
-       this.setLocation(this.currentLocation);
+        this.surveySending = false;
+        this.setLocation(this.currentLocation);
     }
 
     submitSurvey() {
+        this.surveySending = true;
         if (this.questions.q7) {
             this.selectedPharmacy = this.contractedPharmacies.filter(x=>x.id == this.questions.q7)[0];
         }
 
+        if (this.questions.q11.toString() === 'Other' && this.questions.reason) {
+            this.questions.q11 = this.questions.reason;
+            delete this.questions.reason;
+        }
 
         var answers = [];
         for (var key in this.questions) {
@@ -302,10 +353,21 @@ export class Three40BComponent {
             q10: null,
             //no
             q11: 0,
-            text_consent:false
+            reason: null,
+            text_consent: false
         };
     }
 
+    closeMap() {
+        this.showMap = false;
+    }
+
+    openMap() {
+        this.showMap = true;
+
+        this.latitude = this.currentLocation['latitude'];
+        this.longitude = this.currentLocation['longitude'];
+    }
 
     callApi(url) {
         this.errorMessage = '';

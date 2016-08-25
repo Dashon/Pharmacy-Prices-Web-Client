@@ -30,7 +30,10 @@ export class TopNavComponent {
 
     getAccountInfo(id) {
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
-            user => this.currentUser = JSON.parse(user._body),
+            user => {
+                this.currentUser = JSON.parse(user._body);
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            },
             error => this.errorMessage = <any>error);
     }
 
@@ -73,20 +76,21 @@ export class TopNavComponent {
     goToHome() {
         this.router.navigate(['/', '']);
     }
-
+    
+    goTo340b() {
+        this.router.navigate(['/', '340b',{closeMap:'true'}]);
+    }
     logout() {
+        localStorage.clear();
+
         return this.deleteApi(this.baseUrl + 'sign_out').subscribe(
             () => {
-                localStorage.removeItem('id_token');
-                localStorage.removeItem('hcf_id');
-                localStorage.removeItem('name');
-                localStorage.removeItem('role');
-                localStorage.removeItem('user_id');
-
                 this.router.navigate(['/', 'login']);
-
             },
-            error => this.errorMessage = <any>error);
+            error => {
+                this.errorMessage = error;
+                this.router.navigate(['/', 'login']);
+            });
     }
 
     deleteApi(url) {

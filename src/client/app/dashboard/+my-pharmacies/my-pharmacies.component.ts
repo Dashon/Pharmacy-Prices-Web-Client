@@ -37,6 +37,11 @@ export class MyPharmaciesComponent {
         this.getClinics();
         this.getClinic(localStorage.getItem('hcf_id'));
     }
+    ngOnInit() {
+        if (localStorage.getItem('currentClinic')) {
+            this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
+        }
+    }
 
 
     changeTypeaheadLoading(e:boolean) {
@@ -96,6 +101,7 @@ export class MyPharmaciesComponent {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
+                localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
                 this.getClinicPharmacies(1);
             },
             error => this.errorMessage = <any>error);

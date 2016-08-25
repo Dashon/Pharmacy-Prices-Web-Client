@@ -27,9 +27,19 @@ export class HomeComponent implements OnInit {
         this.currentMonth = monthNames[today.getMonth()];
     }
 
+    ngOnInit() {
+        if (localStorage.getItem('currentUser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
+    }
+
+
     getAccountInfo(id) {
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
-            user => this.currentUser = user.json(),
+            user => {
+                this.currentUser = user.json();
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            },
             error => this.errorMessage = <any>error);
     }
 

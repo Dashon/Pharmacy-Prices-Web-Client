@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
         if (tokenNotExpired()) {
             return true;
         }
-        localStorage.removeItem('id_token');
+        localStorage.clear();
         this.router.navigate(['/login']);
         return false;
     }
@@ -46,7 +46,7 @@ export class AdminGaurd implements CanActivate {
         if (tokenNotExpired()) {
             return this.isAdmin;
         }
-        localStorage.removeItem('id_token');
+        localStorage.clear();
         this.router.navigate(['/login']);
         return false;
     }

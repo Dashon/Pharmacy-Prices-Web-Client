@@ -85,11 +85,7 @@ export class SidebarComponent {
         this.sidebarToggler();
         return this.deleteApi(this.baseUrl + 'sign_out').subscribe(
             () => {
-                localStorage.removeItem('id_token');
-                localStorage.removeItem('hcf_id');
-                localStorage.removeItem('name');
-                localStorage.removeItem('role');
-                localStorage.removeItem('user_id');
+                localStorage.clear();
 
                 this.router.navigate(['/', 'login']);
 

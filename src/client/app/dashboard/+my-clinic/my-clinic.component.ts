@@ -38,6 +38,12 @@ export class MyClinicComponent {
         this.getRoles();
     }
 
+    ngOnInit() {
+        if (localStorage.getItem('currentClinic')) {
+            this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
+        }
+    }
+
     handleLogo(event) {
         var files = event.srcElement.files;
 
@@ -100,7 +106,10 @@ export class MyClinicComponent {
 
     getClinic(id) {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
-            clinic => this.currentClinic = JSON.parse(clinic._body),
+            clinic => {
+                this.currentClinic = JSON.parse(clinic._body)
+                localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
+            },
             error => this.errorMessage = <any>error);
     }
 
