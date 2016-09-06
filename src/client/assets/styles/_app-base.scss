@@ -14,6 +14,9 @@
 @import "pages/manage-pharmacies";
 @import "pages/manage-rewards";
 @import "pages/edit-request";
+@import "pages/home";
+@import "pages/healthcare-solutions";
+@import "pages/about";
 //Widgets
 @import "widgets/topnav";
 @import "widgets/sidebar";
@@ -42,19 +45,22 @@ html, body, .col-md-12, .row, .main-container {
 
 body {
   font-family: $font;
-  color: $grey;
+  color:$grey !important;
+  font-size: 16px;
   min-height: 700px;
-  background-color: $white;
-  overflow: hidden;
+  overflow-x: hidden;;
 }
 
 h1, h2, h3 {
   text-align: center;
-  color: $dark-grey;
+  color:$dark-grey;
+  font-family: $font-family-serif !important;
+  font-weight: 600 !important;
 }
 
 h1 {
   font-size: 2.5em;
+  line-height: 1.2 !important;
 }
 
 h2 {
@@ -69,13 +75,18 @@ h4 {
   font-size: 1.25em;
 }
 
-a {
+p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+a{
   font-size: 1em;
   color: $blue;
-  &:hover {
+  &:hover{
     text-decoration: underline;
   }
-  &.small {
+  &.small{
     font-size: .8em;
     font-weight: 600;
     margin-bottom: 15px;
@@ -88,6 +99,12 @@ img {
   -ms-interpolation-mode: bicubic;
   display: inline-block;
   vertical-align: middle;
+}
+
+.hide-number-steppers::-webkit-inner-spin-button,
+.hide-number-steppers::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .col-md-12 {
@@ -304,4 +321,76 @@ td, th {
   color: rgba(255, 255, 255, 1);
   border: 2px solid rgba(255, 255, 255, 1);
   outline: none;
+}
+
+
+.row {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.home-page, .healthcare-solutions {
+  img {
+    width: 100%;
+  }
+}
+
+//ROWS
+.teal-row {
+  background-color: $teal;
+  color: $white;
+  padding: 40px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.white-row {
+  padding: 40px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.content-row {
+  text-align: left;
+  @media (max-width: 767px) {
+    padding: 20px 20px;
+  }
+  h2 {
+    text-align: left;
+  }
+  p {
+    font-size: 22px;
+    line-height: 1.6;
+  }
+  li {
+    font-size: 22px;
+    line-height: 1.6;
+  }
+}
+
+
+.btn {
+  background-color: $baseColor;
+  border:none;
+  color: $white;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($baseColor, 5%);
+    color: darken($white, 5%)  !important;
+    transition: 1s;
+  }
+}
+
+.btn-red {
+  background-color: $red;
+  &:hover {
+    background-color: darken($red, 5%) ;
+    transition: 1s;
+    color: darken($white, 5%)  !important;
+  }
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
 }

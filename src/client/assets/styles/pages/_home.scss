@@ -1,0 +1,77 @@
+
+.home-page {
+  .home-page-header {
+    background-image: url('/assets/images/docandi-patient-care.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+    min-height: 450px;
+    @media (max-width: 767px) {
+      background-image: none;
+      background-color: $light-grey;
+    }
+    .home-page-header-content {
+      padding: 80px 20px;
+      @media (max-width: 767px) {
+        padding: 20px;
+      }
+    }
+    a {
+      h3{
+        color: $grey !important;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    h1 {
+      text-align: left;
+    }
+  }
+  .box {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    margin-bottom: 20px;
+    img {
+      width: 100px !important;
+    }
+    &:hover {
+      box-shadow: 3px 3px 23px -2px rgba(0,0,0,0.5);
+    }
+  }
+  .home-page-closer {
+    background-image: url('/assets/images/docandi-savings.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+    min-height: 450px;
+    @media (max-width: 767px) {
+      background-image: none;
+      background-color: $teal;
+    }
+    img {
+      width:250px !important;
+    }
+    a {
+      h3{
+        color: $grey !important;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .box {
+      margin: 90px 0;
+      padding: 80px 0;
+      @media (max-width: 767px) {
+        margin: 0;
+      }
+    }
+  }
+  .savings-card {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .teal-row {
+    padding: 80px 0;
+  }
+}

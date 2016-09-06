@@ -1,5 +1,5 @@
 <nav class="navbar topnav-navbar navbar-fixed-top">
-    <button  *ngIf="isLoggedIn()" id="sidebar-toggler" class="hidden-md-up" type="button" (click)="sidebarToggler()">
+    <button *ngIf="isLoggedIn()" id="sidebar-toggler" class="hidden-md-up" type="button" (click)="sidebarToggler()">
         &#9776;
     </button>
     <a class="hidden-md-up theme-name" href="Javascript:void(0);" (click)="goToHome()"><img class="logo"
@@ -8,11 +8,48 @@
         <a class="navbar-brand" href="Javascript:void(0);" (click)="goToHome()"><img class="logo"
                                                                                      src="assets/images/doc_and_i_logo.png"></a>
         <ul class="nav navbar-nav pull-right navbar-right">
-            <li class="nav-item nav-text" role="menuitem" *ngIf="isAssociated()" (click)="goTo340b()"><a href="javascript:void(0)"
-                                                                                    tabindex="0"><img
+
+            <li class="nav-item nav-text" role="menuitem"><a [routerLink]="['/about']" href="javascript:void(0)"
+                                                             tabindex="0">About Us</a></li>
+
+            <li class="nav-item nav-text" role="menuitem"><a [routerLink]="['/healthcare-solutions']"
+                                                             href="javascript:void(0)"
+                                                             tabindex="0">Professional Solutions</a></li>
+            <!--<li class="nav-item profile">-->
+            <!--<div class="btn-group nav-text" dropdown>-->
+            <!--<a dropdownToggle="" class="dropdown-toggle" aria-haspopup="true">-->
+            <!--<span>Prescription Savings</span>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu " aria-labelledby="lang">-->
+            <!--<li role="menuitem"><a class="dropdown-item" href="javascript:void(0)"-->
+            <!--[routerLink]="['/healthcare-solutions']">Savings Search</a></li>-->
+            <!--<li role="menuitem"><a class="dropdown-item" href="javascript:void(0)"-->
+            <!--[routerLink]="['/healthcare-solutions']">Savings Card</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<li class="nav-item profile">-->
+            <!--<div class="btn-group nav-text" dropdown>-->
+            <!--<a dropdownToggle="" class="dropdown-toggle" aria-haspopup="true">-->
+            <!--<span>Professional Solution</span>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu " aria-labelledby="lang">-->
+            <!--<li role="menuitem"><a class="dropdown-item" href="javascript:void(0)"-->
+            <!--[routerLink]="['/healthcare-solutions']">Pricing Software</a></li>-->
+            <!--<li role="menuitem"><a class="dropdown-item" href="javascript:void(0)"-->
+            <!--[routerLink]="['/healthcare-solutions']">340B Program</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</li>-->
+
+
+            <li class="nav-item nav-text" role="menuitem" *ngIf="isAssociated()" (click)="goTo340b()"><a
+                    href="javascript:void(0)"
+                    tabindex="0"><img
                     src="assets/images/svg/icon-script.svg" width="20px">340B</a></li>
             <!--<li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" [routerLink]="['/','/map']" ><img src="assets/images/svg/icon-map.svg" width="15px"> Map</a></li>-->
             <!--<li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" [routerLink]="['/','/drug-search']"><img src="assets/images/svg/icon-savings.svg" width="20px"> Savings</a></li>-->
+
             <li class="nav-item profile" *ngIf="isAssociated()">
                 <div class="btn-group nav-text" dropdown>
                     <a dropdownToggle="" class="dropdown-toggle" aria-haspopup="true">

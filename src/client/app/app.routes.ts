@@ -10,7 +10,9 @@ import {Three40BRoutes} from './+340B/340b.routes';
 import {MapRoutes} from './+map/map.routes';
 import {AdminRoutes} from './admin/admin.routes';
 import {HomeRoutes} from './+home/home.routes';
+import {HealthCareSolutionsRoutes} from './+healthcare-solutions/healthcare-solutions.routes';
 import {ForgotPasswordRoutes} from './+forgot-password/forgot-password.routes';
+import {AboutRoutes} from "./+about/about.routes";
 
 
 
@@ -25,7 +27,9 @@ const routes: RouterConfig = [
 	...Three40BRoutes,
 	...MapRoutes,
 	...HomeRoutes,
-	...ForgotPasswordRoutes
+	...ForgotPasswordRoutes,
+	...HealthCareSolutionsRoutes,
+	...AboutRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [

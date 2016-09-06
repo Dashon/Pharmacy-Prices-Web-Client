@@ -2,10 +2,13 @@
  * Created by Dashon on 6/14/16.
  */
 
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {Router, ActivatedRoute, ROUTER_DIRECTIVES} from '@angular/router';
-import {DROPDOWN_DIRECTIVES, TAB_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {
+    DROPDOWN_DIRECTIVES, TAB_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ModalDirective,
+    BS_VIEW_PROVIDERS
+} from 'ng2-bootstrap/ng2-bootstrap';
 // import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 import {AuthHttp} from '../config/http';
@@ -20,8 +23,9 @@ import {OrderBy} from "../shared/pipes/orderBy";
     moduleId: module.id,
     selector: 'three40b-cmp',
     templateUrl: '340b.component.html',
-    directives: [DROPDOWN_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, TYPEAHEAD_DIRECTIVES, TAB_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES],
+    directives: [DROPDOWN_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, TYPEAHEAD_DIRECTIVES, TAB_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES, ModalDirective],
     providers: [GOOGLE_MAPS_PROVIDERS],
+    viewProviders: [BS_VIEW_PROVIDERS],
     pipes: [OrderBy],
     styles: [`
     .sebm-google-map-container {
@@ -31,7 +35,7 @@ import {OrderBy} from "../shared/pipes/orderBy";
   `]
 })
 export class Three40BComponent {
-
+    @ViewChild('patientCountModal') public patientCountModal:ModalDirective;
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
     response = null;
@@ -43,6 +47,7 @@ export class Three40BComponent {
     currentClinic = {id: 1};
     editPharmacy = {};
     surveySending = false;
+    textSending = false;
     reasons = [
         {id: 1, name: "Pharmacies are too far away"},
         {id: 2, name: "I am happy with my current pharmacy"},
@@ -93,7 +98,10 @@ export class Three40BComponent {
     latitude:number = 41.8781;
     newCords = {};
     showMap = false;
-    currentUser = {};
+    currentUser = {survey_day: {expected_patients: 0}};
+    edit_expected_patients = 0;
+    expected_patients_sending = false;
+
     sub = null;
 
     constructor(http:AuthHttp, private route:ActivatedRoute,
@@ -114,11 +122,14 @@ export class Three40BComponent {
         }
         if (localStorage.getItem('currentClinic')) {
             this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
+            this.setLocation(this.currentClinic['hcf_locations'][0]);
         }
         if (localStorage.getItem('allPharmacies')) {
             this.allPharmacies = JSON.parse(localStorage.getItem('allPharmacies'));
         }
-
+        if (localStorage.getItem('currentUser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
 
         this.sub = this.route.params.subscribe(params => {
             if (params['closeMap'] === 'true') {
@@ -126,20 +137,29 @@ export class Three40BComponent {
                 this.router.navigate(['/', '340b']);
             }
         });
+
+        if (this.currentUser.survey_day.expected_patients < 1) {
+            this.showPatientCountEditor();
+        }
     }
 
     getAccountInfo(id) {
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
-            user => this.currentUser = JSON.parse(user._body),
+            user => {
+                this.currentUser = JSON.parse(user._body);
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            },
             error => this.errorMessage = <any>error);
     }
 
 
     setLocation(location) {
-        this.currentLocation = location;
+        if (location['latitude'] && location['longitude']) {
+            this.currentLocation = location;
 
-        this.latitude = this.currentLocation['latitude'];
-        this.longitude = this.currentLocation['longitude'];
+            this.latitude = this.currentLocation['latitude'];
+            this.longitude = this.currentLocation['longitude'];
+        }
     }
 
     clickedMarker(label:string, index:number) {
@@ -152,7 +172,6 @@ export class Three40BComponent {
     }
 
     zoomToPharmacy(pharmacy) {
-
         // this.zoom = 22;
         this.latitude = pharmacy.latitude;
         this.longitude = pharmacy.longitude;
@@ -220,9 +239,8 @@ export class Three40BComponent {
             return y;
         }).map((y) => {
             y.map(x => {
-                 x['dni_pharmacy']['benefits'] = x['dni_pharmacy']['benefits'].map(b => {
-                    var benefit = b['benefit'];
-                    return benefit;
+                x['dni_pharmacy']['benefits'] = x['dni_pharmacy']['benefits'].sort(function (a, b) {
+                    return parseInt(a.id) - parseInt(b.id);
                 });
                 return x;
             });
@@ -260,6 +278,12 @@ export class Three40BComponent {
         return this.postApi(this.baseUrl + 'pharmacy_edit_requests', body);
     }
 
+    showPatientCountEditor() {
+        this.expected_patients_sending = false;
+        this.edit_expected_patients = this.currentUser.survey_day.expected_patients;
+        this.patientCountModal.show();
+    }
+
     newSurvey() {
         this.currentSurvey = {};
         this.resetQuestions();
@@ -267,6 +291,7 @@ export class Three40BComponent {
         this.messageSent = false;
         this.selectedPharmacy = null;
         this.surveySending = false;
+        this.textSending = false;
         this.setLocation(this.currentLocation);
     }
 
@@ -304,9 +329,22 @@ export class Three40BComponent {
             this.getAccountInfo(this.currentUser['id']);
         });
     }
+    changeExpectedPatients() {
+        var payload = {expected_patients: this.edit_expected_patients};
+        var survey_day_id = this.currentUser.survey_day.id;
+        this.expected_patients_sending = true;
+
+        return this.putApi(this.baseUrl + 'survey_days/' + survey_day_id, payload).subscribe(()=> {
+            if (localStorage.getItem('user_id') && localStorage.getItem('user_id') != 'null') {
+                this.getAccountInfo(localStorage.getItem('user_id'));
+                this.patientCountModal.hide();
+            }
+        });
+    }
 
     sendText() {
         if (this.contactInfo) {
+            this.textSending = true;
             var msg = {contact_info: this.contactInfo, contrated_pharamcy_id: this.selectedPharmacy['id']};
             return this.postApi(this.baseUrl + 'surveys/text_patient', msg).subscribe(()=> {
                 this.contactInfo = null;
@@ -364,9 +402,7 @@ export class Three40BComponent {
 
     openMap() {
         this.showMap = true;
-
-        this.latitude = this.currentLocation['latitude'];
-        this.longitude = this.currentLocation['longitude'];
+        this.setLocation(this.currentLocation);
     }
 
     callApi(url) {

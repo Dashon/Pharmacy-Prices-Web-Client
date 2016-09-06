@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <img *ngIf="!currentUser.health_care_facility.month_trophy" src="http://placehold.it/150x150" class="trophy">
-                                <img *ngIf="currentUser.health_care_facility.month_trophy" src="{{currentUser.health_care_facility.month_trophy.reward.image_url}}" class="trophy">
+                                <img *ngIf="currentUser.health_care_facility.month_trophy" src="{{currentUser.health_care_facility.month_trophy.image_url}}" class="trophy">
                             </div>
                             <div class="col-sm-12">
                                 <h4>{{currentMonth}} Trophy</h4>
@@ -48,8 +48,8 @@
                                             <h4 class="modal-title">Select an Avatar</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <img src="{{avatar.reward.image_url}}" class="avatar-large"
-                                                 *ngFor="let avatar of currentUser.avatars" (click)="chooseAvatar(avatar.reward.image_url)">
+                                            <img src="{{avatar.image_url}}" class="avatar-large"
+                                                 *ngFor="let avatar of currentUser.avatars" (click)="chooseAvatar(avatar.image_url)">
                                             <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@
                         <div class="row award">
                             <div class="col-sm-12 col-md-5">
                                 <img *ngIf="!currentUser.health_care_facility.next_reward" src="http://placehold.it/150x150" class="trophy">
-                                <img *ngIf="currentUser.health_care_facility.next_reward" src="{{currentUser.health_care_facility.next_reward.reward.image_url}}" class="trophy">
+                                <img *ngIf="currentUser.health_care_facility.next_reward" src="{{currentUser.health_care_facility.next_reward.image_url}}" class="trophy">
                             </div>
                             <div class="col-sm-12 col-md-7 left">
                                 <h4>Awarded to the individual with the most points</h4>
@@ -110,7 +110,7 @@
                     <div class="col-sm-12 col-md-4" (click)="trophyModal.show()">
                         <a data-open="tropyModal">
                             <img *ngIf="!currentUser.trophies[0]" src="http://placehold.it/150x150" class="trophy">
-                            <img *ngIf="currentUser.trophies[0]" src="{{currentUser.trophies[0].reward.image_url}}" class="trophy">
+                            <img *ngIf="currentUser.trophies[0]" src="{{currentUser.trophies[0].image_url}}" class="trophy">
                             <p>{{currentUser.trophies.length}} Trophies</p></a>
                     </div>
                     <!-- TROPHY MODAL -->
@@ -125,7 +125,7 @@
                                     <h4 class="modal-title">Your Trophies</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{trophy.reward.image_url}}" class="avatar-large"
+                                    <img src="{{trophy.image_url}}" class="avatar-large"
                                          *ngFor="let trophy of currentUser.trophies">
                                     <h3 *ngIf="!currentUser.trophies.length">No Trophies</h3>
                                 </div>
@@ -136,7 +136,7 @@
                     <div class="col-sm-12 col-md-4" (click)="avatarModal.show()">
                         <a data-open="avatarModal">
                             <img *ngIf="!currentUser.avatars[0]" src="http://placehold.it/150x150" class="trophy">
-                            <img *ngIf="currentUser.avatars[0]" src="{{currentUser.avatars[0].reward.image_url}}" class="trophy">
+                            <img *ngIf="currentUser.avatars[0]" src="{{currentUser.avatars[0].image_url}}" class="trophy">
                             <p>{{currentUser.avatars.length}} Avatars</p></a>
                     </div>
                     <!-- AVATAR MODAL -->
@@ -151,7 +151,7 @@
                                     <h4 class="modal-title">Your Avatars</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{avatar.reward.image_url}}" class="avatar-large"
+                                    <img src="{{avatar.image_url}}" class="avatar-large"
                                          *ngFor="let avatar of currentUser.avatars">
                                     <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
 
@@ -165,7 +165,7 @@
 
                         <a data-open="badgesModal">
                             <img *ngIf="!currentUser.badges[0]" src="http://placehold.it/150x150" class="trophy">
-                            <img *ngIf="currentUser.badges[0]" src="{{currentUser.badges[0].reward.image_url}}" class="trophy">
+                            <img *ngIf="currentUser.badges[0]" src="{{currentUser.badges[0].image_url}}" class="trophy">
                             <p>{{currentUser.badges.length}} Badges</p></a>
                     </div>
                     <!-- BADGES MODAL -->
@@ -181,7 +181,7 @@
                                     <h4 class="modal-title">Your Badges</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{badge.reward.image_url}}" class="avatar-large"
+                                    <img src="{{badge.image_url}}" class="avatar-large"
                                          *ngFor="let badge of currentUser.badges">
 
                                     <h3 *ngIf="!currentUser.badges.length">No Badges</h3>

@@ -3,16 +3,19 @@
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
                 <div class="row">
-                    <div class="col-xs-2 subnav-text">
-                        <a (click)="openMap()"><img src="assets/images/svg/icon-sub-map.svg" width="60px"></a>
+                    <div class="pull-left">
+                        <span><img src="assets/images/svg/icon-script.svg" width="30px"> Patient {{currentUser.todays_surveys + 1 || 0}} of {{currentUser.survey_day.expected_patients || 0}}
+                        <small> <a href="javascript:void(0)"
+                                   (click)="showPatientCountEditor()">Update</a></small> </span>
                     </div>
 
-                    <div class="col-xs-8 subnav-text">
-                        <h2><img src="assets/images/svg/icon-script.svg" width="30px"> 340B</h2>
-                    </div>
-                    <div class="col-xs-2 subnav-text refresh">
-                        <a (click)="newSurvey()" href="javascript:void(0)"><img src="assets/images/svg/icon-refresh.svg" width="30px"> <span
-                                class="hide-for-small-only">New</span></a>
+                    <div class="pull-right">
+                        <a (click)="newSurvey()" href="javascript:void(0)"> <span
+                                class="btn btn-secondary btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
+                                                                           width="30px">New</span></a>
+                        <a (click)="newSurvey()" href="javascript:void(0)"><span
+                                class="btn btn-secondary btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
+                                                                           width="30px">Refresh</span></a>
                     </div>
                 </div>
             </div>
@@ -80,7 +83,8 @@
                                 </div>
                                 <div class="row text-xs-center">
                                     <button (click)="submitSurvey()" [disabled]="surveySending"
-                                       class="button btn btn-primary btn-rounded">Submit</button>
+                                            class="button btn btn-primary btn-rounded">Submit
+                                    </button>
                                 </div>
                             </section>
                         </div>
@@ -108,8 +112,12 @@
                                 <div class="row">
                                     <input id="pharmacy-info" type="checkbox" [(ngModel)]="questions.q5"><label
                                         for="pharmacy-info">I have
-                                    informed patient of the <button (click)="openMap()" class="button btn btn-danger btn-rounded" style="width: inherit">Participating pharmacy
-                                        locations</button> and corresponding benefits of pharmacies</label>
+                                    informed patient of the
+                                    <button (click)="openMap()" class="button btn btn-danger btn-rounded"
+                                            style="width: inherit">Participating pharmacy
+                                        locations
+                                    </button>
+                                    and corresponding benefits of pharmacies</label>
                                 </div>
                                 <div class="row text-xs-center">
                                     <a (click)="currentTab = 'ask-change'"
@@ -141,7 +149,7 @@
                                         <select [(ngModel)]="questions.q7">
                                             <option value="0">Select A Pharmacy</option>
                                             <option value="{{p.id}}" *ngFor="let p of contractedPharmacies">
-                                               {{p.dni_pharmacy.display_name}}
+                                                {{p.dni_pharmacy.display_name}}
                                             </option>
                                         </select>
                                     </div>
@@ -168,7 +176,9 @@
                                 <br>
                                 <div class="row text-xs-center">
                                     <button (click)="submitSurvey()"
-                                       class="button btn btn-primary btn-rounded" [disabled]="!questions.q10 || surveySending">Submit</button>
+                                            class="button btn btn-primary btn-rounded"
+                                            [disabled]="!questions.q10 || surveySending">Submit
+                                    </button>
                                 </div>
                             </section>
 
@@ -181,11 +191,13 @@
                                     <option value="{{reason.name}}" *ngFor="let reason of reasons">{{reason.name}}
                                     </option>
                                 </select>
-                                <input *ngIf="questions.q11 == 'Other'" [(ngModel)]="questions.reason" type="text" class="form-control input-underline" placeholder="Enter Reason">
+                                <input *ngIf="questions.q11 == 'Other'" [(ngModel)]="questions.reason" type="text"
+                                       class="form-control input-underline" placeholder="Enter Reason">
                                 <br/>
                                 <div class="row text-xs-center">
                                     <button (click)="submitSurvey()" [disabled]="surveySending"
-                                       class="button btn btn-primary btn-rounded">Submit</button>
+                                            class="button btn btn-primary btn-rounded">Submit
+                                    </button>
                                 </div>
                             </section>
                         </div>
@@ -203,22 +215,28 @@
                                         </p>
                                     </div>
                                     <form (keyup.enter)="login()">
-                                    <div class="row text-xs-center contact-info">
-                                        <input name="contactInfo" class="col-sm-12" type="tel" placeholder="Enter Cell Number"
-                                               [(ngModel)]="contactInfo">
-                                    </div>
-                                    <div class="row">
+                                        <div class="row text-xs-center contact-info">
+                                            <input name="contactInfo" class="col-sm-12" type="tel"
+                                                   placeholder="Enter Cell Number"
+                                                   [(ngModel)]="contactInfo">
+                                        </div>
+                                        <div class="row">
 
-                                        <input id="text-consent" name="text-consent" type="checkbox" [(ngModel)]="questions.text_consent"><label
-                                            for="text-consent">Patient has verbally consented to sharing phone number and receiving text message(s) from Doc & I with pharmacy name and location information.</label>
-                                    </div>
-                                    <div class="row text-xs-center">
+                                            <input id="text-consent" name="text-consent" type="checkbox"
+                                                   [(ngModel)]="questions.text_consent"><label
+                                                for="text-consent">Patient has verbally consented to sharing phone
+                                            number and receiving text message(s) from Doc & I with pharmacy name and
+                                            location information.</label>
+                                        </div>
+                                        <div class="row text-xs-center">
 
-                                        <!--<a class="btn btn-warning btn-rounded col-sm-6"-->
-                                           <!--(click)="sendEmail()">Email</a>-->
-                                        <button type="submit" [disabled]="!questions.text_consent" class="btn btn-warning btn-rounded col-sm-12"
-                                           (click)="sendText()">Send Text</button>
-                                    </div>
+                                            <!--<a class="btn btn-warning btn-rounded col-sm-6"-->
+                                            <!--(click)="sendEmail()">Email</a>-->
+                                            <button type="submit" [disabled]="!questions.text_consent || textSending"
+                                                    class="btn btn-warning btn-rounded col-sm-12"
+                                                    (click)="sendText()">Send Text
+                                            </button>
+                                        </div>
                                     </form>
                                     <div class="row text-xs-center" *ngIf="messageSent">
                                         <h3><span class="fa fa-check"></span>Message Sent!</h3>
@@ -251,7 +269,8 @@
             <div>
 
                 <div class="btn-group" dropdown>
-                    <button type="button" class="btn btn-secondary dropdown-toggle" (click)="setLocation(currentLocation)" dropdownToggle>
+                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                            (click)="setLocation(currentLocation)" dropdownToggle>
                         {{currentLocation.address}}<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
@@ -284,7 +303,7 @@
                                 {{pharmacy.dni_pharmacy.address}}
                             </div>
                             <div class="pharmacy-benefits" *ngIf="pharmacy.dni_pharmacy">
-                                <img *ngFor="let benefit of pharmacy.dni_pharmacy.benefits | orderBy : '-id'"
+                                <img *ngFor="let benefit of pharmacy.dni_pharmacy.benefits"
                                      src="{{benefit.image_url}}"
                                      alt="{{benefit.name}}">
                             </div>
@@ -316,7 +335,8 @@
                         <div>{{currentLocation.address}}</div>
                         <div>{{currentLocation.city}},{{currentLocation.state}} {currentLocation.zip}}</div>
                         <button class="btn btn-block btn-primary btn-rounded pull-left"
-                           (click)="chooseFromMap(m)">Select</button>
+                                (click)="chooseFromMap(m)">Select
+                        </button>
                     </sebm-google-map-info-window>
                 </sebm-google-map-marker>
 
@@ -330,13 +350,13 @@
                         [markerDraggable]="false">
 
 
-
                     <sebm-google-map-info-window class="clearfix">
                         <strong>{{m.dni_pharmacy.name}}</strong>
                         <div>{{m.dni_pharmacy.address}}</div>
                         <div>{{m.dni_pharmacy.city}},{{m.dni_pharmacy.state}} {{m.dni_pharmacy.zip}}</div>
                         <button class="btn btn-block btn-primary btn-rounded pull-left"
-                           (click)="chooseFromMap(m)">Select</button>
+                                (click)="chooseFromMap(m)">Select
+                        </button>
                     </sebm-google-map-info-window>
 
                 </sebm-google-map-marker>
@@ -349,6 +369,41 @@
                 <!--</sebm-google-map-circle>-->
 
             </sebm-google-map>
+        </div>
+    </div>
+</div>
+
+<div bsModal #patientCountModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="patientCountModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" aria-label="Close" (click)="patientCountModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <center class="modal-title ">How many patients will <br> you see today?</center>
+            </div>
+            <div class="modal-body clearfix">
+                <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
+                <div class="input-group row"><span class="input-group-btn"><button type="button"
+                                                                               class="btn btn-primary" (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
+                    <input [(ngModel)]="edit_expected_patients"
+                            class="form-control hide-number-steppers" type="number" min="1" max="100000"
+                            style="text-align: center;" name="expected_patients">
+                    <span class="input-group-btn"><button
+                            type="button"
+                            class="btn btn-primary" (click)="edit_expected_patients = edit_expected_patients+1">+</button></span>
+                </div>
+                    <br/>
+                    <div class="col-sm-offset-4 col-sm-4" >
+                    <button
+                            type="submit"
+                            [disabled]="expected_patients_sending"
+                            class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+        </div>
         </div>
     </div>
 </div>
