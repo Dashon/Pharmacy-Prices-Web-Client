@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {ROUTER_DIRECTIVES} from '@angular/router';
-import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {AuthHttp} from '../../config/http';
 import {MapToArray} from '../../shared/pipes/MapToArray';
 
@@ -10,7 +10,7 @@ import {MapToArray} from '../../shared/pipes/MapToArray';
     selector: 'my-clinic-cmp',
     templateUrl: './my-clinic.component.html',
     pipes: [MapToArray],
-    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES]
+    directives: [DROPDOWN_DIRECTIVES, TYPEAHEAD_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES,ModalDirective]
 })
 export class MyClinicComponent {
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';

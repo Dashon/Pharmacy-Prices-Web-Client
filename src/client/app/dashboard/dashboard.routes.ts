@@ -6,6 +6,7 @@ import {MyPharmaciesRoutes} from './+my-pharmacies/my-pharmacies.routes';
 import {ContractedPharmaciesRoutes} from './+contracted-pharmacies/contracted-pharmacies.routes';
 import {HelpRoutes} from './+help/help.routes';
 import {AuthGuard} from '../shared/services/auth.gaurd';
+import {ClinicStatsRoutes} from "./+clinic-stats/clinic-stats.routes";
 
 
 export const DashboardRoutes = [
@@ -19,7 +20,8 @@ export const DashboardRoutes = [
             ...MyClinicRoutes,
             ...MyPharmaciesRoutes,
             ...ContractedPharmaciesRoutes,
-            ...HelpRoutes
+            ...HelpRoutes,
+            ...ClinicStatsRoutes
         ]
     },
 ];

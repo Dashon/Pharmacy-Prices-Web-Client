@@ -1,0 +1,77 @@
+<div class="clinic-stats-page animate">
+
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-success card-inverse card-header">
+                    <div class="row clearfix">
+                        <div class="col-sm-7">
+                            <label class="pull-left"> From:
+                                <input type="datetime-local" class="form-control" name="startTime" [(ngModel)]="start">
+                            </label>
+
+                            <label class="pull-right">
+                                To:
+                                <input type="datetime-local" class="form-control" name="stopTime" [(ngModel)]="stop">
+                            </label>
+                        </div>
+
+                        <div class="col-sm-5">
+                            <div class="pull-left">
+                            </div>
+                            <button class="btn btn-primary btn-rounded pull-right" (click)="getStats(start, stop)">Go
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-block clearfix">
+                    <div class="text-sm-center">
+                        <p class="font-weight-bold">{{start | date:'short'}} - {{stop | date:'short'}}</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <div>Total Patients: {{stats.totalPatients}}</div>
+                        <div>Total Surveys: {{stats.totalSurveys}}</div>
+                        <br>
+                        <div id="gaugechart"></div>
+                        <div class="text-xs-center">
+                            <p class="font-weight-bold">Surveys Taken</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="donutchart"></div>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <div>Already Going: {{stats.alreadyGoing}}</div>
+                        <div>Not Going: {{stats.notGoing}}</div>
+                        <br/>
+                        <div>Agreed To Change: {{stats.agreedToChange}}</div>
+                        <div>Refused To Change: {{stats.refusedToChange}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+
+<div bsModal #datePickerModel="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="datePickerModel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" aria-label="Close" (click)="datePickerModel.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <center class="modal-title ">Pick a Start Date</center>
+            </div>
+            <div class="modal-body clearfix">
+                <!--<datepicker [(ngModel)]="start" [maxDate]="today" [showWeeks]="true"></datepicker>-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@ if ('<%= ENV %>' === 'prod') {
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 bootstrap(AppComponent, [
+    disableDeprecatedForms(),
     HTTP_PROVIDERS,
     APP_ROUTER_PROVIDERS,
     AuthGuard,
@@ -47,7 +48,6 @@ bootstrap(AppComponent, [
         deps: [Http, Router]
     }),
     AuthHttp,
-    disableDeprecatedForms(),
     provideForms(),
     GOOGLE_MAPS_PROVIDERS,
     provideLazyMapsAPILoaderConfig({
