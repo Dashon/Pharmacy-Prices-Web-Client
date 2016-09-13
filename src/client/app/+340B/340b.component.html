@@ -375,17 +375,19 @@
 
 <div bsModal #patientCountModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog"
      aria-labelledby="patientCountModal" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <button type="button" class="close" aria-label="Close" (click)="patientCountModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <center class="modal-title ">How many patients will <br> you see today?</center>
+                <center class="modal-title ">How many patients will you see today?</center>
             </div>
             <div class="modal-body clearfix">
                 <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
-                <div class="input-group row"><span class="input-group-btn"><button type="button"
+                    <center *ngIf="currentUser.todays_surveys >= edit_expected_patients" class="text-danger"> You have seen {{currentUser.todays_surveys}} patients already! </center>
+
+                    <div class="input-group row"><span class="input-group-btn"><button type="button"
                                                                                class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
                     <input [(ngModel)]="edit_expected_patients"
                             class="form-control hide-number-steppers" type="number" min="1" max="100000"
@@ -398,8 +400,8 @@
                     <div class="col-sm-offset-4 col-sm-4" >
                     <button
                             type="submit"
-                            [disabled]="expected_patients_sending"
-                            class="btn btn-primary">Submit</button>
+                            [disabled]="expected_patients_sending || currentUser.todays_surveys >= edit_expected_patients"
+                            class="btn btn-primary btn-block ">Submit</button>
                     </div>
 
                 </form>

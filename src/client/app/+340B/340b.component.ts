@@ -98,7 +98,7 @@ export class Three40BComponent {
     latitude:number = 41.8781;
     newCords = {};
     showMap = false;
-    currentUser = {survey_day: {expected_patients: 0}};
+    currentUser = {survey_day: {expected_patients: 0},todays_surveys:0};
     edit_expected_patients = 0;
     expected_patients_sending = false;
 
@@ -138,7 +138,7 @@ export class Three40BComponent {
             }
         });
 
-        if (this.currentUser.survey_day.expected_patients < 1) {
+        if (this.currentUser.survey_day.expected_patients < 1 || this.currentUser.survey_day.expected_patients == this.currentUser.todays_surveys) {
             this.showPatientCountEditor();
         }
     }
