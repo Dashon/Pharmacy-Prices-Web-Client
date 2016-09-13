@@ -140,7 +140,7 @@ export class MyClinicComponent {
 
     deleteMember(id) {
         return this.callApi('https://doc-and-i-api.herokuapp.com/api/v1/users/' + id + '/unassociate').subscribe(
-            ()=> this.getClinic(id),
+            () => this.getClinic(this.currentClinic['id']),
             error => this.errorMessage = <any>error);
     }
 
@@ -156,6 +156,7 @@ export class MyClinicComponent {
         if (this.editMemberItem['role']) {
             this.editMemberItem['role'] = parseInt(this.editMemberItem['role']);
         }
+       delete this.editMemberItem['id'];
 
         this.postApi(this.baseUrl + 'invite_user', this.editMemberItem).subscribe(
             () => {

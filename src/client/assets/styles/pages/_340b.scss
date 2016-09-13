@@ -1,10 +1,10 @@
 .three40-b-page {
   .menu-tabs {
     .btn {
-      &.active {
-        background-color: #8aa4be;
-        color: $white !important;
-      }
+      //&.active {
+      //  background-color: #8aa4be;
+      //  color: $white !important;
+      //}
     }
   }
   .yes-no-btn{
@@ -107,6 +107,8 @@
     }
   }
 
+
+
 }
 .closeMapBtn{
   position: absolute;
@@ -115,4 +117,15 @@
   z-index: 10000;
   background-color: white;
   font-weight: 600;
+}
+.patient-count-modal{
+  .modal-body {
+    .btn-blue {
+      height: 50px;
+      width: 50px;
+    }
+    input {
+      height: 50px;
+    }
+  }
 }

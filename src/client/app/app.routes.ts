@@ -13,6 +13,7 @@ import {HomeRoutes} from './+home/home.routes';
 import {HealthCareSolutionsRoutes} from './+healthcare-solutions/healthcare-solutions.routes';
 import {ForgotPasswordRoutes} from './+forgot-password/forgot-password.routes';
 import {AboutRoutes} from "./+about/about.routes";
+import {ResetPasswordRoutes} from "./+reset-password/reset-password.routes";
 
 
 
@@ -29,7 +30,8 @@ const routes: RouterConfig = [
 	...HomeRoutes,
 	...ForgotPasswordRoutes,
 	...HealthCareSolutionsRoutes,
-	...AboutRoutes
+	...AboutRoutes,
+	...ResetPasswordRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [

@@ -11,10 +11,10 @@
 
                     <div class="pull-right">
                         <a (click)="newSurvey()" href="javascript:void(0)"> <span
-                                class="btn btn-secondary btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
+                                class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-new-patient.svg"
                                                                            width="30px">New</span></a>
                         <a (click)="newSurvey()" href="javascript:void(0)"><span
-                                class="btn btn-secondary btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
+                                class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
                                                                            width="30px">Refresh</span></a>
                     </div>
                 </div>
@@ -31,10 +31,10 @@
                              *ngIf="['start','answer-yes','answer-no'].indexOf(currentTab) > -1 ">
                             <p class="question">Is the patient using a contracted pharmacy?</p>
                             <section class="menu-tabs row">
-                                <a class="btn btn-secondary btn-rounded col-sm-6"
+                                <a class="btn btn-rounded btn-blue col-sm-6"
                                    [ngClass]="{'active':(currentTab == 'answer-yes')}"
                                    (click)="answerQuestion(1, 'answer-yes')">Yes</a>
-                                <a class="btn btn-secondary btn-rounded col-sm-6"
+                                <a class="btn btn-rounded btn-blue col-sm-6"
                                    [ngClass]="{'active':(currentTab == 'answer-no')}"
                                    (click)="answerQuestion(1, 'answer-no')">No</a>
                             </section>
@@ -113,7 +113,7 @@
                                     <input id="pharmacy-info" type="checkbox" [(ngModel)]="questions.q5"><label
                                         for="pharmacy-info">I have
                                     informed patient of the
-                                    <button (click)="openMap()" class="button btn btn-danger btn-rounded"
+                                    <button (click)="openMap()" class="button btn btn-red btn-rounded"
                                             style="width: inherit">Participating pharmacy
                                         locations
                                     </button>
@@ -132,10 +132,10 @@
                             <p class="question">Did the patient agree to change?</p>
                             <section class="menu-tabs row">
 
-                                <a class="btn btn-secondary btn-rounded col-sm-6"
+                                <a class="btn btn-rounded btn-blue col-sm-6"
                                    [ngClass]="{'active':(currentTab == 'yes-change')}"
                                    (click)="answerQuestion(6, 'yes-change')">Yes</a>
-                                <a class="btn btn-secondary btn-rounded col-sm-6"
+                                <a class="btn btn-rounded btn-blue col-sm-6"
                                    [ngClass]="{'active':(currentTab == 'no-change')}"
                                    (click)="answerQuestion(6, 'no-change')">No</a>
                             </section>
@@ -154,7 +154,7 @@
                                         </select>
                                     </div>
                                     <button (click)="openMap()"
-                                            class="col-sm-3  pull-right button btn btn-danger btn-rounded see-map">See
+                                            class="col-sm-3  pull-right button btn btn-red btn-rounded see-map">See
                                         Map
                                     </button>
                                 </div>
@@ -269,7 +269,7 @@
             <div>
 
                 <div class="btn-group" dropdown>
-                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                    <button type="button" class="btn dropdown-toggle"
                             (click)="setLocation(currentLocation)" dropdownToggle>
                         {{currentLocation.address}}<span class="caret"></span>
                     </button>
@@ -373,7 +373,7 @@
     </div>
 </div>
 
-<div bsModal #patientCountModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+<div bsModal #patientCountModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog"
      aria-labelledby="patientCountModal" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -386,13 +386,13 @@
             <div class="modal-body clearfix">
                 <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
                 <div class="input-group row"><span class="input-group-btn"><button type="button"
-                                                                               class="btn btn-primary" (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
+                                                                               class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
                     <input [(ngModel)]="edit_expected_patients"
                             class="form-control hide-number-steppers" type="number" min="1" max="100000"
                             style="text-align: center;" name="expected_patients">
                     <span class="input-group-btn"><button
                             type="button"
-                            class="btn btn-primary" (click)="edit_expected_patients = edit_expected_patients+1">+</button></span>
+                            class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients+1">+</button></span>
                 </div>
                     <br/>
                     <div class="col-sm-offset-4 col-sm-4" >

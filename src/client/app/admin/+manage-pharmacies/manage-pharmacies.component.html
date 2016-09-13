@@ -34,7 +34,7 @@
                     <th>Address</th>
                     <th>City</th>
                     <th>State</th>
-                    <!--<th>Zip</th>-->
+                    <th>Zip</th>
                     <th>Phone</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
@@ -69,11 +69,11 @@
                                                                        placeholder="State"></td>
 
 
-                    <!--<td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.zip}}</td>-->
-                    <!--<td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.zip" type="text"-->
-                                                                       <!--class="form-control input-underline"-->
-                                                                       <!--placeholder="Zip">-->
-                    <!--</td>-->
+                    <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.zip}}</td>
+                    <td *ngIf="editPharmacyItem.id === pharmacy.id"><input [(ngModel)]="editPharmacyItem.zip" type="text"
+                                                                       class="form-control input-underline"
+                                                                       placeholder="Zip">
+                    </td>
 
 
                     <td *ngIf="editPharmacyItem.id !== pharmacy.id">{{pharmacy.phone}}</td>
@@ -142,9 +142,9 @@
                                placeholder="State"></td>
 
 
-                    <!--<td><input [(ngModel)]="editPharmacyItem.zip" type="text" class="form-control input-underline"-->
-                               <!--placeholder="Zip">-->
-                    <!--</td>-->
+                    <td><input [(ngModel)]="editPharmacyItem.zip" type="text" class="form-control input-underline"
+                               placeholder="Zip">
+                    </td>
 
 
                     <td><input [(ngModel)]="editPharmacyItem.phone" type="tel" class="form-control input-underline"

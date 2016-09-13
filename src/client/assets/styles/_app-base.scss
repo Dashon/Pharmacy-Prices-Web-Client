@@ -141,6 +141,19 @@ img {
   background-color: $brand-primary;
   border-color: $brand-primary;
 }
+.btn-white {
+  background-color: #ffffff !important;
+  border: none !important;
+  color: #606060 !important;
+  img{
+    width:20px;
+    margin-right: 5px
+  }
+  &:hover {
+    background-color: $blue !important;
+    color: $white !important;
+  }
+}
 
 footer {
   position: absolute;
@@ -342,12 +355,16 @@ td, th {
   padding: 40px 0;
   font-size: 20px;
   text-align: center;
+  h2{
+    color: $white;
+  }
 }
 
 .white-row {
   padding: 40px;
   font-size: 20px;
   text-align: center;
+  background-color: $white;
 }
 
 .content-row {
@@ -388,6 +405,11 @@ td, th {
     transition: 1s;
     color: darken($white, 5%)  !important;
   }
+}
+
+.btn-blue{
+  background-color: $blue !important;
+  color: $white !important;
 }
 
 input {
