@@ -24,10 +24,11 @@ export class ResetPasswordComponent {
         this.http = http;
     }
     ngOnInit() {
-        this.route.params
-            .map(params => params['reset_password_token'])
-            .subscribe((token) => {
-                this.password_token = token;
+        this.router
+            .routerState
+            .queryParams
+            .subscribe(params => {
+                this.password_token = params['reset_password_token'];
             });
     }
 

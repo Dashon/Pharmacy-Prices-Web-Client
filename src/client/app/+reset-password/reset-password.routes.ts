@@ -2,7 +2,7 @@ import { ResetPasswordComponent } from './index';
 
 export const ResetPasswordRoutes = [
 	{
-		path: 'reset_password',
+		path: 'reset-password',
 		component: ResetPasswordComponent,
 		index: true
 	},

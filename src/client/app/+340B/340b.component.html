@@ -385,7 +385,8 @@
             </div>
             <div class="modal-body clearfix">
                 <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
-                    <center *ngIf="currentUser.todays_surveys >= edit_expected_patients" class="text-danger"> You have seen {{currentUser.todays_surveys}} patients already! </center>
+                    <center *ngIf="currentUser.todays_surveys >= edit_expected_patients && edit_expected_patients != 0" class="text-danger"> You have seen {{currentUser.todays_surveys}} patients already! </center>
+                    <center *ngIf="edit_expected_patients == 0" class="text-danger"> You need at least 1 patient to begin. </center>
 
                     <div class="input-group row"><span class="input-group-btn"><button type="button"
                                                                                class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
