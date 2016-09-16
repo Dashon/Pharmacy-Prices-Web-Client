@@ -4,7 +4,10 @@
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
                 <div class="row">
                     <div class="pull-left">
-                        <span><img src="assets/images/svg/icon-script.svg" width="30px"> Patient {{currentUser.todays_surveys + 1 || 0}} of {{currentUser.survey_day.expected_patients || 0}}
+                            <a href="javascript:void(0)" (click)="openMap()"><img alt="See Map" src="assets/images/svg/icon-map.svg" style="width: 30px; height: 30px;"></a>
+                        <span>
+                            <!--<img src="assets/images/svg/icon-script.svg" width="30px"> -->
+                            Patient {{currentUser.todays_surveys + 1 || 0}} of {{currentUser.survey_day.expected_patients || 0}}
                         <small> <a href="javascript:void(0)"
                                    (click)="showPatientCountEditor()">Update</a></small> </span>
                     </div>
@@ -12,10 +15,10 @@
                     <div class="pull-right">
                         <a (click)="newSurvey()" href="javascript:void(0)"> <span
                                 class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-new-patient.svg"
-                                                                           width="30px">New</span></a>
+                                                                       width="30px">New</span></a>
                         <a (click)="newSurvey()" href="javascript:void(0)"><span
                                 class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
-                                                                           width="30px">Refresh</span></a>
+                                                                       width="30px">Refresh</span></a>
                     </div>
                 </div>
             </div>
@@ -31,10 +34,10 @@
                              *ngIf="['start','answer-yes','answer-no'].indexOf(currentTab) > -1 ">
                             <p class="question">Is the patient using a contracted pharmacy?</p>
                             <section class="menu-tabs row">
-                                <a class="btn btn-rounded btn-blue col-sm-6"
+                                <a class="btn btn-grey-blue col-sm-5 col-sm-offset-1 m-r-2"
                                    [ngClass]="{'active':(currentTab == 'answer-yes')}"
                                    (click)="answerQuestion(1, 'answer-yes')">Yes</a>
-                                <a class="btn btn-rounded btn-blue col-sm-6"
+                                <a class="btn btn-grey-blue col-sm-5"
                                    [ngClass]="{'active':(currentTab == 'answer-no')}"
                                    (click)="answerQuestion(1, 'answer-no')">No</a>
                             </section>
@@ -68,9 +71,9 @@
                                 </div>
                                 <br>
                                 <div class="row ">
-                                    <input id="thanked" type="checkbox" [(ngModel)]="questions.q3"><label
-                                        for="thanked">I have thanked patient
-                                    and informed them of the 340B benefits</label>
+                                    <input class="col-sm-1" id="thanked" type="checkbox" [(ngModel)]="questions.q3">
+                                    <label class="col-sm-10" for="thanked">I have thanked patient
+                                        and informed them of the 340B benefits</label>
                                 </div>
                                 <div class="row ">
                                     <ul class="benefit">
@@ -83,7 +86,7 @@
                                 </div>
                                 <div class="row text-xs-center">
                                     <button (click)="submitSurvey()" [disabled]="surveySending"
-                                            class="button btn btn-primary btn-rounded">Submit
+                                            class="button btn btn-primary">Submit
                                     </button>
                                 </div>
                             </section>
@@ -95,9 +98,10 @@
                                 <br>
 
                                 <div class="row">
-                                    <input id="340b-benefits" type="checkbox" [(ngModel)]="questions.q4"><label
-                                        for="340b-benefits">I have
-                                    informed patient of the 340B benefits</label>
+                                    <input class="col-sm-1" id="340b-benefits" type="checkbox"
+                                           [(ngModel)]="questions.q4">
+                                    <label class="col-sm-10" for="340b-benefits">I have
+                                        informed patient of the 340B benefits</label>
                                 </div>
 
                                 <div class="row">
@@ -109,19 +113,22 @@
                                         <li>support Asian Human Services with savings</li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <input id="pharmacy-info" type="checkbox" [(ngModel)]="questions.q5"><label
-                                        for="pharmacy-info">I have
-                                    informed patient of the
-                                    <button (click)="openMap()" class="button btn btn-red btn-rounded"
-                                            style="width: inherit">Participating pharmacy
-                                        locations
+                                <div class="row clearfix">
+                                    <div class="pull-left col-sm-10">
+                                        <input class="col-sm-1" id="pharmacy-info" type="checkbox"
+                                               [(ngModel)]="questions.q5">
+                                        <label class="col-sm-10" for="pharmacy-info">I have
+                                            informed patient of the participating pharmacy
+                                            locations and corresponding benefits of pharmacies </label>
+                                    </div>
+                                    <button (click)="openMap()" class="button btn btn-red pull-right col-sm-2"
+                                            style="width: inherit">See Map
                                     </button>
-                                    and corresponding benefits of pharmacies</label>
                                 </div>
+                                <br>
                                 <div class="row text-xs-center">
                                     <a (click)="currentTab = 'ask-change'"
-                                       class="button btn btn-primary btn-rounded">Next</a>
+                                       class="button btn btn-primary">Next</a>
                                 </div>
                             </section>
                         </div>
@@ -132,10 +139,10 @@
                             <p class="question">Did the patient agree to change?</p>
                             <section class="menu-tabs row">
 
-                                <a class="btn btn-rounded btn-blue col-sm-6"
+                                <a class="btn btn-grey-blue col-sm-offset-1 col-sm-5 m-r-2"
                                    [ngClass]="{'active':(currentTab == 'yes-change')}"
                                    (click)="answerQuestion(6, 'yes-change')">Yes</a>
-                                <a class="btn btn-rounded btn-blue col-sm-6"
+                                <a class="btn btn-grey-blue col-sm-5"
                                    [ngClass]="{'active':(currentTab == 'no-change')}"
                                    (click)="answerQuestion(6, 'no-change')">No</a>
                             </section>
@@ -153,30 +160,36 @@
                                             </option>
                                         </select>
                                     </div>
+                                    <br>
+
                                     <button (click)="openMap()"
-                                            class="col-sm-3  pull-right button btn btn-red btn-rounded see-map">See
-                                        Map
+                                            class="col-sm-3  pull-right btn btn-red see-map btn-block">See Map
                                     </button>
                                 </div>
                                 <div class="row">
-                                    <input id="updated-Pharmacy" type="checkbox" [(ngModel)]="questions.q8"><label
-                                        for="updated-Pharmacy">I
-                                    updated the preferred pharmacy in the system and alerted doctor</label>
+                                    <input class="col-sm-1" id="updated-Pharmacy" type="checkbox"
+                                           [(ngModel)]="questions.q8">
+                                    <label class="col-sm-10" for="updated-Pharmacy">I
+                                        updated the preferred pharmacy in the system and alerted doctor</label>
                                 </div>
+                                <br>
+
                                 <div class="row">
-                                    <input id="handout-given" name="handout-given" type="checkbox"
-                                           [(ngModel)]="questions.q9"><label for="handout-given">I gave the
-                                    patient 340b handout</label>
+                                    <input class="col-sm-1" id="handout-given" name="handout-given" type="checkbox"
+                                           [(ngModel)]="questions.q9">
+                                    <label class="col-sm-10" for="handout-given">I gave the patient 340b handout</label>
                                 </div>
+                                <br>
                                 <div class="row">
-                                    <input id="freedom-choice" type="checkbox" [(ngModel)]="questions.q10"><label
-                                        for="freedom-choice"> I told
-                                    the patient about freedom of choice</label>
+                                    <input class="col-sm-1" id="freedom-choice" type="checkbox"
+                                           [(ngModel)]="questions.q10">
+                                    <label class="col-sm-10" for="freedom-choice"> I told
+                                        the patient about freedom of choice</label>
                                 </div>
                                 <br>
                                 <div class="row text-xs-center">
                                     <button (click)="submitSurvey()"
-                                            class="button btn btn-primary btn-rounded"
+                                            class="button btn btn-primary"
                                             [disabled]="!questions.q10 || surveySending">Submit
                                     </button>
                                 </div>
@@ -185,18 +198,19 @@
                         </div>
                         <div *ngIf="currentTab == 'no-change'" class="tabs-panel row">
                             <section class="select-Pharmacy col-sm-offset-2 col-sm-8">
-
-                                <select [(ngModel)]="questions.q11">
-                                    <option value="0">Select A Reason</option>
-                                    <option value="{{reason.name}}" *ngFor="let reason of reasons">{{reason.name}}
-                                    </option>
-                                </select>
-                                <input *ngIf="questions.q11 == 'Other'" [(ngModel)]="questions.reason" type="text"
-                                       class="form-control input-underline" placeholder="Enter Reason">
+                                <div>
+                                    <select [(ngModel)]="questions.q11">
+                                        <option value="0">Select A Reason</option>
+                                        <option value="{{reason.name}}" *ngFor="let reason of reasons">{{reason.name}}
+                                        </option>
+                                    </select>
+                                    <input *ngIf="questions.q11 == 'Other'" [(ngModel)]="questions.reason" type="text"
+                                           class="form-control input-underline" placeholder="Enter Reason">
+                                </div>
                                 <br/>
                                 <div class="row text-xs-center">
                                     <button (click)="submitSurvey()" [disabled]="surveySending"
-                                            class="button btn btn-primary btn-rounded">Submit
+                                            class="button btn btn-primary">Submit
                                     </button>
                                 </div>
                             </section>
@@ -223,8 +237,8 @@
                                         <div class="row">
 
                                             <input id="text-consent" name="text-consent" type="checkbox"
-                                                   [(ngModel)]="questions.text_consent"><label
-                                                for="text-consent">Patient has verbally consented to sharing phone
+                                                   [(ngModel)]="questions.text_consent" class="col-sm-1">
+                                            <label class="col-sm-10" for="text-consent">Patient has verbally consented to sharing phone
                                             number and receiving text message(s) from Doc & I with pharmacy name and
                                             location information.</label>
                                         </div>
@@ -233,7 +247,7 @@
                                             <!--<a class="btn btn-warning btn-rounded col-sm-6"-->
                                             <!--(click)="sendEmail()">Email</a>-->
                                             <button type="submit" [disabled]="!questions.text_consent || textSending"
-                                                    class="btn btn-warning btn-rounded col-sm-12"
+                                                    class="btn btn-warning col-sm-12"
                                                     (click)="sendText()">Send Text
                                             </button>
                                         </div>
@@ -385,28 +399,34 @@
             </div>
             <div class="modal-body clearfix">
                 <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
-                    <center *ngIf="currentUser.todays_surveys >= edit_expected_patients && edit_expected_patients != 0" class="text-danger"> You have seen {{currentUser.todays_surveys}} patients already! </center>
-                    <center *ngIf="edit_expected_patients == 0" class="text-danger"> You need at least 1 patient to begin. </center>
+                    <center *ngIf="currentUser.todays_surveys >= edit_expected_patients && edit_expected_patients != 0"
+                            class="text-danger"> You have seen {{currentUser.todays_surveys}} patients already!
+                    </center>
+                    <center *ngIf="edit_expected_patients == 0" class="text-danger"> You need at least 1 patient to
+                        begin.
+                    </center>
 
                     <div class="input-group row"><span class="input-group-btn"><button type="button"
-                                                                               class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
-                    <input [(ngModel)]="edit_expected_patients"
-                            class="form-control hide-number-steppers" type="number" min="1" max="100000"
-                            style="text-align: center;" name="expected_patients">
+                                                                                       class="btn btn-blue"
+                                                                                       (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
+                        <input [(ngModel)]="edit_expected_patients"
+                               class="form-control hide-number-steppers" type="number" min="1" max="100000"
+                               style="text-align: center;" name="expected_patients">
                     <span class="input-group-btn"><button
                             type="button"
                             class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients+1">+</button></span>
-                </div>
+                    </div>
                     <br/>
-                    <div class="col-sm-offset-4 col-sm-4" >
-                    <button
-                            type="submit"
-                            [disabled]="expected_patients_sending || currentUser.todays_surveys >= edit_expected_patients"
-                            class="btn btn-primary btn-block ">Submit</button>
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <button
+                                type="submit"
+                                [disabled]="expected_patients_sending || currentUser.todays_surveys >= edit_expected_patients"
+                                class="btn btn-primary btn-block ">Submit
+                        </button>
                     </div>
 
                 </form>
-        </div>
+            </div>
         </div>
     </div>
 </div>

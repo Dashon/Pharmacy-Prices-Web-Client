@@ -410,9 +410,37 @@ td, th {
 .btn-blue{
   background-color: $blue !important;
   color: $white !important;
+
+}
+
+.btn-grey-blue{
+  background-color: $light-grey !important;
+  color: $blue !important;
+  &:hover {
+    background-color: darken($blue, 5%) !important;
+    transition: 1s;
+    color: darken($white, 5%)  !important;
+}
 }
 
 input {
   border-radius: 5px;
   padding: 5px;
+}
+input[type=checkbox] {
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 6px;
+  padding: 0;
+  position: relative;
+  vertical-align: top;
+  margin-top: 0;
+  transform: scale(1.5, 1.5);
+}
+[type=checkbox]+label, [type=radio]+label {
+  display: inline-block;
+  margin-left: .5rem;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  vertical-align: baseline;
 }

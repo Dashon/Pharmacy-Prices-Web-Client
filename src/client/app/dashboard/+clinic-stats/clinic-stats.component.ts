@@ -78,24 +78,49 @@ export class ClinicStatsComponent {
     }
 
     private createGraph() {
+
         c3.generate({
-            bindto: '#donutchart',
+            bindto: '#notGoingChart',
             data: {
                 columns: [
-                    ['Already Going', parseInt(this.stats['alreadyGoing'])],
-                    ['Not Going', parseInt(this.stats['notGoing'])],
                     ['Refused To Change', parseInt(this.stats['refusedToChange'])],
                     ['Agreed To Change', parseInt(this.stats['agreedToChange'])],
                 ],
                 type: 'donut',
                 onclick: function (d, i) {
-                    console.log('onclick', d, i);
+                    //console.log('onclick', d, i);
                 },
                 onmouseover: function (d, i) {
-                    console.log('onmouseover', d, i);
+                    // console.log('onmouseover', d, i);
                 },
                 onmouseout: function (d, i) {
-                    console.log('onmouseout', d, i);
+                    // console.log('onmouseout', d, i);
+                }
+            },
+            donut: {
+                title: 'Not Going:' + (this.stats['notGoing'] || 0)
+            },
+            color: {
+                pattern: ['#ee634c', '#6bbd95']
+            }
+        });
+
+        c3.generate({
+            bindto: '#totalSurveyChart',
+            data: {
+                columns: [
+                    ['Already Going', parseInt(this.stats['alreadyGoing'])],
+                    ['Not Going', parseInt(this.stats['notGoing'])],
+                ],
+                type: 'donut',
+                onclick: function (d, i) {
+                    //console.log('onclick', d, i);
+                },
+                onmouseover: function (d, i) {
+                    // console.log('onmouseover', d, i);
+                },
+                onmouseout: function (d, i) {
+                    // console.log('onmouseout', d, i);
                 }
             },
             donut: {
@@ -114,13 +139,13 @@ export class ClinicStatsComponent {
                 ],
                 type: 'gauge',
                 onclick: function (d, i) {
-                    console.log("onclick", d, i);
+                    // console.log("onclick", d, i);
                 },
                 onmouseover: function (d, i) {
-                    console.log("onmouseover", d, i);
+                    // console.log("onmouseover", d, i);
                 },
                 onmouseout: function (d, i) {
-                    console.log("onmouseout", d, i);
+                    // console.log("onmouseout", d, i);
                 }
             },
             gauge: {

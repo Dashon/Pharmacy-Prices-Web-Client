@@ -84,41 +84,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-671">
-              <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="340b.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/+340B/340b.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#1;n#section#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#section#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Pentair/Web/Pentair.Web.Client/app/controllers/loginController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1406">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="340b.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/app/+340B/340b.component.ts">
+      <file leaf-file-name="clinic-stats.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="140" column="64" selection-start-line="140" selection-start-column="64" selection-end-line="140" selection-end-column="145" />
+            <state relative-caret-position="555">
+              <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/assets/styles/app.scss">
+      <file leaf-file-name="clinic-stats.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="469">
+              <caret line="103" column="26" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -137,8 +141,18 @@
       <file leaf-file-name="_app-base.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/assets/styles/_app-base.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="200" column="9" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
+            <state relative-caret-position="6540">
+              <caret line="436" column="15" selection-start-line="436" selection-start-column="15" selection-end-line="436" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_340b.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/assets/styles/pages/_340b.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -164,25 +178,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reset-password.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reset-password.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/app/+reset-password/reset-password.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
               <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.routes.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/app/app.routes.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -238,10 +240,7 @@
         <option value="$PROJECT_DIR$/src/client/app/dashboard/dashboard.routes.ts" />
         <option value="$PROJECT_DIR$/src/client/app/main.ts" />
         <option value="$PROJECT_DIR$/tools/config/seed.config.ts" />
-        <option value="$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.html" />
-        <option value="$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.ts" />
         <option value="$PROJECT_DIR$/src/client/app/admin/+manage-pharmacies/manage-pharmacies.component.html" />
-        <option value="$PROJECT_DIR$/src/client/assets/styles/pages/_340b.scss" />
         <option value="$PROJECT_DIR$/src/client/assets/styles/_variables.scss" />
         <option value="$PROJECT_DIR$/src/client/app/app.component.html" />
         <option value="$PROJECT_DIR$/dist/tmp/app/app.component.html" />
@@ -250,13 +249,16 @@
         <option value="$PROJECT_DIR$/src/client/app/app.routes.ts" />
         <option value="$PROJECT_DIR$/src/client/app/+reset-password/index.ts" />
         <option value="$PROJECT_DIR$/src/client/app/dashboard/+my-clinic/my-clinic.component.ts" />
-        <option value="$PROJECT_DIR$/src/client/assets/styles/_app-base.scss" />
         <option value="$PROJECT_DIR$/src/client/app/+340B/340b.component.ts" />
         <option value="$PROJECT_DIR$/src/client/index.html" />
-        <option value="$PROJECT_DIR$/src/client/app/+340B/340b.component.html" />
         <option value="$PROJECT_DIR$/src/client/app/+reset-password/reset-password.routes.ts" />
         <option value="$PROJECT_DIR$/src/client/app/+reset-password/reset-password.component.html" />
         <option value="$PROJECT_DIR$/src/client/app/+reset-password/reset-password.component.ts" />
+        <option value="$PROJECT_DIR$/src/client/assets/styles/_app-base.scss" />
+        <option value="$PROJECT_DIR$/src/client/assets/styles/pages/_340b.scss" />
+        <option value="$PROJECT_DIR$/src/client/app/+340B/340b.component.html" />
+        <option value="$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.html" />
+        <option value="$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.ts" />
       </list>
     </option>
   </component>
@@ -356,32 +358,6 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -427,7 +403,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
+              <option name="myItemId" value="dashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,141 +429,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
+              <option name="myItemId" value="dashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="topnav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="+reset-password" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="+login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="+home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="+healthcare-solutions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="+about" />
+              <option name="myItemId" value="+clinic-stats" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -617,20 +463,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc_and_i_web_client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -641,7 +473,7 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="editor.config.accepted" value="true" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+clinic-stats/clinic-stats.component.html&#10;340&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+340B/340b.component.ts&#10;340b&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+340B/340b.component.html&#10;_map&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_map.scss&#10;top&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/shared/topnav/topnav.html&#10;auth&#9;null&#9;null&#10;map.com&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+map/map.component.html&#10;map.&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/+map/map.component.html&#10;login.component.ts&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+login/login.component.ts&#10;topna&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/widgets/_topnav.scss&#10;TOPNAV&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/tmp/app/shared/topnav/topnav.html&#10;topn&#9;null&#9;null&#10;nav&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/shared/topnav/topnav.html&#10;map&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_map.scss&#10;my&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+my-clinic/my-clinic.component.ts&#10;manage&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/admin/+manage-clinics/manage-clinics.component.ts&#10;myp&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+my-pharmacies/my-pharmacies.component.html&#10;drug-res&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+drug-results/drug-results.component.html&#10;drug&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+drug-search/drug-search.component.html&#10;drug-sea&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+drug-search/drug-search.component.html&#10;drugre&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/tmp/app/+drug-results/drug-results.component.html&#10;drug-re&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/+drug-results/drug-results.component.html&#10;rewa&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/dashboard/+manage-awards/managa-rewards.component.html&#10;my-clinic&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+my-clinic/my-clinic.component.ts&#10;main&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/main.ts&#10;ain&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/main.js&#10;mana&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_manage-clinic.scss&#10;clini&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_manage-clinic.scss&#10;app.r&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/app.routes.ts&#10;login&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/+login/login.component.html&#10;man&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+manage-clinic/manage-clinic.component.html&#10;systemjs&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="34b&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_340b.scss&#10;340&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+340B/340b.component.ts&#10;340b&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+340B/340b.component.html&#10;_map&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_map.scss&#10;top&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/shared/topnav/topnav.html&#10;auth&#9;null&#9;null&#10;map.com&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+map/map.component.html&#10;map.&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/+map/map.component.html&#10;login.component.ts&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+login/login.component.ts&#10;topna&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/widgets/_topnav.scss&#10;TOPNAV&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/tmp/app/shared/topnav/topnav.html&#10;topn&#9;null&#9;null&#10;nav&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/shared/topnav/topnav.html&#10;map&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_map.scss&#10;my&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+my-clinic/my-clinic.component.ts&#10;manage&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/admin/+manage-clinics/manage-clinics.component.ts&#10;myp&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+my-pharmacies/my-pharmacies.component.html&#10;drug-res&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+drug-results/drug-results.component.html&#10;drug&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+drug-search/drug-search.component.html&#10;drug-sea&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/+drug-search/drug-search.component.html&#10;drugre&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/tmp/app/+drug-results/drug-results.component.html&#10;drug-re&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/+drug-results/drug-results.component.html&#10;rewa&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/dashboard/+manage-awards/managa-rewards.component.html&#10;my-clinic&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+my-clinic/my-clinic.component.ts&#10;main&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/main.ts&#10;ain&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/main.js&#10;mana&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_manage-clinic.scss&#10;clini&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/assets/styles/pages/_manage-clinic.scss&#10;app.r&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/app.routes.ts&#10;login&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/dist/dev/app/+login/login.component.html&#10;man&#9;FILE&#9;file:///Users/Dashon/Development/Projects/Doc&amp;I/doc_and_i_web_client/src/client/app/dashboard/+manage-clinic/manage-clinic.component.html&#10;systemjs&#9;null&#9;null" />
     <property name="editorconfig.notification" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD&#10;=======&#10;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD&#10;=======&#10;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Dev&#10;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD&#10;=======&#10;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Dev&#10;" />
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -780,12 +612,12 @@
       <workItem from="1473103989795" duration="51000" />
       <workItem from="1473104050346" duration="24075000" />
       <workItem from="1473616518676" duration="7641000" />
-      <workItem from="1473775005017" duration="6876000" />
+      <workItem from="1473775005017" duration="13693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="473571000" />
+    <option name="totallyTimeSpent" value="480388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -824,9 +656,9 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.259375" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14427084" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32209405" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26530612" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -875,13 +707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+account-settings/account-settings.routes.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/+login/login.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -974,6 +799,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,33 +875,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/admin/+manage-pharmacies/manage-pharmacies.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/assets/styles/pages/_340b.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="130" column="1" selection-start-line="130" selection-start-column="1" selection-end-line="130" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1179,7 +982,7 @@
         <state relative-caret-position="1305">
           <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1188,14 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/assets/styles/_app-base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="200" column="9" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1216,20 +1011,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/+340B/340b.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/app.routes.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
           <folding>
-            <element signature="e#0#62#0" expanded="true" />
+            <element signature="e#0#62#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1265,6 +1052,58 @@
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/assets/styles/_app-base.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6540">
+          <caret line="436" column="15" selection-start-line="436" selection-start-column="15" selection-end-line="436" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/assets/styles/pages/_340b.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/+340B/340b.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#section#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#section#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Pentair/Web/Pentair.Web.Client/app/controllers/loginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1406">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/dashboard/+clinic-stats/clinic-stats.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="103" column="26" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

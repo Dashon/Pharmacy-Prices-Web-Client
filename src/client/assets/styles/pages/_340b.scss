@@ -1,10 +1,10 @@
 .three40-b-page {
   .menu-tabs {
     .btn {
-      //&.active {
-      //  background-color: #8aa4be;
-      //  color: $white !important;
-      //}
+      &.active {
+        background-color: $blue !important;
+        color: $white !important;
+      }
     }
   }
   .yes-no-btn{
@@ -101,7 +101,6 @@
 
   }
   .select-Pharmacy{
-    line-height: 50px;
     select{
       width: 100%;
     }
