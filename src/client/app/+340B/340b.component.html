@@ -1,13 +1,18 @@
 <div class="three40-b-page" *ngIf="!showMap">
     <section class="header">
         <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+            <h3>{{survey_user.name}} <small><a href="javascript:void(0)" style="font-size: .7em" (click)="showUpdateUserModal()">Change User</a></small></h3>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
                 <div class="row">
                     <div class="pull-left">
                             <a href="javascript:void(0)" (click)="openMap()"><img alt="See Map" src="assets/images/svg/icon-map.svg" style="width: 30px; height: 30px;"></a>
                         <span>
                             <!--<img src="assets/images/svg/icon-script.svg" width="30px"> -->
-                            Patient {{currentUser.todays_surveys + 1 || 0}} of {{currentUser.survey_day.expected_patients || 0}}
+                            Patient {{survey_user.todays_surveys + 1 || 0}} of {{survey_user.survey_day.expected_patients || 0}}
                         <small> <a href="javascript:void(0)"
                                    (click)="showPatientCountEditor()">Update</a></small> </span>
                     </div>
@@ -387,6 +392,33 @@
     </div>
 </div>
 
+<div bsModal #surveyUserModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog"
+     aria-labelledby="surveyUserModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" aria-label="Close" (click)="surveyUserModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <center class="modal-title ">Change User</center>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="" dropdown>
+                    <button [disabled]="update_survey_user_sending" type="submit" class="btn dropdown-toggle btn-block" dropdownToggle>
+                        {{survey_user.name}}<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li *ngFor="let user of currentClinic.users">
+                            <a href="javascript:void(0)" class="dropdown-item" (click)="getAccountInfo(user.id)">{{user.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div bsModal #patientCountModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog"
      aria-labelledby="patientCountModal" aria-hidden="true">
     <div class="modal-dialog modal-md">
@@ -399,8 +431,8 @@
             </div>
             <div class="modal-body clearfix">
                 <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
-                    <center *ngIf="currentUser.todays_surveys >= edit_expected_patients && edit_expected_patients != 0"
-                            class="text-danger"> You have seen {{currentUser.todays_surveys}} patients already!
+                    <center *ngIf="survey_user.todays_surveys >= edit_expected_patients && edit_expected_patients != 0"
+                            class="text-danger"> You have seen {{survey_user.todays_surveys}} patients already!
                     </center>
                     <center *ngIf="edit_expected_patients == 0" class="text-danger"> You need at least 1 patient to
                         begin.
@@ -420,7 +452,7 @@
                     <div class="col-sm-offset-4 col-sm-4">
                         <button
                                 type="submit"
-                                [disabled]="expected_patients_sending || currentUser.todays_surveys >= edit_expected_patients"
+                                [disabled]="expected_patients_sending || survey_user.todays_surveys >= edit_expected_patients"
                                 class="btn btn-primary btn-block ">Submit
                         </button>
                     </div>

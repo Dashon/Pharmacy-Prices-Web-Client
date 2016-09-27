@@ -36,6 +36,7 @@ import {OrderBy} from "../shared/pipes/orderBy";
 })
 export class Three40BComponent {
     @ViewChild('patientCountModal') public patientCountModal:ModalDirective;
+    @ViewChild('surveyUserModal') public surveyUserModal:ModalDirective;
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;
     response = null;
@@ -98,10 +99,11 @@ export class Three40BComponent {
     latitude:number = 41.8781;
     newCords = {};
     showMap = false;
-    currentUser = {survey_day: {expected_patients: 0},todays_surveys:0};
+    survey_user = {survey_day: {expected_patients: 0},todays_surveys:0};
+    currentUser = {};
     edit_expected_patients = 0;
     expected_patients_sending = false;
-
+    update_survey_user_sending = false;
     sub = null;
 
     constructor(http:AuthHttp, private route:ActivatedRoute,
@@ -129,6 +131,7 @@ export class Three40BComponent {
         }
         if (localStorage.getItem('currentUser')) {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.survey_user = this.currentUser;
         }
 
         this.sub = this.route.params.subscribe(params => {
@@ -137,17 +140,29 @@ export class Three40BComponent {
                 this.router.navigate(['/', '340b']);
             }
         });
+        this.checkPatientCount();
+    }
 
-        if (this.currentUser.survey_day.expected_patients < 1 || this.currentUser.survey_day.expected_patients == this.currentUser.todays_surveys) {
+    private checkPatientCount() {
+        if (this.survey_user.survey_day.expected_patients < 1 || this.survey_user.survey_day.expected_patients == this.survey_user.todays_surveys) {
             this.showPatientCountEditor();
         }
     }
 
     getAccountInfo(id) {
+        this.update_survey_user_sending = true;
+
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
             user => {
-                this.currentUser = JSON.parse(user._body);
-                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+                this.survey_user = JSON.parse(user._body);
+                if(this.currentUser['id'] == this.survey_user['id']) {
+                    localStorage.setItem('currentUser', JSON.stringify(this.survey_user));
+                }
+
+                if(this.surveyUserModal) {
+                    this.surveyUserModal.hide();
+                }
+                this.checkPatientCount();
             },
             error => this.errorMessage = <any>error);
     }
@@ -280,9 +295,15 @@ export class Three40BComponent {
 
     showPatientCountEditor() {
         this.expected_patients_sending = false;
-        this.edit_expected_patients = this.currentUser.survey_day.expected_patients;
+        this.edit_expected_patients = this.survey_user.survey_day.expected_patients;
         this.patientCountModal.show();
     }
+
+    showUpdateUserModal() {
+        this.update_survey_user_sending = false;
+        this.surveyUserModal.show();
+    }
+
 
     newSurvey() {
         this.currentSurvey = {};
@@ -314,7 +335,7 @@ export class Three40BComponent {
                 answers.push({question_id: questionID, user_answer: answer});
             }
         }
-        var newSurvey = {answers: answers};
+        var newSurvey = {answers: answers,user_id:this.survey_user['id']};
         return this.postApi(this.baseUrl + 'surveys', newSurvey).subscribe(()=> {
             this.currentTab = 'submitted';
 
@@ -326,17 +347,17 @@ export class Three40BComponent {
                     this.newSurvey();
                 }
             }, 3000);
-            this.getAccountInfo(this.currentUser['id']);
+            this.getAccountInfo(this.survey_user['id']);
         });
     }
     changeExpectedPatients() {
         var payload = {expected_patients: this.edit_expected_patients};
-        var survey_day_id = this.currentUser.survey_day.id;
+        var survey_day_id = this.survey_user.survey_day.id;
         this.expected_patients_sending = true;
 
         return this.putApi(this.baseUrl + 'survey_days/' + survey_day_id, payload).subscribe(()=> {
-            if (localStorage.getItem('user_id') && localStorage.getItem('user_id') != 'null') {
-                this.getAccountInfo(localStorage.getItem('user_id'));
+            if (this.survey_user && this.survey_user['id']) {
+                this.getAccountInfo(this.survey_user['id']);
                 this.patientCountModal.hide();
             }
         });
