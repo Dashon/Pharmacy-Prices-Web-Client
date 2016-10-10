@@ -9,10 +9,10 @@
                                                                                      src="assets/images/doc_and_i_logo.png"></a>
         <ul class="nav navbar-nav pull-right navbar-right">
 
-            <li class="nav-item nav-text" role="menuitem"><a [routerLink]="['/about']" href="javascript:void(0)"
+            <li class="nav-item nav-text" role="menuitem" *ngIf="!isLoggedIn()"><a [routerLink]="['/about']" href="javascript:void(0)"
                                                              tabindex="0">About Us</a></li>
 
-            <li class="nav-item nav-text" role="menuitem"><a [routerLink]="['/healthcare-solutions']"
+            <li class="nav-item nav-text" role="menuitem" *ngIf="!isLoggedIn()"><a [routerLink]="['/healthcare-solutions']"
                                                              href="javascript:void(0)"
                                                              tabindex="0">Professional Solutions</a></li>
             <!--<li class="nav-item profile">-->
