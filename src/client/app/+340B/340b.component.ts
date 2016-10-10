@@ -113,7 +113,6 @@ export class Three40BComponent {
             this.getAccountInfo(localStorage.getItem('user_id'));
         }
 
-        this.http = http;
         this.newSurvey();
         this.getClinic(localStorage.getItem('hcf_id'));
     }
@@ -140,14 +139,9 @@ export class Three40BComponent {
                 this.router.navigate(['/', '340b']);
             }
         });
-        this.checkPatientCount();
     }
 
-    private checkPatientCount() {
-        if (this.survey_user.survey_day.expected_patients < 1 || this.survey_user.survey_day.expected_patients == this.survey_user.todays_surveys) {
-            this.showPatientCountEditor();
-        }
-    }
+
 
     getAccountInfo(id) {
         this.update_survey_user_sending = true;
@@ -162,7 +156,6 @@ export class Three40BComponent {
                 if(this.surveyUserModal) {
                     this.surveyUserModal.hide();
                 }
-                this.checkPatientCount();
             },
             error => this.errorMessage = <any>error);
     }

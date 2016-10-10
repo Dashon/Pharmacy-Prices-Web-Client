@@ -2,24 +2,18 @@
     <section class="header">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-            <h3>{{survey_user.name}} <small><a href="javascript:void(0)" style="font-size: .7em" (click)="showUpdateUserModal()">Change User</a></small></h3>
+                <h3>{{survey_user.name}} <small><a href="javascript:void(0)" style="font-size: .7em" (click)="showUpdateUserModal()">Change User</a></small></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
                 <div class="row">
                     <div class="pull-left">
-                            <a href="javascript:void(0)" (click)="openMap()"><img alt="See Map" src="assets/images/svg/icon-map.svg" style="width: 30px; height: 30px;"></a>
-                        <span>
-                            <!--<img src="assets/images/svg/icon-script.svg" width="30px"> -->
-                            Patient {{survey_user.todays_surveys + 1 || 0}} of {{survey_user.survey_day.expected_patients || 0}}
-                        <small> <a href="javascript:void(0)"
-                                   (click)="showPatientCountEditor()">Update</a></small> </span>
+                        <a href="javascript:void(0)" (click)="openMap()"><img alt="See Map" src="assets/images/svg/icon-map.svg" style="width: 30px; height: 30px;"></a>
                     </div>
 
                     <div class="pull-right">
-                        <a (click)="newSurvey()" href="javascript:void(0)"> <span
-                                class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-new-patient.svg"
+                        <a (click)="newSurvey()" href="javascript:void(0)"> <span class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-new-patient.svg"
                                                                        width="30px">New</span></a>
                         <a (click)="newSurvey()" href="javascript:void(0)"><span
                                 class="btn-white btn btn-rounded"><img src="assets/images/svg/icon-refresh.svg"
@@ -35,16 +29,11 @@
                 <div class="row">
                     <div class="row">
 
-                        <div id="tabs-start" class="text-xs-center col-sm-offset-2 col-sm-8 yes-no-btn"
-                             *ngIf="['start','answer-yes','answer-no'].indexOf(currentTab) > -1 ">
+                        <div id="tabs-start" class="text-xs-center col-sm-offset-2 col-sm-8 yes-no-btn" *ngIf="['start','answer-yes','answer-no'].indexOf(currentTab) > -1 ">
                             <p class="question">Is the patient using a contracted pharmacy?</p>
                             <section class="menu-tabs row">
-                                <a class="btn btn-grey-blue col-sm-5 col-sm-offset-1 m-r-2"
-                                   [ngClass]="{'active':(currentTab == 'answer-yes')}"
-                                   (click)="answerQuestion(1, 'answer-yes')">Yes</a>
-                                <a class="btn btn-grey-blue col-sm-5"
-                                   [ngClass]="{'active':(currentTab == 'answer-no')}"
-                                   (click)="answerQuestion(1, 'answer-no')">No</a>
+                                <a class="btn btn-grey-blue col-sm-5 col-sm-offset-1 m-r-2" [ngClass]="{'active':(currentTab == 'answer-yes')}" (click)="answerQuestion(1, 'answer-yes')">Yes</a>
+                                <a class="btn btn-grey-blue col-sm-5" [ngClass]="{'active':(currentTab == 'answer-no')}" (click)="answerQuestion(1, 'answer-no')">No</a>
                             </section>
                         </div>
                     </div>
@@ -82,16 +71,15 @@
                                 </div>
                                 <div class="row ">
                                     <ul class="benefit">
-                                        <li class="intro">Asian Human Services has partnered with local pharmacies
-                                            through a federal program. This program is designed to:
+                                        <li class="intro">Asian Human Services has partnered with local pharmacies through a federal program.
+                                            This program is designed to:
                                         </li>
                                         <li>help patients save money on medications</li>
                                         <li>support Asian Human Services with savings</li>
                                     </ul>
                                 </div>
                                 <div class="row text-xs-center">
-                                    <button (click)="submitSurvey()" [disabled]="surveySending"
-                                            class="button btn btn-primary">Submit
+                                    <button (click)="submitSurvey()" [disabled]="surveySending" class="button btn btn-primary">Submit
                                     </button>
                                 </div>
                             </section>
@@ -103,16 +91,15 @@
                                 <br>
 
                                 <div class="row">
-                                    <input class="col-sm-1" id="340b-benefits" type="checkbox"
-                                           [(ngModel)]="questions.q4">
+                                    <input class="col-sm-1" id="340b-benefits" type="checkbox" [(ngModel)]="questions.q4">
                                     <label class="col-sm-10" for="340b-benefits">I have
                                         informed patient of the 340B benefits</label>
                                 </div>
 
                                 <div class="row">
                                     <ul class="benefit" style="margin-top:0;">
-                                        <li class="intro">Asian Human Services has partnered with local pharmacies
-                                            through a federal program. This program is designed to:
+                                        <li class="intro">Asian Human Services has partnered with local pharmacies through a federal program.
+                                            This program is designed to:
                                         </li>
                                         <li>help patients save money on medications</li>
                                         <li>support Asian Human Services with savings</li>
@@ -120,36 +107,28 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="pull-left col-sm-10">
-                                        <input class="col-sm-1" id="pharmacy-info" type="checkbox"
-                                               [(ngModel)]="questions.q5">
+                                        <input class="col-sm-1" id="pharmacy-info" type="checkbox" [(ngModel)]="questions.q5">
                                         <label class="col-sm-10" for="pharmacy-info">I have
                                             informed patient of the participating pharmacy
                                             locations and corresponding benefits of pharmacies </label>
                                     </div>
-                                    <button (click)="openMap()" class="button btn btn-red pull-right col-sm-2"
-                                            style="width: inherit">See Map
+                                    <button (click)="openMap()" class="button btn btn-red pull-right col-sm-2" style="width: inherit">See Map
                                     </button>
                                 </div>
                                 <br>
                                 <div class="row text-xs-center">
-                                    <a (click)="currentTab = 'ask-change'"
-                                       class="button btn btn-primary">Next</a>
+                                    <a (click)="currentTab = 'ask-change'" class="button btn btn-primary">Next</a>
                                 </div>
                             </section>
                         </div>
 
 
-                        <div class="text-xs-center col-sm-offset-2 col-sm-8 yes-no-btn"
-                             *ngIf="['ask-change','yes-change','no-change'].indexOf(currentTab) > -1 ">
+                        <div class="text-xs-center col-sm-offset-2 col-sm-8 yes-no-btn" *ngIf="['ask-change','yes-change','no-change'].indexOf(currentTab) > -1 ">
                             <p class="question">Did the patient agree to change?</p>
                             <section class="menu-tabs row">
 
-                                <a class="btn btn-grey-blue col-sm-offset-1 col-sm-5 m-r-2"
-                                   [ngClass]="{'active':(currentTab == 'yes-change')}"
-                                   (click)="answerQuestion(6, 'yes-change')">Yes</a>
-                                <a class="btn btn-grey-blue col-sm-5"
-                                   [ngClass]="{'active':(currentTab == 'no-change')}"
-                                   (click)="answerQuestion(6, 'no-change')">No</a>
+                                <a class="btn btn-grey-blue col-sm-offset-1 col-sm-5 m-r-2" [ngClass]="{'active':(currentTab == 'yes-change')}" (click)="answerQuestion(6, 'yes-change')">Yes</a>
+                                <a class="btn btn-grey-blue col-sm-5" [ngClass]="{'active':(currentTab == 'no-change')}" (click)="answerQuestion(6, 'no-change')">No</a>
                             </section>
                         </div>
 
@@ -167,35 +146,29 @@
                                     </div>
                                     <br>
 
-                                    <button (click)="openMap()"
-                                            class="col-sm-3  pull-right btn btn-red see-map btn-block">See Map
+                                    <button (click)="openMap()" class="col-sm-3  pull-right btn btn-red see-map btn-block">See Map
                                     </button>
                                 </div>
                                 <div class="row">
-                                    <input class="col-sm-1" id="updated-Pharmacy" type="checkbox"
-                                           [(ngModel)]="questions.q8">
+                                    <input class="col-sm-1" id="updated-Pharmacy" type="checkbox" [(ngModel)]="questions.q8">
                                     <label class="col-sm-10" for="updated-Pharmacy">I
                                         updated the preferred pharmacy in the system and alerted doctor</label>
                                 </div>
                                 <br>
 
                                 <div class="row">
-                                    <input class="col-sm-1" id="handout-given" name="handout-given" type="checkbox"
-                                           [(ngModel)]="questions.q9">
+                                    <input class="col-sm-1" id="handout-given" name="handout-given" type="checkbox" [(ngModel)]="questions.q9">
                                     <label class="col-sm-10" for="handout-given">I gave the patient 340b handout</label>
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <input class="col-sm-1" id="freedom-choice" type="checkbox"
-                                           [(ngModel)]="questions.q10">
+                                    <input class="col-sm-1" id="freedom-choice" type="checkbox" [(ngModel)]="questions.q10">
                                     <label class="col-sm-10" for="freedom-choice"> I told
                                         the patient about freedom of choice</label>
                                 </div>
                                 <br>
                                 <div class="row text-xs-center">
-                                    <button (click)="submitSurvey()"
-                                            class="button btn btn-primary"
-                                            [disabled]="!questions.q10 || surveySending">Submit
+                                    <button (click)="submitSurvey()" class="button btn btn-primary" [disabled]="!questions.q10 || surveySending">Submit
                                     </button>
                                 </div>
                             </section>
@@ -209,13 +182,11 @@
                                         <option value="{{reason.name}}" *ngFor="let reason of reasons">{{reason.name}}
                                         </option>
                                     </select>
-                                    <input *ngIf="questions.q11 == 'Other'" [(ngModel)]="questions.reason" type="text"
-                                           class="form-control input-underline" placeholder="Enter Reason">
+                                    <input *ngIf="questions.q11 == 'Other'" [(ngModel)]="questions.reason" type="text" class="form-control input-underline" placeholder="Enter Reason">
                                 </div>
                                 <br/>
                                 <div class="row text-xs-center">
-                                    <button (click)="submitSurvey()" [disabled]="surveySending"
-                                            class="button btn btn-primary">Submit
+                                    <button (click)="submitSurvey()" [disabled]="surveySending" class="button btn btn-primary">Submit
                                     </button>
                                 </div>
                             </section>
@@ -229,20 +200,16 @@
                                 <div *ngIf="selectedPharmacy">
                                     <div class="row text-xs-center">
                                         <p>
-                                            {{selectedPharmacy.dni_pharmacy.display_name}}
-                                            {{selectedPharmacy.dni_pharmacy.zip}}
+                                            {{selectedPharmacy.dni_pharmacy.display_name}} {{selectedPharmacy.dni_pharmacy.zip}}
                                         </p>
                                     </div>
                                     <form (keyup.enter)="login()">
                                         <div class="row text-xs-center contact-info">
-                                            <input name="contactInfo" class="col-sm-12" type="tel"
-                                                   placeholder="Enter Cell Number"
-                                                   [(ngModel)]="contactInfo">
+                                            <input name="contactInfo" class="col-sm-12" type="tel" placeholder="Enter Cell Number" [(ngModel)]="contactInfo">
                                         </div>
                                         <div class="row">
 
-                                            <input id="text-consent" name="text-consent" type="checkbox"
-                                                   [(ngModel)]="questions.text_consent" class="col-sm-1">
+                                            <input id="text-consent" name="text-consent" type="checkbox" [(ngModel)]="questions.text_consent" class="col-sm-1">
                                             <label class="col-sm-10" for="text-consent">Patient has verbally consented to sharing phone
                                             number and receiving text message(s) from Doc & I with pharmacy name and
                                             location information.</label>
@@ -251,9 +218,7 @@
 
                                             <!--<a class="btn btn-warning btn-rounded col-sm-6"-->
                                             <!--(click)="sendEmail()">Email</a>-->
-                                            <button type="submit" [disabled]="!questions.text_consent || textSending"
-                                                    class="btn btn-warning col-sm-12"
-                                                    (click)="sendText()">Send Text
+                                            <button type="submit" [disabled]="!questions.text_consent || textSending" class="btn btn-warning col-sm-12" (click)="sendText()">Send Text
                                             </button>
                                         </div>
                                     </form>
@@ -288,8 +253,7 @@
             <div>
 
                 <div class="btn-group" dropdown>
-                    <button type="button" class="btn dropdown-toggle"
-                            (click)="setLocation(currentLocation)" dropdownToggle>
+                    <button type="button" class="btn dropdown-toggle" (click)="setLocation(currentLocation)" dropdownToggle>
                         {{currentLocation.address}}<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
@@ -301,30 +265,17 @@
 
             </div>
             <div class="list-of-pharmacies">
-                <input [typeahead]="typeAheadDataRef"
-                       [(ngModel)]="searchString"
-                       (typeaheadLoading)="changeTypeaheadLoading($event)"
-                       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
-                       (typeaheadOnSelect)="addPharmacy($event.item)"
-                       [typeaheadWaitMs]="300"
-                       [typeaheadMinLength]="3"
-                       [typeaheadOptionsLimit]="10"
-                       [typeaheadOptionField]="'display_name'"
-                       (keyup)="checkLimit($event)"
-                       name="Search"
-                       autocomplete="off"
-                       placeholder="Search Pharmacies"
-                       class="form-control">
+                <input [typeahead]="typeAheadDataRef" [(ngModel)]="searchString" (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                    (typeaheadOnSelect)="addPharmacy($event.item)" [typeaheadWaitMs]="300" [typeaheadMinLength]="3" [typeaheadOptionsLimit]="10"
+                    [typeaheadOptionField]="'display_name'" (keyup)="checkLimit($event)" name="Search" autocomplete="off" placeholder="Search Pharmacies"
+                    class="form-control">
                 <ul>
                     <li *ngFor="let pharmacy of contractedPharmacies">
                         <div (click)="zoomToPharmacy(pharmacy.dni_pharmacy)">
-                            <div class="pharmacy-details">{{pharmacy.dni_pharmacy.name}} <br/>
-                                {{pharmacy.dni_pharmacy.address}}
+                            <div class="pharmacy-details">{{pharmacy.dni_pharmacy.name}} <br/> {{pharmacy.dni_pharmacy.address}}
                             </div>
                             <div class="pharmacy-benefits" *ngIf="pharmacy.dni_pharmacy">
-                                <img *ngFor="let benefit of pharmacy.dni_pharmacy.benefits"
-                                     src="{{benefit.image_url}}"
-                                     alt="{{benefit.name}}">
+                                <img *ngFor="let benefit of pharmacy.dni_pharmacy.benefits" src="{{benefit.image_url}}" alt="{{benefit.name}}">
                             </div>
                         </div>
                     </li>
@@ -332,49 +283,31 @@
             </div>
         </div>
         <div class="col-sm-7 col-lg-9 col-xs-11 full-height map-container">
-            <sebm-google-map
-                    [latitude]="latitude"
-                    [longitude]="longitude"
-                    [(zoom)]="zoom"
-                    (centerChange)="updateCurrentGeo($event)"
-                    [usePanning]="true"
-                    [disableDefaultUI]="false"
-                    [zoomControl]="true">
+            <sebm-google-map [latitude]="latitude" [longitude]="longitude" [(zoom)]="zoom" (centerChange)="updateCurrentGeo($event)"
+                [usePanning]="true" [disableDefaultUI]="false" [zoomControl]="true">
 
 
-                <sebm-google-map-marker
-                        [latitude]="currentLocation.latitude"
-                        [longitude]="currentLocation.longitude"
-                        [label]=""
-                        [iconUrl]="'../assets/images/hospital_location.png'"
-                        [markerDraggable]="false">
+                <sebm-google-map-marker [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [label]="" [iconUrl]="'../assets/images/hospital_location.png'"
+                    [markerDraggable]="false">
 
                     <sebm-google-map-info-window class="clearfix">
                         <strong>{{currentLocation.name}}</strong>
                         <div>{{currentLocation.address}}</div>
                         <div>{{currentLocation.city}},{{currentLocation.state}} {currentLocation.zip}}</div>
-                        <button class="btn btn-block btn-primary btn-rounded pull-left"
-                                (click)="chooseFromMap(m)">Select
+                        <button class="btn btn-block btn-primary btn-rounded pull-left" (click)="chooseFromMap(m)">Select
                         </button>
                     </sebm-google-map-info-window>
                 </sebm-google-map-marker>
 
-                <sebm-google-map-marker
-                        *ngFor="let m of contractedPharmacies; let i = index"
-                        (markerClick)="clickedMarker(m.name, i)"
-                        [latitude]="m.dni_pharmacy.latitude"
-                        [longitude]="m.dni_pharmacy.longitude"
-                        [label]=""
-                        [iconUrl]="'../assets/images/doc_and_i_icon_sm.png'"
-                        [markerDraggable]="false">
+                <sebm-google-map-marker *ngFor="let m of contractedPharmacies; let i = index" (markerClick)="clickedMarker(m.name, i)" [latitude]="m.dni_pharmacy.latitude"
+                    [longitude]="m.dni_pharmacy.longitude" [label]="" [iconUrl]="'../assets/images/doc_and_i_icon_sm.png'" [markerDraggable]="false">
 
 
                     <sebm-google-map-info-window class="clearfix">
                         <strong>{{m.dni_pharmacy.name}}</strong>
                         <div>{{m.dni_pharmacy.address}}</div>
                         <div>{{m.dni_pharmacy.city}},{{m.dni_pharmacy.state}} {{m.dni_pharmacy.zip}}</div>
-                        <button class="btn btn-block btn-primary btn-rounded pull-left"
-                                (click)="chooseFromMap(m)">Select
+                        <button class="btn btn-block btn-primary btn-rounded pull-left" (click)="chooseFromMap(m)">Select
                         </button>
                     </sebm-google-map-info-window>
 
@@ -392,8 +325,8 @@
     </div>
 </div>
 
-<div bsModal #surveyUserModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog"
-     aria-labelledby="surveyUserModal" aria-hidden="true">
+<div bsModal #surveyUserModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog" aria-labelledby="surveyUserModal"
+    aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -413,51 +346,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div bsModal #patientCountModal="bs-modal" class="modal fade patient-count-modal" tabindex="-1" role="dialog"
-     aria-labelledby="patientCountModal" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <button type="button" class="close" aria-label="Close" (click)="patientCountModal.hide()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <center class="modal-title ">How many patients will you see today?</center>
-            </div>
-            <div class="modal-body clearfix">
-                <form (ngSubmit)="changeExpectedPatients()" #patientCountForm="ngForm">
-                    <center *ngIf="survey_user.todays_surveys >= edit_expected_patients && edit_expected_patients != 0"
-                            class="text-danger"> You have seen {{survey_user.todays_surveys}} patients already!
-                    </center>
-                    <center *ngIf="edit_expected_patients == 0" class="text-danger"> You need at least 1 patient to
-                        begin.
-                    </center>
-
-                    <div class="input-group row"><span class="input-group-btn"><button type="button"
-                                                                                       class="btn btn-blue"
-                                                                                       (click)="edit_expected_patients = edit_expected_patients-1">-</button></span>
-                        <input [(ngModel)]="edit_expected_patients"
-                               class="form-control hide-number-steppers" type="number" min="1" max="100000"
-                               style="text-align: center;" name="expected_patients">
-                    <span class="input-group-btn"><button
-                            type="button"
-                            class="btn btn-blue" (click)="edit_expected_patients = edit_expected_patients+1">+</button></span>
-                    </div>
-                    <br/>
-                    <div class="col-sm-offset-4 col-sm-4">
-                        <button
-                                type="submit"
-                                [disabled]="expected_patients_sending || survey_user.todays_surveys >= edit_expected_patients"
-                                class="btn btn-primary btn-block ">Submit
-                        </button>
-                    </div>
-
-                </form>
             </div>
         </div>
     </div>
