@@ -14,11 +14,13 @@ import {ModalDirective, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 export class HomeComponent implements OnInit {
     userName = localStorage.getItem('name');
     currentUser = {};
+    currentClinic = {};
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     errorMessage = null;
     currentMonth = '--';
 
     constructor(private http:AuthHttp) {
+
         this.getAccountInfo(localStorage.getItem('user_id'));
         var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
@@ -30,6 +32,9 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         if (localStorage.getItem('currentUser')) {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }  
+        if (localStorage.getItem('currentClinic')) {
+            this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
         }
     }
 
@@ -38,7 +43,18 @@ export class HomeComponent implements OnInit {
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
             user => {
                 this.currentUser = user.json();
+                this.getClinic(this.currentUser.health_care_facility_id)
                 localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            },
+            error => this.errorMessage = <any>error);
+    }
+
+
+    getClinic(id) {
+        return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
+            clinic => {
+                this.currentClinic = JSON.parse(clinic._body);                
+                localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
             },
             error => this.errorMessage = <any>error);
     }
