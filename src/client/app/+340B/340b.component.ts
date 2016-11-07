@@ -224,7 +224,7 @@ export class Three40BComponent {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
                 this.currentClinic = JSON.parse(clinic._body);
-                this.getClinicPharmacies(1);
+               // this.getClinicPharmacies(1);
                 this.setLocation(this.currentClinic['hcf_locations'][0]);
                 this.getContractedPharmacies(1);
                 localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
