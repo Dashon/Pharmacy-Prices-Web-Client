@@ -1,0 +1,50 @@
+<div class="dashboard_col_right">
+    <div class="dashboard_col_right--content">
+        <div class="row content-tab">
+            <div class="col-lg-9">
+                <div class="content-row-2">
+                    <div class="achie-list-my-starts">
+                        <div class="achie-column">
+                            <div class="img">
+                                <img src="images/achie-image-1.png" />
+
+                            </div>
+                            <h2>MY STATS</h2>
+                        </div>
+                        <div class="achie-column">
+
+                            <h2>{{currentUser.month_points}}</h2>
+                            <p>Monthly Points</p>
+
+                        </div>
+                        <div class="achie-column">
+
+                            <h2>{{currentUser.total_points}}</h2>
+                            <p>Lifetime Points</p>
+
+                        </div>
+                    </div>
+                    <div class="chart-patients">
+                        <img src="images/achie-image-2.png" style="width: 100%;" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="content-achie-right">
+                    <div class="col-info">
+                        <img src="images/achie-icon-1.png" />
+                        <a href="javascript:void(0)" (click)="openModel()" data-toggle="modal" data-target="#modal">10 Tokens</a>
+                    </div>
+                    <div class="col-info">
+                        <img src="images/achie-icon-2.png" />
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-tokens">My Avatars</a>
+                    </div>
+                    <div class="col-info">
+                        <img src="images/achie-icon-3.png" />
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-tokens">My Backgrounds</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

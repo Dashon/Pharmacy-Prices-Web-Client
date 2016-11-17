@@ -5,16 +5,15 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {AuthHttp} from '../../config/http';
 import {ModalDirective, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
-import {DashBoardMenuLeftComponent} from '../+menu-left/menu-left';
+import {HomeMenuLeftComponent} from './+menu-left/menu-left';
 
 @Component({
     moduleId: module.id,
     selector: 'home-cmp',
     templateUrl: './home.component.html',
     viewProviders: [BS_VIEW_PROVIDERS],
-    //directives: [],
-    styleUrls:['../+home/home.component.css'],
-    directives: [ModalDirective, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, ROUTER_DIRECTIVES, DashBoardMenuLeftComponent]
+    styleUrls:['./home.component.css'],
+    directives: [ModalDirective, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, ROUTER_DIRECTIVES, HomeMenuLeftComponent]
 })
 
 export class HomeComponent implements OnInit {

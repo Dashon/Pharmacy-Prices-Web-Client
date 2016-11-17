@@ -9,6 +9,7 @@ import {AuthGuard} from '../shared/services/auth.gaurd';
 import {ClinicStatsRoutes} from "./+clinic-stats/clinic-stats.routes";
 
 
+
 export const DashboardRoutes = [
     {
         path: 'dashboard',

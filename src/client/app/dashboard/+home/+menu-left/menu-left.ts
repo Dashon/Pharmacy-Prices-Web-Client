@@ -1,18 +1,18 @@
 import {Component} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {AuthHttp} from '../../config/http';
+import {AuthHttp} from '../../../config/http';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     moduleId: module.id,
-    selector: 'dashboard-menu-left',
+    selector: 'home-menu-left',
     templateUrl: 'menu-left.html',
-    styleUrls:['../+home/home.component.css'],
+    styleUrls:['../home.component.css'],
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES]
 })
 
-export class DashBoardMenuLeftComponent {
+export class HomeMenuLeftComponent {
     isActive = false;
     showMenu:string = '';
 
@@ -72,14 +72,10 @@ export class DashBoardMenuLeftComponent {
         return this.isLoggedIn() && localStorage.getItem('hcf_id') != 'null';
     }
 
+
     goToLogin() {
         this.sidebarToggler();
         this.router.navigate(['/', 'login']);
-    }
-
-    goToHome() {
-        this.sidebarToggler();
-        this.router.navigate(['/', 'home']);
     }
 
     logout() {
@@ -102,5 +98,13 @@ export class DashBoardMenuLeftComponent {
     callApi(url) {
         this.errorMessage = '';
         return this.http.get(url);
+    }
+
+
+    gotoMyAchievements(){
+        this.router.navigate(['/dashboard/home', 'my-achievements']);
+    }
+    gotoOverViewHomePage() {
+        this.router.navigate(['/dashboard/home', 'overview']);
     }
 }
