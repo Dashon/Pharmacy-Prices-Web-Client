@@ -11,7 +11,8 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   moduleId: module.id,
   selector: 'home-cmp',
   templateUrl: 'home.component.html',
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
 }

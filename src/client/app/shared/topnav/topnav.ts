@@ -78,7 +78,7 @@ export class TopNavComponent {
     }
     
     goTo340b() {
-        this.router.navigate(['/', '340b',{closeMap:'true'}]);
+        this.router.navigate(['/', '340b']);
     }
     logout() {
         localStorage.clear();

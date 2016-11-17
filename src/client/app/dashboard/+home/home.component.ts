@@ -1,5 +1,8 @@
-/// <reference path='../../../../../tools/manual_typings/project/c3.d.ts' />
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+
 import {AuthHttp} from '../../config/http';
 import {ModalDirective, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 
@@ -8,11 +11,21 @@ import {ModalDirective, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
     selector: 'home-cmp',
     templateUrl: './home.component.html',
     viewProviders: [BS_VIEW_PROVIDERS],
-    directives: [ModalDirective]
+    directives: [ModalDirective],
+    styleUrls:['./home.component.css'],
+    directives: [DROPDOWN_DIRECTIVES, CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 
 export class HomeComponent implements OnInit {
     userName = localStorage.getItem('name');
+    patients:any;
+    tokens:any;
+    active1:string;
+    active2:string;
+    active3:string;
+    content1Current:string;
+    content2Current:string;
+    content3Current:string;
     currentUser = {};
     currentClinic = {};
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
@@ -30,30 +43,59 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.active1="active";
+        this.content1Current = "current";
         if (localStorage.getItem('currentUser')) {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            console.log(this.currentUser);
+            this.patients = (this.currentUser.total_points / 10).toFixed(0);
+            this.tokens = (this.currentUser.total_points/1000).toFixed(0);
         }  
         if (localStorage.getItem('currentClinic')) {
             this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
         }
     }
 
-
     getAccountInfo(id) {
         return this.callApi(this.baseUrl + 'users/' + id).subscribe(
             user => {
                 this.currentUser = user.json();
-                this.getClinic(this.currentUser.health_care_facility_id)
+                this.getClinic(this.currentUser.health_care_facility_id);
                 localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
             },
             error => this.errorMessage = <any>error);
     }
+    openModel(){
 
-
+    }
+    content1(){
+        this.content1Current = "current";
+        this.content2Current="";
+        this.content3Current="";
+        this.active1="active";
+        this.active2="";
+        this.active3="";
+    }
+    content2(){
+        this.content2Current = "current";
+        this.content1Current="";
+        this.content3Current="";
+        this.active1="";
+        this.active2="active";
+        this.active3="";
+    }
+    content3(){
+        this.content3Current = "current";
+        this.content2Current="";
+        this.content1Current="";
+        this.active1="";
+        this.active2="";
+        this.active3="active";
+    }
     getClinic(id) {
         return this.callApi(this.baseUrl + 'health_care_facilities/' + id).subscribe(
             clinic => {
-                this.currentClinic = JSON.parse(clinic._body);                
+                this.currentClinic = JSON.parse(clinic._body);
                 localStorage.setItem('currentClinic', JSON.stringify(this.currentClinic));
             },
             error => this.errorMessage = <any>error);

@@ -1,198 +1,300 @@
-<div class="row dashboard-home gradient">
-    <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-        <section class="header">
-            <h2>Welcome {{currentUser.name}}</h2>
-        </section>
-        <div class="card-deck-wrapper">
-            <div class="card-deck" id="row1">
-
-                <div class="card text-xs-center team-activity">
-                    <div class="card-block" *ngIf="currentClinic">
-                        <h3 class="card-title">Monthly Team Activity</h3>
-                        <div>{{currentClinic.team_month_points}} Points</div>
-                        <div class="success progress" role="progressbar" tabindex="0" aria-valuenow="65"
-                             aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
-                            <div class="progress-meter" style="width: 65%"></div>
-                        </div>
-                        <div>Goal
-                            {{currentClinic.team_goal}}
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <img *ngIf="!currentClinic.month_trophy" src="http://placehold.it/150x150" class="trophy">
-                                <img *ngIf="currentClinic.month_trophy" src="{{currentClinic.month_trophy.image_url}}" class="trophy">
-                            </div>
-                            <div class="col-sm-12">
-                                <h4>{{currentMonth}} Trophy</h4>
-                            </div>
-                        </div>
-                    </div>
+﻿    <div class="wrapper-dashboard_v1">
+            <div class="row">
+                <div class="dashboard_col_left">
+                    <ul class="db-list-tab">
+                        <li>
+                            <a (click) = "content1()" href="javascript:void(0)" data-tab="content-tab-1" class="{{active1}}">Overview</a>
+                        </li>
+                        <li>
+                            <a (click) = "content2()" href="javascript:void(0)" data-tab="content-tab-2" class="{{active2}}">My Achievements</a>
+                        </li>
+                        <li>
+                            <a (click) = "content3()" href="javascript:void(0)" data-tab="content-tab-3" class="{{active3}}">Settings</a>
+                        </li>
+                    </ul>
                 </div>
+                <div class="dashboard_col_right">
+                    <div class="dashboard_col_right--content">
+                        <div class="row content-tab {{content1Current}}" id="content-tab-1">
 
-                <div class="card text-xs-center your-activity">
-                    <div class="row current-activity">
-                        <div class="card-block"  *ngIf="currentUser.avatars">
-
-                            <a (click)="selectAvatarModal.show()"><img src="{{currentUser.image_url}}"
-                                                                       class="avatar-large"></a>
-                            <!-- MODAL -->
-                            <div bsModal #selectAvatarModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-                                 aria-labelledby="avatarModal" aria-hidden="true">
-                                <div class="modal-dialog modal-md">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" aria-label="Close"
-                                                    (click)="selectAvatarModal.hide()">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h4 class="modal-title">Select an Avatar</h4>
+                            <div class="content-right-col-1 col-lg-8">
+                                <div class="content-box-top">
+                                    <div class="info-job">
+                                        <div class="img">
+                                            <img src="images/av-img-1.png"/>
                                         </div>
-                                        <div class="modal-body">
-                                            <img src="{{avatar.image_url}}" class="avatar-large"
-                                                 *ngFor="let avatar of currentUser.avatars" (click)="chooseAvatar(avatar.image_url)">
-                                            <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
+                                        <div class="ct-info">
+                                            <p class="title">Nice job Amy!</p>
+
+                                            <p class="desc">You’re halfway to your goal of 10k points!</p>
+                                            <a href="javascript:void(0)" [routerLink]="['/', '340b']" class="btn-job">Capture Patients</a>
+                                        </div>
+                                    </div>
+                                    <div class="list-bottom">
+                                        <div class="column-info">
+                                            <div class="column-info-inner">
+                                                <p>{{currentUser.total_points}}</p>
+                                                <p>Points</p>
+                                            </div>
+                                        </div>
+                                        <div class="column-info">
+                                            <div class="column-info-inner">
+                                                <p>{{patients}}</p>
+                                                <p>Patients </p>
+                                            </div>
+                                        </div>
+                                        <div class="column-info">
+                                            <div class="column-info-inner">
+                                                <p>{{tokens}}</p>
+
+                                                <p>Tokens</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="content-box-bottom">
+                                    <div class="table-all-starts">
+                                        <p class="title">This Month’s All Stars</p>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                <tr>
+                                                    <td><p>1</p></td>
+                                                    <td><img src="images/icon-f1.png"/></td>
+                                                    <td>Amy Smith</td>
+                                                    <td>###</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p>1</p></td>
+                                                    <td><img src="images/icon-f2.png"/></td>
+                                                    <td>Name</td>
+                                                    <td>###</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p>1</p></td>
+                                                    <td><img src="images/icon-f3.png"/></td>
+                                                    <td>Name</td>
+                                                    <td>###</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p>1</p></td>
+                                                    <td></td>
+                                                    <td>Name</td>
+                                                    <td>###</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p>1</p></td>
+                                                    <td></td>
+                                                    <td>Name</td>
+                                                    <td>###</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- END MODAL -->
-                            <br>
-                            <h3>Your Activity</h3>
-                            <div>{{currentUser.month_points}} Points</div>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row lifetime-activity">
-                        <div class="card-block">
 
-                            <h3>Lifetime Activity</h3>
-                            <div>{{currentUser.total_points}} Points</div>
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                            <div class="content-right-col-2 col-lg-4">
+                                <div class="box-author">
+                                    <p class="desc">
+                                        “They may forget your name,
+                                        but they will never forget how
+                                        you made them feel.”
+                                    </p>
 
-                <div class="card  text-xs-center leaderboard">
-                    <div class="card-block" *ngIf="currentClinic">
-                        <div class="row award">
-                            <div class="col-sm-12 col-md-5">
-                                <img *ngIf="!currentClinic.next_reward" src="http://placehold.it/150x150" class="trophy">
-                                <img *ngIf="currentClinic.next_reward" src="{{currentClinic.next_reward.image_url}}" class="trophy">
-                            </div>
-                            <div class="col-sm-12 col-md-7 left">
-                                <h4>Awarded to the individual with the most points</h4>
-                            </div>
-                        </div>
-                        <div class="text-xs-left">
-                            <div class="row rank"
-                                 *ngFor="let user of currentClinic.top_users; let i = index">
-                                <div class="col-xs-3">
-                                    <img src="{{user.avatar}}" class="avatar">
+                                    <p class="author-signature">
+                                        - Maya Angelou
+                                    </p>
                                 </div>
-                                <div class="col-xs-6">
-                                    <div class="name">{{user.name}}</div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <div class="name">#{{i+1}}</div>
+                                <div class="box-map-right">
+                                    <img src="images/demo.png" style="width: 100%;"/>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br/>
+                        <div class="row content-tab {{content2Current}}" id="content-tab-2">
+                            <div class="col-lg-9">
+                                <div class="content-row-2">
+                                    <div class="achie-list-my-starts">
+                                        <div class="achie-column">
+                                            <div class="img">
+                                                <img src="images/achie-image-1.png" />
 
-        <div class="card text-xs-center">
-            <div class="card-block">
-                <h3 class="card-title">Awards</h3>
-                <br>
-                <div class="row" *ngIf="currentUser.rewards">
-                    <div class="col-sm-12 col-md-4" (click)="trophyModal.show()">
-                        <a data-open="tropyModal">
-                            <img *ngIf="!currentUser.trophies[0]" src="http://placehold.it/150x150" class="trophy">
-                            <img *ngIf="currentUser.trophies[0]" src="{{currentUser.trophies[0].image_url}}" class="trophy">
-                            <p>{{currentUser.trophies.length}} Trophies</p></a>
-                    </div>
-                    <!-- TROPHY MODAL -->
-                    <div bsModal #trophyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-                         aria-labelledby="tropyModal" aria-hidden="true">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" aria-label="Close" (click)="trophyModal.hide()">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">Your Trophies</h4>
+                                            </div>
+                                            <h2>MY STATS</h2>
+                                        </div>
+                                        <div class="achie-column">
+
+                                            <h2>{{currentUser.month_points}}</h2>
+                                            <p>Monthly Points</p>
+
+                                        </div>
+                                        <div class="achie-column">
+
+                                            <h2>{{currentUser.total_points}}</h2>
+                                            <p>Lifetime Points</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="chart-patients">
+                                        <img src="images/achie-image-2.png" style="width: 100%;" />
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <img src="{{trophy.image_url}}" class="avatar-large"
-                                         *ngFor="let trophy of currentUser.trophies">
-                                    <h3 *ngIf="!currentUser.trophies.length">No Trophies</h3>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="content-achie-right">
+                                    <div class="col-info">
+                                        <img src="images/achie-icon-1.png" />
+                                        <a href="javascript:void(0)" (click)="openModel()" data-toggle="modal" data-target="#modal">10 Tokens</a>
+                                    </div>
+                                    <div class="col-info">
+                                        <img src="images/achie-icon-2.png" />
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-tokens">My Avatars</a>
+                                    </div>
+                                    <div class="col-info">
+                                        <img src="images/achie-icon-3.png" />
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-tokens">My Backgrounds</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- END MODAL -->
-                    <div class="col-sm-12 col-md-4" (click)="avatarModal.show()">
-                        <a data-open="avatarModal">
-                            <img *ngIf="!currentUser.avatars[0]" src="http://placehold.it/150x150" class="trophy">
-                            <img *ngIf="currentUser.avatars[0]" src="{{currentUser.avatars[0].image_url}}" class="trophy">
-                            <p>{{currentUser.avatars.length}} Avatars</p></a>
-                    </div>
-                    <!-- AVATAR MODAL -->
-                    <div bsModal #avatarModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-                         aria-labelledby="avatarModal" aria-hidden="true">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" aria-label="Close" (click)="avatarModal.hide()">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">Your Avatars</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="{{avatar.image_url}}" class="avatar-large"
-                                         *ngFor="let avatar of currentUser.avatars">
-                                    <h3 *ngIf="!currentUser.avatars.length">No Avatars</h3>
+                        <div class="row content-tab {{content3Current}}" id="content-tab-3">
+                            tab content
 
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-
-                    <!-- END MODAL -->
-                    <div class="col-sm-12 col-md-4" (click)="badgeModal.show()">
-
-                        <a data-open="badgesModal">
-                            <img *ngIf="!currentUser.badges[0]" src="http://placehold.it/150x150" class="trophy">
-                            <img *ngIf="currentUser.badges[0]" src="{{currentUser.badges[0].image_url}}" class="trophy">
-                            <p>{{currentUser.badges.length}} Badges</p></a>
-                    </div>
-                    <!-- BADGES MODAL -->
-
-                    <div bsModal #badgeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-                         aria-labelledby="badgeModal" aria-hidden="true">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" aria-label="Close" (click)="badgeModal.hide()">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">Your Badges</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="{{badge.image_url}}" class="avatar-large"
-                                         *ngFor="let badge of currentUser.badges">
-
-                                    <h3 *ngIf="!currentUser.badges.length">No Badges</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- END MODAL -->
                 </div>
             </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <!--<h4 class="modal-title">Modal Header</h4>-->
+                <!--</div>-->
+                <div class="modal-body modal-body-isolation">
+                    <div class="modal-isolation">
+                        <div class="col-left">
+                            <div class="logo">
+                                <img src="images/icon-tokens.png" />
+                                <p>10 Tokens</p>
+                            </div>
+                            <ul class="md-menu-left">
+                                <li>
+                                    <a href="#" class="active">
+                                        Avatars
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Backgrounds
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-right">
+                            <ul class="md-top-menu">
+                                <li>
+                                    <a href="#">
+                                        Unlocked
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="active">
+                                        Medical
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Seasonal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Animal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Misc
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Limited Time
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="md-list-unlocked-and-locked">
+                                <div class="box-column">
+                                    <div class="img">
+                                        <img src="images/van_03.jpg" />
+                                    </div>
+                                    <div class="locked-title">
+                                        <a href="#" class="locked">Locked</a>
+
+                                    </div>
+                                </div>
+                                <div class="box-column">
+                                    <div class="img">
+                                        <img src="images/van_05.jpg" />
+                                    </div>
+                                    <div class="locked-title">
+                                        <a href="#" class="locked">Locked</a>
+                                    </div>
+                                </div>
+                                <div class="box-column">
+                                    <div class="img">
+                                        <img src="images/van_07_active.jpg" />
+                                    </div>
+                                    <div class="locked-title">
+
+                                        <a href="#" class="unlocked">Unlocked</a>
+                                    </div>
+                                </div>
+                                <div class="box-column">
+                                    <div class="img">
+                                        <img src="images/van_09.jpg" />
+                                    </div>
+                                    <div class="locked-title">
+                                        <a href="#" class="locked">Locked</a>
+                                    </div>
+                                </div>
+                                <div class="box-column">
+                                    <div class="img">
+                                        <img src="images/van_20.jpg" />
+                                    </div>
+                                    <div class="locked-title">
+                                        <a href="#" class="locked">Locked</a>
+
+                                    </div>
+                                </div>
+                                <div class="box-column">
+                                    <div class="img">
+                                        <img src="images/van_15.jpg" />
+                                    </div>
+                                    <div class="locked-title">
+                                        <a href="#" class="locked">Locked</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <!--</div>-->
+            </div>
+
         </div>
     </div>
-</div>
