@@ -7,7 +7,8 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 @Component({
     moduleId: module.id,
     templateUrl: './home-overview.html',
-    //styleUrls:['../home.component.css'],
+    selector: "home-overview",
+    styleUrls:['../home.component.css'],
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES]
 })
 

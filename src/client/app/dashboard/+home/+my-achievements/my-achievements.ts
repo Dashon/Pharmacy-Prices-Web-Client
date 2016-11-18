@@ -7,7 +7,7 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 @Component({
     moduleId: module.id,
     templateUrl: './my-achievements.html',
-    //styleUrls:['../home.component.css'],
+    styleUrls:['../home.component.css'],
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES]
 })
 
