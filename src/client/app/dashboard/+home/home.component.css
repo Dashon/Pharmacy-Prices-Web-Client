@@ -81,7 +81,8 @@ body {
     clear: both;
     background: #fff;
     overflow: hidden;
-    min-height: 200px; }
+    padding: 10px 0;
+    min-height: 207px; }
 .content-right-col-1 .content-box-top .info-job .img {
     width: 140px;
     position: absolute;
@@ -357,67 +358,66 @@ responsive ipad mobile
         padding: 0px 30px; } }
 
 @media (max-width: 1140px) {
-    .wrapper-dashboard_v1--inner .dashboard_col_left {
+    .dashboard_col_left {
         width: 20%; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right {
+    .dashboard_col_right {
         width: 80%; }
-    .wrapper-dashboard_v1--inner .achie-list-my-starts .achie-column {
+    .achie-list-my-starts .achie-column {
         min-height: 170px; } }
 
 @media (max-width: 992px) {
     .dashboard_col_left {
         width: 100%;
         min-height: 175px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right {
+    .dashboard_col_right {
         width: 100%; }
-    .wrapper-dashboard_v1--inner .achie-list-my-starts .achie-column {
+    .achie-list-my-starts .achie-column {
         width: 33.333%; } }
 
 @media (max-width: 767px) {
-    .wrapper-dashboard_v1--inner .dashboard_col_left {
+    .dashboard_col_left {
         min-height: 145px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_left .db-list-tab li a {
+    .dashboard_col_left .db-list-tab li a {
         padding: 15px 15px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right {
-        padding: 0px 20px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .dashboard_col_right--content {
+   .dashboard_col_right {
+        padding: 0px 20px; }  .dashboard_col_right--content {
         padding-top: 20px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-2 {
+   .content-right-col-2 {
         padding: 0 15px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-2 .box-author {
+    .content-right-col-2 .box-author {
         margin-top: 20px;
         margin-bottom: 10px;
         padding: 20px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-2 .box-map-right {
+     .box-map-right {
         margin-bottom: 30px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-1 {
+   .content-right-col-1 {
         padding: 0 15px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-1 .content-box-top .info-job {
+   .content-box-top .info-job {
         padding-bottom: 20px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-1 .content-box-top .info-job .img {
+    .content-right-col-1 .content-box-top .info-job .img {
         left: 30px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-1 .content-box-top .list-bottom .column-info {
+   .content-box-top .list-bottom .column-info {
         padding: 0px 5px; }
-    .wrapper-dashboard_v1--inner .dashboard_col_right .content-right-col-1 .content-box-bottom {
+    .content-box-bottom {
         padding: 20px 15px; }
-    .wrapper-dashboard_v1--inner .achie-list-my-starts {
+   .achie-list-my-starts {
         margin-bottom: 20px; }
-    .wrapper-dashboard_v1--inner .achie-list-my-starts .achie-column {
+  .achie-list-my-starts .achie-column {
         min-height: 180px;
         text-align: center; }
-    .wrapper-dashboard_v1--inner .achie-list-my-starts .achie-column .img {
+   .achie-list-my-starts .achie-column .img {
         float: none;
         margin: 0px auto; }
-    .wrapper-dashboard_v1--inner .achie-list-my-starts .achie-column h2 {
+    .achie-list-my-starts .achie-column h2 {
         margin-top: 10px;
         font-size: 20px; }
-    .wrapper-dashboard_v1--inner .content-achie-right .col-info {
+    .content-achie-right .col-info {
         margin-top: 10px;
         margin-bottom: 10px;
         padding: 20px 10px; } }
 
 @media (max-width: 320px) {
-    .wrapper-dashboard_v1--inner .achie-list-my-starts .achie-column {
+    .achie-list-my-starts .achie-column {
         width: 100%;
         float: none;
         min-height: auto;
