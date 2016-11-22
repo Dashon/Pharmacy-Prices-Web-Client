@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {AuthHttp} from '../../../config/http';
 import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
     moduleId: module.id,
@@ -22,9 +23,13 @@ isActive = false;
     userName = localStorage.getItem('name');
     currentUser = {};
 
+    @ViewChild('modal')
+    modal: ModalComponent;
 
     constructor(private router:Router) {
        
     }
-
+    open() {
+        this.modal.open();
+    }
 }

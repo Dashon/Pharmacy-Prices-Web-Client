@@ -1,17 +1,17 @@
-import {APP_BASE_HREF, DeprecatedFormsModule} from '@angular/common';
-import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {APP_BASE_HREF, DeprecatedFormsModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import {enableProdMode,Provider} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BrowserModule} from '@angular/platform-browser';
+
 import {HttpModule,Http} from '@angular/http';
 import {AuthGuard, AdminGaurd} from './shared/services/auth.gaurd';
 import {AuthHttp} from './config/http';
-import {APP_ROUTER_PROVIDERS} from './app.routes';
-import {AppModule} from './app.module'
-import {Router} from '@angular/router';
-
+import {APP_ROUTER_PROVIDERS, APP_ROUTER} from './app.routes';
+import {Router, RouterModule} from '@angular/router';
+import {Observable} from 'rxjs/Rx';
 import {AppComponent} from './app.component';
 //import {GOOGLE_MAPS_PROVIDERS, provideLazyMapsAPILoaderConfig} from 'angular2-google-maps/core/index';
-import { AgmCoreModule } from 'angular2-google-maps/core';
 import {AuthConfig} from 'angular2-jwt/angular2-jwt';
 if ('<%= ENV %>' === 'prod') {
     enableProdMode();
@@ -21,9 +21,6 @@ if ('<%= ENV %>' === 'prod') {
  * Bootstraps the application and makes the ROUTER_PROVIDERS and the APP_BASE_HREF available to it.
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
-
-platformBrowserDynamic().bootstrapModule(AppModule);
-
 /*
 bootstrap(AppComponent, [
     disableDeprecatedForms(),
@@ -55,16 +52,29 @@ bootstrap(AppComponent, [
     }),
     AuthHttp,
     provideForms(),
-   // GOOGLE_MAPS_PROVIDERS,
-    AgmCoreModule.forRoot({
+    GOOGLE_MAPS_PROVIDERS,
+    provideLazyMapsAPILoaderConfig({
         apiKey: 'AIzaSyAtBZU8c18SA2J8LeaqkO-N3ox-mVE8Iis'
     }),
-    // provideLazyMapsAPILoaderConfig({
-    //     apiKey: 'AIzaSyAtBZU8c18SA2J8LeaqkO-N3ox-mVE8Iis'
-    // }),
     {
         provide: APP_BASE_HREF,
         useValue: '<%= APP_BASE %>'
     }
 ]);
 */
+
+@NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        DeprecatedFormsModule,
+        RouterModule.forRoot(APP_ROUTER)
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }

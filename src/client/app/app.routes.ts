@@ -1,4 +1,4 @@
-import { provideRouter, RouterConfig } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { LoginRoutes } from './+login/index';
 import { DashboardRoutes } from './dashboard/index';
@@ -17,7 +17,8 @@ import {ResetPasswordRoutes} from "./+reset-password/reset-password.routes";
 
 
 
-const routes: RouterConfig = [
+
+export const APP_ROUTER = [
 	...LoginRoutes,
 	...DashboardRoutes,
 	...AdminRoutes,
@@ -35,5 +36,9 @@ const routes: RouterConfig = [
 ];
 
 export const APP_ROUTER_PROVIDERS = [
-	provideRouter(routes)
+	{path:''},
+	{}
 ];
+
+//export const APP_ROUTER = routes;
+

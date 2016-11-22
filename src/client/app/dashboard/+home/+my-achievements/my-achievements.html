@@ -45,4 +45,25 @@
                 </div>
             </div>
         </div>
+        <p>
+            <button type="button" class="btn btn-default" (click)="navigateModal.open()">Navigate in modal</button>
+            <button type="button" class="btn btn-default" (click)="open()">Open from parent component</button>
+            <button type="button" class="btn btn-default" (click)="parentModal.open()">Nested modals</button>
+            <button type="button" class="btn btn-default" (click)="validationModal.open()">With form validation</button>
+        </p>
+        <br />
+
+
+        <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="navigate()" (onOpen)="opened()" [cssClass]="cssClass" #navigateModal>
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">I'm a modal!</h4>
+            </modal-header>
+            <modal-body>
+                <p>I will navigate to another route when you close the modal.</p>
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="navigateModal.dismiss()">Close</button>
+                <button type="button" class="btn btn-primary" autofocus (click)="navigateModal.close()">Go</button>
+            </modal-footer>
+        </modal>
     

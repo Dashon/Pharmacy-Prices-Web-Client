@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES,Router} from '@angular/router';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Component, NgModule} from '@angular/core';
+import {RouterModule,Router} from '@angular/router';
+import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
 
 /**
  * This class represents the lazy loaded LoginComponent.
  */
 @Component({
-    moduleId: module.id,
+    //moduleId: module.id,
     selector: 'login-cmp',
-    templateUrl: 'login.component.html',
-    directives: [ROUTER_DIRECTIVES]
+    templateUrl: 'login.component.html'//,
+    //directives: [ROUTER_DIRECTIVES]
 })
+
 export class LoginComponent {
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     http = null;

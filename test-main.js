@@ -25,8 +25,12 @@ System.config({
 
 System.config({
   defaultJSExtensions: true,
+  paths: {
+    // paths serve as alias
+    'npm:': 'node_modules/'
+  },
   map: {
-    'rxjs': 'node_modules/rxjs',
+    'rxjs': 'npm:rxjs',
     '@angular': 'node_modules/@angular'
   },
   packages: {
