@@ -15,13 +15,13 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 export class HomeMenuLeftComponent {
     isActive = false;
     showMenu:string = '';
-
+    page:string;
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     errorMessage = null;
     http = null;
     userName = localStorage.getItem('name');
     currentUser = {};
-
+    page="overview";
 
     constructor(http:AuthHttp, private router:Router) {
         this.http = http;
@@ -102,9 +102,11 @@ export class HomeMenuLeftComponent {
 
 
     gotoMyAchievements(){
+        this.page="achievement"
         this.router.navigate(['/dashboard/home', 'my-achievements']);
     }
     gotoOverViewHomePage() {
+        this.page="overview"
         this.router.navigate(['/dashboard/home', 'overview']);
     }
 }

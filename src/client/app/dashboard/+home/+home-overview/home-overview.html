@@ -9,28 +9,27 @@
                     <p class="title">Nice job Amy!</p>
 
                     <p class="desc">You’re halfway to your goal of 10k points!</p>
-                    <a href="#" class="btn-job">Capture Patients</a>
+                    <a href="javascript:void(0)" (click)="goto340b()" class="btn-job">Capture Patients</a>
                 </div>
             </div>
             <div class="list-bottom">
                 <div class="column-info">
                     <div class="column-info-inner">
-                        <p>5,000</p>
+                        <p>{{pointInDay}}</p>
 
                         <p>Points</p>
                     </div>
                 </div>
                 <div class="column-info">
                     <div class="column-info-inner">
-                        <p>5,000</p>
+                        <p>{{currentUser.survey_day.expected_patients}}</p>
 
                         <p>Patients </p>
                     </div>
                 </div>
                 <div class="column-info">
                     <div class="column-info-inner">
-                        <p>10</p>
-
+                        <p>{{tokenInDay}}</p>
                         <p>Tokens</p>
                     </div>
                 </div>
@@ -44,46 +43,15 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tbody>
-                            <tr>
+                            <tr *ngFor = "let user of currentClinic.top_users;let i = index">
                                 <td>
-                                    <p>1</p>
+                                    <p>{{i+1}}</p>
                                 </td>
-                                <td><img src="images/icon-f1.png" /></td>
-                                <td>Amy Smith</td>
-                                <td>###</td>
+                                <td><img src="{{user.avatar}}" /></td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.points}}</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p>1</p>
-                                </td>
-                                <td><img src="images/icon-f2.png" /></td>
-                                <td>Name</td>
-                                <td>###</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>1</p>
-                                </td>
-                                <td><img src="images/icon-f3.png" /></td>
-                                <td>Name</td>
-                                <td>###</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>1</p>
-                                </td>
-                                <td></td>
-                                <td>Name</td>
-                                <td>###</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>1</p>
-                                </td>
-                                <td></td>
-                                <td>Name</td>
-                                <td>###</td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -101,8 +69,10 @@
                 - Maya Angelou
             </p>
         </div>
+
         <div class="chart-patients">
             <div id="chart-patients-2">
+
             </div>
             <p class="chart-patients-2-title">Making a Difference with 340B</p>
         </div>

@@ -11,18 +11,28 @@ import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES]
 })
 
-export class MyAchievementsComponent {
+export class MyAchievementsComponent implements OnInit{
 
 isActive = false;
     showMenu:string = '';
-
     baseUrl = 'https://doc-and-i-api.herokuapp.com/api/v1/';
     errorMessage :string="";
     http :any;
     userName = localStorage.getItem('name');
     currentUser = {};
+    currentClinic = {};
+    totalTokens:number;
 
-
+    ngOnInit() {
+        if (localStorage.getItem('currentUser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.totalTokens = (this.currentUser.total_points / 100000).toFixed(0);
+        }
+        if (localStorage.getItem('currentClinic')) {
+            this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));
+            console.log(this.currentClinic);
+        }
+    }
     constructor(private router:Router) {
        
     }
