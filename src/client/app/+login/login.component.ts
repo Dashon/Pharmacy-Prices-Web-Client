@@ -6,7 +6,7 @@ import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
  * This class represents the lazy loaded LoginComponent.
  */
 @Component({
-    //moduleId: module.id,
+    moduleId: module.id,
     selector: 'login-cmp',
     templateUrl: 'login.component.html'//,
     //directives: [ROUTER_DIRECTIVES]

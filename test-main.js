@@ -31,7 +31,8 @@ System.config({
   },
   map: {
     'rxjs': 'npm:rxjs',
-    '@angular': 'node_modules/@angular'
+    '@angular': 'node_modules/@angular',
+    'main':'main.js'
   },
   packages: {
     '@angular/core': {

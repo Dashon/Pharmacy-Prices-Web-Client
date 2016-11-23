@@ -1,4 +1,4 @@
-import {APP_BASE_HREF, DeprecatedFormsModule} from '@angular/common';
+import {APP_BASE_HREF} from '@angular/common';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {enableProdMode,Provider} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';

@@ -1,5 +1,7 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "debug": "registry:npm/debug#2.0.0+20160723033700"
+  },
   "devDependencies": {},
   "globalDependencies": {
     "Q": "github:DefinitelyTyped/DefinitelyTyped/q/Q.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
