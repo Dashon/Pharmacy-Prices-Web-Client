@@ -1,0 +1,80 @@
+<div class="row content-tab current" id="content-tab-1">
+    <div class="content-right-col-1 col-lg-8 col-md-8 col-xs-12">
+        <div class="content-box-top">
+            <div class="info-job">
+                <div class="img">
+                    <img src="images/av-img-1.png" />
+                </div>
+                <div class="ct-info">
+                    <p class="title">Nice job Amy!</p>
+
+                    <p class="desc">You’re halfway to your goal of 10k points!</p>
+                    <a href="javascript:void(0)" (click)="goto340b()" class="btn-job">Capture Patients</a>
+                </div>
+            </div>
+            <div class="list-bottom">
+                <div class="column-info">
+                    <div class="column-info-inner">
+                        <p>{{pointInDay}}</p>
+
+                        <p>Points</p>
+                    </div>
+                </div>
+                <div class="column-info">
+                    <div class="column-info-inner">
+                        <p>{{currentUser.survey_day.expected_patients}}</p>
+
+                        <p>Patients </p>
+                    </div>
+                </div>
+                <div class="column-info">
+                    <div class="column-info-inner">
+                        <p>{{tokenInDay}}</p>
+                        <p>Tokens</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-box-bottom">
+            <div class="table-all-starts">
+                <p class="title">This Month’s All Stars</p>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr *ngFor = "let user of currentClinic.top_users;let i = index">
+                                <td>
+                                    <p>{{i+1}}</p>
+                                </td>
+                                <td><img src="{{user.avatar}}" /></td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.points}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="content-right-col-2 col-lg-4 col-md-4 col-xs-12">
+        <div class="box-author">
+            <p class="desc">
+                “They may forget your name, but they will never forget how you made them feel.”
+            </p>
+
+            <p class="author-signature">
+                - Maya Angelou
+            </p>
+        </div>
+
+        <div class="chart-patients">
+            <div id="chart-patients-2">
+
+            </div>
+            <p class="chart-patients-2-title">Making a Difference with 340B</p>
+        </div>
+    </div>
+</div>

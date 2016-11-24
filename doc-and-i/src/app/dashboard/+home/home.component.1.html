@@ -1,0 +1,301 @@
+﻿<div class="wrapper-dashboard_v1">
+    <div class="row">
+        <div class="dashboard_col_right">
+            <div class="dashboard_col_right--content">
+                
+                    <section>
+                        <router-outlet></router-outlet>
+                    </section>
+               
+
+                <div class="row content-tab {{content1Current}}" id="content-tab-1">
+
+                    <div class="content-right-col-1 col-lg-8">
+                        <div class="content-box-top">
+                            <div class="info-job">
+                                <div class="img">
+                                    <img src="images/av-img-1.png" />
+                                </div>
+                                <div class="ct-info">
+                                    <p class="title">Nice job Amy!</p>
+
+                                    <p class="desc">You’re halfway to your goal of 10k points!</p>
+                                    <a href="javascript:void(0)" [routerLink]="['/', '340b']" class="btn-job">Capture Patients</a>
+                                </div>
+                            </div>
+                            <div class="list-bottom">
+                                <div class="column-info">
+                                    <div class="column-info-inner">
+                                        <p>{{currentUser.total_points}}</p>
+                                        <p>Points</p>
+                                    </div>
+                                </div>
+                                <div class="column-info">
+                                    <div class="column-info-inner">
+                                        <p>{{patients}}</p>
+                                        <p>Patients </p>
+                                    </div>
+                                </div>
+                                <div class="column-info">
+                                    <div class="column-info-inner">
+                                        <p>{{tokens}}</p>
+
+                                        <p>Tokens</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="content-box-bottom">
+                            <div class="table-all-starts">
+                                <p class="title">This Month’s All Stars</p>
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>1</p>
+                                                </td>
+                                                <td><img src="images/icon-f1.png" /></td>
+                                                <td>Amy Smith</td>
+                                                <td>###</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>1</p>
+                                                </td>
+                                                <td><img src="images/icon-f2.png" /></td>
+                                                <td>Name</td>
+                                                <td>###</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>1</p>
+                                                </td>
+                                                <td><img src="images/icon-f3.png" /></td>
+                                                <td>Name</td>
+                                                <td>###</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>1</p>
+                                                </td>
+                                                <td></td>
+                                                <td>Name</td>
+                                                <td>###</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>1</p>
+                                                </td>
+                                                <td></td>
+                                                <td>Name</td>
+                                                <td>###</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="content-right-col-2 col-lg-4">
+                        <div class="box-author">
+                            <p class="desc">
+                                “They may forget your name, but they will never forget how you made them feel.”
+                            </p>
+
+                            <p class="author-signature">
+                                - Maya Angelou
+                            </p>
+                        </div>
+                        <div class="box-map-right">
+                            <img src="images/demo.png" style="width: 100%;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row content-tab {{content2Current}}" id="content-tab-2">
+                    <div class="col-lg-9">
+                        <div class="content-row-2">
+                            <div class="achie-list-my-starts">
+                                <div class="achie-column">
+                                    <div class="img">
+                                        <img src="images/achie-image-1.png" />
+
+                                    </div>
+                                    <h2>MY STATS</h2>
+                                </div>
+                                <div class="achie-column">
+
+                                    <h2>{{currentUser.month_points}}</h2>
+                                    <p>Monthly Points</p>
+
+                                </div>
+                                <div class="achie-column">
+
+                                    <h2>{{currentUser.total_points}}</h2>
+                                    <p>Lifetime Points</p>
+
+                                </div>
+                            </div>
+                            <div class="chart-patients">
+                                <img src="images/achie-image-2.png" style="width: 100%;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="content-achie-right">
+                            <div class="col-info">
+                                <img src="images/achie-icon-1.png" />
+                                <a href="javascript:void(0)" (click)="openModel()" data-toggle="modal" data-target="#modal">10 Tokens</a>
+                            </div>
+                            <div class="col-info">
+                                <img src="images/achie-icon-2.png" />
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-tokens">My Avatars</a>
+                            </div>
+                            <div class="col-info">
+                                <img src="images/achie-icon-3.png" />
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-tokens">My Backgrounds</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row content-tab {{content3Current}}" id="content-tab-3">
+                    tab content
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <!--<div class="modal-header">-->
+            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+            <!--<h4 class="modal-title">Modal Header</h4>-->
+            <!--</div>-->
+            <div class="modal-body modal-body-isolation">
+                <div class="modal-isolation">
+                    <div class="col-left">
+                        <div class="logo">
+                            <img src="images/icon-tokens.png" />
+                            <p>10 Tokens</p>
+                        </div>
+                        <ul class="md-menu-left">
+                            <li>
+                                <a href="#" class="active">
+                                        Avatars
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                        Backgrounds
+                                    </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-right">
+                        <ul class="md-top-menu">
+                            <li>
+                                <a href="#">
+                                        Unlocked
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="#" class="active">
+                                        Medical
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                        Seasonal
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                        Animal
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                        Misc
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                        Limited Time
+                                    </a>
+                            </li>
+
+                        </ul>
+                        <div class="md-list-unlocked-and-locked">
+                            <div class="box-column">
+                                <div class="img">
+                                    <img src="images/van_03.jpg" />
+                                </div>
+                                <div class="locked-title">
+                                    <a href="#" class="locked">Locked</a>
+
+                                </div>
+                            </div>
+                            <div class="box-column">
+                                <div class="img">
+                                    <img src="images/van_05.jpg" />
+                                </div>
+                                <div class="locked-title">
+                                    <a href="#" class="locked">Locked</a>
+                                </div>
+                            </div>
+                            <div class="box-column">
+                                <div class="img">
+                                    <img src="images/van_07_active.jpg" />
+                                </div>
+                                <div class="locked-title">
+
+                                    <a href="#" class="unlocked">Unlocked</a>
+                                </div>
+                            </div>
+                            <div class="box-column">
+                                <div class="img">
+                                    <img src="images/van_09.jpg" />
+                                </div>
+                                <div class="locked-title">
+                                    <a href="#" class="locked">Locked</a>
+                                </div>
+                            </div>
+                            <div class="box-column">
+                                <div class="img">
+                                    <img src="images/van_20.jpg" />
+                                </div>
+                                <div class="locked-title">
+                                    <a href="#" class="locked">Locked</a>
+
+                                </div>
+                            </div>
+                            <div class="box-column">
+                                <div class="img">
+                                    <img src="images/van_15.jpg" />
+                                </div>
+                                <div class="locked-title">
+                                    <a href="#" class="locked">Locked</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+</div>

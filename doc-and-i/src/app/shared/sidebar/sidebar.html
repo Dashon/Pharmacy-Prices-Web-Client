@@ -1,0 +1,52 @@
+<aside id="sidebar" class="hidden-md-up" *ngIf="isLoggedIn()">
+    <div class="sidenav-outer">
+
+        <div class="side-widgets">
+            <div class="widgets-content">
+              <ul class="nav nav-tabs nav-stacked">
+
+                  <li class="nav-item nav-text"  *ngIf="isLoggedIn()">
+                          <a [routerLink]="['/dashboard','/home']">
+                              <img src="{{currentUser.image_url}}"  class="topnav-img" alt=""> <br>
+                              <span >{{userName}}</span>
+                          </a>
+                  </li>
+
+                  <li class="nav-item nav-text" role="menuitem" *ngIf="isAssociated()"><a href="javascript:void(0)" [routerLink]="['/','/340b']" tabindex="0"><img class="nav-image" src="assets/images/svg/icon-script.svg" width="20px"><span>340B</span></a></li>
+                  <!--<li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" [routerLink]="['/','/map']" ><img src="assets/images/svg/icon-map.svg" width="15px"> Map</a></li>-->
+                  <!--<li class="nav-item nav-text" role="menuitem"><a href="javascript:void(0)" [routerLink]="['/','/drug-search']"><img src="assets/images/svg/icon-savings.svg" width="20px"> Savings</a></li>-->
+                  <li  *ngIf="isAssociated()">
+                      <div class="btn-group nav-item nav-text" dropdown>
+                          <a dropdownToggle="" aria-haspopup="true">
+                              <span>My Clinic</span>
+                          </a>
+                          <ul class="dropdown-menu " aria-labelledby="lang">
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)"[routerLink]="['/dashboard','/my-clinic']">Manage</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/dashboard','/my-pharmacies']">My Pharmacies</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/dashboard','/contracted-pharmacies']">Contracted Pharmacies</a></li>
+                          </ul>
+                      </div>
+                  </li>
+                  <li  *ngIf="isAdmin()">
+                      <div class="btn-group nav-item nav-text" dropdown>
+                          <a dropdownToggle=""  aria-haspopup="true">
+                              <span>Admin</span>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="lang">
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)"[routerLink]="['/admin','/manage-users']">Manage Users</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/admin','/manage-clinics']">Manage Clinics</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/admin','/manage-pharmacies']">Manage Pharmacies</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/admin','/survey-questions']">Survey Questions</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/admin','/manage-rewards']">Manage Rewards</a></li>
+                              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/admin','/edit-request']">Edit Request</a></li>
+                          </ul>
+                      </div>
+                  </li>
+
+                  <li class="nav-item nav-text" role="menuitem" *ngIf="isLoggedIn()"><a href="javascript:void(0)" (click)="logout()" tabindex="0"><span>Logout</span></a></li>
+
+              </ul>
+            </div>
+        </div>
+    </div>
+</aside>
