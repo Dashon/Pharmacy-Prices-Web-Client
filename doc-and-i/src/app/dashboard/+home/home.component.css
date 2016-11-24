@@ -38,9 +38,9 @@ body {
     background: #E6E6E6; }
 
 .dashboard_col_right {
-    width: calc(100% - 245px);
-    width: -webkit-calc(100% - 245px);
-    width: -moz-calc(100% - 245px);
+    width: calc(100% - 306px);
+    width: -webkit-calc(100% - 306px);
+    width: -moz-calc(100% - 306px);
     float: left;
     padding: 0 25px;
     min-height: 100vh;

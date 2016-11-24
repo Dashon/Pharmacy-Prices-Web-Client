@@ -2,23 +2,33 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import {MyArchievementsRoutes} from './+home/+my-achievements/index';
-import {HomeOverViewRoutes} from './+home/+home-overview/index';
 
-const DashboardRoutes: Routes = [
+import { HomeComponent } from './+home/index';
+
+import { HomeOverviewComponent } from './+home/+home-overview/home-overview.component';
+import { MyAchievementsComponent } from './+home/+my-achievements/my-achievements';
+
+
+export const DashboardRoutes: Routes = [
 	{
 		path: 'dashboard',
 		component: DashboardComponent,
-		children: [
-            ...MyArchievementsRoutes,
-			...HomeOverViewRoutes
+		children: [{
+			path: 'home',
+			component: HomeComponent,
+			children: [
+				{path: '', component:HomeOverviewComponent},
+				{path: 'my-achievement', component: MyAchievementsComponent}
+
+			]
+		}
         ]
 	},
 ];
 
 @NgModule({
 	imports: [
-		RouterModule.forChild(HomeRoutes)
+		RouterModule.forChild(DashboardRoutes)
 	],
 	exports: [
 		RouterModule

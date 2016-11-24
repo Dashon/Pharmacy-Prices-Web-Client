@@ -2,10 +2,10 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './index';
-import {MyArchievementsRoutes} from './+my-achievements/index';
-import {HomeOverViewRoutes} from './+home-overview/index';
+import { MyArchievementsRoutes } from './+my-achievements/index';
+import { HomeOverViewRoutes } from './+home-overview/index';
 
-const HomeRoutes: Routes = [
+export const DashboardHomeRoutes = [
 	{
 		path: 'home',
 		component: HomeComponent,
@@ -16,12 +16,13 @@ const HomeRoutes: Routes = [
 	},
 ];
 
-@NgModule({
-	imports: [
-		RouterModule.forChild(HomeRoutes)
-	],
-	exports: [
-		RouterModule
-	]
-})
-export class DashboardHomeModule { }
+// @NgModule({
+// 	imports: [
+// 		RouterModule.forChild(DashboardHomeRoutes)
+// 	],
+// 	exports: [
+// 		RouterModule
+// 	]
+// })
+//
+// export class DashboardHomeRoutes {};
