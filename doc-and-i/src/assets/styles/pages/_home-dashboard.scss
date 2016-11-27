@@ -1,0 +1,74 @@
+.dashboard-home {
+  .card-block{
+    padding:40px;
+  }
+  .avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .trophy {
+    height: auto;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  #awards {
+    margin-top: 30px;
+    max-height: 400px;
+    img {
+      max-width: 100%;
+    }
+  }
+  .your-activity {
+    background-color: transparent;
+    border: none;
+    .current-activity {
+      background-color: $white;
+      border: 1px solid #e5e5e5;
+    }
+    .lifetime-activity {
+      background-color: $white;
+      border: 1px solid #e5e5e5;
+    }
+  }
+  .team-activity{
+    text-align: center;
+    .trophy{
+      margin-top:40px;
+    }
+    h4{
+      margin-top: 20px;
+    }
+  }
+  .leaderboard{
+    .card-block{
+      .award{
+        padding-bottom: 20px;
+      }
+      .left{
+        text-align: left;
+      }
+      .rank{
+        margin-top: 10px;
+        border-top: $stroke;
+        padding-top:10px;
+      }
+      .name{
+        padding-top: 5px;
+      }
+      .postion{
+        padding-top: 5px;
+      }
+      @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        margin-top: 30px;
+      }
+    }
+  }
+  .modal-body{
+    .avatar-large{
+      margin: 0 5px;
+    }
+  }
+}

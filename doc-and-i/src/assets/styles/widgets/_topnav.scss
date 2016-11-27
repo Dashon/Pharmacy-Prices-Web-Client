@@ -1,0 +1,269 @@
+* {
+  ul {
+    list-style-type: none;
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+.topnav-navbar {
+  background: #FFF;
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  height: 50px;
+  font-size: 0.875rem;
+
+  .logo {
+    height: 50px;
+    padding: 5px;
+  }
+  .navbar-brand {
+    width: $nav-width;
+    background: #FFF;
+    padding: 0;
+    color: lighten($brand-primary, 35%);
+    padding-left: 1rem;
+    font-size: 18px;
+    height:49px;
+    line-height: 20px;
+  }
+
+   .add-points {
+     background-repeat: no-repeat;
+     background-position: bottom left;
+     background-image: url("data:image/gif;base64,R0lGODlhKAAoAIABAMXllAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFFAABACwAAAAAKAAoAAACOYyPqcvtD6OctNqLs968+w+G4kiW5omm6sq2LgADaCyfdEnnNajfYR8TAWG4oM1o8rmWzKbzCaUUAAAh+QQFFAABACwJABEACgAKAAACEoyBYBup3NJytNqLX0Rw6ykZBQAh+QQJFAABACwRAAcADQAZAAACIYyBYMup3BIMrj5q5clo8Q45k6eN4oim6sq27gvH8kyvBQAh+QQJFAABACwAAAAAKAAoAAACQIyPqcvtD6OctNqLs94ceMBBHxg6Y7mMKokG69m6rxfLc33AeP7tiO4LCocilpBGRA6VxKbzCY1Kp9Sq9YrNYgsAIfkECRQAAQAsAAAAACgAKAAAAjyMj6nL7Q+jnLTai7PeHHjAQR8YOmO5jCqJBuvZuq8Xy3N9wHj+7YjuCwqHxKLxiEwql8ym8wmNSqfUWgEAIfkEBRQAAQAsAAAAACgAKAAAAieMj6nL7Q+jnLTai7PevPsPhuJIluaJpurKtu4Lx/JM1/aN5/rOIwUAOw==");
+     .topnav-img{
+       margin-left:15px;
+   }
+  }
+  .collapse {
+    .navbar-nav {
+      .nav-item {
+        margin-left: 0;
+        .dropdown {
+          > a {
+            color: $brand-primary;
+            &:hover, &:focus, &:visited, &:active {
+              background: $brand-primary !important;
+              color: #FFF;
+            }
+          }
+        }
+        .dropdown.open {
+          > a {
+            color: #FFF !important;
+            background: $brand-primary !important;
+          }
+        }
+        .dropdown-toggle::after {
+          display: none;
+        }
+        .dropdown-menu {
+          width: 250px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          border-radius: 0;
+          border: none;
+          border-top: 1px solid #eee;
+          transition: all .1s linear;
+          padding-bottom: 0;
+          margin: 0;
+          .dropdown-divider {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .profile {
+        margin-right: 10px;
+        a {
+          padding: 10px;
+          color: $brand-primary;
+          display: block;
+          cursor: pointer;
+          img {
+            margin-right: 5px;
+            height:30px;
+            width: 30px;
+            background-color: cornflowerblue;
+          }
+        }
+        .open a {
+          color: #FFF;
+          background: $brand-primary !important;
+        }
+        ul.dropdown-menu {
+          .points{
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align:right;
+            padding-right: 15px;
+            img{
+              vertical-align:top;
+              padding-top:3px;
+            }
+          }
+          li a {
+            color: #000 !important;
+            background: #FFF !important;
+            &:hover {
+              color: #FFF !important;
+              background: $brand-primary !important;
+            }
+          }
+        }
+      }
+
+    }
+    .navbar-right {
+      .nav-item {
+        cursor: pointer;
+        &.nav-text {
+          border: none;
+          border-left: $stroke;
+          background-color: $white;
+          min-width: 100px;
+          text-align: center;
+          font-size: .8em;
+          padding: 15px 30px;
+          margin: 0;
+          text-transform: uppercase;
+          font-weight: 600;
+          &:hover{
+            background: $brand-primary;
+            a {
+              color: #FFF;
+           }
+          }
+          a {
+            color: $gray;
+            &:focus, &:active, &:visited, &:hover {
+              text-decoration: none;
+              outline: none;
+            }
+          }
+          img{
+            margin-right: 5px;
+          }
+        }
+        .dropdown {
+          a {
+            cursor: pointer;
+            display: block;
+          }
+          .dropdown-menu {
+            padding: 0;
+            width: 180px;
+            min-width: 180px;
+            left: auto;
+            right: 0px;
+            margin-top: 0;
+            li a {
+              color: #000;
+              font-size: 14px;
+              padding: 10px 15px;
+              border-bottom: 1px solid #d9d9d9;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .theme-name {
+    position: absolute;
+    width: 150px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    color: #FFF;
+    font-size: 18px;
+    padding: 0 30px;
+    &:hover {
+      text-decoration: none;
+      color: #FFF;
+    }
+  }
+  .topnav-navbar {
+    background: #fff;
+    #sidebar-toggler {
+      background: $nav-background-color;
+      border: none;
+      color: $brand-primary;
+      font-size: 1.83rem;
+      padding: 3px 0 0 13px;
+      &:focus {
+        outline: none;
+      }
+    }
+    .profile {
+      margin-right: 10px;
+      a {
+        padding: 10px;
+        color: $brand-primary;
+        display: block;
+        cursor: pointer;
+        img {
+          width: 30px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  .hidd {
+    .dropdown {
+      a {
+        img {
+          cursor: pointer;
+          width: 35px;
+          margin: 8px 15px 0px 0px;
+        }
+        &:after {
+          display: none;
+        }
+      }
+      .dropdown-menu {
+        left: auto;
+        right: 0;
+        top: 48px;
+        a {
+          margin: -8px 0;
+          padding: 10px 15px;
+          &:hover {
+            background: $brand-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .rtl {
+    #sidebar {
+      left: auto;
+      right: 0;
+    }
+    #sidebar-toggler {
+      position: absolute;
+      left: 0;
+      &:focus {
+        outline: none;
+      }
+    }
+    .hidd {
+      .profile-xs {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}

@@ -9,4 +9,8 @@ if (environment.production) {
   enableProdMode();
 }
 
+if ('<%= ENV %>' === 'prod') {
+  enableProdMode();
+}
+
 platformBrowserDynamic().bootstrapModule(AppModule);

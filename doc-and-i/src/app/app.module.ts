@@ -16,7 +16,7 @@ import {DashboardModule} from './dashboard/dashboard.route';
 import {SidebarComponent} from './shared/sidebar/index';
 import {TopNavComponent} from './shared/topnav/index';
 import {HomeMenuLeftComponent} from './dashboard/+home/+menu-left/menu-left';
-
+import "rxjs/Rx";
 
 import {APP_ROUTER_PROVIDER} from './app.routes'
 //import {AuthHttp} from '../config/http';
@@ -31,7 +31,7 @@ import {APP_ROUTER_PROVIDER} from './app.routes'
     HomeOverviewComponent,
     MyAchievementsComponent,
     HomeMenuLeftComponent,
-LoginComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -55,14 +55,13 @@ LoginComponent,
             {path: 'my-achievement', component: MyAchievementsComponent}
 
           ]
-        }
-        ]
+        }]
       },
         {
-            path: '',
-            component: LoginComponent,
-            index: true
+            path: 'login',
+            component: LoginComponent
         },
+      {path:'', component: AppComponent}
     ])
   ],
 

@@ -19,6 +19,7 @@ export class TopNavComponent {
     userName = localStorage.getItem('name');
     currentUser = {};
 
+    
 /*
     constructor(http:AuthHttp, private router:Router) {
         this.http = http;

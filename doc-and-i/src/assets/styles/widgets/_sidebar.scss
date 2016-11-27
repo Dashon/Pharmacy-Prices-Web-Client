@@ -1,0 +1,117 @@
+#sidebar {
+  width: $nav-width;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: $brand-primary;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  a {
+    cursor: pointer;
+
+  }
+
+  .nav {
+    .nav-text {
+      border: white 1px solid;
+      text-align: center;
+      color: #FFF;
+      font-size: .9em;
+      padding: 14px 30px;
+      margin-top: 14px;
+      text-transform: uppercase;
+      font-weight: 600;
+      a {
+        span{color: rgba(255, 255, 255, 0.8);}
+
+        &:hover{
+          text-decoration: none;
+        }
+        > img {
+          max-height: 60px;
+          &.topnav-img {
+            margin-bottom: 14px;
+          }
+          &.nav-image {
+            float: left;
+            -webkit-filter: grayscale(100%) brightness(5);
+            filter: grayscale(100%) brightness(5);
+          }
+        }
+      }
+
+      .dropdown-menu{
+        width: 100%;
+        color: $gray;
+      }
+
+      .dropdown-toggle{
+        &:after{
+          display: none;
+        }
+      }
+    }
+  }
+  .sidenav-outer {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border-top: 1px solid darken($brand-primary, 5%);
+  }
+  div.side-widgets {
+    color: rgba(255, 255, 255, 0.8);
+    float: left;
+    width: $nav-width;
+    position: absolute;
+    left: 0;
+    .widgets-header {
+      text-align: center;
+      padding: 15px;
+      height: 50px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+      font-weight: 600;
+      a {
+        color: inherit;
+        &:hover, &:focus {
+          color: rgba(255, 255, 255, 1);
+          text-decoration: none;
+        }
+      }
+    }
+    .widgets-content {
+      padding: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      //overflow: hidden;
+      .avatar-name {
+        padding-top: 12px;
+        font-size: 14px;
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #sidebar {
+    left: -$nav-width;
+  }
+  .main-container {
+    margin-left: 0 !important;
+  }
+}
+
+.sidebar-left-zero {
+  left: 0 !important;
+}
+
+.main-container-ml-zero {
+  margin-left: 235px !important;
+  margin-right: -235px !important;
+}
