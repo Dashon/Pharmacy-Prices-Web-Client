@@ -21,14 +21,13 @@ export class HomeOverviewComponent implements OnInit {
     pointInDay:number;
     tokenInDay:number;
     currentUser:any;
-
     ngOnInit() {
-        this.currentUser = localStorage.getItem('currentUser');
-        console.log("user=", this.currentUser);
+        this.currentUser = localStorage.getItem('name');
+        console.log(this.currentUser);
         if (this.currentUser) {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            this.pointInDay = this.currentUser.survey_day.expected_patients * 10;
-            this.tokenInDay = (this.currentUser.survey_day.expected_patients / 10000).toFixed(0);
+            // this.pointInDay = this.currentUser.survey_day.expected_patients * 10;
+            // this.tokenInDay = (this.currentUser.survey_day.expected_patients / 10000).toFixed(0);
         }
         if (localStorage.getItem('currentClinic')) {
             this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));

@@ -1,0 +1,56 @@
+.map-page {
+  .pharmacy-list {
+    background-color: $white;
+    .list-of-pharmacies {
+      ul {
+        padding: 0;
+        height: 45px;
+        div {
+          height: 45px;
+        }
+      }
+      li:hover{
+        background-color: #8aa4be;
+        color: $white;
+      }
+    }
+    .short-code {
+      width: 80px;
+      float: left;
+      margin-right: 5px;
+      h3 {
+        line-height: 45px;
+      }
+    }
+    .pharmacy-details {
+      float: left;
+    }
+    .pharmacy-benefits {
+      width: 100px;
+      float: right;
+      padding-right: 10px;
+      img {
+        height: 30px;
+        margin-left: 10px;
+        margin-top: 7.5px;
+        float: right;
+      }
+    }
+  }
+
+  .map-container {
+    background-color: $white;
+    .sebm-google-map-info-window-content {
+      min-width: 200px;
+      min-height: 100px;
+      .btn {
+        margin-top: 10px;
+        position: absolute;
+      }
+      .btn-secondary {
+        right: 0;
+      }
+    }
+  }
+
+}

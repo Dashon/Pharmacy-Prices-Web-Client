@@ -3,7 +3,7 @@ import {RouterModule, Router} from '@angular/router';
 
 
 @Component({
-
+    selector: "my-achievements",
     templateUrl: './my-achievements.html',
     styleUrls:['../home.component.css']
 })
@@ -22,8 +22,8 @@ isActive = false;
 
     ngOnInit() {
         if (localStorage.getItem('currentUser')) {
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            this.totalTokens = (this.currentUser.total_points / 100000).toFixed(0);
+            //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            //this.totalTokens = (this.currentUser.total_points / 100000).toFixed(0);
         }
         if (localStorage.getItem('currentClinic')) {
             this.currentClinic = JSON.parse(localStorage.getItem('currentClinic'));

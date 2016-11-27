@@ -1,0 +1,41 @@
+.my-clinic-page {
+  .container {
+    background-color: $white;
+    padding: 40px;
+    margin-top: 10px;
+    min-width: 900px;
+    max-width: 100% !important;
+  }
+  .field-title, .field {
+    text-align: left;
+    border: none;
+  }
+
+}
+
+.card {
+  .card-footer {
+    height: 50px;
+    background-color: $white;
+  }
+  td, th {
+    &.action-column {
+      width: 350px;
+    }
+  }
+
+  td {
+    height: 60px;
+  }
+  .logo-row {
+    height: $max-logo-height;
+    .logo {
+      height: $max-logo-height - 10;
+    }
+
+    .card-block {
+      height: $max-logo-height - 50;
+
+    }
+  }
+}

@@ -1,0 +1,24 @@
+
+.about-us {
+  .about-us-header {
+    background-image: url('/assets/images/about-docandi.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 350px;
+    @media (max-width: 767px) {
+      padding: 10px;
+      height: 150px;
+    }
+  }
+  .content-row {
+    img {
+      width: 100%;
+    }
+    p {
+      font-size: 20px;
+    }
+    h1 {
+      text-align: left;
+    }
+  }
+}

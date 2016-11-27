@@ -1,0 +1,58 @@
+
+.healthcare-solutions {
+  .healthcare-solutions-header {
+    background-image: url('/assets/images/healthcare-solutions.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+    min-height: 450px;
+    @media (max-width: 767px) {
+      background-image: none;
+      background-color: $light-grey;
+      padding: 10px;
+      min-height: 150px;
+    }
+    .healthcare-solutions-header-content {
+      padding: 90px 10px;
+      text-align: left;
+      @media (max-width: 767px) {
+        padding: 20px 20px;
+      }
+      p {
+        font-size: 22px;
+        line-height: 1.6;
+      }
+      h1 {
+        text-align: left;
+      }
+    }
+  }
+  .healthcare-solutions-closer {
+    background-image: url( '/assets/images/340B-consultation.jpg');
+    background-size: cover;
+    min-height: 450px;
+    color: $white;
+    padding: 90px 0;
+    @media (max-width: 767px) {
+      background-image: none;
+      background-color: $white;
+      color: $grey;
+      padding: 10px;
+      min-height: 250px;
+    }
+    h2{
+      color:$white;
+    }
+  }
+  .healthcare-solutions-form {
+    input, textarea {
+      margin: 0 0 15px;
+    }
+    .btn {
+      padding: 10px;
+      width: 100%;
+    }
+    label {
+      float: left;
+    }
+  }
+}
