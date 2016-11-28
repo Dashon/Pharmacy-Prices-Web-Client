@@ -7,9 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor() {
-      System.import('app')
-          .then(function() {
-              System.import('./main.js') // or whatever the main entry point `System.register('app/main.js')` name is in the bundle
-          });
+
   }
 }

@@ -1,4 +1,4 @@
-import {Injectable, provide} from '@angular/core';
+import {Injectable, Provider} from '@angular/core';
 import {Http, Request, Response, RequestOptionsArgs} from '@angular/http';
 import {Router} from '@angular/router';
 import {AuthHttp as JwtAuthHttp, AuthConfig} from 'angular2-jwt';

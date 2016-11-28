@@ -1,6 +1,7 @@
+
 (function(global) {
 
-    System.config({
+    SystemJS.config({
         paths: {
             // paths serve as alias
             'npm:': 'node_modules/'
@@ -38,7 +39,7 @@
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
             app: {
-                main: 'src/main.js',
+                main: 'main',
                 defaultExtension: 'js'
             },
             rxjs: {
