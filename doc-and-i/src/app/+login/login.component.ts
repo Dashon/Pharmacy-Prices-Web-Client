@@ -32,7 +32,7 @@ export class LoginComponent {
                 localStorage.setItem('hcf_id', user.hcf_id);
                 localStorage.setItem('role', user.role);
 
-                this.router.navigate(['/dashboard', '/home']);
+                this.router.navigate(['/dashboard', '/home','/overview']);
 
             },
             error => {

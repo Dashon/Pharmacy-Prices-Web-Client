@@ -310,6 +310,7 @@ export class Three40BComponent {
     }
 
     submitSurvey() {
+
         this.surveySending = true;
         if (this.questions.q7) {
             this.selectedPharmacy = this.contractedPharmacies.filter(x=>x.id == this.questions.q7)[0];
@@ -330,6 +331,7 @@ export class Three40BComponent {
         }
         var newSurvey = {answers: answers,user_id:this.survey_user['id']};
         return this.postApi(this.baseUrl + 'surveys', newSurvey).subscribe(()=> {
+
             this.currentTab = 'submitted';
 
             $('.profile-box').addClass('add-points');
@@ -339,7 +341,7 @@ export class Three40BComponent {
                 if (!this.questions.q7 && this.currentTab == 'submitted') {
                     this.newSurvey();
                 }
-            }, 3000);
+            }, 2000);
             this.getAccountInfo(this.survey_user['id']);
         });
     }
@@ -360,15 +362,18 @@ export class Three40BComponent {
         if (this.contactInfo) {
             this.textSending = true;
             var msg = {contact_info: this.contactInfo, contrated_pharamcy_id: this.selectedPharmacy['id']};
-            return this.postApi(this.baseUrl + 'surveys/text_patient', msg).subscribe(()=> {
-                this.contactInfo = null;
-                this.messageSent = true;
-                setTimeout(() => {
-                    if (this.currentTab == 'submitted') {
-                        this.newSurvey();
-                    }
-                }, 3000);
-            });
+
+            return this.postApi(this.baseUrl + 'surveys/text_patient', msg).map(res=> function (res) {
+                {
+                    this.contactInfo = null;
+                    this.messageSent = true;
+                    setTimeout(() => {
+                        if (this.currentTab == 'submitted') {
+                            this.newSurvey();
+                        }
+                    }, 3000);
+                }
+            }).share();
         }
     }
 
@@ -427,7 +432,7 @@ export class Three40BComponent {
     postApi(url, body) {
         this.errorMessage = '';
         var bodyJSON = JSON.stringify(body);
-        return this.http.post(url, bodyJSON);
+        return this.http.post(url, bodyJSON).map(res => res.json()).share();
     }
 
     putApi(url, body) {
