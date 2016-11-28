@@ -16,8 +16,7 @@ import {DashboardModule} from './dashboard/dashboard.route';
 import {SidebarComponent} from './shared/sidebar/index';
 import {TopNavComponent} from './shared/topnav/index';
 import {HomeMenuLeftComponent} from './dashboard/+home/+menu-left/menu-left';
-
-
+import { ChartModule } from 'angular2-highcharts';
 import {APP_ROUTER_PROVIDER} from './app.routes'
 //import {AuthHttp} from '../config/http';
 
@@ -35,6 +34,7 @@ LoginComponent,
 
   ],
   imports: [
+    ChartModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -52,7 +52,7 @@ LoginComponent,
           component: HomeComponent,
           children: [
             {path: 'overview', component:HomeOverviewComponent},
-            {path: 'my-achievement', component: MyAchievementsComponent}
+            {path: 'my-achievements', component: MyAchievementsComponent}
 
           ]
         }
