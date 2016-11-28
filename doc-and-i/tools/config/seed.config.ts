@@ -70,13 +70,13 @@ export class SeedConfig {
    * The default path is `/`, which can be overriden by the `--base` flag when running `npm start`.
    * @type {string}
    */
-  APP_BASE = argv['base'] || '';
+  APP_BASE = argv['base'] || '/';
 
   /**
    * The base path of node modules.
    * @type {string}
    */
-  NPM_BASE =  join(this.APP_BASE, '/node_modules/');
+  NPM_BASE =  'node_modules/';
 
   /**
    * The flag to include templates into JS app prod file.
@@ -134,7 +134,7 @@ export class SeedConfig {
    * The base folder of the applications source files.
    * @type {string}
    */
-  APP_SRC = `src`; //`src/${this.APP_CLIENT}`;
+  APP_SRC = 'src'; //`src/${this.APP_CLIENT}`;
 
   /**
    * The folder of the applications asset files.
